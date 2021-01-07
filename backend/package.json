@@ -20,6 +20,10 @@
     "url": "https://github.com/PARTHSONI95/odh-dashboard/issues"
   },
   "homepage": "https://github.com/PARTHSONI95/odh-dashboard#readme",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "fastify start -w -p 9010 -l debug -P app.js"
+  },
   "dependencies": {
     "@kubernetes/client-node": "^0.12.2",
     "concurrently": "^5.3.0",

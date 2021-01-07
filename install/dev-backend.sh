@@ -9,8 +9,8 @@ if [ -f "${ENV_FILE}" ]; then
   for ENV_VAR in $(sed 's/=.*//' ${ENV_FILE}); do export "${ENV_VAR}"; done
 fi
 
-cd ${DIR}/..
+cd ${DIR}/../backend
 pwd
 
-npm install
-PORT=${BACKEND_DEV_PORT} npm run dev
+yarn
+PORT=${BACKEND_DEV_PORT} yarn dev
