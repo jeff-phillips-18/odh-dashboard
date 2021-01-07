@@ -15,6 +15,7 @@ module.exports = async function ({ fastify, opts, request, reply }) {
     );
     kfdef = _.get(res, "body.items[0]");
   } catch (e) {
+    console.dir(e);
     fastify.log.error(e, "failed to get kfdefs");
     throw e;
   }
