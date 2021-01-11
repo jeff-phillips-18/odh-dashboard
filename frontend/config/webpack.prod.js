@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const rimraf = require('rimraf');
+const Dotenv = require('dotenv-webpack');
 
 const RELATIVE_DIRNAME = process.env.RELATIVE_DIRNAME;
 const SRC_DIR = process.env.SRC_DIR;
@@ -16,44 +17,61 @@ if (process.env.OUTPUT_ONLY !== 'true') {
 
 rimraf(DIST_DIR, () => {});
 
-module.exports = merge(common('production'), {
-  mode: 'production',
-  devtool: 'source-map',
-  optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].bundle.css'
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        include: [
-          SRC_DIR,
-          path.resolve(RELATIVE_DIRNAME, 'node_modules/patternfly'),
-          path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/patternfly'),
-          path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-styles/css'),
-          path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-core/dist/styles/base.css'),
-          path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-core/dist/esm/@patternfly/patternfly'),
-          path.resolve(
-            RELATIVE_DIRNAME,
-            'node_modules/@patternfly/react-core/node_modules/@patternfly/react-styles/css'
-          ),
-          path.resolve(
-            RELATIVE_DIRNAME,
-            'node_modules/@patternfly/react-table/node_modules/@patternfly/react-styles/css'
-          ),
-          path.resolve(
-            RELATIVE_DIRNAME,
-            'node_modules/@patternfly/react-inline-edit-extension/node_modules/@patternfly/react-styles/css'
-          )
-        ],
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
+module.exports = merge(
+  {
+    plugins: [
+      new Dotenv({
+        path: path.resolve(RELATIVE_DIRNAME, '.env.production.local'),
+        systemvars: true,
+        silent: true
+      }),
+      new Dotenv({
+        path: path.resolve(RELATIVE_DIRNAME, '.env.production'),
+        systemvars: true,
+        silent: true
+      })
     ]
+  },
+  common('production'),
+  {
+    mode: 'production',
+    devtool: 'source-map',
+    optimization: {
+      minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[name].bundle.css'
+      })
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          include: [
+            SRC_DIR,
+            path.resolve(RELATIVE_DIRNAME, 'node_modules/patternfly'),
+            path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/patternfly'),
+            path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-styles/css'),
+            path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-core/dist/styles/base.css'),
+            path.resolve(RELATIVE_DIRNAME, 'node_modules/@patternfly/react-core/dist/esm/@patternfly/patternfly'),
+            path.resolve(
+              RELATIVE_DIRNAME,
+              'node_modules/@patternfly/react-core/node_modules/@patternfly/react-styles/css'
+            ),
+            path.resolve(
+              RELATIVE_DIRNAME,
+              'node_modules/@patternfly/react-table/node_modules/@patternfly/react-styles/css'
+            ),
+            path.resolve(
+              RELATIVE_DIRNAME,
+              'node_modules/@patternfly/react-inline-edit-extension/node_modules/@patternfly/react-styles/css'
+            )
+          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
+        }
+      ]
+    }
   }
-});
+);

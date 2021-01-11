@@ -156,12 +156,17 @@ module.exports = env => {
       publicPath: PUBLIC_PATH
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: path.join(SRC_DIR, 'index.html')
+      new Dotenv({
+        path: path.resolve(RELATIVE_DIRNAME, '.env.local'),
+        systemvars: true,
+        silent: true
       }),
       new Dotenv({
         systemvars: true,
         silent: true
+      }),
+      new HtmlWebpackPlugin({
+        template: path.join(SRC_DIR, 'index.html')
       }),
       new CopyPlugin({
         patterns: [
