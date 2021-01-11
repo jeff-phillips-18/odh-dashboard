@@ -33,8 +33,7 @@ yarn-error.log*
 logs
 *stats.json
 
-
-.env
+!.env
 .env*.local
 .docs
 .gitkeep
