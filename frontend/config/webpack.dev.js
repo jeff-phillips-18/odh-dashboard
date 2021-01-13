@@ -1,30 +1,24 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
-const Dotenv = require('dotenv-webpack');
+const { setupWebpackDotenvFilesForEnv, setupDotenvFilesForEnv } = require('./dotenv');
 
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || '4000';
-const RELATIVE_DIRNAME = process.env.RELATIVE_DIRNAME;
-const SRC_DIR = process.env.SRC_DIR;
-const DIST_DIR = process.env.DIST_DIR;
+setupDotenvFilesForEnv({ env: 'development' });
+const webpackCommon = require('./webpack.common.js');
+
+const RELATIVE_DIRNAME = process.env._OSEED_RELATIVE_DIRNAME;
+const IS_PROJECT_ROOT_DIR = process.env._OSEED_IS_PROJECT_ROOT_DIR;
+const SRC_DIR = process.env._OSEED_SRC_DIR;
+const DIST_DIR = process.env._OSEED_DIST_DIR;
+const HOST = process.env._OSEED_HOST;
+const PORT = process.env._OSEED_PORT;
 
 module.exports = merge(
   {
     plugins: [
-      new Dotenv({
-        path: path.resolve(RELATIVE_DIRNAME, '.env.development.local'),
-        systemvars: true,
-        silent: true
-      }),
-      new Dotenv({
-        path: path.resolve(RELATIVE_DIRNAME, '.env.development'),
-        systemvars: true,
-        silent: true
-      })
+      ...setupWebpackDotenvFilesForEnv({ directory: RELATIVE_DIRNAME, env: 'development', isRoot: IS_PROJECT_ROOT_DIR })
     ]
   },
-  common('development'),
+  webpackCommon('development'),
   {
     mode: 'development',
     devtool: 'eval-source-map',

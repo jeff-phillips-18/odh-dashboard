@@ -73,7 +73,7 @@
   },
   "scripts": {
     "build": "run-s build:prod",
-    "build:analyze": "export OUTPUT_ONLY=true; run-s build build:bundle-profile build:bundle-analyze",
+    "build:analyze": "export _OSEED_OUTPUT_ONLY=true; run-s build build:bundle-profile build:bundle-analyze",
     "build:bundle-profile": "webpack --config ./config/webpack.prod.js --profile --json > ./bundle.stats.json",
     "build:bundle-analyze": "webpack-bundle-analyzer ./bundle.stats.json",
     "build:clean": "rimraf ./build",

@@ -1,17 +1,21 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const rimraf = require('rimraf');
-const Dotenv = require('dotenv-webpack');
+const { setupWebpackDotenvFilesForEnv, setupDotenvFilesForEnv } = require('./dotenv');
 
-const RELATIVE_DIRNAME = process.env.RELATIVE_DIRNAME;
-const SRC_DIR = process.env.SRC_DIR;
-const DIST_DIR = process.env.DIST_DIR;
+setupDotenvFilesForEnv({ env: 'production' });
+const webpackCommon = require('./webpack.common.js');
 
-if (process.env.OUTPUT_ONLY !== 'true') {
+const RELATIVE_DIRNAME = process.env._OSEED_RELATIVE_DIRNAME;
+const IS_PROJECT_ROOT_DIR = process.env._OSEED_IS_PROJECT_ROOT_DIR;
+const SRC_DIR = process.env._OSEED_SRC_DIR;
+const DIST_DIR = process.env._OSEED_DIST_DIR;
+const OUTPUT_ONLY = process.env._OSEED_OUTPUT_ONLY;
+
+if (OUTPUT_ONLY !== true) {
   console.info(`Cleaning OUTPUT DIR...\n  ${DIST_DIR}\n`);
 }
 
@@ -20,19 +24,10 @@ rimraf(DIST_DIR, () => {});
 module.exports = merge(
   {
     plugins: [
-      new Dotenv({
-        path: path.resolve(RELATIVE_DIRNAME, '.env.production.local'),
-        systemvars: true,
-        silent: true
-      }),
-      new Dotenv({
-        path: path.resolve(RELATIVE_DIRNAME, '.env.production'),
-        systemvars: true,
-        silent: true
-      })
+      ...setupWebpackDotenvFilesForEnv({ directory: RELATIVE_DIRNAME, env: 'production', isRoot: IS_PROJECT_ROOT_DIR })
     ]
   },
-  common('production'),
+  webpackCommon('production'),
   {
     mode: 'production',
     devtool: 'source-map',
