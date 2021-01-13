@@ -14,6 +14,7 @@ module.exports = async function ({ fastify, opts, request, reply }) {
       "kfdefs"
     );
     kfdef = _.get(res, "body.items[0]");
+    console.dir(res);
   } catch (e) {
     console.dir(e);
     fastify.log.error(e, "failed to get kfdefs");
@@ -21,6 +22,8 @@ module.exports = async function ({ fastify, opts, request, reply }) {
   }
 
   let kfdefApps = _.get(kfdef, "spec.applications") || [];
+  console.log(`============ kfdefApps: ${kfdefApps.length} =============`);
+  console.dir(kfdefApps);
   let kfdefAppSet = new Set();
   kfdefApps.forEach((app) => kfdefAppSet.add(app.name));
 

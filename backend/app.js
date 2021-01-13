@@ -9,7 +9,7 @@ module.exports = async function (fastify, opts) {
   fastify.register(Sensible);
 
   fastify.register(Static, {
-    root: path.join(__dirname, "frontend/build"),
+    root: path.join(__dirname, "../frontend/build"),
     wildcard: false,
   });
 

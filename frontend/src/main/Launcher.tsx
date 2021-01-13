@@ -93,6 +93,7 @@ const ConnectedLauncher = ({ components, componentsLoading, componentsError }) =
     }
 
     let filteredComponents;
+    console.dir(components);
     if (!components) {
       filteredComponents = [];
     } else if (filter === 'Show All') {
