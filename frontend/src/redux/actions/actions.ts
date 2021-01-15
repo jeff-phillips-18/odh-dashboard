@@ -3,23 +3,23 @@ import ky from 'ky';
 export const GET_COMPONENTS_PENDING = 'GET_COMPONENTS_PENDING';
 export const getComponentsPending = () => ({
   type: GET_COMPONENTS_PENDING,
-  payload: {}
+  payload: {},
 });
 
 export const GET_COMPONENTS_FULFILLED = 'GET_COMPONENTS_FULFILLED';
-export const getComponentsFulfilled = components => ({
+export const getComponentsFulfilled = (components) => ({
   type: GET_COMPONENTS_FULFILLED,
   payload: {
-    components
-  }
+    components,
+  },
 });
 
 export const GET_COMPONENTS_REJECTED = 'GET_COMPONENTS_REJECTED';
-export const getComponentsRejected = error => ({
+export const getComponentsRejected = (error) => ({
   type: GET_COMPONENTS_REJECTED,
   payload: {
-    error
-  }
+    error,
+  },
 });
 
 export const getComponents = () => {

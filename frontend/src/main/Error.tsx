@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Title,
@@ -9,8 +9,8 @@ import {
   EmptyStateBody,
   PageSection,
   PageSectionVariants,
-} from "@patternfly/react-core";
-import { HomeIcon, WarningTriangleIcon } from "@patternfly/react-icons";
+} from '@patternfly/react-core';
+import { HomeIcon, WarningTriangleIcon } from '@patternfly/react-icons';
 
 export const Error = () => (
   <>

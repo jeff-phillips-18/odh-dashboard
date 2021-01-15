@@ -10,8 +10,8 @@ export const navData = [
       { id: 'spark', label: 'Spark', href: '/gs/spark' },
       { id: 'seldon', label: 'Seldon', href: '/gs/seldon' },
       { id: 'kafka', label: 'Kafka', href: '/gs/kafka' },
-      { id: 'airflow', label: 'Airflow', href: '/gs/airflow' }
-    ]
+      { id: 'airflow', label: 'Airflow', href: '/gs/airflow' },
+    ],
   },
   {
     group: { id: 'docs', title: 'Documentation' },
@@ -23,7 +23,7 @@ export const navData = [
       { id: 'spark', label: 'Spark', href: '/docs/spark' },
       { id: 'seldon', label: 'Seldon', href: '/docs/seldon' },
       { id: 'kafka', label: 'Kafka', href: '/docs/kafka' },
-      { id: 'airflow', label: 'Airflow', href: '/docs/airflow' }
-    ]
-  }
+      { id: 'airflow', label: 'Airflow', href: '/docs/airflow' },
+    ],
+  },
 ];

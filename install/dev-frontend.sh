@@ -13,5 +13,5 @@ cd ${DIR}/..
 cd frontend
 pwd
 
-npm install
-PORT=${FRONTEND_DEV_PORT} npm start
+yarn
+PORT=${FRONTEND_DEV_PORT} yarn dev

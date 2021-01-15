@@ -8,7 +8,7 @@ import {
   EmptyStateIcon,
   EmptyStateBody,
   PageSection,
-  PageSectionVariants
+  PageSectionVariants,
 } from '@patternfly/react-core';
 import { HomeIcon, WarningTriangleIcon } from '@patternfly/react-icons';
 

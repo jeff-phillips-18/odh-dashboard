@@ -4,11 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "build": "concurrently \"cd backend && yarn\" \"cd frontend && yarn && yarn build\"",
+    "deploy": "make deploy",
+    "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn start\"",
+    "format": "concurrently \"cd backend && yarn format\" \"cd frontend && yarn && yarn format\"",
+    "push": "make push",
+    "start": "cd backend && yarn start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "fastify start -w -p 9010 -l debug -P app.js",
-    "format": "prettier --write \"routes/**/*.js\" \"plugins/**/*.js\" \"utils/**/*.js\" \"*.js\""
+    "undeploy": "make undeploy"
   },
   "repository": {
     "type": "git",

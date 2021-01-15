@@ -79,6 +79,7 @@
     "build:bundle-analyze": "webpack-bundle-analyzer ./bundle.stats.json",
     "build:clean": "rimraf ./public",
     "build:prod": "webpack --config ./config/webpack.prod.js",
+    "format": "prettier --write \"./**/*.ts\" \"./**/*.tsx\" \"./**/*.scss\"",
     "start": "webpack serve --hot --color --progress --config ./config/webpack.dev.js",
     "test": "run-s test:type-check test:lint test:ci",
     "test:ci": "export CI=true; jest --collectCoverage",
