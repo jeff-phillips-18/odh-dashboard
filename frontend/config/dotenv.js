@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
+const dotenvExpand = require('dotenv-expand');
 const Dotenv = require('dotenv-webpack');
 
 /**
@@ -103,7 +104,10 @@ const setupWebpackDotenvFilesForEnv = ({ directory, env, isRoot = true }) => {
  * @param {string} path
  * @returns {*}
  */
-const setupDotenvFile = path => dotenv.config({ path });
+const setupDotenvFile = path => {
+  const dotenvInitial = dotenv.config({ path });
+  dotenvExpand(dotenvInitial);
+};
 
 /**
  * Setup and access local and specific dotenv file parameters.
@@ -115,14 +119,6 @@ const setupDotenvFilesForEnv = ({ env }) => {
   const IS_ROOT = getProjectIsRootDir(RELATIVE_DIRNAME);
   const { baseUrl: TS_BASE_URL, outDir: TS_OUT_DIR } = getTsCompilerOptions(RELATIVE_DIRNAME);
 
-  if (env) {
-    setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}.local`));
-    setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}`));
-  }
-
-  setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env.local'));
-  setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env'));
-
   if (!IS_ROOT) {
     if (env) {
       setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '..', `.env.${env}.local`));
@@ -132,6 +128,14 @@ const setupDotenvFilesForEnv = ({ env }) => {
     setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '..', '.env.local'));
     setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '..', '.env'));
   }
+
+  if (env) {
+    setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}.local`));
+    setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}`));
+  }
+
+  setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env.local'));
+  setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env'));
 
   const IMAGES_DIRNAME = process.env.OSEED_IMAGES_DIRNAME || 'images';
   const PUBLIC_PATH = process.env.OSEED_PUBLIC_PATH || '/';

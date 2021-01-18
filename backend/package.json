@@ -1,27 +1,25 @@
 {
   "name": "odh-dashboard",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "build": "cd frontend && npm install && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "fastify start -w -p 9010 -l debug -P app.js",
-    "format": "prettier --write \"routes/**/*.js\" \"plugins/**/*.js\" \"utils/**/*.js\" \"*.js\""
-  },
+  "description": "Backend for Open Data Hub dashboard.",
+  "author": "Red Hat",
+  "license": "ISC",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/opendatahub-io/odh-dashboard.git"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/opendatahub-io/odh-dashboard#readme",
   "bugs": {
-    "url": "https://github.com/PARTHSONI95/odh-dashboard/issues"
+    "url": "https://github.com/opendatahub-io/odh-dashboard/issues"
   },
-  "homepage": "https://github.com/PARTHSONI95/odh-dashboard#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js",
     "dev": "fastify start -w -p 9010 -l debug -P app.js",
     "format": "prettier --write \"./**/*.js\""
   },

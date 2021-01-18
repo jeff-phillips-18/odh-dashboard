@@ -31,7 +31,8 @@ module.exports = merge(
       historyApiFallback: true,
       hot: true,
       overlay: true,
-      open: true
+      open: true,
+      stats: 'errors-only'
     },
     module: {
       rules: [

@@ -4,14 +4,14 @@ printf "\n\n######## dev frontend ########\n"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ENV_FILE=${DIR}/../../.env.dev
+
 if [ -f "${ENV_FILE}" ]; then
   source ${ENV_FILE}
   for ENV_VAR in $(sed 's/=.*//' ${ENV_FILE}); do export "${ENV_VAR}"; done
 fi
 
-cd ${DIR}/..
-cd frontend
+cd ${DIR}/../frontend
 pwd
 
 yarn
-PORT=${FRONTEND_DEV_PORT} yarn dev
+yarn start

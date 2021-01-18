@@ -1,7 +1,40 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "description": "Frontend for Open Data Hub dashboard.",
+  "author": "Red Hat",
+  "license": "ISC",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendatahub-io/odh-dashboard.git"
+  },
+  "homepage": "https://github.com/opendatahub-io/odh-dashboard#readme",
+  "bugs": {
+    "url": "https://github.com/opendatahub-io/odh-dashboard/issues"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "run-s build:prod",
+    "build:for-deploy": "react-scripts build",
+    "build:analyze": "export _OSEED_OUTPUT_ONLY=true; run-s build build:bundle-profile build:bundle-analyze",
+    "build:bundle-profile": "webpack --config ./config/webpack.prod.js --profile --json > ./bundle.stats.json",
+    "build:bundle-analyze": "webpack-bundle-analyzer ./bundle.stats.json",
+    "build:clean": "rimraf ./public",
+    "build:prod": "webpack --config ./config/webpack.prod.js",
+    "format": "prettier --write \"./**/*.ts\" \"./**/*.tsx\" \"./**/*.scss\"",
+    "start": "webpack serve --hot --color --config ./config/webpack.dev.js",
+    "test": "run-s test:type-check test:lint test:ci",
+    "test:ci": "export CI=true; jest --collectCoverage",
+    "test:clearCache": "jest --clearCache",
+    "test:dev": "run-s test:type-check test:lint test:local",
+    "test:lint": "eslint --ext .json,.js,.ts,.jsx,.tsx ./src",
+    "test:lint-fix": "eslint --ext .json,.js,.ts,.jsx,.tsx ./src --fix",
+    "test:local": "jest --watchAll",
+    "test:type-check": "tsc --noEmit"
+  },
   "dependencies": {
     "@patternfly/patternfly": "4.70.2",
     "@patternfly/react-core": "4.84.4",
@@ -34,6 +67,7 @@
     "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^5.0.0",
     "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
     "dotenv-webpack": "^6.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.15.5",
@@ -70,37 +104,5 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "3.11.0",
     "webpack-merge": "^5.2.0"
-  },
-  "scripts": {
-    "build": "run-s build:prod",
-    "build:for-deploy": "react-scripts build",
-    "build:analyze": "export _OSEED_OUTPUT_ONLY=true; run-s build build:bundle-profile build:bundle-analyze",
-    "build:bundle-profile": "webpack --config ./config/webpack.prod.js --profile --json > ./bundle.stats.json",
-    "build:bundle-analyze": "webpack-bundle-analyzer ./bundle.stats.json",
-    "build:clean": "rimraf ./public",
-    "build:prod": "webpack --config ./config/webpack.prod.js",
-    "format": "prettier --write \"./**/*.ts\" \"./**/*.tsx\" \"./**/*.scss\"",
-    "start": "webpack serve --hot --color --progress --config ./config/webpack.dev.js",
-    "test": "run-s test:type-check test:lint test:ci",
-    "test:ci": "export CI=true; jest --collectCoverage",
-    "test:clearCache": "jest --clearCache",
-    "test:dev": "run-s test:type-check test:lint test:local",
-    "test:lint": "eslint --ext .json,.js,.ts,.jsx,.tsx ./src",
-    "test:lint-fix": "eslint --ext .json,.js,.ts,.jsx,.tsx ./src --fix",
-    "test:local": "jest --watchAll",
-    "test:type-check": "tsc --noEmit"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:8080"
+  }
 }
