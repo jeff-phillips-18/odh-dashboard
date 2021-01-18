@@ -18,10 +18,10 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
-    "dev": "fastify start -w -p 9010 -l debug -P app.js",
-    "format": "prettier --write \"./**/*.js\""
+    "start:dev": "fastify start -w -p 9010 -l debug -P app.js",
+    "test": "eslint --ext .json,.js ./plugins ./routes ./utils",
+    "test:fix": "eslint --ext .json,.js ./plugins ./routes ./utils --fix"
   },
   "dependencies": {
     "@kubernetes/client-node": "^0.12.2",
@@ -34,8 +34,17 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.18.0",
+    "eslint-config-esnext": "^4.1.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "fastify-cli": "^2.3.0",
-    "prettier": "^2.1.2",
+    "prettier": "^2.2.1",
     "tap": "^14.10.8"
   }
 }

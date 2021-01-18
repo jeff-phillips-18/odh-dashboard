@@ -15,4 +15,4 @@ pwd
 
 PORT=${BACKEND_DEV_PORT}
 yarn
-yarn dev
+yarn start:dev
