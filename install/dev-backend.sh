@@ -3,7 +3,7 @@ printf "\n\n######## dev backend ########\n"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-ENV_FILE=${DIR}/../../.env.dev
+ENV_FILE=${DIR}/../../.env.development
 
 if [ -f "${ENV_FILE}" ]; then
   source ${ENV_FILE}
