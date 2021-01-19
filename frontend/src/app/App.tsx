@@ -4,9 +4,9 @@ import { Page } from '@patternfly/react-core';
 import { detectUser, getComponents } from '../redux/actions/actions';
 import Header from './Header';
 import Routes from './Routes';
+import NavSidebar from './NavSidebar';
 
 import './App.scss';
-import NavSidebar from './NavSidebar';
 
 type AppProps = {
   getComponents: () => void;
