@@ -1,4 +1,27 @@
+import * as _ from 'lodash';
 import ky from 'ky';
+
+export const GET_USER_PENDING = 'GET_USER_PENDING';
+export const getUserPending = () => ({
+  type: GET_USER_PENDING,
+  payload: {},
+});
+
+export const GET_USER_FULFILLED = 'GET_USER_FULFILLED';
+export const getUserFullfilled = (response) => ({
+  type: GET_USER_FULFILLED,
+  payload: {
+    user: response.kube.currentUser,
+  },
+});
+
+export const GET_USER_REJECTED = 'GET_USER_REJECTED';
+export const getUserRejected = (error) => ({
+  type: GET_USER_REJECTED,
+  payload: {
+    error,
+  },
+});
 
 export const GET_COMPONENTS_PENDING = 'GET_COMPONENTS_PENDING';
 export const getComponentsPending = () => ({
@@ -22,8 +45,8 @@ export const getComponentsRejected = (error) => ({
   },
 });
 
-export const getComponents = () => {
-  const url = `${window.location.protocol}//${window.location.hostname}:9010/api/components`;
+export const getComponents = (installed: boolean = false) => {
+  const url = `${window.location.protocol}//${window.location.hostname}:9010/api/components${installed ? '/installed' : ''}`;
   return async function (dispatch) {
     dispatch(getComponentsPending());
     try {
@@ -42,4 +65,23 @@ export const getComponents = () => {
   };
 };
 
-export default getComponents;
+export const detectUser = () => {
+  const url = `${window.location.protocol}//${window.location.hostname}:9010/api/status`;
+  return async function (dispatch) {
+    dispatch(getUserPending());
+    try {
+      const response = await ky.get(url, {}).json();
+      dispatch(getUserFullfilled(response));
+    } catch (e) {
+      let userError;
+      console.dir(e);
+      if (e instanceof ky.HTTPError) {
+        userError = await e.response.json();
+      } else {
+        userError = e;
+      }
+      console.error(e);
+      dispatch(getUserRejected(userError));
+    }
+  };
+};

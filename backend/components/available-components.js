@@ -8,6 +8,7 @@ module.exports = [
     route: "jupyterhub",
     img: "images/jupyterhub.svg",
     docsLink: "https://jupyter.org/hub",
+    support: "redhat",
   },
   {
     key: "argo",
@@ -17,6 +18,7 @@ module.exports = [
     route: "argo-portal",
     img: "images/argo.svg",
     docsLink: "https://argoproj.github.io/",
+    support: "redhat",
   },
   {
     key: "superset",
@@ -27,6 +29,7 @@ module.exports = [
     route: "superset",
     img: "images/superset.svg",
     docsLink: "https://superset.incubator.apache.org/",
+    support: "other",
   },
   {
     key: "prometheus",
@@ -36,6 +39,7 @@ module.exports = [
     route: "prometheus-portal",
     img: "images/prometheus.svg",
     docsLink: "https://prometheus.io/docs/",
+    support: "other",
   },
   {
     key: "grafana",
@@ -45,6 +49,7 @@ module.exports = [
     route: "grafana-route",
     img: "images/grafana.svg",
     docsLink: "https://grafana.com/docs/grafana/latest/",
+    support: "other",
   },
   {
     key: "spark",
@@ -54,6 +59,7 @@ module.exports = [
     route: null,
     img: "images/spark.svg",
     docsLink: "https://spark.apache.org/docs/latest/",
+    support: "other",
   },
   {
     key: "seldon",
@@ -64,6 +70,7 @@ module.exports = [
     route: null,
     img: "images/seldon.svg",
     docsLink: "https://docs.seldon.io/",
+    support: "other",
   },
   {
     key: "kafka",
@@ -73,6 +80,7 @@ module.exports = [
     route: null,
     img: "images/kafka.svg",
     docsLink: "https://kafka.apache.org/documentation/",
+    support: "redhat",
   },
   {
     key: "airflow",
@@ -83,5 +91,6 @@ module.exports = [
     route: null,
     img: "images/airflow.svg",
     docsLink: "https://airflow.apache.org/",
+    support: "redhat",
   },
 ];

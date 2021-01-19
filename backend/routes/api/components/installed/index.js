@@ -1,9 +1,9 @@
-const list = require('./list');
-const responseUtils = require('../../../utils/responseUtils');
+const listInstalled = require('./listInstalled');
+const responseUtils = require('../../../../utils/responseUtils');
 
 module.exports = async function (fastify, opts) {
   fastify.get("/", async (request, reply) => {
-    return list({ fastify, opts, request, reply })
+    return listInstalled({ fastify, opts, request, reply }, true)
       .then((res) => {
         responseUtils.addCORSHeader(request, reply);
         return res;
