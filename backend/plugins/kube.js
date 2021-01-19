@@ -9,6 +9,7 @@ kc.loadFromDefault();
 
 const currentContext = kc.getCurrentContext();
 const customObjectsApi = kc.makeApiClient(k8s.CustomObjectsApi);
+const currentUser = kc.getCurrentUser();
 
 module.exports = fp(async function (fastify, opts) {
   let namespace;
@@ -23,6 +24,7 @@ module.exports = fp(async function (fastify, opts) {
     currentContext,
     namespace,
     customObjectsApi,
+    currentUser,
   });
 });
 

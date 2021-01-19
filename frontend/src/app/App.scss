@@ -1,7 +1,15 @@
 .app {
-  .header {
+  .pf-c-page__header {
     .pf-c-brand {
       height: 36px;
+    }
+    .pf-c-dropdown__toggle {
+      .pf-c-dropdown__toggle-icon {
+        margin-left: var(--pf-global--spacer--xs);
+      }
+      &:before {
+        visibility: hidden;
+      }
     }
   }
   height: 100vh;
