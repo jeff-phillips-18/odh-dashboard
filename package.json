@@ -18,8 +18,8 @@
   },
   "scripts": {
     "build": "run-p -l build:*",
-    "build:backend": "echo \"...no build available for backend\"",
-    "build:frontend": "cd ./frontend && yarn && yarn build",
+    "build:backend": "cd ./backend && npm install",
+    "build:frontend": "cd ./frontend && npm install && npm run build",
     "dev": "run-p -l dev:*",
     "dev:backend": "cd ./backend && yarn start:dev",
     "dev:frontend": "cd ./frontend && yarn start:dev",
