@@ -12,7 +12,7 @@ import {
   Dropdown,
   DropdownItem,
   KebabToggle,
-  Badge,
+  Badge
 } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
@@ -30,25 +30,25 @@ type OdhAppCardProps = {
 const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const onToggle = (value) => {
+  const onToggle = value => {
     setIsOpen(value);
   };
 
-  const onSelect = (e) => {
+  const onSelect = () => {
     setIsOpen(!isOpen);
   };
 
   const dropdownItems = [
     <DropdownItem key="docs" href={odhApp.docsLink} target="_blank" rel="noopener noreferrer">
       Documentation
-    </DropdownItem>,
+    </DropdownItem>
   ];
 
   if (odhApp.link) {
     dropdownItems.push(
       <DropdownItem key="launch" href={odhApp.link} target="_blank" rel="noopener noreferrer">
         Launch
-      </DropdownItem>,
+      </DropdownItem>
     );
   }
 

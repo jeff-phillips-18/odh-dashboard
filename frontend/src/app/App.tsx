@@ -35,14 +35,14 @@ const _App: React.FC<AppProps> = ({ getComponents }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.appReducer;
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getComponents: () => {
     dispatch(getComponents());
-  },
+  }
 });
 
 const App = connect(mapStateToProps, mapDispatchToProps)(_App);

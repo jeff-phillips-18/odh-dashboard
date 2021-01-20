@@ -18,7 +18,7 @@ import {
   Spinner,
   Title,
   EmptyStateBody,
-  Button,
+  Button
 } from '@patternfly/react-core';
 import OdhAppCard from './OdhAppCard';
 
@@ -26,14 +26,14 @@ import './Launcher.scss';
 
 const filterOptions = [
   { value: 'Show Enabled', disabled: false },
-  { value: 'Show All', disabled: false },
+  { value: 'Show All', disabled: false }
 ];
 
 const ConnectedLauncher = ({ components, componentsLoading, componentsError }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filter, setFilter] = useState('Show Enabled');
 
-  const onToolbarDropdownToggle = (value) => {
+  const onToolbarDropdownToggle = () => {
     setIsFilterOpen(!isFilterOpen);
   };
 
@@ -96,11 +96,11 @@ const ConnectedLauncher = ({ components, componentsLoading, componentsError }) =
     if (!components) {
       filteredComponents = [];
     } else if (filter === 'Show All') {
-      filteredComponents = components.map((c) => <OdhAppCard key={c.key} odhApp={c} />);
+      filteredComponents = components.map(c => <OdhAppCard key={c.key} odhApp={c} />);
     } else {
       filteredComponents = components
-        .filter((a) => a && a.enabled)
-        .map((c) => <OdhAppCard key={c.key} odhApp={c} />);
+        .filter(a => a && a.enabled)
+        .map(c => <OdhAppCard key={c.key} odhApp={c} />);
     }
 
     if (!filteredComponents || filteredComponents.length === 0) {
@@ -152,7 +152,7 @@ const ConnectedLauncher = ({ components, componentsLoading, componentsError }) =
             find out more.
           </Text>
         </TextContent>
-        <Toolbar id="toolbar-group-types" clearAllFilters={() => {}}>
+        <Toolbar id="toolbar-group-types" clearAllFilters={() => ({})}>
           <ToolbarContent>
             <ToolbarItem>{buildFilterDropdown()}</ToolbarItem>
           </ToolbarContent>
@@ -163,10 +163,10 @@ const ConnectedLauncher = ({ components, componentsLoading, componentsError }) =
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.appReducer;
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedLauncher);

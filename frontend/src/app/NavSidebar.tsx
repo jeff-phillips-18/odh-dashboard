@@ -14,7 +14,7 @@ const createNavItem = ({ id, label, href }, pathname) => {
 };
 
 const createNavGroup = ({ group, children }, pathname) => {
-  const isActive = !!children.find((c) => pathname.startsWith(c.href));
+  const isActive = !!children.find(c => pathname.startsWith(c.href));
 
   return (
     <NavExpandable
@@ -24,7 +24,7 @@ const createNavGroup = ({ group, children }, pathname) => {
       isActive={isActive}
       isExpanded={isActive}
     >
-      {children.map((c) => createNavItem(c, pathname))}
+      {children.map(c => createNavItem(c, pathname))}
     </NavExpandable>
   );
 };
@@ -36,7 +36,7 @@ type NavSidebarProps = {
 const NavSidebar: React.FC<NavSidebarProps> = ({ isNavOpen }) => {
   const routerLocation = useLocation();
 
-  const navItems = navData.map((item) => {
+  const navItems = navData.map(item => {
     if (item.group) {
       return createNavGroup(item, routerLocation.pathname);
     }
