@@ -39,7 +39,7 @@
     "prettier/prettier": [
       "error",
       {
-        "arrowParens": "always",
+        "arrowParens": "avoid",
         "singleQuote": true,
         "trailingComma": "none",
         "printWidth": 100
