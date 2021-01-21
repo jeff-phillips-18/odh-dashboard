@@ -1,4 +1,8 @@
-import { GET_COMPONENTS_PENDING, GET_COMPONENTS_FULFILLED, GET_COMPONENTS_REJECTED } from '../actions/actions';
+import {
+  GET_COMPONENTS_PENDING,
+  GET_COMPONENTS_FULFILLED,
+  GET_COMPONENTS_REJECTED
+} from '../actions/actions';
 
 const initialState = {
   components: [],
