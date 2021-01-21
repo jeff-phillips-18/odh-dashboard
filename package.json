@@ -43,6 +43,8 @@
     "test:fix-frontend": "cd ./frontend && yarn test:fix"
   },
   "dependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0"
   }
 }
