@@ -158,7 +158,7 @@ const setupDotenvFilesForEnv = ({ env }) => {
   process.env._ODH_DEV_MODE = DEV_MODE;
 
   console.log(
-    `Loading dotenv parameters... ${JSON.stringify(
+    `Loading frontend dotenv parameters... ${JSON.stringify(
       Object.keys(process.env)
         .filter(key => /^ODH_/i.test(key))
         .map(key => ({ [key]: process.env[key] }))
