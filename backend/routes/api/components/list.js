@@ -15,8 +15,11 @@ module.exports = async function ({ fastify }) {
     );
     kfdef = _.get(res, 'body.items[0]');
   } catch (e) {
+    console.log(`===================================`);
+    console.log(`==== failed to get kfdefs =========`);
+    console.log(`===================================`);
     fastify.log.error(e, 'failed to get kfdefs');
-    throw e;
+    throw new Error(`Unable to load Kubeflow resources. Please ensure the Open Data Hub operator has been installed.`);
   }
 
   let kfdefApps = _.get(kfdef, 'spec.applications') || [];

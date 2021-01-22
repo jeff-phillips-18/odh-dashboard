@@ -5,7 +5,6 @@ Contributing encompasses repository specific requirements.
 ## Install
 Before developing you'll need to install:
 * [NodeJS and NPM](https://nodejs.org/)
-* [Yarn](https://yarnpkg.com)
 * [OpenShift CLI](https://docs.openshift.com/enterprise/3.2/cli_reference/get_started_cli.html#installing-the-cli)
 * [s2i](https://github.com/openshift/source-to-image)
 * and have access to [Quay.io](https://quay.io/)
@@ -14,7 +13,7 @@ Before developing you'll need to install:
 ### Running locally
 Development for both "frontend" and "backend" can be done while running
 ```
-$ yarn dev
+$ npm run dev
 ```
 
 #### Give your dev env access
@@ -35,7 +34,7 @@ $ make login
 ```
 or
 ```
-$ yarn make:login
+$ npm run make:login
 ```
 
 
@@ -43,12 +42,12 @@ $ yarn make:login
 ### Basic testing
 To run the bare-bones linting checks run
   ```
-  $ yarn test
+  $ npm run test
   ```
 
 You can apply lint auto-fixes with 
   ```
-  $ yarn test:fix
+  $ npm run test:fix
   ```
 
 ## Build
@@ -59,10 +58,10 @@ The current build leverages `dotenv`, or `.env*`, files to apply environment bui
 dotenv files applied to the root of this project...
 - `.env`, basic settings, utilized by both "frontend" and "backend"
 - `.env.local`, gitignored settings, utilized by both "frontend" and "backend"
-- `.env.development`, utilized by both "frontend" and "backend". Its use can be seen with the NPM script `$ yarn dev`
-- `.env.development.local`, utilized by both "frontend" and "backend". Its use can be seen with the NPM script `$ yarn dev`
-- `.env.production`, is primarily used by the "frontend", minimally used by the "backend". Its use can be seen with the NPM script `$ yarn start`
-- `.env.production.local`, is primarily used by the "frontend", minimally used by the "backend". Its use can be seen with the NPM script `$ yarn start`
+- `.env.development`, utilized by both "frontend" and "backend". Its use can be seen with the NPM script `$ npm run dev`
+- `.env.development.local`, utilized by both "frontend" and "backend". Its use can be seen with the NPM script `$ npm run dev`
+- `.env.production`, is primarily used by the "frontend", minimally used by the "backend". Its use can be seen with the NPM script `$ npm run start`
+- `.env.production.local`, is primarily used by the "frontend", minimally used by the "backend". Its use can be seen with the NPM script `$ npm run start`
 - `.env.test`, is primarily used by the "frontend", minimally used by the "backend" during testing
 - `.env.test.local`, is primarily used by the "frontend", minimally used by the "backend" during testing
 
@@ -112,7 +111,7 @@ $ make build
 ```
 or
 ```
-$ yarn make:build
+$ npm run make:build
 ```
 
 ### Pushing the image
@@ -128,7 +127,7 @@ $ make push
 ```
 or
 ```
-$ yarn make:push
+$ npm run make:push
 ```
 
 ### Deploying your image
@@ -163,5 +162,5 @@ $ make deploy
 ```
 or
 ```
-$ yarn make:deploy
+$ npm run make:deploy
 ```

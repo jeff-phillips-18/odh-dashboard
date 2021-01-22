@@ -23,7 +23,7 @@ export const getComponentsRejected = (error) => ({
 });
 
 export const getComponents = () => {
-  const url = `${window.location.protocol}//${window.location.hostname}:9010/api/components`;
+  const url = `/api/components`;
   return async function (dispatch) {
     dispatch(getComponentsPending());
     try {
