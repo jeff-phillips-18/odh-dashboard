@@ -7,5 +7,5 @@ cd ${DIR}/../backend
 pwd
 
 PORT=${BACKEND_DEV_PORT}
-yarn
-yarn start:dev
+npm install
+npm start:dev

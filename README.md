@@ -10,7 +10,6 @@ A dashboard for Open Data Hub components.
 ## Requirements
 Before developing for ODH, the basic requirements:
 * Your system needs to be running [NodeJS version 12+ and NPM](https://nodejs.org/)
-* [Yarn 1.22+](https://yarnpkg.com) for dependency and script management.
   
 ### Additional tooling requirements
 * [OpenShift CLI, the "oc" command](https://docs.openshift.com/enterprise/3.2/cli_reference/get_started_cli.html#installing-the-cli)
@@ -25,14 +24,14 @@ Before developing for ODH, the basic requirements:
 
    1. Within the repo context, install project dependencies
       ```
-      $ cd odh-dashboard && yarn
+      $ cd odh-dashboard && npm install
       ```
 
 ### Serve development content
 This is the default context for running a local UI
 
   ```
-  $ yarn start
+  $ npm run start
   ```
 
 For in-depth local run guidance review the [contribution guidelines](./CONTRIBUTING.md#Serving%20Content)
@@ -42,7 +41,7 @@ For in-depth local run guidance review the [contribution guidelines](./CONTRIBUT
 Run the tests.
 
   ```
-  $ yarn test
+  $ npm run test
   ```
 
 For in-depth testing guidance review the [contribution guidelines](./CONTRIBUTING.md#Testing)

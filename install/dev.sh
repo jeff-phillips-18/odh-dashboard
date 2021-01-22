@@ -11,5 +11,5 @@ if [ -f "${ENV_FILE}" ]; then
 fi
 
 PORT=${BACKEND_DEV_PORT}
-yarn
-yarn dev
+npm install
+npm dev

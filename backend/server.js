@@ -18,5 +18,5 @@ app.listen(PORT, IP, (err) => {
     process.exit(1); // eslint-disable-line
   }
   console.log('Fastify Connected...');
-  console.log(`Server listening on >>> ${app.server.address().port}`);
+  console.log(`Server listening on >>>  ${app.server.address().address}:${app.server.address().port}`);
 });
