@@ -18,14 +18,15 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "export NODE_ENV=production; node ../scripts/dotenv.js; node ./server.js",
-    "start:dev": "export NODE_ENV=development; node ../scripts/dotenv.js; node ./server.js",
-    "test": "export NODE_ENV=test; node ../scripts/dotenv.js; eslint --ext .json,.js ./plugins ./routes ./utils",
+    "start": "export NODE_ENV=production; node ./server.js",
+    "start:dev": "export NODE_ENV=development; node ./server.js",
+    "test": "export NODE_ENV=test; eslint --ext .json,.js ./plugins ./routes ./utils",
     "test:fix": "eslint --ext .json,.js ./plugins ./routes ./utils --fix"
   },
   "dependencies": {
     "@kubernetes/client-node": "^0.12.2",
     "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "fastify": "^3.5.1",
     "fastify-autoload": "^3.3.0",
     "fastify-plugin": "^2.3.4",

@@ -1,7 +1,7 @@
 'use strict';
 
 const fastify = require('fastify');
-const { PORT, IP, LOG_LEVEL } = require('./utils/constants');
+const { APP_ENV, PORT, IP, LOG_LEVEL } = require('./utils/constants');
 
 const app = fastify({
   logger: {
@@ -17,7 +17,10 @@ app.listen(PORT, IP, (err) => {
     app.log.error(err);
     process.exit(1); // eslint-disable-line
   }
-  console.log(`ODH_DEV_MODE: ${process.env.ODH_DEV_MODE}`);
+  console.log(`APP_ENV: ${process.env.APP_ENV} or ${APP_ENV}`);
+  console.log(`default NODE_ENV: ${process.env.NODE_ENV}`);
   console.log('Fastify Connected...');
-  console.log(`Server listening on >>>  ${app.server.address().address}:${app.server.address().port}`);
+  console.log(
+    `Server listening on >>>  ${app.server.address().address}:${app.server.address().port}`,
+  );
 });
