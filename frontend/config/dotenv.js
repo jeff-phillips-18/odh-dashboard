@@ -17,12 +17,12 @@ const getProjectIsRootDir = directory => {
   let isRoot;
 
   if (fs.existsSync(dotenvLocalFile)) {
-    const { OSEED_IS_PROJECT_ROOT_DIR: DOTENV_LOCAL_ROOT } = dotenv.parse(fs.readFileSync(dotenvLocalFile));
+    const { ODH_IS_PROJECT_ROOT_DIR: DOTENV_LOCAL_ROOT } = dotenv.parse(fs.readFileSync(dotenvLocalFile));
     localIsRoot = DOTENV_LOCAL_ROOT;
   }
 
   if (fs.existsSync(dotenvFile)) {
-    const { OSEED_IS_PROJECT_ROOT_DIR: DOTENV_ROOT } = dotenv.parse(fs.readFileSync(dotenvFile));
+    const { ODH_IS_PROJECT_ROOT_DIR: DOTENV_ROOT } = dotenv.parse(fs.readFileSync(dotenvFile));
     isRoot = DOTENV_ROOT;
   }
 
@@ -137,28 +137,30 @@ const setupDotenvFilesForEnv = ({ env }) => {
   setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env.local'));
   setupDotenvFile(path.resolve(RELATIVE_DIRNAME, '.env'));
 
-  const IMAGES_DIRNAME = process.env.OSEED_IMAGES_DIRNAME || 'images';
-  const PUBLIC_PATH = process.env.OSEED_PUBLIC_PATH || '/';
-  const SRC_DIR = path.resolve(RELATIVE_DIRNAME, process.env.OSEED_SRC_DIR || TS_BASE_URL || 'src');
-  const DIST_DIR = path.resolve(RELATIVE_DIRNAME, process.env.OSEED_DIST_DIR || TS_OUT_DIR || 'public');
-  const HOST = process.env.OSEED_HOST || 'localhost';
-  const PORT = process.env.OSEED_PORT || '3000';
-  const OUTPUT_ONLY = process.env._OSEED_OUTPUT_ONLY === 'true';
+  const IMAGES_DIRNAME = process.env.ODH_IMAGES_DIRNAME || 'images';
+  const PUBLIC_PATH = process.env.ODH_PUBLIC_PATH || '/';
+  const SRC_DIR = path.resolve(RELATIVE_DIRNAME, process.env.ODH_SRC_DIR || TS_BASE_URL || 'src');
+  const DIST_DIR = path.resolve(RELATIVE_DIRNAME, process.env.ODH_DIST_DIR || TS_OUT_DIR || 'public');
+  const HOST = process.env.ODH_HOST || 'localhost';
+  const PORT = process.env.ODH_PORT || '3000';
+  const DEV_MODE = process.env.ODH_DEV_MODE || undefined;
+  const OUTPUT_ONLY = process.env._ODH_OUTPUT_ONLY === 'true';
 
-  process.env._OSEED_RELATIVE_DIRNAME = RELATIVE_DIRNAME;
-  process.env._OSEED_IS_PROJECT_ROOT_DIR = IS_ROOT;
-  process.env._OSEED_IMAGES_DIRNAME = IMAGES_DIRNAME;
-  process.env._OSEED_PUBLIC_PATH = PUBLIC_PATH;
-  process.env._OSEED_SRC_DIR = SRC_DIR;
-  process.env._OSEED_DIST_DIR = DIST_DIR;
-  process.env._OSEED_HOST = HOST;
-  process.env._OSEED_PORT = PORT;
-  process.env._OSEED_OUTPUT_ONLY = OUTPUT_ONLY;
+  process.env._ODH_RELATIVE_DIRNAME = RELATIVE_DIRNAME;
+  process.env._ODH_IS_PROJECT_ROOT_DIR = IS_ROOT;
+  process.env._ODH_IMAGES_DIRNAME = IMAGES_DIRNAME;
+  process.env._ODH_PUBLIC_PATH = PUBLIC_PATH;
+  process.env._ODH_SRC_DIR = SRC_DIR;
+  process.env._ODH_DIST_DIR = DIST_DIR;
+  process.env._ODH_HOST = HOST;
+  process.env._ODH_PORT = PORT;
+  process.env._ODH_OUTPUT_ONLY = OUTPUT_ONLY;
+  process.env._ODH_DEV_MODE = DEV_MODE;
 
   console.log(
     `Loading dotenv parameters... ${JSON.stringify(
       Object.keys(process.env)
-        .filter(key => /^OSEED_/i.test(key))
+        .filter(key => /^ODH_/i.test(key))
         .map(key => ({ [key]: process.env[key] }))
     )}`
   );

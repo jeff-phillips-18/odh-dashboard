@@ -17,6 +17,7 @@ app.listen(PORT, IP, (err) => {
     app.log.error(err);
     process.exit(1); // eslint-disable-line
   }
+  console.log(`ODH_DEV_MODE: ${process.env.ODH_DEV_MODE}`);
   console.log('Fastify Connected...');
   console.log(`Server listening on >>>  ${app.server.address().address}:${app.server.address().port}`);
 });

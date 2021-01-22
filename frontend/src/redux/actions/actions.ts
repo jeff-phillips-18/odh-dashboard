@@ -23,6 +23,11 @@ export const getComponentsRejected = (error) => ({
 });
 
 export const getComponents = () => {
+  console.dir(process.env);
+  console.dir(process.env.ODH_PORT);
+  console.dir(process.env.PORT);
+  console.dir(process.env.port);
+
   const url = `/api/components`;
   return async function (dispatch) {
     dispatch(getComponentsPending());

@@ -5,12 +5,12 @@ const { setupWebpackDotenvFilesForEnv, setupDotenvFilesForEnv } = require('./dot
 setupDotenvFilesForEnv({ env: 'development' });
 const webpackCommon = require('./webpack.common.js');
 
-const RELATIVE_DIRNAME = process.env._OSEED_RELATIVE_DIRNAME;
-const IS_PROJECT_ROOT_DIR = process.env._OSEED_IS_PROJECT_ROOT_DIR;
-const SRC_DIR = process.env._OSEED_SRC_DIR;
-const DIST_DIR = process.env._OSEED_DIST_DIR;
-const HOST = process.env._OSEED_HOST;
-const PORT = process.env._OSEED_PORT;
+const RELATIVE_DIRNAME = process.env._ODH_RELATIVE_DIRNAME;
+const IS_PROJECT_ROOT_DIR = process.env._ODH_IS_PROJECT_ROOT_DIR;
+const SRC_DIR = process.env._ODH_SRC_DIR;
+const DIST_DIR = process.env._ODH_DIST_DIR;
+const HOST = process.env._ODH_HOST;
+const PORT = process.env._ODH_PORT;
 
 module.exports = merge(
   {

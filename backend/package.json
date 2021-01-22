@@ -19,7 +19,7 @@
   "main": "server.js",
   "scripts": {
     "start": "export NODE_ENV=production; node ../scripts/dotenv.js; node ./server.js",
-    "start:dev": "export NODE_ENV=development; node ../scripts/dotenv.js; fastify start -w -p 9010 -l debug -P app.js",
+    "start:dev": "export NODE_ENV=development; node ../scripts/dotenv.js; node ./server.js",
     "test": "export NODE_ENV=test; node ../scripts/dotenv.js; eslint --ext .json,.js ./plugins ./routes ./utils",
     "test:fix": "eslint --ext .json,.js ./plugins ./routes ./utils --fix"
   },

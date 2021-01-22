@@ -18,6 +18,9 @@ const setupDotenvFilesForEnv = ({ env }) => {
   const RELATIVE_DIRNAME = path.resolve(__dirname, '..');
 
   if (env) {
+    console.log(`=== ENV ${env}`);
+    console.log(`  env file: ${path.resolve(RELATIVE_DIRNAME, `.env.${env}.local`)}`);
+    console.log(`  env file: ${path.resolve(RELATIVE_DIRNAME, `.env.${env}.local`)}`);
     setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}.local`));
     setupDotenvFile(path.resolve(RELATIVE_DIRNAME, `.env.${env}`));
   }
@@ -28,7 +31,7 @@ const setupDotenvFilesForEnv = ({ env }) => {
   console.log(
     `Loading dotenv parameters... ${JSON.stringify(
       Object.keys(process.env)
-        .filter(key => /^TEST/i.test(key))
+        .filter(key => /^ODH/i.test(key))
         .map(key => ({ [key]: process.env[key] }))
     )}`
   );

@@ -4,13 +4,13 @@ const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { setupWebpackDotenvFilesForEnv } = require('./dotenv');
 
-const RELATIVE_DIRNAME = process.env._OSEED_RELATIVE_DIRNAME;
-const IS_PROJECT_ROOT_DIR = process.env._OSEED_IS_PROJECT_ROOT_DIR;
-const IMAGES_DIRNAME = process.env._OSEED_IMAGES_DIRNAME;
-const PUBLIC_PATH = process.env._OSEED_PUBLIC_PATH;
-const SRC_DIR = process.env._OSEED_SRC_DIR;
-const DIST_DIR = process.env._OSEED_DIST_DIR;
-const OUTPUT_ONLY = process.env._OSEED_OUTPUT_ONLY;
+const RELATIVE_DIRNAME = process.env._ODH_RELATIVE_DIRNAME;
+const IS_PROJECT_ROOT_DIR = process.env._ODH_IS_PROJECT_ROOT_DIR;
+const IMAGES_DIRNAME = process.env._ODH_IMAGES_DIRNAME;
+const PUBLIC_PATH = process.env._ODH_PUBLIC_PATH;
+const SRC_DIR = process.env._ODH_SRC_DIR;
+const DIST_DIR = process.env._ODH_DIST_DIR;
+const OUTPUT_ONLY = process.env._ODH_OUTPUT_ONLY;
 
 if (OUTPUT_ONLY !== true) {
   console.info(
