@@ -1,6 +1,7 @@
 import React from 'react';
 import * as classNames from 'classnames';
 import { Card, CardHeader, CardTitle, CardBody, Tooltip } from '@patternfly/react-core';
+import { isRedHatSupported } from '../utilities/utils';
 import { ODHApp } from '../types';
 import BrandImage from './BrandImage';
 
@@ -19,7 +20,7 @@ const OdhExploreCard: React.FC<OdhExploreCardProps> = ({ odhApp, isSelected, onS
     'm-hidden': odhApp.spec.category === 'Red Hat',
   });
   const supportedImageClasses = classNames('odh-card__supported-image', {
-    'm-hidden': odhApp.spec.category !== 'Red Hat',
+    'm-hidden': !isRedHatSupported(odhApp),
   });
 
   return (
