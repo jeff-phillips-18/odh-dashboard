@@ -1,0 +1,105 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: $(DASHBOARD_NAME)
+rules:
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kfdef.apps.kubeflow.org
+  resources:
+  - kfdefs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  verbs:
+  - create
+  - delete
+  - get
+  - patch
+  - update
+  - watch
+  resources:
+  - configmaps
+  - secrets
+- apiGroups:
+  - batch
+  verbs:
+  - create
+  - delete
+  - get
+  - patch
+  - update
+  - watch
+  resources:
+  - cronjobs
+  - jobs
+- apiGroups:
+  - image.openshift.io
+  verbs:
+  - create
+  - get
+  - patch
+  resources:
+  - imagestreams
+- apiGroups:
+  - applications.console.openshift.io
+  resources:
+  - consoleapplications
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - applications.console.openshift.io
+  resources:
+  - consoleapplications/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - applications.console.openshift.io
+  resources:
+  - consoleapplications/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - documents.console.openshift.io
+  resources:
+  - consoledocuments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - documents.console.openshift.io
+  resources:
+  - consoledocuments/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - documents.console.openshift.io
+  resources:
+  - consoledocuments/status
+  verbs:
+  - get
+  - patch
+  - update

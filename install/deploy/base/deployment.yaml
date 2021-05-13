@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: odh-dashboard
+  name: $(DASHBOARD_NAME)
 spec:
-  replicas: 2
+  replicas: 1 # {"$openapi":"REPLICAS"}
   selector:
     matchLabels:
-      deployment: odh-dashboard
+      deployment: $(DASHBOARD_NAME)
   template:
     metadata:
       labels:
-        deployment: odh-dashboard
+        deployment: $(DASHBOARD_NAME)
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
     spec:
-      serviceAccount: odh-dashboard
+      serviceAccount: $(DASHBOARD_NAME)
       containers:
-      - name: odh-dashboard
-        image: quay.io/opendatahub/odh-dashboard:latest
+      - name: $(DASHBOARD_NAME)
+        image: s2i-odh-dashboard:v0.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

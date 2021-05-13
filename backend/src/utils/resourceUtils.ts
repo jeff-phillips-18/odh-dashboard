@@ -1,24 +1,20 @@
-import * as jsYaml from 'js-yaml';
 import createError from 'http-errors';
 import {
+  ConsoleApplication,
+  ConsoleDocument,
   CSVKind,
   K8sResourceCommon,
   KfDefApplication,
   KfDefResource,
   KubeFastifyInstance,
-  ODHApp,
-  ODHDoc,
 } from '../types';
 import { ResourceWatcher } from './resourceWatcher';
-import path from 'path';
-import { getComponentFeatureFlags } from './features';
-import fs from 'fs';
-import { yamlRegExp } from './constants';
+//import { getComponentFeatureFlags } from './features';
 
 let operatorWatcher: ResourceWatcher<CSVKind>;
 let serviceWatcher: ResourceWatcher<K8sResourceCommon>;
-let appWatcher: ResourceWatcher<ODHApp>;
-let docWatcher: ResourceWatcher<ODHDoc>;
+let appWatcher: ResourceWatcher<ConsoleApplication>;
+let docWatcher: ResourceWatcher<ConsoleDocument>;
 let kfDefWatcher: ResourceWatcher<KfDefApplication>;
 
 const fetchInstalledOperators = (fastify: KubeFastifyInstance): Promise<CSVKind[]> => {
@@ -80,58 +76,76 @@ const fetchInstalledKfdefs = async (fastify: KubeFastifyInstance): Promise<KfDef
   return kfdef?.spec?.applications || [];
 };
 
-const fetchApplicationDefs = (): Promise<ODHApp[]> => {
-  const normalizedPath = path.join(__dirname, '../../../data/applications');
-  const applicationDefs: ODHApp[] = [];
-  const featureFlags = getComponentFeatureFlags();
-  fs.readdirSync(normalizedPath).forEach((file) => {
-    if (yamlRegExp.test(file)) {
-      try {
-        const doc = jsYaml.load(fs.readFileSync(path.join(normalizedPath, file), 'utf8'));
-        if (!doc.spec.featureFlag || featureFlags[doc.spec.featureFlag]) {
-          applicationDefs.push(doc);
-        }
-      } catch (e) {
-        console.error(`Error loading application definition ${file}: ${e}`);
-      }
+const fetchConsoleApplications = async (
+  fastify: KubeFastifyInstance,
+): Promise<ConsoleApplication[]> => {
+  const customObjectsApi = fastify.kube.customObjectsApi;
+  const namespace = fastify.kube.namespace;
+
+  let consoleApplications: ConsoleApplication[];
+  try {
+    const res = await customObjectsApi.listNamespacedCustomObject(
+      'applications.console.openshift.io',
+      'v1alpha1',
+      namespace,
+      'consoleapplications',
+    );
+    const cas = (res?.body as { items: [] })?.items;
+    if (cas?.length) {
+      consoleApplications = cas.reduce((acc, ca) => {
+        acc.push(ca);
+        return acc;
+      }, []);
     }
-  });
-  return Promise.resolve(applicationDefs);
+  } catch (e) {
+    fastify.log.error(e, 'failed to get consoleapplications');
+    const error = createError(500, 'failed to get consoleapplications');
+    error.explicitInternalServerError = true;
+    error.error = 'failed to get consoleapplications';
+    error.message =
+      'Unable to get ConsoleApplication resources. Please ensure the Open Data Hub operator has been installed.';
+    throw error;
+  }
+  return Promise.resolve(consoleApplications);
 };
 
-const fetchDocs = async (): Promise<ODHDoc[]> => {
-  const normalizedPath = path.join(__dirname, '../../../data/docs');
-  const docs: ODHDoc[] = [];
-  const featureFlags = getComponentFeatureFlags();
-  const appDefs = await fetchApplicationDefs();
+const fetchConsoleDocuments = async (fastify: KubeFastifyInstance): Promise<ConsoleDocument[]> => {
+  const customObjectsApi = fastify.kube.customObjectsApi;
+  const namespace = fastify.kube.namespace;
 
-  fs.readdirSync(normalizedPath).forEach((file) => {
-    if (yamlRegExp.test(file)) {
-      try {
-        const doc: ODHDoc = jsYaml.load(fs.readFileSync(path.join(normalizedPath, file), 'utf8'));
-        if (doc.spec.featureFlag) {
-          if (featureFlags[doc.spec.featureFlag]) {
-            docs.push(doc);
-          }
-          return;
-        }
-        if (!doc.spec.appName || appDefs.find((def) => def.metadata.name === doc.spec.appName)) {
-          docs.push(doc);
-        }
-      } catch (e) {
-        console.error(`Error loading doc ${file}: ${e}`);
-      }
+  let consoleDocuments: ConsoleDocument[];
+  try {
+    const res = await customObjectsApi.listNamespacedCustomObject(
+      'documents.console.openshift.io',
+      'v1alpha1',
+      namespace,
+      'consoledocuments',
+    );
+    const cas = (res?.body as { items: [] })?.items;
+    if (cas?.length) {
+      consoleDocuments = cas.reduce((acc, cd) => {
+        acc.push(cd);
+        return acc;
+      }, []);
     }
-  });
-  return Promise.resolve(docs);
+  } catch (e) {
+    fastify.log.error(e, 'failed to get consoledocuments');
+    const error = createError(500, 'failed to get consoledocuments');
+    error.explicitInternalServerError = true;
+    error.error = 'failed to get consoledocuments';
+    error.message =
+      'Unable to get ConsoleDocument resources. Please ensure the Open Data Hub operator has been installed.';
+    throw error;
+  }
+  return Promise.resolve(consoleDocuments);
 };
 
 export const initializeWatchedResources = (fastify: KubeFastifyInstance): void => {
   operatorWatcher = new ResourceWatcher<CSVKind>(fastify, fetchInstalledOperators);
   serviceWatcher = new ResourceWatcher<K8sResourceCommon>(fastify, fetchServices);
   kfDefWatcher = new ResourceWatcher<KfDefApplication>(fastify, fetchInstalledKfdefs);
-  appWatcher = new ResourceWatcher<ODHApp>(fastify, fetchApplicationDefs);
-  docWatcher = new ResourceWatcher<ODHDoc>(fastify, fetchDocs);
+  appWatcher = new ResourceWatcher<ConsoleApplication>(fastify, fetchConsoleApplications);
+  docWatcher = new ResourceWatcher<ConsoleDocument>(fastify, fetchConsoleDocuments);
 };
 
 export const getInstalledOperators = (): K8sResourceCommon[] => {
@@ -145,15 +159,16 @@ export const getServices = (): K8sResourceCommon[] => {
 export const getInstalledKfdefs = (): KfDefApplication[] => {
   return kfDefWatcher.getResources();
 };
-export const getApplicationDefs = (): ODHApp[] => {
+
+export const getApplicationDefs = (): ConsoleApplication[] => {
   return appWatcher.getResources();
 };
 
-export const getApplicationDef = (appName: string): ODHApp => {
+export const getApplicationDef = (appName: string): ConsoleApplication => {
   const appDefs = getApplicationDefs();
   return appDefs.find((appDef) => appDef.metadata.name === appName);
 };
 
-export const getDocs = (): ODHDoc[] => {
+export const getDocs = (): ConsoleDocument[] => {
   return docWatcher.getResources();
 };

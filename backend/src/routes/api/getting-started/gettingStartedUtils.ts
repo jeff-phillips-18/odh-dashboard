@@ -4,14 +4,11 @@ import * as path from 'path';
 import { ODHGettingStarted } from '../../../types';
 import { mdRegExp } from '../../../utils/constants';
 
-export const getGettingStartedDoc = (appName: string): { appName: string; markdown: string } => {
+export const getGettingStartedDoc = (appName: string): ODHGettingStarted[] => {
   const normalizedPath = path.join(__dirname, '../../../../../data/getting-started');
   try {
     const markdown = fs.readFileSync(path.join(normalizedPath, `${appName}.md`), 'utf8');
-    return {
-      appName,
-      markdown,
-    };
+    return [{ appName, markdown }];
   } catch (e) {
     const error = createError(500, 'failed to getting started file');
     error.explicitInternalServerError = true;

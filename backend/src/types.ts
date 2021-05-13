@@ -86,70 +86,98 @@ export type KubeFastifyInstance = FastifyInstance & {
  * Common types, should be kept up to date with frontend types
  */
 
-export type ODHApp = {
-  metadata: {
-    name: string;
-  };
-  spec: {
-    displayName: string;
-    provider: string;
-    description: string;
-    route: string | null;
-    routeNamespace: string | null;
-    routeSuffix: string | null;
-    serviceName: string | null;
-    endpoint: string | null;
-    link: string | null;
-    img: string;
-    docsLink: string;
-    getStartedLink: string;
-    category: string;
-    support: string;
-    quickStart: string | null;
-    comingSoon: boolean | null;
-    isEnabled: boolean | null;
-    kfdefApplications: string[];
-    csvName: string;
-    enable?: {
-      title: string;
-      actionLabel: string;
-      description?: string;
-      variables?: { [key: string]: string };
-      variableDisplayText?: { [key: string]: string };
-      variableHelpText?: { [key: string]: string };
-      validationSecret: string;
-      validationJob: string;
-      validationConfigMap?: string;
-    };
-    featureFlag?: string;
-  };
-};
+/*
+ cat repo:://odh-console-types/config/crd/bases/documents.console.openshift.io_consoledocuments.yaml | yq r - -P  -j 'spec.versions[0].schema.openAPIV3Schema' >o
+ then generated online - https://transform.tools/json-schema-to-typescript
+ */
 
-export enum ODHDocType {
+export interface ConsoleApplication {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    [k: string]: unknown;
+  };
+  spec?: {
+    category?: string;
+    comingSoon?: string;
+    csvName?: string;
+    description?: string;
+    displayName?: string;
+    docsLink?: string;
+    enable?: {
+      actionLabel?: string;
+      description?: string;
+      title?: string;
+      validationConfigMap?: string;
+      validationJob?: string;
+      validationSecret?: string;
+      variableDisplayText?: {
+        [k: string]: string;
+      };
+      variableHelpText?: {
+        [k: string]: string;
+      };
+      variables?: {
+        [k: string]: string;
+      };
+      [k: string]: unknown;
+    };
+    endPoint?: string;
+    featureFlag?: string;
+    getStartedLink?: string;
+    img?: string;
+    isEnabled?: boolean;
+    kfdefApplications: string[];
+    link?: string;
+    provider?: string;
+    quickStart?: string;
+    route?: string;
+    routeNamespace?: string;
+    routeSuffix?: string;
+    serviceName?: string;
+    support?: string;
+    [k: string]: unknown;
+  };
+  status?: {
+    enabled?: boolean;
+    [k: string]: unknown;
+  };
+  [k: string]: unknown;
+}
+
+export enum ConsoleDocumentType {
   Documentation = 'documentation',
   HowTo = 'how-to',
   QuickStart = 'quickstart',
   Tutorial = 'tutorial',
 }
 
-export type ODHDoc = {
-  metadata: {
-    name: string;
-    type: string;
+export interface ConsoleDocument {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    [k: string]: unknown;
   };
-  spec: {
-    displayName: string;
+  spec?: {
     appName?: string;
-    provider?: string;
-    description: string;
-    url: string;
-    img?: string;
-    icon?: string;
-    durationMinutes?: number;
-    markdown?: string;
+    description?: string;
+    displayName?: string;
+    durationMinutes: number;
     featureFlag?: string;
+    icon?: string;
+    img?: string;
+    markDown?: string;
+    provider?: string;
+    type?: string;
+    url?: string;
+    [k: string]: unknown;
   };
-};
+  status?: {
+    enabled?: boolean;
+    [k: string]: unknown;
+  };
+  [k: string]: unknown;
+}
 
 export type ODHGettingStarted = {
   appName: string;

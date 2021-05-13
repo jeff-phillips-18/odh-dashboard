@@ -1,0 +1,19 @@
+apiVersion: applications.console.openshift.io/v1alpha1
+kind: ConsoleApplication
+metadata:
+  name: jupyterhub
+spec:
+  displayName: JupyterHub
+  provider: Jupyter
+  description: |-
+    A multi-user version of the notebook designed for companies, classrooms and research labs.
+  kfdefApplications: ['jupyterhub', 'notebook-images']
+  csvName: opendatahub
+  route: jupyterhub
+  routeNamespace: redhat-ods-applications
+  img: images/jupyterhub.svg
+  category: Red Hat managed
+  support: red hat
+  docsLink: https://jupyter.org/hub
+  quickStart: create-jupyter-notebook
+  getStartedLink: https://jupyterhub.readthedocs.io/en/stable/getting-started/index.html

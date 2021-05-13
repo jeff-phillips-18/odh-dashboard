@@ -30,10 +30,10 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
 
   const selected = React.useMemo(() => {
     return (
-      odhDoc.metadata.type === ODHDocType.QuickStart &&
+      odhDoc.spec.type === ODHDocType.QuickStart &&
       qsContext.activeQuickStartID === odhDoc.metadata.name
     );
-  }, [odhDoc.metadata.name, odhDoc.metadata.type, qsContext.activeQuickStartID]);
+  }, [odhDoc.metadata.name, odhDoc.spec.type, qsContext.activeQuickStartID]);
 
   React.useEffect(() => {
     if (selected) {
@@ -42,7 +42,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
   }, [odhDoc.metadata.name, selected]);
 
   const footerClassName = React.useMemo(() => {
-    if (odhDoc.metadata.type !== ODHDocType.QuickStart) {
+    if (odhDoc.spec.type !== ODHDocType.QuickStart) {
       return 'odh-card__footer';
     }
 
@@ -50,9 +50,9 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
     return classNames('odh-card__footer', {
       'm-right-justified': RIGHT_JUSTIFIED_STATUSES.includes(qsStatus),
     });
-  }, [odhDoc.metadata.name, odhDoc.metadata.type, qsContext]);
+  }, [odhDoc.metadata.name, odhDoc.spec.type, qsContext]);
 
-  if (odhDoc.metadata.type === ODHDocType.QuickStart) {
+  if (odhDoc.spec.type === ODHDocType.QuickStart) {
     const quickStart = qsContext.allQuickStarts?.find(
       (qs) => qs.metadata.name === odhDoc.metadata.name,
     );
@@ -68,7 +68,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
   };
 
   const renderDocLink = () => {
-    if (odhDoc.metadata.type === ODHDocType.Documentation) {
+    if (odhDoc.spec.type === ODHDocType.Documentation) {
       return (
         <a
           className="odh-card__footer__link"
@@ -81,7 +81,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
         </a>
       );
     }
-    if (odhDoc.metadata.type === ODHDocType.Tutorial) {
+    if (odhDoc.spec.type === ODHDocType.Tutorial) {
       return (
         <a
           className="odh-card__footer__link"
@@ -94,14 +94,14 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({ odhDoc }) => {
         </a>
       );
     }
-    if (odhDoc.metadata.type === ODHDocType.QuickStart) {
+    if (odhDoc.spec.type === ODHDocType.QuickStart) {
       return (
         <a className="odh-card__footer__link" href="#" onClick={onQuickStart}>
           {getQuickStartLabel(odhDoc.metadata.name, qsContext)}
         </a>
       );
     }
-    if (odhDoc.metadata.type === ODHDocType.HowTo) {
+    if (odhDoc.spec.type === ODHDocType.HowTo) {
       return (
         <a
           className="odh-card__footer__link"

@@ -142,13 +142,13 @@ const LearningCenter: React.FC = () => {
   React.useEffect(() => {
     setFilteredDocApps(
       docApps
-        .filter((doc) => doc.metadata.type !== 'getting-started')
+        .filter((doc) => doc.spec.type !== 'getting-started')
         .filter((doc) => doesDocAppMatch(doc, searchQuery, typeFilters))
         .sort((a, b) => {
           let sortVal =
             sortType === SORT_TYPE_NAME
               ? a.spec.displayName.localeCompare(b.spec.displayName)
-              : a.metadata.type.localeCompare(b.metadata.type);
+              : a.spec.type.localeCompare(b.spec.type);
           if (sortOrder === SORT_DESC) {
             sortVal *= -1;
           }
@@ -157,8 +157,8 @@ const LearningCenter: React.FC = () => {
     );
     const docCounts = docApps.reduce(
       (acc, docApp) => {
-        if (acc[docApp.metadata.type] !== undefined) {
-          acc[docApp.metadata.type]++;
+        if (acc[docApp.spec.type] !== undefined) {
+          acc[docApp.spec.type]++;
         }
         return acc;
       },

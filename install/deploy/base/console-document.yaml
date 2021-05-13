@@ -1,0 +1,53 @@
+---
+apiVersion: documents.console.openshift.io/v1alpha1
+kind: ConsoleDocument
+metadata:
+  name: jupyterhub-install-python-packages
+spec:
+  type: how-to
+  displayName: How to install Python packages on your notebook server
+  appName: jupyterhub
+  description: |-
+    Install additional python packages into your notebook server.
+  url: https://access.redhat.com/documentation/en-us/red_hat_openshift_data_science/1/html-single/how_to_install_python_packages_on_your_notebook_server/index
+  durationMinutes: 15
+---
+apiVersion: documents.console.openshift.io/v1alpha1
+kind: ConsoleDocument
+metadata:
+  name: anaconda-background
+spec:
+  type: tutorial
+  displayName: What is Anaconda?
+  appName: anaconda-ce
+  description: |-
+    Learn about the Anaconda Distrbution and why Python is so frequently used for Data Science tasks.
+  url: https://anaconda.org/training/anaconda_introduction/notebook
+  durationMinutes: 5
+---
+apiVersion: documents.console.openshift.io/v1alpha1
+kind: ConsoleDocument
+metadata:
+  name: python-visualization-tutorial
+spec:
+  type: tutorial
+  displayName: Python tools for data visualization
+  appName: anaconda-ce
+  description: |-
+    The PyViz.org website is an open platform for helping users decide on the best open-source (OSS) Python data visualization tools for their purposes, with links, overviews, comparisons, and examples.
+  url: https://pyviz.org
+  durationMinutes: 30
+---
+apiVersion: documents.console.openshift.io/v1alpha1
+kind: ConsoleDocument
+metadata:
+  name: openvino-ovms-serving
+spec:
+  type: how-to
+  featureFlag: openvino
+  displayName: How do I serve a model using OpenVINO Model Server?
+  appName: openvino
+  description: |-
+    Shows how to use OpenVINO custom resources to deploy optimized models with OpenVINO model server.
+  url: https://github.com/openvinotoolkit/model_server/tree/main/extras/ovms-operator
+  durationMinutes: 10

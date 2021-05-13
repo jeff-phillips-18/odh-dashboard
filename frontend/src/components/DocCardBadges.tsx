@@ -24,7 +24,7 @@ const DocCardBadges: React.FC<DocCardBadgesProps> = ({ odhDoc }) => {
   const qsContext = React.useContext<QuickStartContextValues>(QuickStartContext);
   const [inProgress, setInProgress] = React.useState<boolean>(false);
   const [complete, setComplete] = React.useState<boolean>(false);
-  const docType = odhDoc?.metadata.type as ODHDocType;
+  const docType = odhDoc?.spec.type as ODHDocType;
   const docName = odhDoc?.metadata.name;
   const duration = odhDoc?.spec.durationMinutes;
 
