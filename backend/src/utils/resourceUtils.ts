@@ -1,7 +1,7 @@
 import createError from 'http-errors';
 import {
-  ConsoleApplication,
-  ConsoleDocument,
+  RhodsApplication,
+  RhodsDocument,
   CSVKind,
   K8sResourceCommon,
   KfDefApplication,
@@ -13,8 +13,8 @@ import { ResourceWatcher } from './resourceWatcher';
 
 let operatorWatcher: ResourceWatcher<CSVKind>;
 let serviceWatcher: ResourceWatcher<K8sResourceCommon>;
-let appWatcher: ResourceWatcher<ConsoleApplication>;
-let docWatcher: ResourceWatcher<ConsoleDocument>;
+let appWatcher: ResourceWatcher<RhodsApplication>;
+let docWatcher: ResourceWatcher<RhodsDocument>;
 let kfDefWatcher: ResourceWatcher<KfDefApplication>;
 
 const fetchInstalledOperators = (fastify: KubeFastifyInstance): Promise<CSVKind[]> => {
@@ -76,76 +76,76 @@ const fetchInstalledKfdefs = async (fastify: KubeFastifyInstance): Promise<KfDef
   return kfdef?.spec?.applications || [];
 };
 
-const fetchConsoleApplications = async (
+const fetchRhodsApplications = async (
   fastify: KubeFastifyInstance,
-): Promise<ConsoleApplication[]> => {
+): Promise<RhodsApplication[]> => {
   const customObjectsApi = fastify.kube.customObjectsApi;
   const namespace = fastify.kube.namespace;
 
-  let consoleApplications: ConsoleApplication[];
+  let rhodsApplications: RhodsApplication[];
   try {
     const res = await customObjectsApi.listNamespacedCustomObject(
       'applications.console.openshift.io',
       'v1alpha1',
       namespace,
-      'consoleapplications',
+      'rhodsapplications',
     );
     const cas = (res?.body as { items: [] })?.items;
     if (cas?.length) {
-      consoleApplications = cas.reduce((acc, ca) => {
+      rhodsApplications = cas.reduce((acc, ca) => {
         acc.push(ca);
         return acc;
       }, []);
     }
   } catch (e) {
-    fastify.log.error(e, 'failed to get consoleapplications');
-    const error = createError(500, 'failed to get consoleapplications');
+    fastify.log.error(e, 'failed to get rhodsapplications');
+    const error = createError(500, 'failed to get rhodsapplications');
     error.explicitInternalServerError = true;
-    error.error = 'failed to get consoleapplications';
+    error.error = 'failed to get rhodsapplications';
     error.message =
-      'Unable to get ConsoleApplication resources. Please ensure the Open Data Hub operator has been installed.';
+      'Unable to get RhodsApplication resources. Please ensure the Open Data Hub operator has been installed.';
     throw error;
   }
-  return Promise.resolve(consoleApplications);
+  return Promise.resolve(rhodsApplications);
 };
 
-const fetchConsoleDocuments = async (fastify: KubeFastifyInstance): Promise<ConsoleDocument[]> => {
+const fetchRhodsDocuments = async (fastify: KubeFastifyInstance): Promise<RhodsDocument[]> => {
   const customObjectsApi = fastify.kube.customObjectsApi;
   const namespace = fastify.kube.namespace;
 
-  let consoleDocuments: ConsoleDocument[];
+  let rhodsDocuments: RhodsDocument[];
   try {
     const res = await customObjectsApi.listNamespacedCustomObject(
       'documents.console.openshift.io',
       'v1alpha1',
       namespace,
-      'consoledocuments',
+      'rhodsdocuments',
     );
     const cas = (res?.body as { items: [] })?.items;
     if (cas?.length) {
-      consoleDocuments = cas.reduce((acc, cd) => {
+      rhodsDocuments = cas.reduce((acc, cd) => {
         acc.push(cd);
         return acc;
       }, []);
     }
   } catch (e) {
-    fastify.log.error(e, 'failed to get consoledocuments');
-    const error = createError(500, 'failed to get consoledocuments');
+    fastify.log.error(e, 'failed to get rhodsdocuments');
+    const error = createError(500, 'failed to get rhodsdocuments');
     error.explicitInternalServerError = true;
-    error.error = 'failed to get consoledocuments';
+    error.error = 'failed to get rhodsdocuments';
     error.message =
-      'Unable to get ConsoleDocument resources. Please ensure the Open Data Hub operator has been installed.';
+      'Unable to get RhodsDocument resources. Please ensure the Open Data Hub operator has been installed.';
     throw error;
   }
-  return Promise.resolve(consoleDocuments);
+  return Promise.resolve(rhodsDocuments);
 };
 
 export const initializeWatchedResources = (fastify: KubeFastifyInstance): void => {
   operatorWatcher = new ResourceWatcher<CSVKind>(fastify, fetchInstalledOperators);
   serviceWatcher = new ResourceWatcher<K8sResourceCommon>(fastify, fetchServices);
   kfDefWatcher = new ResourceWatcher<KfDefApplication>(fastify, fetchInstalledKfdefs);
-  appWatcher = new ResourceWatcher<ConsoleApplication>(fastify, fetchConsoleApplications);
-  docWatcher = new ResourceWatcher<ConsoleDocument>(fastify, fetchConsoleDocuments);
+  appWatcher = new ResourceWatcher<RhodsApplication>(fastify, fetchRhodsApplications);
+  docWatcher = new ResourceWatcher<RhodsDocument>(fastify, fetchRhodsDocuments);
 };
 
 export const getInstalledOperators = (): K8sResourceCommon[] => {
@@ -160,15 +160,15 @@ export const getInstalledKfdefs = (): KfDefApplication[] => {
   return kfDefWatcher.getResources();
 };
 
-export const getApplicationDefs = (): ConsoleApplication[] => {
+export const getApplicationDefs = (): RhodsApplication[] => {
   return appWatcher.getResources();
 };
 
-export const getApplicationDef = (appName: string): ConsoleApplication => {
+export const getApplicationDef = (appName: string): RhodsApplication => {
   const appDefs = getApplicationDefs();
   return appDefs.find((appDef) => appDef.metadata.name === appName);
 };
 
-export const getDocs = (): ConsoleDocument[] => {
+export const getDocs = (): RhodsDocument[] => {
   return docWatcher.getResources();
 };

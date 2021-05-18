@@ -1,5 +1,5 @@
 apiVersion: applications.console.openshift.io/v1alpha1
-kind: ConsoleApplication
+kind: RhodsApplication
 metadata:
   name: jupyterhub
 spec:

@@ -1,6 +1,6 @@
 //import { IncomingMessage } from 'http';
 import { V1ConfigMap } from '@kubernetes/client-node/dist/gen/model/v1ConfigMap';
-import { ConsoleApplication, K8sResourceCommon, KubeFastifyInstance, RouteKind } from '../types';
+import { RhodsApplication, K8sResourceCommon, KubeFastifyInstance, RouteKind } from '../types';
 
 /*
 type RoutesResponse = {
@@ -73,7 +73,7 @@ export const getServiceLink = async (
 
 export const getApplicationEnabledConfigMap = (
   fastify: KubeFastifyInstance,
-  appDef: ConsoleApplication,
+  appDef: RhodsApplication,
 ): Promise<V1ConfigMap> => {
   const namespace = fastify.kube.namespace;
   const name = appDef.spec.enable?.validationConfigMap;
@@ -89,7 +89,7 @@ export const getApplicationEnabledConfigMap = (
 
 export const getEnabledConfigMaps = (
   fastify: KubeFastifyInstance,
-  appDefs: ConsoleApplication[],
+  appDefs: RhodsApplication[],
 ): Promise<V1ConfigMap[]> => {
   const configMapGetters = appDefs.reduce((acc, app) => {
     if (app.spec.enable) {

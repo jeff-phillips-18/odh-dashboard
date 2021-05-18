@@ -1,5 +1,5 @@
 import { FastifyRequest } from 'fastify';
-import { KubeFastifyInstance, ConsoleApplication } from '../../../types';
+import { KubeFastifyInstance, RhodsApplication } from '../../../types';
 import { getEnabledConfigMaps, getLink, getServiceLink } from '../../../utils/componentUtils';
 import {
   getApplicationDefs,
@@ -11,7 +11,7 @@ import {
 export const listComponents = async (
   fastify: KubeFastifyInstance,
   request: FastifyRequest,
-): Promise<ConsoleApplication[]> => {
+): Promise<RhodsApplication[]> => {
   const applicationDefs = getApplicationDefs();
 
   // Fetch the installed kfDefs
@@ -22,7 +22,7 @@ export const listComponents = async (
 
   // Fetch the enabled config maps
   const enabledCMs = await getEnabledConfigMaps(fastify, applicationDefs);
-  const getCSVForApp = (app: ConsoleApplication) =>
+  const getCSVForApp = (app: RhodsApplication) =>
     operatorCSVs.find(
       (operator) => app.spec.csvName && operator.metadata?.name?.startsWith(app.spec.csvName),
     );
@@ -33,7 +33,7 @@ export const listComponents = async (
     acc.push(app);
 
     // start of code may not be needed
-    // if registration is automatic by virtue of the ConsoleApplication, ConsoleDocuments being installed as part of the KfDef Component
+    // if registration is automatic by virtue of the RhodsApplication, RhodsDocuments being installed as part of the KfDef Component
     // then we don't need to check.
     if (getCSVForApp(app)) {
       app.spec.isEnabled = true;
@@ -67,7 +67,7 @@ export const listComponents = async (
   }, []);
 
   await Promise.all(
-    installedComponents.map(async (installedComponent: ConsoleApplication) => {
+    installedComponents.map(async (installedComponent: RhodsApplication) => {
       if (installedComponent.spec.route) {
         const csv = getCSVForApp(installedComponent);
         if (csv) {

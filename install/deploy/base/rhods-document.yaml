@@ -1,6 +1,6 @@
 ---
 apiVersion: documents.console.openshift.io/v1alpha1
-kind: ConsoleDocument
+kind: RhodsDocument
 metadata:
   name: jupyterhub-install-python-packages
 spec:
@@ -13,7 +13,7 @@ spec:
   durationMinutes: 15
 ---
 apiVersion: documents.console.openshift.io/v1alpha1
-kind: ConsoleDocument
+kind: RhodsDocument
 metadata:
   name: anaconda-background
 spec:
@@ -26,7 +26,7 @@ spec:
   durationMinutes: 5
 ---
 apiVersion: documents.console.openshift.io/v1alpha1
-kind: ConsoleDocument
+kind: RhodsDocument
 metadata:
   name: python-visualization-tutorial
 spec:
@@ -39,7 +39,7 @@ spec:
   durationMinutes: 30
 ---
 apiVersion: documents.console.openshift.io/v1alpha1
-kind: ConsoleDocument
+kind: RhodsDocument
 metadata:
   name: openvino-ovms-serving
 spec:

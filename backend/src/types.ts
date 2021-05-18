@@ -86,12 +86,7 @@ export type KubeFastifyInstance = FastifyInstance & {
  * Common types, should be kept up to date with frontend types
  */
 
-/*
- cat repo:://odh-console-types/config/crd/bases/documents.console.openshift.io_consoledocuments.yaml | yq r - -P  -j 'spec.versions[0].schema.openAPIV3Schema' >o
- then generated online - https://transform.tools/json-schema-to-typescript
- */
-
-export interface ConsoleApplication {
+export interface RhodsApplication {
   apiVersion?: string;
   kind?: string;
   metadata?: {
@@ -145,14 +140,14 @@ export interface ConsoleApplication {
   [k: string]: unknown;
 }
 
-export enum ConsoleDocumentType {
+export enum RhodsDocumentType {
   Documentation = 'documentation',
   HowTo = 'how-to',
   QuickStart = 'quickstart',
   Tutorial = 'tutorial',
 }
 
-export interface ConsoleDocument {
+export interface RhodsDocument {
   apiVersion?: string;
   kind?: string;
   metadata?: {

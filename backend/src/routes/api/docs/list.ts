@@ -1,11 +1,11 @@
 import { FastifyRequest } from 'fastify';
-import { ConsoleDocument, KubeFastifyInstance } from '../../../types';
+import { RhodsDocument, KubeFastifyInstance } from '../../../types';
 import { getDocs } from '../../../utils/resourceUtils';
 
 export const listDocs = (
   fastify: KubeFastifyInstance,
   request: FastifyRequest,
-): Promise<ConsoleDocument[]> => {
+): Promise<RhodsDocument[]> => {
   // Fetch the installed quick starts
   let docs = getDocs();
   const query = request.query as { [key: string]: string };

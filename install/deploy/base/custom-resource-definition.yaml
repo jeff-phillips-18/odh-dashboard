@@ -5,20 +5,20 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
   creationTimestamp: null
-  name: consoleapplications.applications.console.openshift.io
+  name: rhodsapplications.applications.console.openshift.io
 spec:
   group: applications.console.openshift.io
   names:
-    kind: ConsoleApplication
-    listKind: ConsoleApplicationList
-    plural: consoleapplications
-    singular: consoleapplication
+    kind: RhodsApplication
+    listKind: RhodsApplicationList
+    plural: rhodsapplications
+    singular: rhodsapplication
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: ConsoleApplication is the Schema for the consoleapplications
+        description: RhodsApplication is the Schema for the rhodsapplications
           API
         properties:
           apiVersion:
@@ -34,7 +34,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ConsoleApplicationSpec defines the desired state of ConsoleApplication
+            description: RhodsApplicationSpec defines the desired state of rhodsApplication
             properties:
               category:
                 type: string
@@ -109,7 +109,7 @@ spec:
             - kfdefApplications
             type: object
           status:
-            description: ConsoleApplicationStatus defines the observed state of ConsoleApplication
+            description: RhodsApplicationStatus defines the observed state of RhodsApplication
             properties:
               enabled:
                 type: boolean
@@ -132,20 +132,20 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
   creationTimestamp: null
-  name: consoledocuments.documents.console.openshift.io
+  name: rhodsdocuments.documents.console.openshift.io
 spec:
   group: documents.console.openshift.io
   names:
-    kind: ConsoleDocument
-    listKind: ConsoleDocumentList
-    plural: consoledocuments
-    singular: consoledocument
+    kind: RhodsDocument
+    listKind: RhodsDocumentList
+    plural: rhodsdocuments
+    singular: rhodsdocument
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: ConsoleDocument is the Schema for the consoledocuments
+        description: RhodsDocument is the Schema for the rhodsdocuments
           API
         properties:
           apiVersion:
@@ -161,7 +161,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ConsoleDocumentSpec defines the desired state of ConsoleDocument
+            description: RhodsDocumentSpec defines the desired state of RhodsDocument
             properties:
               appName:
                 type: string
@@ -189,7 +189,7 @@ spec:
             - durationMinutes
             type: object
           status:
-            description: ConsoleDocumentStatus defines the observed state of ConsoleDocument
+            description: RhodsDocumentStatus defines the observed state of RhodsDocument
             properties:
               enabled:
                 type: boolean

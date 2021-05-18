@@ -10,5 +10,5 @@ resources:
 - deployment.yaml
 - routes.yaml
 - service.yaml
-- console-application.yaml
-- console-document.yaml
+- rhods-application.yaml
+- rhods-document.yaml
