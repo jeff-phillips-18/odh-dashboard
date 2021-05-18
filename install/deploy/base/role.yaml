@@ -54,7 +54,7 @@ rules:
 - apiGroups:
   - applications.console.openshift.io
   resources:
-  - consoleapplications
+  - rhodsapplications
   verbs:
   - create
   - delete
@@ -66,13 +66,13 @@ rules:
 - apiGroups:
   - applications.console.openshift.io
   resources:
-  - consoleapplications/finalizers
+  - applications/finalizers
   verbs:
   - update
 - apiGroups:
   - applications.console.openshift.io
   resources:
-  - consoleapplications/status
+  - rhodsapplications/status
   verbs:
   - get
   - patch
@@ -80,7 +80,7 @@ rules:
 - apiGroups:
   - documents.console.openshift.io
   resources:
-  - consoledocuments
+  - rhodsdocuments
   verbs:
   - create
   - delete
@@ -92,13 +92,13 @@ rules:
 - apiGroups:
   - documents.console.openshift.io
   resources:
-  - consoledocuments/finalizers
+  - rhodsdocuments/finalizers
   verbs:
   - update
 - apiGroups:
   - documents.console.openshift.io
   resources:
-  - consoledocuments/status
+  - rhodsdocuments/status
   verbs:
   - get
   - patch
