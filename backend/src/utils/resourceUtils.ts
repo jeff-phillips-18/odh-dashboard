@@ -94,7 +94,6 @@ const fetchRhodsApplications = async (
     const cas = (res?.body as { items: RhodsApplication[] })?.items;
     if (cas?.length) {
       rhodsApplications = cas.reduce((acc, ca) => {
-        let name = ca.metadata?.name;
         acc.push(ca);
         return acc;
       }, []);
