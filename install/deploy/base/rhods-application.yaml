@@ -27,7 +27,7 @@ spec:
   displayName: AIKit
   provider: Intel
   description: |-
-    A conda based notebook with intel-aikit packages installed.
+    Deliver high-performance deep learning (DL) training on Intel® XPUs and integrate fast inference into your AI development workflow with Intel-optimized DL frameworks: TensorFlow and PyTorch, pretrained models, and low-precision tools. 
   kfdefApplications: ['jupyterhub', 'notebook-images']
   csvName: opendatahub
   route: jupyterhub

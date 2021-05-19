@@ -9,7 +9,7 @@ import {
   KubeFastifyInstance,
 } from '../types';
 import { ResourceWatcher } from './resourceWatcher';
-//import { getComponentFeatureFlags } from './features';
+import { getComponentFeatureFlags } from './features';
 
 let operatorWatcher: ResourceWatcher<CSVKind>;
 let serviceWatcher: ResourceWatcher<K8sResourceCommon>;
@@ -83,7 +83,6 @@ const fetchRhodsApplications = async (
   const namespace = fastify.kube.namespace;
 
   let rhodsApplications: RhodsApplication[];
-  let rhodsApplicationMap = new Map();
 
   try {
     const res = await customObjectsApi.listNamespacedCustomObject(
@@ -96,10 +95,7 @@ const fetchRhodsApplications = async (
     if (cas?.length) {
       rhodsApplications = cas.reduce((acc, ca) => {
         let name = ca.metadata?.name;
-        if ( !rhodsApplicationMap.has(name) ) {
-          rhodsApplicationMap.set(name, ca)
-          acc.push(ca);
-        }
+        acc.push(ca);
         return acc;
       }, []);
     }

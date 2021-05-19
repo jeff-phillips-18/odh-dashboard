@@ -51,16 +51,3 @@ spec:
     Shows how to use OpenVINO custom resources to deploy optimized models with OpenVINO model server.
   url: https://github.com/openvinotoolkit/model_server/tree/main/extras/ovms-operator
   durationMinutes: 10
----
-apiVersion: documents.console.openshift.io/v1alpha1
-kind: RhodsDocument
-metadata:
-  name: aikit-tutorial
-spec:
-  type: tutorial
-  appName: aikit
-  displayName: Run an AIKit notebook example
-  description: |-
-    How to open and run an AIKit notebook with AIKit examples
-  url: https://github.com/oneapi-src/oneAPI-samples
-  durationMinutes: 8
