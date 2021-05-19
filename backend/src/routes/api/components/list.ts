@@ -35,6 +35,7 @@ export const listComponents = async (
     // start of code may not be needed
     // if registration is automatic by virtue of the RhodsApplication, RhodsDocuments being installed as part of the KfDef Component
     // then we don't need to check.
+    /*
     if (getCSVForApp(app)) {
       app.spec.isEnabled = true;
       acc.push(app);
@@ -62,6 +63,7 @@ export const listComponents = async (
         }
       }
     }
+    */
     // end of code may not be needed
     return acc;
   }, []);

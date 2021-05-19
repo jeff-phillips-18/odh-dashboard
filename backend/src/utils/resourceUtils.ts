@@ -83,6 +83,8 @@ const fetchRhodsApplications = async (
   const namespace = fastify.kube.namespace;
 
   let rhodsApplications: RhodsApplication[];
+  let rhodsApplicationMap = new Map();
+
   try {
     const res = await customObjectsApi.listNamespacedCustomObject(
       'applications.console.openshift.io',
@@ -90,10 +92,14 @@ const fetchRhodsApplications = async (
       namespace,
       'rhodsapplications',
     );
-    const cas = (res?.body as { items: [] })?.items;
+    const cas = (res?.body as { items: RhodsApplication[] })?.items;
     if (cas?.length) {
       rhodsApplications = cas.reduce((acc, ca) => {
-        acc.push(ca);
+        let name = ca.metadata?.name;
+        if ( !rhodsApplicationMap.has(name) ) {
+          rhodsApplicationMap.set(name, ca)
+          acc.push(ca);
+        }
         return acc;
       }, []);
     }
