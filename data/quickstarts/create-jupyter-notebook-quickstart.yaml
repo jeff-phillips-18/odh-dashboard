@@ -3,6 +3,7 @@ metadata:
   name: create-jupyter-notebook
 spec:
   displayName: Creating a Jupyter notebook
+  appName: jupyterhub
   durationMinutes: 5
   icon: 'images/jupyterhub.svg'
   description: This quick start will walk you through creating a Jupyter notebook.
@@ -49,7 +50,7 @@ spec:
     - title: Create your first notebook
       description: |-
         ### To create a notebook, follow these steps:
-        1. Under the Notebook display click the Python 3 tile. 
+        1. Under the Notebook display click the Python 3 tile.
         2. When the new Jupyter notebook opens, verify that you see Python 3 in the upper right navigation bar.
 
         You have now launched a Jupyter notebook and can begin writing Python.
