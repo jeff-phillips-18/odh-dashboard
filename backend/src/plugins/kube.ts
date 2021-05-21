@@ -15,6 +15,8 @@ const batchV1Api = kc.makeApiClient(k8s.BatchV1Api);
 const batchV1beta1Api = kc.makeApiClient(k8s.BatchV1beta1Api);
 const currentUser = kc.getCurrentUser();
 
+console.log(JSON.stringify(kc.getUsers(), null, 2));
+console.log(JSON.stringify(currentUser, null, 2));
 export default fp(async (fastify: FastifyInstance) => {
   let namespace;
   try {

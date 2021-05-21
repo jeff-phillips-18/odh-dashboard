@@ -20,6 +20,12 @@ const HeaderTools: React.FC = () => {
   const [userMenuOpen, setUserMenuOpen] = React.useState<boolean>(false);
   const [helpMenuOpen, setHelpMenuOpen] = React.useState<boolean>(false);
 
+  React.useEffect(() => {
+    fetch('/oauth/userinfo')
+      .then((res) => console.dir(res))
+      .catch((err) => console.error(err));
+  }, []);
+
   const handleLogout = () => {
     setUserMenuOpen(false);
     fetch('/oauth/sign_out')
