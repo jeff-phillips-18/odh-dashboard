@@ -156,3 +156,8 @@ export type ODHGettingStarted = {
   appName: string;
   markdown: string;
 };
+
+export type BuildStatus = {
+  name: string;
+  status: string;
+};

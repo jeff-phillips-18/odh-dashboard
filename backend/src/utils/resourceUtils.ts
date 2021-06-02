@@ -1,6 +1,7 @@
 import * as jsYaml from 'js-yaml';
 import createError from 'http-errors';
 import {
+  BuildStatus,
   CSVKind,
   K8sResourceCommon,
   KfDefApplication,
@@ -20,6 +21,7 @@ let serviceWatcher: ResourceWatcher<K8sResourceCommon>;
 let appWatcher: ResourceWatcher<ODHApp>;
 let docWatcher: ResourceWatcher<ODHDoc>;
 let kfDefWatcher: ResourceWatcher<KfDefApplication>;
+let buildsWatcher: ResourceWatcher<any>;
 
 const fetchInstalledOperators = (fastify: KubeFastifyInstance): Promise<CSVKind[]> => {
   return fastify.kube.customObjectsApi
@@ -126,12 +128,94 @@ const fetchDocs = async (): Promise<ODHDoc[]> => {
   return Promise.resolve(docs);
 };
 
+const getBuildConfigStatus = (fastify: KubeFastifyInstance, bcName: string): Promise<string> => {
+  return fastify.kube.customObjectsApi
+    .listNamespacedCustomObject(
+      'build.openshift.io',
+      'v1',
+      fastify.kube.namespace,
+      'builds',
+      undefined,
+      undefined,
+      undefined,
+      `buildconfig=${bcName}`,
+    )
+    .then((res) => {
+      const bcBuilds = (res?.body as {
+        items: { metadata: { name: string }; status: { phase: string } }[];
+      })?.items;
+      if (bcBuilds.length === 0) {
+        return 'pending';
+      }
+      const mostRecent = bcBuilds
+        .sort((bc1, bc2) => {
+          const name1 = parseInt(bc1.metadata.name.split('_').pop());
+          const name2 = parseInt(bc2.metadata.name.split('_').pop());
+          return name1 - name2;
+        })
+        .pop();
+      return mostRecent.status.phase;
+    })
+    .catch((e) => {
+      console.dir(e);
+      return 'pending';
+    });
+};
+
+export const fetchBuilds = async (fastify: KubeFastifyInstance): Promise<BuildStatus[]> => {
+  const nbBuildConfigNames: string[] = await fastify.kube.customObjectsApi
+    .listNamespacedCustomObject(
+      'build.openshift.io',
+      'v1',
+      fastify.kube.namespace,
+      'buildconfigs',
+      undefined,
+      undefined,
+      undefined,
+      'opendatahub.io/build_type=notebook_image',
+    )
+    .then((res) => {
+      const buildConfigs = (res?.body as { items: { metadata: { name: string } }[] })?.items;
+      return buildConfigs.map((bc) => bc.metadata.name);
+    })
+    .catch((e) => {
+      return [];
+    });
+  const baseBuildConfigNames: string[] = await fastify.kube.customObjectsApi
+    .listNamespacedCustomObject(
+      'build.openshift.io',
+      'v1',
+      fastify.kube.namespace,
+      'buildconfigs',
+      undefined,
+      undefined,
+      undefined,
+      'opendatahub.io/build_type=base_image',
+    )
+    .then((res) => {
+      const buildConfigs = (res?.body as { items: { metadata: { name: string } }[] })?.items;
+      return buildConfigs.map((bc) => bc.metadata.name);
+    })
+    .catch((e) => {
+      return [];
+    });
+
+  const buildConfigNames = [...nbBuildConfigNames, ...baseBuildConfigNames];
+
+  const getters = buildConfigNames.map(async (name) => {
+    return getBuildConfigStatus(fastify, name).then((status) => ({ name, status }));
+  });
+
+  return Promise.all(getters);
+};
+
 export const initializeWatchedResources = (fastify: KubeFastifyInstance): void => {
   operatorWatcher = new ResourceWatcher<CSVKind>(fastify, fetchInstalledOperators);
   serviceWatcher = new ResourceWatcher<K8sResourceCommon>(fastify, fetchServices);
   kfDefWatcher = new ResourceWatcher<KfDefApplication>(fastify, fetchInstalledKfdefs);
   appWatcher = new ResourceWatcher<ODHApp>(fastify, fetchApplicationDefs);
   docWatcher = new ResourceWatcher<ODHDoc>(fastify, fetchDocs);
+  buildsWatcher = new ResourceWatcher<BuildStatus>(fastify, fetchBuilds);
 };
 
 export const getInstalledOperators = (): K8sResourceCommon[] => {
@@ -156,4 +240,8 @@ export const getApplicationDef = (appName: string): ODHApp => {
 
 export const getDocs = (): ODHDoc[] => {
   return docWatcher.getResources();
+};
+
+export const getBuildStatuses = (): { name: string; status: string }[] => {
+  return buildsWatcher.getResources();
 };

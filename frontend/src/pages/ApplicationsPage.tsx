@@ -12,6 +12,8 @@ import {
   Title,
   EmptyStateBody,
 } from '@patternfly/react-core';
+import { useWatchBuildStatus } from '../utilities/useWatchBuildStatus';
+import { BuildStatus } from '../types';
 
 import './ApplicationsPage.scss';
 
@@ -23,6 +25,8 @@ type ApplicationsPageProps = {
   loadError?: Error;
 };
 
+const runningStatuses = ['pending', 'running', 'cancelled'];
+
 const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
   title,
   description,
@@ -31,6 +35,40 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
   loadError,
   children,
 }) => {
+  const { buildStatuses } = useWatchBuildStatus();
+  const prevBuildStatuses = React.useRef<BuildStatus[]>();
+
+  React.useEffect(() => {
+    console.log(`====== BUILD STATUSES =========`);
+    console.dir(buildStatuses);
+    if (prevBuildStatuses.current) {
+      const wasFailed = prevBuildStatuses.current.filter(
+        (buildStatus) => buildStatus.status === 'failed',
+      );
+      const wasBuilding = prevBuildStatuses.current.find((buildStatus) =>
+        runningStatuses.includes(buildStatus.status?.toLowerCase()),
+      );
+      const failed = buildStatuses.filter(
+        (buildStatus) => buildStatus.status?.toLowerCase() === 'failed',
+      );
+      const building = buildStatuses.find((buildStatus) =>
+        runningStatuses.includes(buildStatus.status.toLowerCase()),
+      );
+      if (failed.length > 0) {
+        failed.forEach((buildStatus) => {
+          if (!wasFailed.find((failedStatus) => failedStatus.name === buildStatus.name)) {
+            // Send notification
+            console.log(`===== ${buildStatus.name} build FAILED!`);
+          }
+        });
+      }
+      if (wasBuilding && !building && !failed) {
+        // Send notification
+        console.log(`===== All notebook images installed`);
+      }
+    }
+    prevBuildStatuses.current = buildStatuses;
+  }, [buildStatuses]);
   const renderContents = () => {
     if (loadError) {
       return (

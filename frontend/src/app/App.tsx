@@ -7,6 +7,7 @@ import { useDesktopWidth } from '../utilities/useDesktopWidth';
 import Header from './Header';
 import Routes from './Routes';
 import NavSidebar from './NavSidebar';
+import ToastNotifications from '../components/ToastNotifications';
 
 import './App.scss';
 
@@ -34,6 +35,7 @@ const App: React.FC = () => {
       sidebar={<NavSidebar isNavOpen={isNavOpen} />}
     >
       <Routes />
+      <ToastNotifications />
     </Page>
   );
 };
