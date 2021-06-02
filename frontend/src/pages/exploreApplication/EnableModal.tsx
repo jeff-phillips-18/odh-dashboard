@@ -24,7 +24,7 @@ const EnableModal: React.FC<EnableModalProps> = ({ selectedApp, onClose }) => {
   const [postError, setPostError] = React.useState<boolean>(false);
   const [validationInProgress, setValidationInProgress] = React.useState<boolean>(false);
   const [enableValues, setEnableValues] = React.useState<{ [key: string]: string }>({});
-  const focusRef = (element: HTMLElement) => {
+  const focusRef = (element: HTMLElement | null) => {
     if (element) {
       element.focus();
     }

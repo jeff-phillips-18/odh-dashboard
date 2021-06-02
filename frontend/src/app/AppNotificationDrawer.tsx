@@ -1,6 +1,8 @@
-import { AppNotification, State } from '../redux/types';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  Button,
+  ButtonVariant,
   NotificationDrawer,
   NotificationDrawerHeader,
   NotificationDrawerBody,
@@ -12,10 +14,10 @@ import {
   EmptyState,
   EmptyStateBody,
 } from '@patternfly/react-core';
-import React from 'react';
+import { TimesIcon } from '@patternfly/react-icons';
+import { AppNotification, State } from '../redux/types';
 import { ackNotification, removeNotification } from '../redux/actions/actions';
-import { Button, ButtonVariant } from '@patternfly/react-core/src/components/Button/index';
-import TimesIcon from '@patternfly/react-icons/dist/js/icons/times-icon';
+import { calculateRelativeTime } from '../utilities/utils';
 
 interface AppNotificationDrawerProps {
   onClose: () => void;
@@ -29,6 +31,14 @@ const AppNotificationDrawer: React.FC<AppNotificationDrawerProps> = ({ onClose }
   const newNotifications = React.useMemo(() => {
     return notifications.filter((notification) => !notification.read).length;
   }, [notifications]);
+  const [currentTime, setCurrentTime] = React.useState<Date>(new Date());
+
+  React.useEffect(() => {
+    const timeHandle = setInterval(() => setCurrentTime(new Date()), 20 * 1000);
+    return () => {
+      clearInterval(timeHandle);
+    };
+  }, []);
 
   const markNotificationRead = (notification: AppNotification): void => {
     dispatch(ackNotification(notification));
@@ -38,16 +48,15 @@ const AppNotificationDrawer: React.FC<AppNotificationDrawerProps> = ({ onClose }
     dispatch(removeNotification(notification));
   };
 
-  console.dir(onClose);
   return (
-    <NotificationDrawer>
-      <NotificationDrawerHeader count={newNotifications} onClose={onClose}>
-      </NotificationDrawerHeader>
+    <NotificationDrawer className="odh-dashboard__notification-drawer">
+      <NotificationDrawerHeader count={newNotifications} onClose={onClose} />
       <NotificationDrawerBody>
         {notifications.length ? (
           <NotificationDrawerList>
             {notifications.map((notification) => (
               <NotificationDrawerListItem
+                key={notification.id}
                 variant={notification.status}
                 onClick={() => markNotificationRead(notification)}
                 isRead={notification.read}
@@ -58,12 +67,20 @@ const AppNotificationDrawer: React.FC<AppNotificationDrawerProps> = ({ onClose }
                   srTitle={notification.title}
                 >
                   <div>
-                    <Button variant={ButtonVariant.plain} aria-label="remove notification" onClick={onRemoveNotification}>
+                    <Button
+                      className="odh-dashboard__notification-drawer__item-remove"
+                      variant={ButtonVariant.plain}
+                      aria-label="remove notification"
+                      onClick={() => onRemoveNotification(notification)}
+                    >
                       <TimesIcon aria-hidden="true" />
                     </Button>
                   </div>
                 </NotificationDrawerListItemHeader>
-                <NotificationDrawerListItemBody timestamp="5 minutes ago">
+                <NotificationDrawerListItemBody
+                  timestamp={calculateRelativeTime(notification.timestamp, currentTime)}
+                  className={notification.message ? '' : 'm-is-hidden'}
+                >
                   {notification.message}
                 </NotificationDrawerListItemBody>
               </NotificationDrawerListItem>
@@ -71,9 +88,7 @@ const AppNotificationDrawer: React.FC<AppNotificationDrawerProps> = ({ onClose }
           </NotificationDrawerList>
         ) : (
           <EmptyState variant={EmptyStateVariant.small}>
-            <EmptyStateBody>
-              There are no notifications at this time.
-            </EmptyStateBody>
+            <EmptyStateBody>There are no notifications at this time.</EmptyStateBody>
           </EmptyState>
         )}
       </NotificationDrawerBody>

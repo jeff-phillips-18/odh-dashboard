@@ -12,10 +12,6 @@ import {
   Title,
   EmptyStateBody,
 } from '@patternfly/react-core';
-import { useDispatch } from 'react-redux';
-import { addNotification } from '../redux/actions/actions';
-import { useWatchBuildStatus } from '../utilities/useWatchBuildStatus';
-import { BuildStatus } from '../types';
 
 import './ApplicationsPage.scss';
 
@@ -27,8 +23,6 @@ type ApplicationsPageProps = {
   loadError?: Error;
 };
 
-const runningStatuses = ['pending', 'running', 'cancelled'];
-
 const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
   title,
   description,
@@ -37,51 +31,15 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
   loadError,
   children,
 }) => {
-  const { buildStatuses } = useWatchBuildStatus();
-  const prevBuildStatuses = React.useRef<BuildStatus[]>();
-  const dispatch = useDispatch();
+  const renderHeader = () => (
+    <PageSection className="odh-apps__heading" variant={PageSectionVariants.light}>
+      <TextContent className="odh-apps__heading__text">
+        <Text component="h1">{title}</Text>
+        <Text component="p">{description}</Text>
+      </TextContent>
+    </PageSection>
+  );
 
-  React.useEffect(() => {
-    console.log(`====== BUILD STATUSES =========`);
-    console.dir(buildStatuses);
-    if (prevBuildStatuses.current) {
-      const wasFailed = prevBuildStatuses.current.filter(
-        (buildStatus) => buildStatus.status === 'failed',
-      );
-      const wasBuilding = prevBuildStatuses.current.find((buildStatus) =>
-        runningStatuses.includes(buildStatus.status?.toLowerCase()),
-      );
-      const failed = buildStatuses.filter(
-        (buildStatus) => buildStatus.status?.toLowerCase() === 'failed',
-      );
-      const building = buildStatuses.find((buildStatus) =>
-        runningStatuses.includes(buildStatus.status.toLowerCase()),
-      );
-      if (failed.length > 0) {
-        failed.forEach((buildStatus) => {
-          if (!wasFailed.find((failedStatus) => failedStatus.name === buildStatus.name)) {
-            dispatch(
-              addNotification({
-                status: 'danger',
-                title: `Notebook image build ${buildStatus.name} failed.`,
-                timestamp: new Date(),
-              }),
-            );
-          }
-        });
-      }
-      if (wasBuilding && !building && !failed) {
-        dispatch(
-          addNotification({
-            status: 'success',
-            title: 'All notebook images installed.',
-            timestamp: new Date(),
-          }),
-        );
-      }
-    }
-    prevBuildStatuses.current = buildStatuses;
-  }, [buildStatuses, dispatch]);
   const renderContents = () => {
     if (loadError) {
       return (
@@ -103,7 +61,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
 
     if (!loaded) {
       return (
-        <PageSection>
+        <PageSection isFilled>
           <EmptyState variant={EmptyStateVariant.full}>
             <Spinner size="xl" />
             <Title headingLevel="h5" size="lg">
@@ -116,7 +74,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
 
     if (empty) {
       return (
-        <PageSection>
+        <PageSection isFilled>
           <EmptyState variant={EmptyStateVariant.full}>
             <EmptyStateIcon icon={QuestionCircleIcon} />
             <Title headingLevel="h5" size="lg">
@@ -132,12 +90,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
 
   return (
     <>
-      <PageSection className="odh-apps__heading" variant={PageSectionVariants.light}>
-        <TextContent className="odh-apps__heading__text">
-          <Text component="h1">{title}</Text>
-          <Text component="p">{description}</Text>
-        </TextContent>
-      </PageSection>
+      {renderHeader()}
       {renderContents()}
     </>
   );
