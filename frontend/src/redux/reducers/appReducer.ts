@@ -54,6 +54,22 @@ const appReducer = (state: AppState = initialState, action: GetUserAction): AppS
           ...state.notifications.slice(index + 1),
         ],
       };
+    case Actions.ACK_NOTIFICATION:
+      if (!action.payload.notification) {
+        return state;
+      }
+      index = state.notifications.findIndex((n) => n.id === action.payload.notification?.id);
+      if (index === -1) {
+        return state;
+      }
+      return {
+        ...state,
+        notifications: [
+          ...state.notifications.slice(0, index),
+          { ...state.notifications[index], read: true, hidden: true },
+          ...state.notifications.slice(index + 1),
+        ],
+      };
     case Actions.REMOVE_NOTIFICATION:
       if (!action.payload.notification) {
         return state;

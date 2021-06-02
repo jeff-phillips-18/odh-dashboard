@@ -6,16 +6,18 @@ export enum Actions {
   GET_USER_REJECTED = 'GET_USER_REJECTED',
   ADD_NOTIFICATION = 'ADD_NOTIFICATION',
   HIDE_NOTIFICATION = 'HIDE_NOTIFICATION',
+  ACK_NOTIFICATION = 'ACK_NOTIFICATION',
   REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION',
-  FORCE_COMPONENTS_UPDATE = 'FORCE_COMPONENTS_UPDATE',
 }
 
 export interface AppNotification {
   id?: number;
-  status: string;
-  title: React.ReactNode;
+  status: 'success' | 'danger' | 'warning' | 'info' | 'default';
+  title: string;
   message?: React.ReactNode;
   hidden?: boolean;
+  read?: boolean;
+  timestamp: Date;
 }
 
 export interface GetUserAction {

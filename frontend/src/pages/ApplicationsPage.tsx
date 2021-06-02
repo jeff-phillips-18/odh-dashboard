@@ -12,6 +12,8 @@ import {
   Title,
   EmptyStateBody,
 } from '@patternfly/react-core';
+import { useDispatch } from 'react-redux';
+import { addNotification } from '../redux/actions/actions';
 import { useWatchBuildStatus } from '../utilities/useWatchBuildStatus';
 import { BuildStatus } from '../types';
 
@@ -37,6 +39,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
 }) => {
   const { buildStatuses } = useWatchBuildStatus();
   const prevBuildStatuses = React.useRef<BuildStatus[]>();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     console.log(`====== BUILD STATUSES =========`);
@@ -57,18 +60,28 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
       if (failed.length > 0) {
         failed.forEach((buildStatus) => {
           if (!wasFailed.find((failedStatus) => failedStatus.name === buildStatus.name)) {
-            // Send notification
-            console.log(`===== ${buildStatus.name} build FAILED!`);
+            dispatch(
+              addNotification({
+                status: 'danger',
+                title: `Notebook image build ${buildStatus.name} failed.`,
+                timestamp: new Date(),
+              }),
+            );
           }
         });
       }
       if (wasBuilding && !building && !failed) {
-        // Send notification
-        console.log(`===== All notebook images installed`);
+        dispatch(
+          addNotification({
+            status: 'success',
+            title: 'All notebook images installed.',
+            timestamp: new Date(),
+          }),
+        );
       }
     }
     prevBuildStatuses.current = buildStatuses;
-  }, [buildStatuses]);
+  }, [buildStatuses, dispatch]);
   const renderContents = () => {
     if (loadError) {
       return (

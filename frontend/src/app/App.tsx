@@ -10,10 +10,12 @@ import NavSidebar from './NavSidebar';
 import ToastNotifications from '../components/ToastNotifications';
 
 import './App.scss';
+import AppNotificationDrawer from './AppNotificationDrawer';
 
 const App: React.FC = () => {
   const isDeskTop = useDesktopWidth();
   const [isNavOpen, setIsNavOpen] = React.useState(isDeskTop);
+  const [notificationsOpen, setNotificationsOpen] = React.useState(false);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -28,11 +30,20 @@ const App: React.FC = () => {
     setIsNavOpen(!isNavOpen);
   };
 
+  const onClose
   return (
     <Page
       className="odh-dashboard"
-      header={<Header isNavOpen={isNavOpen} onNavToggle={onNavToggle} />}
+      header={
+        <Header
+          isNavOpen={isNavOpen}
+          onNavToggle={onNavToggle}
+          onNotificationsClick={() => setNotificationsOpen(!notificationsOpen)}
+        />
+      }
       sidebar={<NavSidebar isNavOpen={isNavOpen} />}
+      notificationDrawer={<AppNotificationDrawer onClose={() => setNotificationsOpen(false)} />}
+      isNotificationDrawerExpanded={notificationsOpen}
     >
       <Routes />
       <ToastNotifications />

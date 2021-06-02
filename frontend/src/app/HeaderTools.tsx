@@ -3,6 +3,7 @@ import {
   Dropdown,
   DropdownPosition,
   DropdownToggle,
+  NotificationBadge,
   PageHeaderTools,
   PageHeaderToolsGroup,
   PageHeaderToolsItem,
@@ -15,10 +16,23 @@ import {
   UserIcon,
 } from '@patternfly/react-icons';
 import { DOC_LINK, SUPPORT_LINK } from '../utilities/const';
+import { AppNotification, State } from '../redux/types';
+import { useSelector } from 'react-redux';
 
-const HeaderTools: React.FC = () => {
+interface HeaderToolsProps {
+  onNotificationsClick: () => void;
+}
+
+const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
   const [userMenuOpen, setUserMenuOpen] = React.useState<boolean>(false);
   const [helpMenuOpen, setHelpMenuOpen] = React.useState<boolean>(false);
+  const notifications: AppNotification[] = useSelector<State, AppNotification[]>(
+    (state) => state.appState.notifications,
+  );
+
+  const newNotifications = React.useMemo(() => {
+    return notifications.filter((notification) => !notification.read).length;
+  }, [notifications]);
 
   const handleLogout = () => {
     setUserMenuOpen(false);
@@ -66,6 +80,9 @@ const HeaderTools: React.FC = () => {
   return (
     <PageHeaderTools>
       <PageHeaderToolsGroup className="hidden-xs">
+        <PageHeaderToolsItem>
+          <NotificationBadge isRead count={newNotifications} onClick={onNotificationsClick} />
+        </PageHeaderToolsItem>
         <PageHeaderToolsItem>
           <Dropdown
             position={DropdownPosition.right}

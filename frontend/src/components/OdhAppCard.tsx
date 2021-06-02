@@ -18,6 +18,8 @@ import SupportedAppTitle from './SupportedAppTitle';
 
 import './OdhCard.scss';
 import { makeCardVisible } from '../utilities/utils';
+import { useDispatch } from 'react-redux';
+import { addNotification } from '../redux/actions/actions';
 
 type OdhAppCardProps = {
   odhApp: ODHApp;
@@ -107,6 +109,17 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
     'm-warning': odhApp.spec.category === 'Third party support',
   });
 
+  const dispatch = useDispatch();
+  const sendNotification = (name: string): void => {
+    dispatch(
+      addNotification({
+        status: 'success',
+        title: `${name} selected.`,
+        timestamp: new Date(),
+      }),
+    );
+  };
+
   return (
     <Card
       id={odhApp.metadata.name}
@@ -114,6 +127,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
       className="odh-card odh-tourable-card"
       isSelected={selected}
       isSelectable
+      onClick={() => sendNotification(odhApp.metadata.name)}
     >
       <CardHeader>
         <BrandImage src={odhApp.spec.img} alt={odhApp.spec.displayName} />

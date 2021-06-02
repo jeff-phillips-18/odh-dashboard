@@ -57,18 +57,18 @@ export const hideNotification = (
   };
 };
 
+export const ackNotification = (
+  notification: AppNotification,
+): ThunkAction<void, AppState, unknown, Action<string>> => {
+  return (dispatch) => {
+    dispatch({ type: Actions.ACK_NOTIFICATION, payload: { notification } });
+  };
+};
+
 export const removeNotification = (
   notification: AppNotification,
 ): ThunkAction<void, AppState, unknown, Action<string>> => {
   return (dispatch) => {
     dispatch({ type: Actions.REMOVE_NOTIFICATION, payload: { notification } });
-  };
-};
-
-export const forceComponentsUpdate = (): ThunkAction<void, AppState, unknown, Action<string>> => {
-  return (dispatch) => {
-    dispatch({
-      type: Actions.FORCE_COMPONENTS_UPDATE,
-    });
   };
 };

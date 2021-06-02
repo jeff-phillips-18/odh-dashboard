@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, AlertActionCloseButton, AlertVariant } from '@patternfly/react-core';
 import { useDispatch } from 'react-redux';
 import { AppNotification } from '../redux/types';
-import { hideNotification } from '../redux/actions/actions';
+import { ackNotification, hideNotification } from '../redux/actions/actions';
 
 const TOAST_NOTIFICATION_TIMEOUT = 8 * 1000;
 
@@ -39,7 +39,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({ notification }) =
       variant={notification.status as AlertVariant}
       title={notification.title}
       actionClose={
-        <AlertActionCloseButton onClose={() => dispatch(hideNotification(notification))} />
+        <AlertActionCloseButton onClose={() => dispatch(ackNotification(notification))} />
       }
       onMouseEnter={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
