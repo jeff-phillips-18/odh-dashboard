@@ -29,6 +29,7 @@ export const detectUser = (): ThunkAction<void, AppState, unknown, Action<string
     dispatch(getUserPending());
     try {
       const response = await axios.get(url, {});
+      console.dir(response);
       dispatch(getUserFulfilled(response.data));
     } catch (e) {
       dispatch(getUserRejected(e.response.data));

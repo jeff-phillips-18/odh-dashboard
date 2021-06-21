@@ -20,6 +20,17 @@ const status = async (
     fastify.log.error(error, 'failed to get status');
     throw error;
   } else {
+    console.log(
+      JSON.stringify(
+        {
+          currentUser,
+          namespace,
+          userName,
+        },
+        null,
+        2,
+      ),
+    );
     return Promise.resolve({
       kube: {
         currentContext,
