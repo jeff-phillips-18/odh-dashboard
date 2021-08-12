@@ -20,8 +20,10 @@ type RoutesResponse = {
   response: IncomingMessage;
 };
 
-export const getRouteForClusterId = (fastify: KubeFastifyInstance, route: string): string =>
-  route ? route.replace('<CLUSTER_ID/>', fastify.kube.clusterID) : route;
+export const getRouteForClusterId = (fastify: KubeFastifyInstance, route: string): string => {
+  fastify.log.warn(`========= ClusterId: ${fastify.kube.clusterID} ===========`);
+  return route ? route.replace('<CLUSTER_ID/>', fastify.kube.clusterID) : route;
+};
 
 const getEndPointForApp = (fastify: KubeFastifyInstance, app: OdhApplication): string => {
   if (!app.spec.endpoint) {
@@ -207,7 +209,13 @@ const getCREnabledForApp = (
       }
       return getField(existingCR, appDef.spec.enableCR.field) === appDef.spec.enableCR.value;
     })
-    .catch(() => false);
+    .catch((e) => {
+      fastify.log.error(
+        e,
+        `Failed to retrieve CRD for ${plural}. Please make sure the Role you are using has the permission to read the ${plural} resources`,
+      );
+      return false;
+    });
 };
 
 export const getIsAppEnabled = async (
