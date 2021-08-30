@@ -10,6 +10,7 @@ import '@patternfly/patternfly/utilities/Accessibility/accessibility.css';
 import '@patternfly/react-catalog-view-extension/dist/css/react-catalog-view-extension.css';
 import '@cloudmosaic/quickstarts/dist/quickstarts.css';
 import { useWatchQuickStarts } from '../utilities/useWatchQuickStarts';
+import { TEST_MODE } from '../utilities/const';
 
 const QuickStarts: React.FC = ({ children }) => {
   const [activeQuickStartID, setActiveQuickStartID] = useLocalStorage('odsQuickstartId', '');
@@ -24,6 +25,9 @@ const QuickStarts: React.FC = ({ children }) => {
     setAllQuickStartStates,
   });
 
+  // if (TEST_MODE) {
+  //   return <>{children}</>;
+  // }
   return (
     <QuickStartContext.Provider value={valuesForQuickStartContext}>
       <QuickStartDrawer>{children}</QuickStartDrawer>

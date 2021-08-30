@@ -75,7 +75,7 @@ describe('Resources page', () => {
     expect(viewPanel.html()).toMatchSnapshot();
 
     const cards = viewPanel.find('.pf-c-card__header');
-    expect(cards.length).toBe(6);
+    expect(cards.length).toBe(8);
 
     wrapper.unmount();
   });

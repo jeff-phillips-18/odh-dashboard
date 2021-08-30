@@ -12,7 +12,7 @@ import {
 } from '@patternfly/react-core';
 import { CaretDownIcon, ExternalLinkAltIcon, QuestionCircleIcon } from '@patternfly/react-icons';
 import { COMMUNITY_LINK, DOC_LINK, SUPPORT_LINK } from '../utilities/const';
-import { AppNotification, State } from '../redux/types';
+import { AppNotification, AppState, State } from '../redux/types';
 import { useWatchDashboardConfig } from '../utilities/useWatchDashboardConfig';
 
 interface HeaderToolsProps {
@@ -22,10 +22,9 @@ interface HeaderToolsProps {
 const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
   const [userMenuOpen, setUserMenuOpen] = React.useState<boolean>(false);
   const [helpMenuOpen, setHelpMenuOpen] = React.useState<boolean>(false);
-  const notifications: AppNotification[] = useSelector<State, AppNotification[]>(
-    (state) => state.appState.notifications,
-  );
-  const userName: string = useSelector<State, string>((state) => state.appState.user || '');
+  const { notifications, user: userName } = useSelector<State, AppState>((state) => {
+    return state.appState;
+  });
   const { dashboardConfig } = useWatchDashboardConfig();
 
   const newNotifications = React.useMemo(() => {
@@ -130,7 +129,7 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
                 onToggle={() => setUserMenuOpen(!userMenuOpen)}
                 toggleIndicator={CaretDownIcon}
               >
-                {userName}
+                {userName || ''}
               </DropdownToggle>
             }
             isOpen={userMenuOpen}

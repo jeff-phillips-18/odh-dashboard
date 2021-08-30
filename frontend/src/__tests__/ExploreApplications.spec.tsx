@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { mount } from 'enzyme';
 import ExploreApplications from '../pages/exploreApplication/ExploreApplications';
+import { DEFAULT_BETA_TEXT } from '../pages/exploreApplication/GetStartedPanel';
 import { mockExploreApplications } from '../../__mocks__/mockExploreApplications';
 import { mockGettingStartedDoc } from '../../__mocks__/mockGettingStartedDoc';
 
@@ -20,6 +21,7 @@ jest.mock('react-router-dom', () => {
     useLocation: () => '/',
   };
 });
+
 jest.mock('react', () => {
   const React = jest.requireActual('react');
   return {
@@ -28,6 +30,33 @@ jest.mock('react', () => {
     lazy: (factory) => factory(),
   };
 });
+
+jest.mock('@cloudmosaic/quickstarts', () => {
+  const qs = jest.requireActual('@cloudmosaic/quickstarts');
+  return {
+    ...qs,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    useResizeObserver: () => {},
+  };
+});
+
+jest.mock('../utilities/router', () => ({
+  setQueryArgument: () => {
+    return;
+  },
+  removeQueryArgument: () => {
+    return;
+  },
+}));
+
+jest.mock('../utilities/useWatchDashboardConfig', () => ({
+  useWatchDashboardConfig: () => ({
+    dashboardConfig,
+    loaded: true,
+    loadError: null,
+  }),
+}));
+
 jest.mock('../utilities/useWatchComponents', () => ({
   useWatchComponents: () => ({
     loaded: true,
@@ -42,24 +71,9 @@ jest.mock('../utilities/useGettingStarted', () => ({
     loadError: null,
   }),
 }));
-jest.mock('../utilities/router', () => ({
-  setQueryArgument: () => {
-    return;
-  },
-  removeQueryArgument: () => {
-    return;
-  },
-}));
-jest.mock('../utilities/useWatchDashboardConfig', () => ({
-  useWatchDashboardConfig: () => ({
-    dashboardConfig,
-    loaded: true,
-    loadError: null,
-  }),
-}));
 
 describe('ExploreApplications', () => {
-  beforeEach(() => {
+  afterEach(() => {
     dashboardConfig.disableInfo = false;
     dashboardConfig.enablement = true;
   });
@@ -74,7 +88,7 @@ describe('ExploreApplications', () => {
     );
     expect(wrapper.find('.odh-explore-apps__body').exists()).toBe(true);
     const cards = wrapper.find('.pf-m-selectable.odh-card');
-    expect(cards.length).toBe(2);
+    expect(cards.length).toBe(4);
 
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
@@ -210,5 +224,53 @@ describe('ExploreApplications', () => {
         .first()
         .hasClass('pf-m-disabled'),
     ).toBe(true);
+  });
+
+  it('should show the beta badge and blurb for beta applications', () => {
+    dashboardConfig.enablement = false;
+    const wrapper = mount(
+      <Provider store={store}>
+        <Router>
+          <ExploreApplications />
+        </Router>
+      </Provider>,
+    );
+
+    let card;
+    card = wrapper.find('.pf-m-selectable.odh-card').at(0);
+    expect(card.find('.odh-card__partner-badge.odh-m-beta').exists()).toBe(false);
+
+    // Third app is flagged as beta
+    act(() => {
+      card = wrapper.find('.pf-m-selectable.odh-card').at(2);
+      card.simulate('click');
+    });
+    wrapper.update();
+    expect(card.find('.odh-card__partner-badge.odh-m-beta').exists()).toBe(true);
+    expect(wrapper.find('.m-side-panel-open').exists()).toBe(true);
+
+    // screen reader text is included :(
+    const expectedTitle = `info${mockExploreApplications[2].spec.displayName} is currently in beta.`;
+    expect(wrapper.find('.odh-get-started__body .pf-c-alert__title').text()).toBe(expectedTitle);
+    expect(wrapper.find('.odh-get-started__body .pf-c-alert__description').text()).toBe(
+      DEFAULT_BETA_TEXT,
+    );
+
+    // Fourth app is flagged as beta and has custom title/text
+    act(() => {
+      card = wrapper.find('.pf-m-selectable.odh-card').at(3);
+      card.simulate('click');
+    });
+    wrapper.update();
+    expect(card.find('.odh-card__partner-badge.odh-m-beta').exists()).toBe(true);
+    expect(wrapper.find('.m-side-panel-open').exists()).toBe(true);
+
+    // screen reader text is included :(
+    expect(wrapper.find('.odh-get-started__body .pf-c-alert__title').text()).toBe(
+      'infoCustom Beta Title',
+    );
+    expect(wrapper.find('.odh-get-started__body .pf-c-alert__description').text()).toBe(
+      'Custom Beta Text',
+    );
   });
 });

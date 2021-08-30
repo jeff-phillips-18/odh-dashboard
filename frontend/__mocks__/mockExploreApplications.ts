@@ -57,4 +57,76 @@ export const mockExploreApplications: OdhApplication[] = [
       },
     },
   },
+  {
+    metadata: {
+      name: 'test-app-beta',
+      annotations: { 'opendatahub.io/categories': 'Jupyter notebook' },
+    },
+    spec: {
+      displayName: 'Test App - Beta',
+      provider: 'Test',
+      description: 'Some description',
+      route: 'my-route',
+      img: 'images/jupyterhub.svg',
+      docsLink: 'https://fakelink.org/fake',
+      getStartedLink: 'https://jupyterhub.readthedocs.io/en/stable/getting-started/index.html',
+      isEnabled: false,
+      quickStart: null,
+      enable: {
+        title: 'Test Enable',
+        actionLabel: 'Enable',
+        description: '',
+        variables: {
+          test_key: 'password',
+        },
+        variableDisplayText: {
+          test_key: 'Enter a Key',
+        },
+        variableHelpText: {
+          test_key: 'This key is enables the app',
+        },
+        validationJob: 'some-validator',
+        validationSecret: 'some-secret',
+        validationConfigMap: 'some-cm',
+      },
+      beta: true,
+    },
+  },
+  {
+    metadata: {
+      name: 'test-app-beta-custom',
+      annotations: { 'opendatahub.io/categories': 'Jupyter notebook' },
+    },
+    spec: {
+      displayName: 'Test App - Beta Custom',
+      provider: 'Test',
+      description: 'Some description',
+      route: 'my-route',
+      img: 'images/jupyterhub.svg',
+      docsLink: 'https://fakelink.org/fake',
+      getStartedLink: 'https://jupyterhub.readthedocs.io/en/stable/getting-started/index.html',
+      isEnabled: false,
+      quickStart: null,
+      enable: {
+        title: 'Test Enable',
+        actionLabel: 'Enable',
+        description: '',
+        variables: {
+          test_key: 'password',
+        },
+        variableDisplayText: {
+          test_key: 'Enter a Key',
+        },
+        variableHelpText: {
+          test_key: 'This key is enables the app',
+        },
+        validationJob: 'some-validator',
+        validationSecret: 'some-secret',
+        validationConfigMap: 'some-cm',
+      },
+      beta: true,
+      betaTitle: 'Custom Beta Title',
+      betaText: 'Custom Beta Text',
+    },
+  },
 ];
