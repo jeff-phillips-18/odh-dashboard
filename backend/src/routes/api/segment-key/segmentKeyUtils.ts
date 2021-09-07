@@ -10,7 +10,11 @@ export const getSegmentKey = async (fastify: KubeFastifyInstance): Promise<ODHSe
       segmentKey: decodedSegmentKey,
     };
   } catch (e) {
-    fastify.log.error('load segment key error: ' + e);
+    if (e.response.statusCode === 404) {
+      fastify.log.debug(`segment key does not exist.`);
+    } else {
+      fastify.log.error(`load segment key error: ${e.response?.body?.message ?? e.message}`);
+    }
     return {
       segmentKey: '',
     };
