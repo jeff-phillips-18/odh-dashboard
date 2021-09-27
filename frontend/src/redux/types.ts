@@ -31,6 +31,7 @@ export interface GetUserAction {
     user?: string;
     clusterID?: string;
     clusterBranding?: string;
+    apiServer?: string;
     error?: Error | null;
     notification?: AppNotification;
   };
@@ -42,6 +43,7 @@ export interface AppState {
   userError?: Error | null;
   clusterID?: string;
   clusterBranding?: string;
+  apiServer?: string;
   notifications: AppNotification[];
   forceComponentsUpdate: number;
 }

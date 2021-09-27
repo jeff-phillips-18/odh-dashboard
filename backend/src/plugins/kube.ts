@@ -12,6 +12,7 @@ const kc = new k8s.KubeConfig();
 kc.loadFromDefault();
 
 const currentContext = kc.getCurrentContext();
+const currentCluster = kc.getCurrentCluster();
 const customObjectsApi = kc.makeApiClient(k8s.CustomObjectsApi);
 const coreV1Api = kc.makeApiClient(k8s.CoreV1Api);
 const batchV1Api = kc.makeApiClient(k8s.BatchV1Api);
@@ -26,6 +27,7 @@ export default fp(async (fastify: FastifyInstance) => {
     fastify.log.error(e, 'Failed to retrieve current namespace');
   }
 
+  console.log(JSON.stringify(kc.getCurrentCluster(), null, 2));
   let clusterID;
   try {
     const clusterVersion = await customObjectsApi.getClusterCustomObject(
@@ -65,6 +67,7 @@ export default fp(async (fastify: FastifyInstance) => {
     currentUser,
     clusterID,
     clusterBranding,
+    apiServer: currentCluster.server,
   });
 
   // Initialize the watching of resources

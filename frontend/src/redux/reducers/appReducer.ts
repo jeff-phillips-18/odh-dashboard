@@ -17,6 +17,7 @@ const appReducer = (state: AppState = initialState, action: GetUserAction): AppS
         userError: null,
         clusterID: '',
         clusterBranding: '',
+        apiServer: '',
       };
     case Actions.GET_USER_FULFILLED:
       return {
@@ -26,6 +27,7 @@ const appReducer = (state: AppState = initialState, action: GetUserAction): AppS
         userError: null,
         clusterID: action.payload.clusterID,
         clusterBranding: action.payload.clusterBranding,
+        apiServer: action.payload.apiServer,
       };
     case Actions.GET_USER_REJECTED:
       return {
@@ -35,6 +37,7 @@ const appReducer = (state: AppState = initialState, action: GetUserAction): AppS
         userError: action.payload.error,
         clusterID: '',
         clusterBranding: '',
+        apiServer: '',
       };
     case Actions.ADD_NOTIFICATION:
       if (!action.payload.notification) {

@@ -3,6 +3,8 @@ import * as _ from 'lodash';
 import { ConsoleLinkKind } from '../types';
 import { POLL_INTERVAL } from './const';
 import { fetchConsoleLinks } from '../services/consoleLinksService';
+import { useSelector } from 'react-redux';
+import { State } from '../redux/types';
 
 export type ConsoleLinkResults = {
   consoleLinks: ConsoleLinkKind[];
@@ -11,6 +13,7 @@ export type ConsoleLinkResults = {
 };
 
 export const useWatchConsoleLinks = (): ConsoleLinkResults => {
+  const apiServer: string = useSelector<State, string>((state) => state.appState.apiServer || '');
   const [results, setResults] = React.useState<ConsoleLinkResults>({
     consoleLinks: [],
     loaded: false,
@@ -22,8 +25,11 @@ export const useWatchConsoleLinks = (): ConsoleLinkResults => {
 
   React.useEffect(() => {
     let watchHandle;
+    if (!apiServer) {
+      return;
+    }
     const watchConsoleLinks = () => {
-      fetchConsoleLinks()
+      fetchConsoleLinks(apiServer)
         .then((consoleLinks: ConsoleLinkKind[]) => {
           const newResults: ConsoleLinkResults = {
             consoleLinks,
@@ -46,7 +52,7 @@ export const useWatchConsoleLinks = (): ConsoleLinkResults => {
         clearTimeout(watchHandle);
       }
     };
-  }, []);
+  }, [apiServer]);
 
   return results;
 };

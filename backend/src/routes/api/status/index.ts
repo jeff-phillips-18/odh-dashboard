@@ -9,7 +9,14 @@ const status = async (
   request: FastifyRequest,
 ): Promise<{ kube: KubeStatus }> => {
   const kubeContext = fastify.kube.currentContext;
-  const { currentContext, namespace, currentUser, clusterID, clusterBranding } = fastify.kube;
+  const {
+    currentContext,
+    namespace,
+    currentUser,
+    clusterID,
+    clusterBranding,
+    apiServer,
+  } = fastify.kube;
   const currentUserName =
     (request.headers['x-forwarded-user'] as string) || currentUser.username || currentUser.name;
   let userName = currentUserName?.split('/')[0];
@@ -34,6 +41,7 @@ const status = async (
         userName,
         clusterID,
         clusterBranding,
+        apiServer,
       },
     });
   }

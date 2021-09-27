@@ -106,6 +106,7 @@ export type KubeStatus = {
   userName: string | string[];
   clusterID: string;
   clusterBranding: string;
+  apiServer: string;
 };
 
 export type KubeDecorator = KubeStatus & {
