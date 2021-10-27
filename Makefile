@@ -1,10 +1,10 @@
-DEFAULT_ENV_FILE := .env
+DEFAULT_ENV_FILE := .env.development
 ifneq ("$(wildcard $(DEFAULT_ENV_FILE))","")
 include ${DEFAULT_ENV_FILE}
 export $(shell sed 's/=.*//' ${DEFAULT_ENV_FILE})
 endif
 
-ENV_FILE := .env.local
+ENV_FILE := .env.development.local
 ifneq ("$(wildcard $(ENV_FILE))","")
 include ${ENV_FILE}
 export $(shell sed 's/=.*//' ${ENV_FILE})
@@ -12,25 +12,9 @@ endif
 
 ##################################
 
-# DEV Convenience
+# Install a dev branch to a cluster (already logged in)
 
-reinstall: build push undeploy deploy
-
-##################################
-
-# DEV - run apps locally for development
-
-.PHONY: dev-frontend
-dev-frontend:
-	./install/dev-frontend.sh
-
-.PHONY: dev-backend
-dev-backend:
-	./install/dev-backend.sh
-
-.PHONY: dev
-dev:
-	./install/dev.sh
+reinstall: build push deploy
 
 ##################################
 
@@ -38,7 +22,8 @@ dev:
 
 .PHONY: build
 build:
-	./install/build.sh
+	s2i build $(SOURCE_REPOSITORY_URL) --ref $(SOURCE_REPOSITORY_REF) --context-dir / registry.access.redhat.com/ubi8/nodejs-14 $(IMAGE_REPOSITORY)
+
 
 ##################################
 
@@ -46,30 +31,17 @@ build:
 
 .PHONY: push
 push:
-	./install/push.sh
+	${CONTAINER_BUILDER} push ${IMAGE_REPOSITORY}
 
-##################################
-
-.PHONY: login
-login:
-ifdef OC_TOKEN
-	$(info **** Using OC_TOKEN for login ****)
-	oc login ${OC_URL} --token=${OC_TOKEN}
-else
-	$(info **** Using OC_USER and OC_PASSWORD for login ****)
-	oc login ${OC_URL} -u ${OC_USER} -p ${OC_PASSWORD} --insecure-skip-tls-verify=true
-endif
-
-##################################
+.PHONY: namespace
+namespace:
+	oc project $(OC_PROJECT) || true
 
 .PHONY: deploy
-deploy: login
-	./install/deploy.sh
-
-##################################
-
-.PHONY: undeploy
-undeploy: login
-	./install/undeploy.sh
+deploy: namespace
+	oc patch deployment/rhods-dashboard -n $(OC_PROJECT) -p '{"spec":{"template":{"spec":{"containers":[{"name":"''$(DASHBOARD_APP)''","image":"'$(IMAGE_REPOSITORY)'"}]}}}}'
+	oc scale --replicas=0 deployment $(DASHBOARD_APP) -n $(OC_PROJECT)
+	sleep 10
+	oc scale --replicas=1 deployment $(DASHBOARD_APP) -n $(OC_PROJECT)
 
 ##################################

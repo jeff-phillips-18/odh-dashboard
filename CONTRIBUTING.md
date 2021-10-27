@@ -21,22 +21,6 @@ To give your dev environment access to the ODH configuration, log in to the Open
 ```shell script
 $ oc login https://api.my-openshift-cluster.com:6443 -u kubeadmin -p my-password
 ```
-or log in using the makefile and `.env.local` settings
-```.env.local
-OC_URL=https://specify.in.env:6443
-OC_PROJECT=my-project
-OC_USER=kubeadmin
-OC_PASSWORD=my-password
-```
-
-```shell
-$ make login
-```
-or
-```
-$ npm run make:login
-```
-
 
 ## Debugging and Testing
 ### Basic testing (lint and jest)
@@ -96,39 +80,35 @@ Edit the opendatahub KfDef in your project, remove the section:
       name: odh-dashboard
 ```
 
-Remove the current deployment of the ODH Dashboard
-```shell
-$ make undeploy
-```
-or
-```
-$ npm run make:undeploy
-```
-
 ### Customize your env
 Customize `.env.local` file to image and source information as desired. `npm` and the `s2i` command line tool is required.
 
 ```.env.local
+OC_PROJECT=opendatahub
+DASHBOARD_APP=odh-dashboard
 CONTAINER_BUILDER=docker
 IMAGE_REPOSITORY=quay.io/my-org/odh-dashboard:latest
 SOURCE_REPOSITORY_URL=git@github.com:my-org/odh-dashboard.git
 SOURCE_REPOSITORY_REF=my-branch
-
-OC_URL=https://specify.in.env:6443
-OC_PROJECT=specify_in_.env
-
-# user and password login
-OC_USER=specify_in_.env
-OC_PASSWORD=specify_in_.env
-
-# or token login
-#OC_TOKEN=specify_in_.env
 ```
 
-### Build
+### Install your branch
+Required: The OpenShift, `oc`, command line tool is required.
+
 Push your branch to your repo for it to be visible to the s2i build.
 
-Then build:
+Then reinstall:
+```shell
+$ make reinstall
+```
+or
+```
+$ npm run make:reinstall
+```
+
+You can access each step of the installation separately as well:
+
+### Build
 ```shell
 $ make build
 ```

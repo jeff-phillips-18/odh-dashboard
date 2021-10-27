@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhods-dashboard
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: rhods-dashboard
+          image: quay.io/jeff_phillips_18/odh-dashboard:latest
