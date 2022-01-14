@@ -2,6 +2,7 @@
   &__filter-panel {
     padding-top: var(--pf-global--spacer--md);
     width: 240px;
+    overflow-y: auto;
     &.m-is-collapsible {
       background: var(--pf-global--BackgroundColor--light-100);
       border: 1px solid var(--pf-global--BorderColor--100);

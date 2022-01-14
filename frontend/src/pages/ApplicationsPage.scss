@@ -25,4 +25,11 @@
   display: flex;
   flex: 1;
   margin: var(--pf-global--spacer--md);
+  overflow-y: hidden;
+  .pf-c-page__main-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: auto;
+  }
 }
