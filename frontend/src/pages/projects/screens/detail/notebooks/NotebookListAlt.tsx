@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Badge, Button, Popover } from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
@@ -9,6 +8,7 @@ import { FAST_POLL_INTERVAL } from '~/utilities/const';
 import { useAccessReview } from '~/api';
 import emptyStateImg from '~/images/empty-state-notebooks.svg';
 import DetailsSectionAlt from '~/pages/projects/screens/detail/DetailsSectionAlt';
+import EmptyDetailsView from '~/pages/projects/screens/detail/EmptyDetailsView';
 import NotebookTable from './NotebookTable';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
@@ -91,20 +91,19 @@ const NotebookListAlt: React.FC = () => {
         loadError={loadError}
         isEmpty={isNotebooksEmpty}
         emptyState={
-          <EmptyDetailsList
+          <EmptyDetailsView
             title="Start by creating a workbench"
             description="Creating a workbench allows you to add a Jupyter notebook to your project."
-            icon={() => <img style={{ height: '320px' }} src={emptyStateImg} alt="Workbenches" />}
-            actions={
-              rbacLoaded && allowCreate ? (
-                <Button
-                  key={`action-${ProjectSectionID.WORKBENCHES}`}
-                  onClick={() => navigate(`/projects/${projectName}/spawner`)}
-                  variant="primary"
-                >
-                  Create workbench
-                </Button>
-              ) : null
+            iconImage={emptyStateImg}
+            allowCreate={rbacLoaded && allowCreate}
+            createButton={
+              <Button
+                key={`action-${ProjectSectionID.WORKBENCHES}`}
+                onClick={() => navigate(`/projects/${projectName}/spawner`)}
+                variant="primary"
+              >
+                Create workbench
+              </Button>
             }
           />
         }

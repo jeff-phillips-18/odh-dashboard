@@ -11,12 +11,10 @@ import { PlusCircleIcon } from '@patternfly/react-icons';
 import { SVGIconProps } from '@patternfly/react-icons/dist/esm/createIcon';
 
 type EmptyDetailsListProps = {
-  variant?: 'xs' | 'sm' | 'lg' | 'xl' | 'full';
   title?: string;
   description?: string;
-  icon?: React.ComponentType;
-  actions?: React.ReactNode;
-  secondaryActions?: React.ReactNode;
+  icon?: React.ComponentClass<SVGIconProps>;
+  actions?: React.ReactNode[];
 };
 
 const EmptyDetailsList: React.FC<EmptyDetailsListProps> = ({
@@ -24,7 +22,6 @@ const EmptyDetailsList: React.FC<EmptyDetailsListProps> = ({
   description,
   icon,
   actions,
-  secondaryActions,
 }) => (
   <EmptyState
     // isFullHeight
@@ -42,12 +39,11 @@ const EmptyDetailsList: React.FC<EmptyDetailsListProps> = ({
       headingLevel="h3"
     />
     <EmptyStateBody>{description}</EmptyStateBody>
-    {actions || secondaryActions ? (
+    {actions && (
       <EmptyStateFooter>
-        {actions ? <EmptyStateActions>{actions}</EmptyStateActions> : null}
-        {secondaryActions ? <EmptyStateActions>{secondaryActions}</EmptyStateActions> : null}
+        <EmptyStateActions>{actions}</EmptyStateActions>
       </EmptyStateFooter>
-    ) : null}
+    )}
   </EmptyState>
 );
 

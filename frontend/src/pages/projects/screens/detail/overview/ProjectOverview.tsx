@@ -1,10 +1,20 @@
 import * as React from 'react';
-import { Label, PageSection, Spinner } from '@patternfly/react-core';
+import {
+  EmptyState,
+  EmptyStateActions,
+  EmptyStateBody,
+  EmptyStateFooter,
+  EmptyStateHeader,
+  EmptyStateIcon,
+  Label,
+  PageSection,
+  Spinner,
+} from '@patternfly/react-core';
 import { ChartDonut } from '@patternfly/react-charts';
+import { PlusCircleIcon } from '@patternfly/react-icons';
 import emptyStateImg from '~/images/empty-state-projects-overview.svg';
 import projectBackgroundImage from '~/images/project-overview-background-img.svg';
 import projectIcon from '~/images/project-icon.svg';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { useAccessReview } from '~/api';
 import { AccessReviewResource } from '~/pages/projects/screens/detail/const';
@@ -66,18 +76,32 @@ const ProjectOverview: React.FC = () => {
     if (loading) {
       return (
         <div className="odh-project-overview__project m-is-empty">
-          <EmptyDetailsList title="Loading..." icon={() => <Spinner />} />
+          <div className="odh-project-overview__loading">
+            <Spinner size="xl" />
+          </div>
         </div>
       );
     }
     if (isEmptyProject) {
       return (
         <div className="odh-project-overview__project m-is-empty">
-          <EmptyDetailsList
-            title="Start by building out your project"
-            description="From workbenches to model servers, your data science project can be organized and customized to meet your needs."
-            icon={() => <img style={{ height: '320px' }} src={emptyStateImg} alt="Workbenches" />}
-          />
+          <EmptyState variant="xs">
+            <EmptyStateHeader
+              titleText={<>Start by building out your project</>}
+              icon={
+                <EmptyStateIcon
+                  icon={() => (
+                    <img style={{ height: '320px' }} src={emptyStateImg} alt="Workbenches" />
+                  )}
+                />
+              }
+              headingLevel="h3"
+            />
+            <EmptyStateBody>
+              From workbenches to model servers, your data science project can be organized and
+              customized to meet your needs.
+            </EmptyStateBody>
+          </EmptyState>
         </div>
       );
     }
@@ -169,14 +193,20 @@ const ProjectOverview: React.FC = () => {
       variant="light"
     >
       {projectContent()}
-      <div className="odh-project-overview__components">
-        <NotebookCard allowCreate={rbacLoaded && allowCreate} />
-        <PipelineCard allowCreate={rbacLoaded && allowCreate} />
-        <ClusterStorageCard allowCreate={rbacLoaded && allowCreate} />
-        <ModelServerCard />
-        <DataConnectionCard allowCreate={rbacLoaded && allowCreate} />
-        {isEmptyProject ? <UserGroupsCard users={0} groups={0} /> : null}
-      </div>
+      {loading ? (
+        <div className="odh-project-overview__loading">
+          <Spinner size="xl" />
+        </div>
+      ) : (
+        <div className="odh-project-overview__components">
+          <NotebookCard allowCreate={rbacLoaded && allowCreate} />
+          <PipelineCard allowCreate={rbacLoaded && allowCreate} />
+          <ClusterStorageCard allowCreate={rbacLoaded && allowCreate} />
+          <ModelServerCard />
+          <DataConnectionCard allowCreate={rbacLoaded && allowCreate} />
+          {isEmptyProject ? <UserGroupsCard users={0} groups={0} /> : null}
+        </div>
+      )}
     </PageSection>
   );
 };

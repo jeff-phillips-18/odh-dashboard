@@ -8,9 +8,6 @@
     border-radius: 18px;
     position: relative;
     padding-bottom: var(--pf-v5-global--spacer--md);
-    &.m-is-empty {
-      justify-content: center;
-    }
     &-info {
       margin: var(--pf-v5-global--spacer--3xl);
       z-index: 100;
@@ -52,6 +49,12 @@
         height: 16px;
       }
     }
+  }
+  &__loading {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-top: 240px;
   }
   &__components {
     flex: 1;

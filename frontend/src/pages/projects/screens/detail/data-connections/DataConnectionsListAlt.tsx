@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Badge, Button, Popover } from '@patternfly/react-core';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { useAccessReview } from '~/api';
 import emptyStateImg from '~/images/empty-state-data-connections.svg';
 import DetailsSectionAlt from '~/pages/projects/screens/detail/DetailsSectionAlt';
+import EmptyDetailsView from '~/pages/projects/screens/detail/EmptyDetailsView';
 import ManageDataConnectionModal from './ManageDataConnectionModal';
 import DataConnectionsTable from './DataConnectionsTable';
 import { OutlinedQuestionCircleIcon } from "@patternfly/react-icons";
@@ -77,20 +77,19 @@ const DataConnectionsListAlt: React.FC = () => {
         isEmpty={isDataConnectionsEmpty}
         loadError={error}
         emptyState={
-          <EmptyDetailsList
+          <EmptyDetailsView
             title="Start by adding a data connection"
             description="Adding a data connection to your project allows you toconnect data inputs to your workbenches."
-            icon={() => <img style={{ height: '320px' }} src={emptyStateImg} alt="Workbenches" />}
-            actions={
-              rbacLoaded && allowCreate ? (
-                <Button
-                  key={`action-${ProjectSectionID.DATA_CONNECTIONS}`}
-                  onClick={() => setOpen(true)}
-                  variant="primary"
-                >
-                  Add data connection
-                </Button>
-              ) : null
+            iconImage={emptyStateImg}
+            allowCreate={rbacLoaded && allowCreate}
+            createButton={
+              <Button
+                key={`action-${ProjectSectionID.DATA_CONNECTIONS}`}
+                onClick={() => setOpen(true)}
+                variant="primary"
+              >
+                Add data connection
+              </Button>
             }
           />
         }

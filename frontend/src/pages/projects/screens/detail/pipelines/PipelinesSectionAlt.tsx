@@ -10,13 +10,13 @@ import {
 import ImportPipelineButton from '~/concepts/pipelines/content/import/ImportPipelineButton';
 import PipelinesList from '~/pages/projects/screens/detail/pipelines/PipelinesList';
 import PipelineServerActions from '~/concepts/pipelines/content/pipelinesDetails/pipeline/PipelineServerActions';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import emptyStateImg from '~/images/empty-state-pipelines.svg';
 import { useAccessReview } from '~/api';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import DetailsSectionAlt from '~/pages/projects/screens/detail/DetailsSectionAlt';
 import { OutlinedQuestionCircleIcon } from "@patternfly/react-icons";
 import DashboardPopupIconButton from "~/concepts/dashboard/DashboardPopupIconButton";
+import EmptyDetailsView from '~/pages/projects/screens/detail/EmptyDetailsView';
 
 const PipelinesSectionAlt: React.FC = () => {
   const { currentProject } = React.useContext(ProjectDetailsContext);
@@ -84,15 +84,12 @@ const PipelinesSectionAlt: React.FC = () => {
         isLoading={(!apiAvailable && installed) || initializing}
         isEmpty={!installed}
         emptyState={
-          <EmptyDetailsList
+          <EmptyDetailsView
             title="Start by configuring a pipeline server"
             description="Standardize and automate machine learning workflows to enable you to further enhance and deploy your data science models."
-            icon={() => <img style={{ height: '320px' }} src={emptyStateImg} alt="Workbenches" />}
-            actions={
-              rbacLoaded && allowCreate ? (
-                <CreatePipelineServerButton variant={ButtonVariant.primary} />
-              ) : null
-            }
+            iconImage={emptyStateImg}
+            allowCreate={rbacLoaded && allowCreate}
+            createButton={<CreatePipelineServerButton variant={ButtonVariant.primary} />}
           />
         }
         showDivider={isPipelinesEmpty}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Badge, Button, Popover } from '@patternfly/react-core';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
+import EmptyDetailsView from '~/pages/projects/screens/detail/EmptyDetailsView';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
@@ -79,22 +79,19 @@ const StorageListAlt: React.FC = () => {
         isEmpty={isPvcsEmpty}
         loadError={loadError}
         emptyState={
-          <EmptyDetailsList
+          <EmptyDetailsView
             title="Start by adding cluster storage"
             description="For data science projects that require data to be retained, you can add cluster storage to the project."
-            icon={() => (
-              <img style={{ height: '320px' }} src={emptyStateImg} alt="Cluster storage" />
-            )}
-            actions={
-              rbacLoaded && allowCreate ? (
-                <Button
-                  onClick={() => setOpen(true)}
-                  key={`action-${ProjectSectionID.CLUSTER_STORAGES}`}
-                  variant="primary"
-                >
-                  Add cluster storage
-                </Button>
-              ) : null
+            iconImage={emptyStateImg}
+            allowCreate={rbacLoaded && allowCreate}
+            createButton={
+              <Button
+                onClick={() => setOpen(true)}
+                key={`action-${ProjectSectionID.CLUSTER_STORAGES}`}
+                variant="primary"
+              >
+                Add cluster storage
+              </Button>
             }
           />
         }

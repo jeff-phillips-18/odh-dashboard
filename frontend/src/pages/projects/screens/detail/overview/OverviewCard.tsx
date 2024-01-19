@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { css } from '@patternfly/react-styles';
 import { useSearchParams } from 'react-router-dom';
-import { Button, Spinner } from '@patternfly/react-core';
-import { ExclamationCircleIcon } from '@patternfly/react-icons';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
+import {
+  Button,
+  EmptyState,
+  EmptyStateActions,
+  EmptyStateBody,
+  EmptyStateFooter,
+  EmptyStateHeader,
+  EmptyStateIcon,
+  Spinner,
+} from '@patternfly/react-core';
+import { ExclamationCircleIcon, PlusCircleIcon } from '@patternfly/react-icons';
 
 type OverviewCardProps = {
   loading?: boolean;
@@ -47,11 +55,13 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   if (loading) {
     return (
       <div className={css('odh-project-overview__card loading')}>
-        <EmptyDetailsList
-          variant="xs"
-          description="Loading..."
-          icon={() => <Spinner size="lg" />}
-        />
+        <EmptyState variant="xs">
+          <EmptyStateHeader
+            icon={<EmptyStateIcon icon={() => <Spinner size="lg" />} />}
+            headingLevel="h3"
+          />
+          <EmptyStateBody>Loading...</EmptyStateBody>
+        </EmptyState>
       </div>
     );
   }
@@ -59,47 +69,59 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   if (loadError) {
     return (
       <div className={css('odh-project-overview__card error')}>
-        <EmptyDetailsList
-          variant="xs"
-          description={
-            loadError.message ?? 'There was an issue loading the resources. Please try again later.'
-          }
-          icon={() => (
-            <ExclamationCircleIcon
-              style={{
-                color: 'var(--pf-v5-global--danger-color--100)',
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          )}
-        />
+        <EmptyState variant="xs">
+          <EmptyStateHeader
+            icon={
+              <EmptyStateIcon
+                icon={() => (
+                  <ExclamationCircleIcon
+                    style={{
+                      color: 'var(--pf-v5-global--danger-color--100)',
+                      width: '32px',
+                      height: '32px',
+                    }}
+                  />
+                )}
+              />
+            }
+            headingLevel="h3"
+          />
+          <EmptyStateBody>
+            {loadError.message ??
+              'There was an issue loading the resources. Please try again later.'}
+          </EmptyStateBody>
+        </EmptyState>
       </div>
     );
   }
   if (!count && !ignoreEmptyState) {
     return (
       <div className={css('odh-project-overview__card', typeModifier)}>
-        <EmptyDetailsList
-          variant="lg"
-          title={title}
-          description={description}
-          icon={icon}
-          actions={
-            actionButton ||
-            (allowCreate ? (
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onAction && onAction();
-                }}
-                variant="link"
-              >
-                Get started
-              </Button>
-            ) : undefined)
-          }
-        />
+        <EmptyState variant="lg">
+          <EmptyStateHeader
+            titleText={<>{title}</>}
+            icon={icon && <EmptyStateIcon icon={icon ?? PlusCircleIcon} />}
+            headingLevel="h3"
+          />
+          <EmptyStateBody>{description}</EmptyStateBody>
+          {actionButton || allowCreate ? (
+            <EmptyStateFooter>
+              <EmptyStateActions>
+                {actionButton || (
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onAction && onAction();
+                    }}
+                    variant="link"
+                  >
+                    Get started
+                  </Button>
+                )}
+              </EmptyStateActions>
+            </EmptyStateFooter>
+          ) : null}
+        </EmptyState>
       </div>
     );
   }
@@ -120,26 +142,31 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
           : undefined
       }
     >
-      <EmptyDetailsList
-        variant="lg"
-        title={`${count}`}
-        description={title}
-        icon={icon}
-        actions={
-          actionButton ||
-          (allowCreate ? (
-            <Button
-              onClick={(e) => {
-                e.stopPropagation();
-                onAction && onAction();
-              }}
-              variant="link"
-            >
-              {createText}
-            </Button>
-          ) : undefined)
-        }
-      />
+      <EmptyState variant="lg">
+        <EmptyStateHeader
+          titleText={<>{title}</>}
+          icon={icon && <EmptyStateIcon icon={icon ?? PlusCircleIcon} />}
+          headingLevel="h3"
+        />
+        <EmptyStateBody>{description}</EmptyStateBody>
+        {actionButton || allowCreate ? (
+          <EmptyStateFooter>
+            <EmptyStateActions>
+              {actionButton || (
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onAction && onAction();
+                  }}
+                  variant="link"
+                >
+                  {createText}
+                </Button>
+              )}
+            </EmptyStateActions>
+          </EmptyStateFooter>
+        ) : null}
+      </EmptyState>
     </div>
   );
 };
