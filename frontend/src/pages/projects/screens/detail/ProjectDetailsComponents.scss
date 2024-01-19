@@ -3,3 +3,193 @@
   ) {
   border-bottom: 1px solid var(--pf-v5-global--BorderColor--200);
 }
+
+.odh-project-details {
+  display: flex;
+  min-height: 100%;
+  gap: var(--pf-v5-global--spacer--lg);
+  &__project {
+    background: var(--pf-v5-global--palette--blue-50);
+    flex: 1;
+    // border-radius: 18px;
+    position: relative;
+    padding-bottom: var(--pf-v5-global--spacer--md);
+    &.m-is-empty {
+      justify-content: center;
+    }
+    &-info {
+      margin: var(--pf-v5-global--spacer--3xl);
+      z-index: 100;
+    }
+    &-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  &__chart-inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 240px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pf-v5-global--spacer--sm);
+    img {
+      width: 64px;
+      height: 64px;
+    }
+  }
+  &__chart-title {
+    font-size: 18px;
+  }
+  &__legend {
+    display: flex;
+    gap: var(--pf-v5-global--spacer--lg);
+    flex-wrap: wrap;
+    justify-content: center;
+    &-item {
+      align-items: center;
+      display: flex;
+      gap: var(--pf-v5-global--spacer--sm);
+      &--color {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  &__components {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--pf-v5-global--spacer--md);
+  }
+  &__card {
+    // border-radius: 18px;
+    border: 1px dashed var(--pf-v5-global--BorderColor--200);
+    position: relative;
+    &:after {
+      position: absolute;
+      width: 48px;
+      height: 4px;
+      background: transparent;
+      top: 0;
+      left: calc(50% - 24px);
+      border-radius: 4px 4px 0 0;
+      content: ' ';
+      rotate: 180deg;
+    }
+    .pf-v5-c-empty-state__header {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .pf-v5-c-empty-state__body {
+      margin-block-start: var(--pf-v5-global--spacer--xs);
+    }
+    .pf-v5-c-empty-state__icon {
+      width: 64px;
+      height: 64px;
+      background: var(--pf-v5-global--BackgroundColor--200);
+      border-radius: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-block-end: var(--pf-v5-global--spacer--md);
+    }
+    .pf-v5-c-empty-state__footer {
+      margin-block-start: var(--pf-v5-global--spacer--sm);
+    }
+    &.notebook {
+      &:after {
+        // background: #C9190B;
+      }
+    }
+    &.pipeline {
+      &:after {
+        background: #5752D1;
+      }
+    }
+    &.loading, &.error {
+      .pf-v5-c-empty-state__icon {
+        background: inherit;
+      }
+    }
+    &.cluster-storage {
+      &:after {
+        background: #EC7A08;
+      }
+    }
+    &.model-server {
+      &:after {
+        background: #009596;
+      }
+    }
+    &.data-connections {
+      &:after {
+        background: #F4C145;
+      }
+    }
+    &.user {
+      &:after {
+        background: #4CB140;
+      }
+    }
+    &.group {
+      &:after {
+        background: #0066CC;
+      }
+    }
+    &.with-counts {
+      border: none;
+      .pf-v5-c-empty-state__body {
+        color: initial;
+        --pf-v5-c-empty-state--body--FontSize: 18px;
+        --pf-v5-c-empty-state__body--MarginTop: var(--pf-v5-global--spacer--xs);
+      }
+      .pf-v5-c-empty-state__icon {
+        background: var(--pf-v5-global--BackgroundColor--100);
+      }
+      .pf-v5-c-empty-state__title-text {
+        font-size: var(--pf-v5-global--FontSize--3xl);
+      }
+      &.notebook {
+        background: rgba(201, 25, 11, 0.1);
+      }
+      &.pipeline {
+        background: rgba(87, 82, 209, 0.1);
+      }
+      &.cluster-storage {
+        background: rgba(236, 122, 8, 0.1);
+      }
+      &.model-server {
+        background: rgba(0, 149, 150, 0.1);
+      }
+      &.data-connections {
+        background: rgba(244, 193, 69, 0.1);
+      }
+      &.user {
+        border: 1px dashed var(--pf-v5-global--BorderColor--200);
+        .pf-v5-c-empty-state__icon {
+          background: var(--pf-v5-global--BackgroundColor--200);
+        }
+      }
+      &.group {
+        border: 1px dashed var(--pf-v5-global--BorderColor--200);
+        .pf-v5-c-empty-state__icon {
+          background: var(--pf-v5-global--BackgroundColor--200);
+        }
+      }
+    }
+    &.m-is-clickable {
+      cursor: pointer;
+    }
+  }
+  &__user-group-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--pf-v5-global--spacer--md);
+  }
+}
+

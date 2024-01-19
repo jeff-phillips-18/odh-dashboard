@@ -25,12 +25,12 @@ const EmptyDetailsList: React.FC<EmptyDetailsListProps> = ({
 }) => (
   <EmptyState
     // isFullHeight
-    style={{
-      border: 'dashed',
-      borderColor: 'var(--pf-v5-global--Color--400)',
-      borderWidth: '1.5px',
-      marginBottom: 'var(--pf-v5-global--spacer--xl)',
-    }}
+    // style={{
+    //   border: 'dashed',
+    //   borderColor: 'var(--pf-v5-global--Color--400)',
+    //   borderWidth: '1.5px',
+    //   marginBottom: 'var(--pf-v5-global--spacer--xl)',
+    // }}
     variant="xs"
   >
     <EmptyStateHeader
