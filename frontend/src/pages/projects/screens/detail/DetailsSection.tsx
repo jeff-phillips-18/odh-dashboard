@@ -70,12 +70,7 @@ const DetailsSection: React.FC<DetailsSectionProps> = ({
   };
 
   return (
-    <Stack
-      hasGutter
-      className={classNames({
-        'odh-details-section--divide': !loadError && (isLoading || isEmpty || showDivider),
-      })}
-    >
+    <Stack hasGutter className={'odh-details-section--divide'}>
       <StackItem>
         <Flex direction={{ default: 'column', md: 'row' }} gap={{ default: 'gapMd' }}>
           <Flex flex={{ default: 'flex_1' }}>

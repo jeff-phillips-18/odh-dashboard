@@ -1,5 +1,9 @@
-.odh-project-details-components__item, .odh-details-section--divide {
-  padding-bottom: var(--pf-v5-global--spacer--2xl);
+// .odh-project-details-components__item:has(> .odh-details-section--divide):has(+ .odh-project-details-components__item) {
+//   padding-bottom: var(--pf-v5-global--spacer--lg);
+// }
+
+.odh-details-section--divide {
+  padding-bottom: var(--pf-v5-global--spacer--xl);
 }
 
 .odh-project-details {

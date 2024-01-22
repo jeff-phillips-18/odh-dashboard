@@ -126,9 +126,7 @@ const ModelServingPlatform: React.FC = () => {
           ) : undefined
         }
         actions={
-          shouldShowPlatformSelection || platformError
-            ? undefined
-            : shouldShowPlatformSelection
+          !(!shouldShowPlatformSelection && emptyModelServer)
             ? [
                 <ModelServingPlatformButtonAction
                   isProjectModelMesh={isProjectModelMesh}
@@ -196,13 +194,13 @@ const ModelServingPlatform: React.FC = () => {
           //   </Card>
           // </Flex>
         }
-        labels={
-          currentProjectServingPlatform && [
-            <Label key="serving-platform-label">
-              {isProjectModelMesh ? 'Multi-model serving enabled' : 'Single-model serving enabled'}
-            </Label>,
-          ]
-        }
+        // labels={
+        //   currentProjectServingPlatform && [
+        //     <Label key="serving-platform-label">
+        //       {isProjectModelMesh ? 'Multi-model serving enabled' : 'Single-model serving enabled'}
+        //     </Label>,
+        //   ]
+        // }
       >
         {shouldShowPlatformSelection ? (
           <ModelServingPlatformSelect
