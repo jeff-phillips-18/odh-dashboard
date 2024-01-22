@@ -2,7 +2,7 @@ import * as React from 'react';
 import emptyStateImg from '~/images/UI_icon-Red_Hat-Storage-RGB.svg';
 import ManageStorageModal from '~/pages/projects/screens/detail/storage/ManageStorageModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import OverviewCard from './OverviewCard';
+import ComponentsCard from "../ComponentsCard";
 
 type ClusterStorageCardProps = {
   allowCreate: boolean;
@@ -16,7 +16,7 @@ const ClusterStorageCard: React.FC<ClusterStorageCardProps> = ({ allowCreate }) 
 
   return (
     <>
-      <OverviewCard
+      <ComponentsCard
         loading={!loaded}
         loadError={error}
         count={pvcs.length}

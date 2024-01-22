@@ -35,7 +35,7 @@ type PipelineContext = {
   apiState: PipelineAPIState;
 };
 
-const PipelinesContext = React.createContext<PipelineContext>({
+export const PipelinesContext = React.createContext<PipelineContext>({
   hasCR: false,
   crInitializing: false,
   serverTimedOut: false,

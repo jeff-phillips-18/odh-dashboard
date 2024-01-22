@@ -79,7 +79,6 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   }
   if (!count && !ignoreEmptyState) {
     return (
-      <div className={css('odh-project-details', typeModifier)}>
         <div className={css('odh-project-details__card', typeModifier)}>
           <EmptyDetailsList
             variant="lg"
@@ -103,7 +102,6 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
             }
           />
         </div>
-      </div>
     );
   }
 

@@ -60,6 +60,7 @@
   }
   &__components {
     flex: 1;
+    width: 82%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--pf-v5-global--spacer--md);

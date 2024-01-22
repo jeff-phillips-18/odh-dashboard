@@ -1,21 +1,29 @@
 import * as React from 'react';
 import { Button, Flex, FlexItem, Popover } from '@patternfly/react-core';
-import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
-import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
+import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
 import ManageStorageModal from './ManageStorageModal';
 import StorageTable from './StorageTable';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
+import StorageCardEmpty from './StorageCardEmpty';
+import { useAccessReview } from '~/api';
 
 const StorageList: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
   const {
     pvcs: { data: pvcs, loaded, error: loadError },
     refreshAllProjectData: refresh,
+    currentProject,
   } = React.useContext(ProjectDetailsContext);
+
+  const [allowCreate, rbacLoaded] = useAccessReview({
+    ...AccessReviewResource,
+    namespace: currentProject.metadata.name,
+  });
 
   const isPvcsEmpty = pvcs.length === 0;
 
@@ -24,7 +32,8 @@ const StorageList: React.FC = () => {
       style={{
         marginLeft: 'var(--pf-v5-global--spacer--xs)',
         marginRight: 'var(--pf-v5-global--spacer--xs)',
-        verticalAlign: 'middle',
+        verticalAlign: 'sub',
+        width: '32px',
       }}
       src="../images/UI_icon-Red_Hat-Storage-RGB.svg"
       alt="Storage icon"
@@ -37,7 +46,7 @@ const StorageList: React.FC = () => {
         icon={icon}
         id={ProjectSectionID.CLUSTER_STORAGES}
         title={ProjectSectionTitles[ProjectSectionID.CLUSTER_STORAGES] || ''}
-        popover={
+        popover={!isPvcsEmpty ?
           <Popover
             headerContent="About cluster storage"
             bodyContent="For data science projects that require data to be retained, you can add cluster storage to the project."
@@ -51,14 +60,14 @@ const StorageList: React.FC = () => {
               aria-label="More info"
             />
           </Popover>
-        }
+        : undefined}
         actions={
           !isPvcsEmpty
             ? [
                 <Button
                   onClick={() => setOpen(true)}
                   key={`action-${ProjectSectionID.CLUSTER_STORAGES}`}
-                  variant="primary"
+                  variant="secondary"
                 >
                   Add cluster storage
                 </Button>,
@@ -69,23 +78,24 @@ const StorageList: React.FC = () => {
         isEmpty={isPvcsEmpty}
         loadError={loadError}
         emptyState={
-          <Flex>
-            <FlexItem>
-              <EmptyDetailsList
-                actions={[
-                  <Button
-                    onClick={() => setOpen(true)}
-                    key={`action-${ProjectSectionID.CLUSTER_STORAGES}`}
-                    variant="secondary"
-                    size="lg"
-                  >
-                    Add cluster storage
-                  </Button>,
-                ]}
-                description="For data science projects that require data to be retained, you can add cluster storage to the project"
-              />
-            </FlexItem>
-          </Flex>
+          <StorageCardEmpty allowCreate={rbacLoaded && allowCreate} />
+          // <Flex>
+          //   <FlexItem>
+          //     <EmptyDetailsList
+          //       actions={[
+          //         <Button
+          //           onClick={() => setOpen(true)}
+          //           key={`action-${ProjectSectionID.CLUSTER_STORAGES}`}
+          //           variant="secondary"
+          //           size="lg"
+          //         >
+          //           Add cluster storage
+          //         </Button>,
+          //       ]}
+          //       description="For data science projects that require data to be retained, you can add cluster storage to the project"
+          //     />
+          //   </FlexItem>
+          // </Flex>
         }
       >
         <StorageTable pvcs={pvcs} refresh={refresh} onAddPVC={() => setOpen(true)} />

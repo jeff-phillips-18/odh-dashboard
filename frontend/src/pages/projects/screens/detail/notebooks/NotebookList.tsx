@@ -10,8 +10,10 @@ import { FAST_POLL_INTERVAL } from '~/utilities/const';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
 import { useAccessReview } from '~/api';
 import { AccessReviewResource } from '~/pages/projects/screens/detail/const';
-import NotebookCardEmpty from "./NotebookCardEmpty";
 import NotebookTable from '~/pages/projects/screens/detail/notebooks/NotebookTable';
+// import WrenchIcon from '@patternfly/react-icons/dist/esm/icons/wrench-icon';
+
+import NotebookCardEmpty from './NotebookCardEmpty';
 
 const NotebookList: React.FC = () => {
   const {
@@ -33,7 +35,8 @@ const NotebookList: React.FC = () => {
       style={{
         marginLeft: 'var(--pf-v5-global--spacer--xs)',
         marginRight: 'var(--pf-v5-global--spacer--xs)',
-        verticalAlign: 'middle',
+        verticalAlign: 'sub',
+        width: '32px',
       }}
       src="../images/UI_icon-Red_Hat-Wrench-RGB.svg"
       alt="Notebooks icon"
@@ -55,7 +58,7 @@ const NotebookList: React.FC = () => {
         // className="odh-project-details"
         id={ProjectSectionID.WORKBENCHES}
         title={ProjectSectionTitles[ProjectSectionID.WORKBENCHES] || ''}
-        popover={
+        popover={ !isNotebooksEmpty &&
           <Popover
             headerContent="About workbenches"
             bodyContent="Creating a workbench allows you to add a Jupyter notebook to your project."
@@ -75,7 +78,7 @@ const NotebookList: React.FC = () => {
             <Button
               key={`action-${ProjectSectionID.WORKBENCHES}`}
               onClick={() => navigate(`/projects/${projectName}/spawner`)}
-              variant="primary"
+              variant="secondary"
             >
               Create workbench
             </Button>

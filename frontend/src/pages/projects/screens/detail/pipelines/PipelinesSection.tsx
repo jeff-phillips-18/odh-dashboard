@@ -10,6 +10,7 @@ import ImportPipelineButton from '~/concepts/pipelines/content/import/ImportPipe
 import PipelinesList from '~/pages/projects/screens/detail/pipelines/PipelinesList';
 import PipelineServerActions from '~/concepts/pipelines/content/pipelinesDetails/pipeline/PipelineServerActions';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
+import EmptyPipelinesSectionCard from './EmptyPipelinesSectionCard';
 
 const PipelinesSection: React.FC = () => {
   const {
@@ -24,7 +25,8 @@ const PipelinesSection: React.FC = () => {
       style={{
         marginLeft: 'var(--pf-v5-global--spacer--xs)',
         marginRight: 'var(--pf-v5-global--spacer--xs)',
-        verticalAlign: 'middle',
+        verticalAlign: 'sub',
+        width: '32px',
       }}
       src="../images/UI_icon-Red_Hat-Branch-RGB.svg"
       alt="Pipelines branch icon"
@@ -37,7 +39,7 @@ const PipelinesSection: React.FC = () => {
         icon={icon}
         id={ProjectSectionID.PIPELINES}
         title={ProjectSectionTitles[ProjectSectionID.PIPELINES]}
-        popover={
+        popover={ installed ?
           <Popover
             headerContent="About pipelines"
             bodyContent="Standardize and automate machine learning workflows to enable you to further enchance and deploy your data science models."
@@ -51,7 +53,7 @@ const PipelinesSection: React.FC = () => {
               aria-label="More info"
             />
           </Popover>
-        }
+        : undefined}
         actions={
           installed
             ? [
@@ -71,11 +73,12 @@ const PipelinesSection: React.FC = () => {
         isLoading={(!apiAvailable && installed) || initializing}
         isEmpty={!installed}
         emptyState={
-          <Flex>
-            <FlexItem>
-              <NoPipelineServer variant="secondary" />
-            </FlexItem>
-          </Flex>
+          <EmptyPipelinesSectionCard allowCreate />
+          // <Flex>
+          //   <FlexItem>
+          //     <NoPipelineServer variant="secondary" />
+          //   </FlexItem>
+          // </Flex>
         }
         showDivider={isPipelinesEmpty}
       >

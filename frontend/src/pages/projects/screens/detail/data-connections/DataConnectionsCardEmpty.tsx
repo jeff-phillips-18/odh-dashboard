@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ConnectedIcon } from '@patternfly/react-icons';
 import ManageDataConnectionModal from '~/pages/projects/screens/detail/data-connections/ManageDataConnectionModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import OverviewCard from './OverviewCard';
 import ComponentsCard from "../ComponentsCard";
 
 type DataConnectionCardProps = {
@@ -14,11 +13,6 @@ const DataConnectionCard: React.FC<DataConnectionCardProps> = ({ allowCreate }) 
     refreshAllProjectData,
   } = React.useContext(ProjectDetailsContext);
   const [open, setOpen] = React.useState(false);
-
-  const [allowCreate, rbacLoaded] = useAccessReview({
-    ...AccessReviewResource,
-    namespace: currentProject.metadata.name,
-  });
 
   return (
     <>

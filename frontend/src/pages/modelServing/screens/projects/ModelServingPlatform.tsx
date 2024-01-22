@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Alert, Button, Card, Flex, Label, Popover } from '@patternfly/react-core';
+import { Alert, Button, Card, Flex, Label, Popover, StackItem } from '@patternfly/react-core';
 import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
 import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
+import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import {
   getSortedTemplates,
   getTemplateEnabled,
@@ -22,6 +22,9 @@ import ManageServingRuntimeModal from './ServingRuntimeModal/ManageServingRuntim
 import ModelMeshServingRuntimeTable from './ModelMeshSection/ServingRuntimeTable';
 import ModelServingPlatformButtonAction from './ModelServingPlatformButtonAction';
 import ManageKServeModal from './kServeModal/ManageKServeModal';
+import EmptySingleModelServingCard from './EmptySingleModelServingCard';
+import { useAccessReview } from '~/api';
+import EmptyMultiModelServingCard from './EmptyMultiModelServingCard';
 
 const ModelServingPlatform: React.FC = () => {
   const [platformSelected, setPlatformSelected] = React.useState<
@@ -50,6 +53,11 @@ const ModelServingPlatform: React.FC = () => {
   } = React.useContext(ProjectDetailsContext);
 
   const { refresh: refreshAllProjects } = React.useContext(ProjectsContext);
+
+  const [allowCreate, rbacLoaded] = useAccessReview({
+    ...AccessReviewResource,
+    namespace: currentProject.metadata.name,
+  });
 
   const templatesSorted = getSortedTemplates(templates, templateOrder);
   const templatesEnabled = templatesSorted.filter((template) =>
@@ -83,7 +91,8 @@ const ModelServingPlatform: React.FC = () => {
       style={{
         marginLeft: 'var(--pf-v5-global--spacer--xs)',
         marginRight: 'var(--pf-v5-global--spacer--md)',
-        verticalAlign: 'middle',
+        verticalAlign: 'sub',
+        width: '32px',
       }}
       src="../images/UI_icon-Red_Hat-Server-RGB.svg"
       alt="Server icon"
@@ -98,19 +107,23 @@ const ModelServingPlatform: React.FC = () => {
         title={ProjectSectionTitles[ProjectSectionID.MODEL_SERVER]}
         description="Select the type of model serving platform to be used when deploying models in this project."
         popover={
-          <Popover
-            headerContent="About model serving"
-            bodyContent="Deploy a trained data science model to serve intelligent applications with an endpoint that allows apps to send requests to the model."
-          >
-            <DashboardPopupIconButton
-              icon={
-                <OutlinedQuestionCircleIcon
-                  style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
-                />
+          !(!shouldShowPlatformSelection && emptyModelServer) ? (
+            <Popover
+              headerContent={'About model serving'}
+              bodyContent={
+                'Deploy a trained data science model to serve intelligent applications with an endpoint that allows apps to send requests to the model.'
               }
-              aria-label="More info"
-            />
-          </Popover>
+            >
+              <DashboardPopupIconButton
+                icon={
+                  <OutlinedQuestionCircleIcon
+                    style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+                  />
+                }
+                aria-label="More info"
+              />
+            </Popover>
+          ) : undefined
         }
         actions={
           shouldShowPlatformSelection || platformError
@@ -136,46 +149,52 @@ const ModelServingPlatform: React.FC = () => {
         isEmpty={!shouldShowPlatformSelection && emptyModelServer}
         loadError={platformError || servingRuntimeError || templateError}
         emptyState={
-          <Flex>
-            <Card isPlain>
-              <EmptyDetailsList
-                title="Single model serving platform"
-                description={
-                  'Each model is deployed from its own model server. Choose this option when you have a small number of large models to deploy.\n'
-                }
-                actions={[
-                  <Button
-                    key={`action-${ProjectSectionID.WORKBENCHES}`}
-                    onClick={() => {
-                      setPlatformSelected(ServingRuntimePlatform.SINGLE);
-                    }}
-                    variant="secondary"
-                    size="lg"
-                  >
-                    Create pipeline
-                  </Button>,
-                ]}
-              />
-            </Card>
-            <Card isPlain>
-              <EmptyDetailsList
-                title="Multi-model serving platform"
-                description="Multiple models can be deployed from a single model server. Choose this option when you have a large number of small models to deploy that can share server resources."
-                actions={[
-                  <Button
-                    key={`action-${ProjectSectionID.WORKBENCHES}`}
-                    onClick={() => {
-                      setPlatformSelected(ServingRuntimePlatform.MULTI);
-                    }}
-                    variant="secondary"
-                    size="lg"
-                  >
-                    Add model server
-                  </Button>,
-                ]}
-              />
-            </Card>
-          </Flex>
+          <div className="odh-project-overview__components">
+            <EmptySingleModelServingCard allowCreate={rbacLoaded && allowCreate} />
+            <EmptyMultiModelServingCard allowCreate={rbacLoaded && allowCreate} />
+          </div>
+          // <Flex>
+          //   <Card isPlain>
+          //     <EmptyDetailsList
+          //       title={'Single model serving platform'}
+          //       description={
+          //         'Each model is deployed from its own model server. Choose this option when you have a small number of large models to deploy.\n'
+          //       }
+          //       actions={[
+          //         <Button
+          //           key={`action-${ProjectSectionID.WORKBENCHES}`}
+          //           onClick={() => {
+          //             setPlatformSelected(ServingRuntimePlatform.SINGLE);
+          //           }}
+          //           variant="secondary"
+          //           size="lg"
+          //         >
+          //           Create pipeline
+          //         </Button>,
+          //       ]}
+          //     />
+          //   </Card>
+          //   <Card isPlain>
+          //     <EmptyDetailsList
+          //       title={'Multi-model serving platform'}
+          //       description={
+          //         'Multiple models can be deployed from a single model server. Choose this option when you have a large number of small models to deploy that can share server resources.'
+          //       }
+          //       actions={[
+          //         <Button
+          //           key={`action-${ProjectSectionID.WORKBENCHES}`}
+          //           onClick={() => {
+          //             setPlatformSelected(ServingRuntimePlatform.MULTI);
+          //           }}
+          //           variant="secondary"
+          //           size="lg"
+          //         >
+          //           Add model server
+          //         </Button>,
+          //       ]}
+          //     />
+          //   </Card>
+          // </Flex>
         }
         labels={
           currentProjectServingPlatform && [
@@ -201,13 +220,15 @@ const ModelServingPlatform: React.FC = () => {
       </DetailsSection>
 
       {!shouldShowPlatformSelection && emptyModelServer && (
-        <Alert
-          variant="warning"
-          isInline
-          title="The model serving type can be changed until the first model is deployed from the project. After that, you will need to create a new project in order to use a different model serving type."
-        />
+        <StackItem>
+          <Alert
+            variant="warning"
+            isInline
+            title="The model serving type can be changed until the first model is deployed from the project. After that, you will need to create a new project in order to use a different model serving type."
+          />
+        </StackItem>
       )}
-      <ManageServingRuntimeModal
+      {/* <ManageServingRuntimeModal
         isOpen={platformSelected === ServingRuntimePlatform.MULTI}
         currentProject={currentProject}
         servingRuntimeTemplates={templatesEnabled.filter((template) =>
@@ -229,7 +250,7 @@ const ModelServingPlatform: React.FC = () => {
         onClose={(submit: boolean) => {
           onSubmit(submit);
         }}
-      />
+      /> */}
     </>
   );
 };

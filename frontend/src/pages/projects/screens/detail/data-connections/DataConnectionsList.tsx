@@ -14,9 +14,9 @@ import { AccessReviewResource } from '~/pages/projects/screens/detail/const';
 
 const DataConnectionsList: React.FC = () => {
   const {
-    currentProject,
     dataConnections: { data: connections, loaded, error },
     refreshAllProjectData,
+    currentProject,
   } = React.useContext(ProjectDetailsContext);
   const [open, setOpen] = React.useState(false);
 
@@ -25,14 +25,14 @@ const DataConnectionsList: React.FC = () => {
     namespace: currentProject.metadata.name,
   });
 
-
   const isDataConnectionsEmpty = connections.length === 0;
   const icon = (
     <img
       style={{
         marginLeft: 'var(--pf-v5-global--spacer--xs)',
         marginRight: 'var(--pf-v5-global--spacer--xs)',
-        verticalAlign: 'middle',
+        verticalAlign: 'sub',
+        width: '32px',
       }}
       src="../images/UI_icon-Red_Hat-Connected-RGB.svg"
       alt="Data connections icon"
@@ -46,26 +46,30 @@ const DataConnectionsList: React.FC = () => {
         id={ProjectSectionID.DATA_CONNECTIONS}
         title={ProjectSectionTitles[ProjectSectionID.DATA_CONNECTIONS] || ''}
         popover={
-          <Popover
-            headerContent="About data connections"
-            bodyContent="Adding a data connection to your project allows you to connect data inputs to your workbenches."
-          >
-            <DashboardPopupIconButton
-              icon={
-                <OutlinedQuestionCircleIcon
-                  style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
-                />
+          !isDataConnectionsEmpty ? (
+            <Popover
+              headerContent={'About data connections'}
+              bodyContent={
+                'Adding a data connection to your project allows you to connect data inputs to your workbenches.'
               }
-              aria-label="More info"
-            />
-          </Popover>
+            >
+              <DashboardPopupIconButton
+                icon={
+                  <OutlinedQuestionCircleIcon
+                    style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+                  />
+                }
+                aria-label="More info"
+              />
+            </Popover>
+          ) : undefined
         }
         actions={
           !isDataConnectionsEmpty
             ? [
                 <Button
                   key={`action-${ProjectSectionID.DATA_CONNECTIONS}`}
-                  variant="primary"
+                  variant="secondary"
                   onClick={() => setOpen(true)}
                 >
                   Add data connection
