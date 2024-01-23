@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Button, Flex, FlexItem, Popover } from '@patternfly/react-core';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
+import { Button, Popover } from '@patternfly/react-core';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { AccessReviewResource, ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
+import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
+import { useAccessReview } from '~/api';
 import ManageStorageModal from './ManageStorageModal';
 import StorageTable from './StorageTable';
-import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
 import StorageCardEmpty from './StorageCardEmpty';
-import { useAccessReview } from '~/api';
+import storageIcon from '~images/UI_icon-Red_Hat-Storage-RGB.svg';
 
 const StorageList: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
@@ -35,7 +35,7 @@ const StorageList: React.FC = () => {
         verticalAlign: 'sub',
         width: '32px',
       }}
-      src="../images/UI_icon-Red_Hat-Storage-RGB.svg"
+      src={storageIcon}
       alt="Storage icon"
     />
   );
@@ -46,21 +46,23 @@ const StorageList: React.FC = () => {
         icon={icon}
         id={ProjectSectionID.CLUSTER_STORAGES}
         title={ProjectSectionTitles[ProjectSectionID.CLUSTER_STORAGES] || ''}
-        popover={!isPvcsEmpty ?
-          <Popover
-            headerContent="About cluster storage"
-            bodyContent="For data science projects that require data to be retained, you can add cluster storage to the project."
-          >
-            <DashboardPopupIconButton
-              icon={
-                <OutlinedQuestionCircleIcon
-                  style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
-                />
-              }
-              aria-label="More info"
-            />
-          </Popover>
-        : undefined}
+        popover={
+          !isPvcsEmpty ? (
+            <Popover
+              headerContent="About cluster storage"
+              bodyContent="For data science projects that require data to be retained, you can add cluster storage to the project."
+            >
+              <DashboardPopupIconButton
+                icon={
+                  <OutlinedQuestionCircleIcon
+                    style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+                  />
+                }
+                aria-label="More info"
+              />
+            </Popover>
+          ) : undefined
+        }
         actions={
           !isPvcsEmpty
             ? [

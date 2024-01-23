@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ConnectedIcon } from '@patternfly/react-icons';
 import ManageDataConnectionModal from '~/pages/projects/screens/detail/data-connections/ManageDataConnectionModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import ComponentsCard from "../ComponentsCard";
+import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
 
 type DataConnectionCardProps = {
   allowCreate: boolean;

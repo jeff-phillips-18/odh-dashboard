@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { ConnectedIcon } from '@patternfly/react-icons';
-import ManageDataConnectionModal from '~/pages/projects/screens/detail/data-connections/ManageDataConnectionModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import { ServingRuntimePlatform } from "~/types";
-import { getSortedTemplates, getTemplateEnabled, getTemplateEnabledForPlatform } from "../../customServingRuntimes/utils";
-import ManageKServeModal from "./kServeModal/ManageKServeModal";
-import ComponentsCard from "~/pages/projects/screens/detail/ComponentsCard";
+import { ServingRuntimePlatform } from '~/types';
+import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
 import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
+import {
+  getSortedTemplates,
+  getTemplateEnabled,
+  getTemplateEnabledForPlatform,
+} from '~/pages/modelServing/customServingRuntimes/utils';
+import ManageKServeModal from './kServeModal/ManageKServeModal';
 
 type DataConnectionCardProps = {
   allowCreate: boolean;
@@ -14,33 +16,22 @@ type DataConnectionCardProps = {
 const EmptySingleModelServingCard: React.FC<DataConnectionCardProps> = ({ allowCreate }) => {
   const {
     dataConnections: { data: dataConnections, loaded, error },
-    refreshAllProjectData,
   } = React.useContext(ProjectDetailsContext);
   const [open, setOpen] = React.useState(false);
 
-  const [platformSelected, setPlatformSelected] = React.useState<
-  ServingRuntimePlatform | undefined
->(undefined);
+  const {
+    servingRuntimes: { refresh: refreshServingRuntime },
+    servingRuntimeTemplates: { data: templates },
+    servingRuntimeTemplateOrder: { data: templateOrder },
+    servingRuntimeTemplateDisablement: { data: templateDisablement },
+    serverSecrets: { refresh: refreshTokens },
+    inferenceServices: { refresh: refreshInferenceServices },
+    currentProject,
+  } = React.useContext(ProjectDetailsContext);
 
-const {
-  servingRuntimes: {
-    data: servingRuntimes,
-    loaded: servingRuntimesLoaded,
-    error: servingRuntimeError,
-    refresh: refreshServingRuntime,
-  },
-  servingRuntimeTemplates: { data: templates, loaded: templatesLoaded, error: templateError },
-  servingRuntimeTemplateOrder: { data: templateOrder },
-  servingRuntimeTemplateDisablement: { data: templateDisablement },
-  serverSecrets: { refresh: refreshTokens },
-  inferenceServices: { refresh: refreshInferenceServices },
-  currentProject,
-} = React.useContext(ProjectDetailsContext);
-
-const { refresh: refreshAllProjects } = React.useContext(ProjectsContext);
+  const { refresh: refreshAllProjects } = React.useContext(ProjectsContext);
 
   const onSubmit = (submit: boolean) => {
-    setPlatformSelected(undefined);
     if (submit) {
       refreshAllProjects();
       refreshServingRuntime();

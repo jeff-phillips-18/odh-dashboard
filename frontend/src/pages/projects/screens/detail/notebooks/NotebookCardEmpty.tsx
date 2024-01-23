@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import emptyStateImg from '~/images/UI_icon-Red_Hat-Wrench-RGB.svg';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import ComponentsCard from "../ComponentsCard";
+import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
 
 type NotebookCardProps = {
   allowCreate: boolean;

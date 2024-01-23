@@ -79,29 +79,29 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   }
   if (!count && !ignoreEmptyState) {
     return (
-        <div className={css('odh-project-details__card', typeModifier)}>
-          <EmptyDetailsList
-            variant="lg"
-            title={title}
-            description={description}
-            icon={icon}
-            actions={
-              actionButton ||
-              (allowCreate ? (
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onAction && onAction();
-                  }}
-                  variant="secondary"
-                  size="lg"
-                >
-                  {createText}
-                </Button>
-              ) : undefined)
-            }
-          />
-        </div>
+      <div className={css('odh-project-details__card', typeModifier)}>
+        <EmptyDetailsList
+          variant="lg"
+          title={title}
+          description={description}
+          icon={icon}
+          actions={
+            actionButton ||
+            (allowCreate ? (
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAction && onAction();
+                }}
+                variant="secondary"
+                size="lg"
+              >
+                {createText}
+              </Button>
+            ) : undefined)
+          }
+        />
+      </div>
     );
   }
 

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import emptyStateImg from '~/images/UI_icon-Red_Hat-Storage-RGB.svg';
 import ManageStorageModal from '~/pages/projects/screens/detail/storage/ManageStorageModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import ComponentsCard from "../ComponentsCard";
+import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
 
 type ClusterStorageCardProps = {
   allowCreate: boolean;

@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { ConnectedIcon } from '@patternfly/react-icons';
-import ManageDataConnectionModal from '~/pages/projects/screens/detail/data-connections/ManageDataConnectionModal';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { ServingRuntimePlatform } from '~/types';
-import { getSortedTemplates, getTemplateEnabled, getTemplateEnabledForPlatform } from '../../customServingRuntimes/utils';
-import ManageKServeModal from './kServeModal/ManageKServeModal';
 import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
-import ManageServingRuntimeModal from "./ServingRuntimeModal/ManageServingRuntimeModal";
 import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
+import {
+  getSortedTemplates,
+  getTemplateEnabled,
+  getTemplateEnabledForPlatform,
+} from '~/pages/modelServing/customServingRuntimes/utils';
+import ManageServingRuntimeModal from './ServingRuntimeModal/ManageServingRuntimeModal';
 
 type DataConnectionCardProps = {
   allowCreate: boolean;
@@ -15,18 +16,12 @@ type DataConnectionCardProps = {
 const EmptyMultiModelServingCard: React.FC<DataConnectionCardProps> = ({ allowCreate }) => {
   const {
     dataConnections: { data: dataConnections, loaded, error },
-    refreshAllProjectData,
   } = React.useContext(ProjectDetailsContext);
   const [open, setOpen] = React.useState(false);
 
   const {
-    servingRuntimes: {
-      data: servingRuntimes,
-      loaded: servingRuntimesLoaded,
-      error: servingRuntimeError,
-      refresh: refreshServingRuntime,
-    },
-    servingRuntimeTemplates: { data: templates, loaded: templatesLoaded, error: templateError },
+    servingRuntimes: { refresh: refreshServingRuntime },
+    servingRuntimeTemplates: { data: templates },
     servingRuntimeTemplateOrder: { data: templateOrder },
     servingRuntimeTemplateDisablement: { data: templateDisablement },
     serverSecrets: { refresh: refreshTokens },
@@ -34,19 +29,13 @@ const EmptyMultiModelServingCard: React.FC<DataConnectionCardProps> = ({ allowCr
     currentProject,
   } = React.useContext(ProjectDetailsContext);
 
-  const [platformSelected, setPlatformSelected] = React.useState<
-  ServingRuntimePlatform | undefined
->(undefined);
-
-const { refresh: refreshAllProjects } = React.useContext(ProjectsContext);
-const templatesSorted = getSortedTemplates(templates, templateOrder);
-const templatesEnabled = templatesSorted.filter((template) =>
-  getTemplateEnabled(template, templateDisablement),
-);
-
+  const { refresh: refreshAllProjects } = React.useContext(ProjectsContext);
+  const templatesSorted = getSortedTemplates(templates, templateOrder);
+  const templatesEnabled = templatesSorted.filter((template) =>
+    getTemplateEnabled(template, templateDisablement),
+  );
 
   const onSubmit = (submit: boolean) => {
-    setPlatformSelected(undefined);
     if (submit) {
       refreshAllProjects();
       refreshServingRuntime();
@@ -54,7 +43,6 @@ const templatesEnabled = templatesSorted.filter((template) =>
       setTimeout(refreshTokens, 500); // need a timeout to wait for tokens creation
     }
   };
-
 
   return (
     <>

@@ -1,22 +1,17 @@
 import * as React from 'react';
-import { ConnectedIcon } from '@patternfly/react-icons';
-import ManageDataConnectionModal from '~/pages/projects/screens/detail/data-connections/ManageDataConnectionModal';
-import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
-import ComponentsCard from "../ComponentsCard";
-import { ConfigurePipelinesServerModal } from "~/concepts/pipelines/content/configurePipelinesServer/ConfigurePipelinesServerModal";
-import { PipelinesContext } from "~/concepts/pipelines/context/PipelinesContext";
-import usePipelines from "~/concepts/pipelines/apiHooks/usePipelines";
-import { LIMIT_MAX_ITEM_COUNT } from "~/concepts/pipelines/const";
+import { ConfigurePipelinesServerModal } from '~/concepts/pipelines/content/configurePipelinesServer/ConfigurePipelinesServerModal';
+import { PipelinesContext } from '~/concepts/pipelines/context/PipelinesContext';
+import usePipelines from '~/concepts/pipelines/apiHooks/usePipelines';
+import { LIMIT_MAX_ITEM_COUNT } from '~/concepts/pipelines/const';
+import ComponentsCard from '~/pages/projects/screens/detail/ComponentsCard';
 
 type PipelinesCardProps = {
   allowCreate: boolean;
 };
 const PipelinesCard: React.FC<PipelinesCardProps> = ({ allowCreate }) => {
-
-  const [pipelines, loaded, loadError, refresh] = usePipelines(LIMIT_MAX_ITEM_COUNT);
+  const [pipelines, loaded, loadError] = usePipelines(LIMIT_MAX_ITEM_COUNT);
 
   const [open, setOpen] = React.useState(false);
-  const [configureModalVisible, setConfigureModalVisible] = React.useState(false);
   const { refreshState } = React.useContext(PipelinesContext);
 
   return (

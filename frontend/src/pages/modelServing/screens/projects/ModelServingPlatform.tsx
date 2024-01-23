@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Alert, Button, Card, Flex, Label, Popover, StackItem } from '@patternfly/react-core';
-import EmptyDetailsList from '~/pages/projects/screens/detail/EmptyDetailsList';
+import { Alert, Popover, StackItem } from '@patternfly/react-core';
+import serverIcon from '~/images/UI_icon-Red_Hat-Server-RGB.svg';
 import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
@@ -18,12 +18,12 @@ import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
 import KServeInferenceServiceTable from '~/pages/modelServing/screens/projects/KServeSection/KServeInferenceServiceTable';
 import useServingPlatformStatuses from '~/pages/modelServing/useServingPlatformStatuses';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
-import ManageServingRuntimeModal from './ServingRuntimeModal/ManageServingRuntimeModal';
+import { useAccessReview } from '~/api';
+import ManageServingRuntimeModal from '~/pages/modelServing/screens/projects/ServingRuntimeModal/ManageServingRuntimeModal';
+import ManageKServeModal from '~/pages/modelServing/screens/projects/kServeModal/ManageKServeModal';
 import ModelMeshServingRuntimeTable from './ModelMeshSection/ServingRuntimeTable';
 import ModelServingPlatformButtonAction from './ModelServingPlatformButtonAction';
-import ManageKServeModal from './kServeModal/ManageKServeModal';
 import EmptySingleModelServingCard from './EmptySingleModelServingCard';
-import { useAccessReview } from '~/api';
 import EmptyMultiModelServingCard from './EmptyMultiModelServingCard';
 
 const ModelServingPlatform: React.FC = () => {
@@ -94,7 +94,7 @@ const ModelServingPlatform: React.FC = () => {
         verticalAlign: 'sub',
         width: '32px',
       }}
-      src="../images/UI_icon-Red_Hat-Server-RGB.svg"
+      src={serverIcon}
       alt="Server icon"
     />
   );
@@ -109,10 +109,8 @@ const ModelServingPlatform: React.FC = () => {
         popover={
           !(!shouldShowPlatformSelection && emptyModelServer) ? (
             <Popover
-              headerContent={'About model serving'}
-              bodyContent={
-                'Deploy a trained data science model to serve intelligent applications with an endpoint that allows apps to send requests to the model.'
-              }
+              headerContent="About model serving"
+              bodyContent="Deploy a trained data science model to serve intelligent applications with an endpoint that allows apps to send requests to the model."
             >
               <DashboardPopupIconButton
                 icon={
@@ -151,56 +149,7 @@ const ModelServingPlatform: React.FC = () => {
             <EmptySingleModelServingCard allowCreate={rbacLoaded && allowCreate} />
             <EmptyMultiModelServingCard allowCreate={rbacLoaded && allowCreate} />
           </div>
-          // <Flex>
-          //   <Card isPlain>
-          //     <EmptyDetailsList
-          //       title={'Single model serving platform'}
-          //       description={
-          //         'Each model is deployed from its own model server. Choose this option when you have a small number of large models to deploy.\n'
-          //       }
-          //       actions={[
-          //         <Button
-          //           key={`action-${ProjectSectionID.WORKBENCHES}`}
-          //           onClick={() => {
-          //             setPlatformSelected(ServingRuntimePlatform.SINGLE);
-          //           }}
-          //           variant="secondary"
-          //           size="lg"
-          //         >
-          //           Create pipeline
-          //         </Button>,
-          //       ]}
-          //     />
-          //   </Card>
-          //   <Card isPlain>
-          //     <EmptyDetailsList
-          //       title={'Multi-model serving platform'}
-          //       description={
-          //         'Multiple models can be deployed from a single model server. Choose this option when you have a large number of small models to deploy that can share server resources.'
-          //       }
-          //       actions={[
-          //         <Button
-          //           key={`action-${ProjectSectionID.WORKBENCHES}`}
-          //           onClick={() => {
-          //             setPlatformSelected(ServingRuntimePlatform.MULTI);
-          //           }}
-          //           variant="secondary"
-          //           size="lg"
-          //         >
-          //           Add model server
-          //         </Button>,
-          //       ]}
-          //     />
-          //   </Card>
-          // </Flex>
         }
-        // labels={
-        //   currentProjectServingPlatform && [
-        //     <Label key="serving-platform-label">
-        //       {isProjectModelMesh ? 'Multi-model serving enabled' : 'Single-model serving enabled'}
-        //     </Label>,
-        //   ]
-        // }
       >
         {shouldShowPlatformSelection ? (
           <ModelServingPlatformSelect
@@ -226,7 +175,7 @@ const ModelServingPlatform: React.FC = () => {
           />
         </StackItem>
       )}
-      {/* <ManageServingRuntimeModal
+      <ManageServingRuntimeModal
         isOpen={platformSelected === ServingRuntimePlatform.MULTI}
         currentProject={currentProject}
         servingRuntimeTemplates={templatesEnabled.filter((template) =>
@@ -248,7 +197,7 @@ const ModelServingPlatform: React.FC = () => {
         onClose={(submit: boolean) => {
           onSubmit(submit);
         }}
-      /> */}
+      />
     </>
   );
 };

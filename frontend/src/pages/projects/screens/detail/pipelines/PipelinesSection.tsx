@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Flex, FlexItem, Popover } from '@patternfly/react-core';
+import { Popover } from '@patternfly/react-core';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { PipelineServerTimedOut, usePipelinesAPI } from '~/concepts/pipelines/context';
-import NoPipelineServer from '~/concepts/pipelines/NoPipelineServer';
 import ImportPipelineButton from '~/concepts/pipelines/content/import/ImportPipelineButton';
 import PipelinesList from '~/pages/projects/screens/detail/pipelines/PipelinesList';
 import PipelineServerActions from '~/concepts/pipelines/content/pipelinesDetails/pipeline/PipelineServerActions';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
 import EmptyPipelinesSectionCard from './EmptyPipelinesSectionCard';
+import pipelineImage from '~images/UI_icon-Red_Hat-Branch-RGB.svg';
 
 const PipelinesSection: React.FC = () => {
   const {
@@ -28,7 +28,7 @@ const PipelinesSection: React.FC = () => {
         verticalAlign: 'sub',
         width: '32px',
       }}
-      src="../images/UI_icon-Red_Hat-Branch-RGB.svg"
+      src={pipelineImage}
       alt="Pipelines branch icon"
     />
   );
@@ -39,21 +39,23 @@ const PipelinesSection: React.FC = () => {
         icon={icon}
         id={ProjectSectionID.PIPELINES}
         title={ProjectSectionTitles[ProjectSectionID.PIPELINES]}
-        popover={ installed ?
-          <Popover
-            headerContent="About pipelines"
-            bodyContent="Standardize and automate machine learning workflows to enable you to further enchance and deploy your data science models."
-          >
-            <DashboardPopupIconButton
-              icon={
-                <OutlinedQuestionCircleIcon
-                  style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
-                />
-              }
-              aria-label="More info"
-            />
-          </Popover>
-        : undefined}
+        popover={
+          installed ? (
+            <Popover
+              headerContent="About pipelines"
+              bodyContent="Standardize and automate machine learning workflows to enable you to further enchance and deploy your data science models."
+            >
+              <DashboardPopupIconButton
+                icon={
+                  <OutlinedQuestionCircleIcon
+                    style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+                  />
+                }
+                aria-label="More info"
+              />
+            </Popover>
+          ) : undefined
+        }
         actions={
           installed
             ? [

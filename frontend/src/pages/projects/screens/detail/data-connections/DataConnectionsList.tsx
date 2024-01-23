@@ -6,11 +6,11 @@ import DetailsSection from '~/pages/projects/screens/detail/DetailsSection';
 import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
+import { useAccessReview } from '~/api';
+import { AccessReviewResource } from '~/pages/projects/screens/detail/const';
 import DataConnectionsTable from './DataConnectionsTable';
 import ManageDataConnectionModal from './ManageDataConnectionModal';
 import DataConnectionsCardEmpty from './DataConnectionsCardEmpty';
-import { useAccessReview } from '~/api';
-import { AccessReviewResource } from '~/pages/projects/screens/detail/const';
 
 const DataConnectionsList: React.FC = () => {
   const {
@@ -48,10 +48,8 @@ const DataConnectionsList: React.FC = () => {
         popover={
           !isDataConnectionsEmpty ? (
             <Popover
-              headerContent={'About data connections'}
-              bodyContent={
-                'Adding a data connection to your project allows you to connect data inputs to your workbenches.'
-              }
+              headerContent="About data connections"
+              bodyContent="Adding a data connection to your project allows you to connect data inputs to your workbenches."
             >
               <DashboardPopupIconButton
                 icon={

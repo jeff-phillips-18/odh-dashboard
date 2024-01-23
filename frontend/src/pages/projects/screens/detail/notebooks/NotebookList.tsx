@@ -58,20 +58,22 @@ const NotebookList: React.FC = () => {
         // className="odh-project-details"
         id={ProjectSectionID.WORKBENCHES}
         title={ProjectSectionTitles[ProjectSectionID.WORKBENCHES] || ''}
-        popover={ !isNotebooksEmpty &&
-          <Popover
-            headerContent="About workbenches"
-            bodyContent="Creating a workbench allows you to add a Jupyter notebook to your project."
-          >
-            <DashboardPopupIconButton
-              icon={
-                <OutlinedQuestionCircleIcon
-                  style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
-                />
-              }
-              aria-label="More info"
-            />
-          </Popover>
+        popover={
+          !isNotebooksEmpty && (
+            <Popover
+              headerContent="About workbenches"
+              bodyContent="Creating a workbench allows you to add a Jupyter notebook to your project."
+            >
+              <DashboardPopupIconButton
+                icon={
+                  <OutlinedQuestionCircleIcon
+                    style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+                  />
+                }
+                aria-label="More info"
+              />
+            </Popover>
+          )
         }
         actions={[
           !isNotebooksEmpty && (
