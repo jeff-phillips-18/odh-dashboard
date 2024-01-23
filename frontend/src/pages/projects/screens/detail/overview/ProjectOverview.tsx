@@ -201,7 +201,7 @@ const ProjectOverview: React.FC = () => {
           <ClusterStorageCard allowCreate={rbacLoaded && allowCreate} />
           <ModelServerCard />
           <DataConnectionCard allowCreate={rbacLoaded && allowCreate} />
-          {isEmptyProject ? <UserGroupsCard users={0} groups={0} /> : null}
+          <UserGroupsCard />
         </div>
       )}
     </PageSection>

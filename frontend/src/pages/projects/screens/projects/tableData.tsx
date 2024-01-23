@@ -10,12 +10,7 @@ export const columns: SortableData<ProjectKind>[] = [
   },
   {
     field: 'notebooks',
-    label: 'Workbench',
-    sortable: false,
-  },
-  {
-    field: 'notebook-status',
-    label: 'Status',
+    label: 'Workbench status',
     sortable: false,
   },
   {

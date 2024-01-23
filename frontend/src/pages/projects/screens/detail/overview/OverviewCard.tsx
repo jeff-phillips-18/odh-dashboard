@@ -20,7 +20,6 @@ type OverviewCardProps = {
   title: string;
   description?: string;
   icon?: React.ComponentType;
-  ignoreEmptyState?: boolean;
   allowCreate?: boolean;
   actionButton?: React.ReactNode;
   onAction?: () => void;
@@ -42,7 +41,6 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   title,
   description,
   icon,
-  ignoreEmptyState,
   allowCreate,
   actionButton,
   onAction,
@@ -94,7 +92,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       </div>
     );
   }
-  if (!count && !ignoreEmptyState) {
+  if (!count) {
     return (
       <div className={css('odh-project-overview__card', typeModifier)}>
         <EmptyState variant="lg">

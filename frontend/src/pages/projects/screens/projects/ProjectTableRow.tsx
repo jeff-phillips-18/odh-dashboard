@@ -63,21 +63,11 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
         </Flex>
         {owner && <Text component={TextVariants.small}>{owner}</Text>}
       </Td>
-      <Td dataLabel="Workbench">
+      <Td dataLabel="Workbench status">
         <ListNotebookState
           notebookStates={notebookStates}
           loaded={loaded}
           error={error}
-          show="notebook"
-          namespace={project.metadata.name}
-        />
-      </Td>
-      <Td dataLabel="Status">
-        <ListNotebookState
-          notebookStates={notebookStates}
-          loaded={loaded}
-          error={error}
-          show="status"
           namespace={project.metadata.name}
         />
       </Td>
