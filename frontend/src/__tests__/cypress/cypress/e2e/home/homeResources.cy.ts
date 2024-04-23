@@ -25,7 +25,7 @@ describe('Home page Resources section', () => {
 
     cy.findByTestId('landing-page-resources').should('not.exist');
   });
-  it('should navigate to the project list', () => {
+  it('should navigate to the resources page', () => {
     initHomeIntercepts({ disableHome: false });
     cy.visit('/');
 
