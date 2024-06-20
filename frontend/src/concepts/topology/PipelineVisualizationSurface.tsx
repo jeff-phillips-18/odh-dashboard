@@ -12,6 +12,7 @@ import {
   addSpacerNodes,
   DEFAULT_SPACER_NODE_TYPE,
   DEFAULT_EDGE_TYPE,
+  TopologySideBar,
 } from '@patternfly/react-topology';
 import {
   EmptyState,
@@ -25,14 +26,37 @@ import { NODE_HEIGHT, NODE_WIDTH } from './const';
 type PipelineVisualizationSurfaceProps = {
   nodes: PipelineNodeModel[];
   selectedIds?: string[];
+  sidePanel?: React.ReactElement | null;
 };
 
 const PipelineVisualizationSurface: React.FC<PipelineVisualizationSurfaceProps> = ({
   nodes,
   selectedIds,
+  sidePanel,
 }) => {
   const controller = useVisualizationController();
   const [error, setError] = React.useState<Error | null>();
+
+  React.useEffect(() => {
+    let resizeTimeout: NodeJS.Timeout | null;
+
+    if (selectedIds?.[0]) {
+      const selectedNode = controller.getNodeById(selectedIds[0]);
+      if (selectedNode) {
+        // Use a timeout in order to allow the side panel to be shown and window size recomputed
+        resizeTimeout = setTimeout(() => {
+          controller.getGraph().panIntoView(selectedNode, { offset: 20, minimumVisible: 100 });
+          resizeTimeout = null;
+        }, 500);
+      }
+    }
+    return () => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+    };
+  }, [selectedIds, controller]);
+
   React.useEffect(() => {
     const currentModel = controller.toModel();
     const updateNodes = nodes.map((node) => {
@@ -158,6 +182,9 @@ const PipelineVisualizationSurface: React.FC<PipelineVisualizationSurfaceProps> 
           })}
         />
       }
+      sideBarOpen={!!sidePanel}
+      sideBarResizable
+      sideBar={<TopologySideBar resizable>{sidePanel}</TopologySideBar>}
     >
       <VisualizationSurface state={{ selectedIds }} />
     </TopologyView>
