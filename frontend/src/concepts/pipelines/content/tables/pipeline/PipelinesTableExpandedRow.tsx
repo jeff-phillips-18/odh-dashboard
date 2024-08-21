@@ -68,7 +68,7 @@ const PipelinesTableExpandedRow: React.FC<PipelinesTableExpandedRowProps> = ({ p
   return (
     <Tr isExpanded>
       <Td />
-      <Td className="pf-v5-u-pb-lg" noPadding colSpan={6}>
+      <Td className="pf-v6-u-pb-lg" noPadding colSpan={6}>
         <ExpandableRowContent>
           <PipelineVersionTable
             {...sortProps}

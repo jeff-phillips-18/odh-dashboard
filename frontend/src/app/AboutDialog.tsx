@@ -82,7 +82,7 @@ const AboutDialog: React.FC<AboutDialogProps> = ({ onClose }) => {
         </div>
         {error ? (
           <Alert
-            style={{ marginTop: 'var(--pf-v5-global--spacer--lg)' }}
+            style={{ marginTop: 'var(--pf-v6-global--spacer--lg)' }}
             variant="danger"
             title="Problem loading product information"
           >

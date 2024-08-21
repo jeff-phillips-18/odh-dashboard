@@ -49,7 +49,7 @@ export const generateTableStructure = (scalarMetricsArtifacts: RunArtifact[]): S
       field: 'run-name',
       isStickyColumn: true,
       hasRightBorder: true,
-      className: 'pf-v5-u-background-color-200',
+      className: 'pf-v6-u-background-color-200',
       sortable: false,
     },
     ...columnLabels.map(
@@ -70,7 +70,7 @@ export const generateTableStructure = (scalarMetricsArtifacts: RunArtifact[]): S
       field: 'execution-name-artifact-name',
       isStickyColumn: true,
       hasRightBorder: true,
-      className: 'pf-v5-u-background-color-200',
+      className: 'pf-v6-u-background-color-200',
       sortable: false,
     },
     ...subColumnLabels.map(

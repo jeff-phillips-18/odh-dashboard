@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               type: 'project',
             });
           }}
-          style={{ fontSize: 'var(--pf-v5-global--FontSize--md)' }}
+          style={{ fontSize: 'var(--pf-v6-global--FontSize--md)' }}
         >
           <Truncate content={getDisplayNameFromK8sResource(project)} />
         </Button>
@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {project.metadata.creationTimestamp ? (
                 <Timestamp
                   date={new Date(project.metadata.creationTimestamp)}
-                  style={{ color: 'var(--pf-v5-global--Color--100)' }}
+                  style={{ color: 'var(--pf-v6-global--Color--100)' }}
                 />
               ) : (
                 'Unknown'

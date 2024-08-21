@@ -67,7 +67,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                   {notebookState ? (
                     <Td
                       dataLabel="workbenchName"
-                      style={{ paddingLeft: 'var(--pf-v5-global--spacer--sm)' }}
+                      style={{ paddingLeft: 'var(--pf-v6-global--spacer--sm)' }}
                     >
                       <NotebookRouteLink
                         label={getDisplayNameFromK8sResource(notebookState.notebook)}
@@ -76,7 +76,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                       />
                     </Td>
                   ) : (
-                    <Td colSpan={2} style={{ fontSize: 'var(--pf-v5-global--FontSize--sm' }}>
+                    <Td colSpan={2} style={{ fontSize: 'var(--pf-v6-global--FontSize--sm' }}>
                       <Button
                         variant="link"
                         isInline

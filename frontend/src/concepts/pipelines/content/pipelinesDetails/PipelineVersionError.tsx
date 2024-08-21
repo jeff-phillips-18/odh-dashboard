@@ -13,7 +13,7 @@ const PipelineVersionError: React.FC<PipelineVersionErrorProps> = ({
   description,
   testId,
 }) => (
-  <PageSection hasBodyWrapper={false} className="pf-v5-u-h-100">
+  <PageSection hasBodyWrapper={false} className="pf-v6-u-h-100">
     <EmptyState
       data-testid={testId}
       headingLevel="h2"

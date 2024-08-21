@@ -42,7 +42,7 @@ const StorageSizeBar: React.FC<StorageSizeBarProps> = ({ pvc }) => {
     inUseRender = (
       <Tooltip content={`Unable to get storage data. ${error.message}`}>
         <ExclamationCircleIcon
-          color="var(--pf-v5-global--danger-color--100)"
+          color="var(--pf-v6-global--danger-color--100)"
           aria-label="error icon"
           tabIndex={0}
         />

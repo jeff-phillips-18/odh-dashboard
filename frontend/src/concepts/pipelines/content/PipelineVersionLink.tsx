@@ -30,7 +30,7 @@ export const PipelineVersionLink: React.FC<PipelineVersionLinkProps> = ({
   if (error) {
     return (
       <Tooltip content={error.message} position="right">
-        <div className="pf-v5-u-disabled-color-100 pf-v5-c-truncate__start">{displayName}</div>
+        <div className="pf-v6-u-disabled-color-100 pf-v6-c-truncate__start">{displayName}</div>
       </Tooltip>
     );
   }

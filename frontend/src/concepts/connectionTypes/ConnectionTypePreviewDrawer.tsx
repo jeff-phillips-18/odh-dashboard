@@ -27,7 +27,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
     <DrawerPanelContent
       isResizable
       style={{
-        backgroundColor: 'var(--pf-v5-global--BackgroundColor--200)',
+        backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)',
       }}
     >
       <DrawerHead>
@@ -42,7 +42,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
       <DrawerPanelBody>
         <div
           style={{
-            paddingBottom: 'var(--pf-v5-global--spacer--lg)',
+            paddingBottom: 'var(--pf-v6-global--spacer--lg)',
           }}
         >
           <Content component="small">
@@ -51,7 +51,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
           </Content>
           <Card
             style={{
-              marginTop: 'var(--pf-v5-global--spacer--md)',
+              marginTop: 'var(--pf-v6-global--spacer--md)',
             }}
           >
             <CardBody>

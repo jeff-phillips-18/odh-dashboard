@@ -179,7 +179,7 @@ const ModelRegistrySelector: React.FC<ModelRegistrySelectorProps> = ({
       <img
         src={typedObjectImage(ProjectObjectType.project)}
         alt=""
-        style={{ height: 'var(--pf-v5-global--icon--FontSize--lg)' }}
+        style={{ height: 'var(--pf-v6-global--icon--FontSize--lg)' }}
       />
       <Flex spaceItems={{ default: 'spaceItemsSm' }} alignItems={{ default: 'alignItemsCenter' }}>
         <FlexItem>

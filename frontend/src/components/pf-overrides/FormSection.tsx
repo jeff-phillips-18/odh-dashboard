@@ -20,7 +20,7 @@ const FormSection: React.FC<Props> = ({
     title={
       description ? (
         <>
-          <TitleElement className="pf-v5-c-form__section-title">{title}</TitleElement>
+          <TitleElement className="pf-v6-c-form__section-title">{title}</TitleElement>
           <Content component="p" className="odh-form-section__desc">
             {description}
           </Content>

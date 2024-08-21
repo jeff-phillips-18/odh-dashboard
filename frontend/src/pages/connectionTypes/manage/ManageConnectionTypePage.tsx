@@ -106,7 +106,7 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
         }
       >
         {isEdit ? (
-          <PageSection hasBodyWrapper={false} className="pf-v5-u-pt-0">
+          <PageSection hasBodyWrapper={false} className="pf-v6-u-pt-0">
             <Alert
               isInline
               variant="warning"
@@ -114,7 +114,7 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
             />
           </PageSection>
         ) : undefined}
-        <PageSection hasBodyWrapper={false} isFilled className="pf-v5-u-pt-0">
+        <PageSection hasBodyWrapper={false} isFilled className="pf-v6-u-pt-0">
           <Form>
             <FormSection title="Type details" style={{ maxWidth: 625 }}>
               <NameDescriptionField
@@ -137,7 +137,7 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
                 />
               </FormGroup>
             </FormSection>
-            <FormSection title="Fields" className="pf-v5-u-mt-0">
+            <FormSection title="Fields" className="pf-v6-u-mt-0">
               Add fields to prompt users to input information, and optionally assign default values
               to those fields.
               <FormGroup>

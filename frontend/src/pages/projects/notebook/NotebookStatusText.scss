@@ -3,11 +3,11 @@
 .odh-notebook-status-popover {
   &__starting-text {
     cursor: pointer;
-    text-decoration: underline var(--pf-v5-global--BorderWidth--sm) dashed
-      var(--pf-v5-global--BorderColor--200);
+    text-decoration: underline var(--pf-v6-global--BorderWidth--sm) dashed
+      var(--pf-v6-global--BorderColor--200);
     text-underline-offset: 0.25rem;
     &:hover {
-      text-decoration-color: var(--pf-v5-global--Color--100);
+      text-decoration-color: var(--pf-v6-global--Color--100);
     }
   }
 }

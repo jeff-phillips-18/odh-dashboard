@@ -25,7 +25,7 @@ export const ArtifactOverviewDetails: React.FC<ArtifactOverviewDetailsProps> = (
     <Flex
       spaceItems={{ default: 'spaceItems2xl' }}
       direction={{ default: 'column' }}
-      className="pf-v5-u-pt-lg pf-v5-u-pb-lg"
+      className="pf-v6-u-pt-lg pf-v6-u-pb-lg"
     >
       <FlexItem>
         <Stack hasGutter>

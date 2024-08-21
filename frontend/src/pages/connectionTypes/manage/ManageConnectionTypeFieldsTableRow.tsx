@@ -42,7 +42,7 @@ const ManageConnectionTypeFieldsTableRow: React.FC<Props> = ({
           <Label color="blue" data-testid="section-heading">
             Section heading
           </Label>
-          <div className="pf-v5-u-color-200">
+          <div className="pf-v6-u-color-200">
             <Truncate content={row.description ?? ''} />
           </div>
         </Td>
@@ -80,7 +80,7 @@ const ManageConnectionTypeFieldsTableRow: React.FC<Props> = ({
       />
       <Td dataLabel={columns[0]} data-testid="field-name">
         {row.name}
-        <div className="pf-v5-u-color-200">
+        <div className="pf-v6-u-color-200">
           <Truncate content={row.description ?? ''} />
         </div>
       </Td>

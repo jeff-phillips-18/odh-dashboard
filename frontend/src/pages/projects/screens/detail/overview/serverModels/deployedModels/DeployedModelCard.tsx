@@ -71,15 +71,15 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
             <Content component={TextListVariants.dl} style={{ display: 'block' }}>
               <Content
                 component={TextListItemVariants.dt}
-                style={{ marginBottom: 'var(--pf-v5-global--spacer--xs)' }}
+                style={{ marginBottom: 'var(--pf-v6-global--spacer--xs)' }}
               >
                 Serving runtime
               </Content>
               <Content
                 component={TextListItemVariants.dd}
                 style={{
-                  fontSize: 'var(--pf-v5-global--FontSize--sm)',
-                  color: !servingRuntime ? 'var(--pf-v5-global--Color--200)' : undefined,
+                  fontSize: 'var(--pf-v6-global--FontSize--sm)',
+                  color: !servingRuntime ? 'var(--pf-v6-global--Color--200)' : undefined,
                 }}
               >
                 <InferenceServiceServingRuntime servingRuntime={servingRuntime} />

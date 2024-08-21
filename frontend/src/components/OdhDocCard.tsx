@@ -179,7 +179,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
           {/* Override the bold font in the title, make the subtitle lighter */}
           <Content
             component="small"
-            style={{ fontWeight: 'var(--pf-v5-global--FontWeight--normal)' }}
+            style={{ fontWeight: 'var(--pf-v6-global--FontWeight--normal)' }}
           >
             by {odhDoc.spec.appDisplayName}
           </Content>

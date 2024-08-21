@@ -224,7 +224,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
             isTextWrapped={isTextWrapped}
             toolbar={
               !error && (
-                <Toolbar className={isFullScreen ? 'pf-v5-u-p-sm' : ''}>
+                <Toolbar className={isFullScreen ? 'pf-v6-u-p-sm' : ''}>
                   <ToolbarContent>
                     <ToolbarGroup align={{ default: 'alignStart' }} gap={{ default: 'gapNone' }}>
                       {!showSearchbar && (
@@ -344,7 +344,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                         />
                       </ToolbarItem>
                       <ToolbarItem gap={{ default: 'gapNone' }}>
-                        {downloading && <Spinner size="sm" className="pf-v5-u-my-sm" />}
+                        {downloading && <Spinner size="sm" className="pf-v6-u-my-sm" />}
                         {podContainers.length <= 1 ? (
                           <Tooltip position="top" content={<div>Download current step log</div>}>
                             <Button

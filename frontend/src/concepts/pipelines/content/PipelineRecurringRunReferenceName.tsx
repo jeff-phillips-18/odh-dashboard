@@ -20,7 +20,7 @@ const PipelineRecurringRunReferenceName: React.FC<PipelineRecurringRunReferenceN
       {loading ? (
         'loading...'
       ) : data ? (
-        <Content component={ContentVariants.p} className="pf-v5-u-pb-sm">
+        <Content component={ContentVariants.p} className="pf-v6-u-pb-sm">
           Run {getPipelineRecurringRunExecutionCount(runName)} of {data.display_name}
         </Content>
       ) : (

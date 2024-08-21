@@ -66,7 +66,7 @@ export const useResourcesSection = (): React.ReactNode => {
                   odhDoc={doc}
                   showFavorite={false}
                   style={{
-                    border: '1px solid var(--pf-v5-global--BorderColor--100)',
+                    border: '1px solid var(--pf-v6-global--BorderColor--100)',
                     borderRadius: 16,
                   }}
                 />

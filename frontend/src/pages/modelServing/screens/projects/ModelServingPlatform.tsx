@@ -172,7 +172,7 @@ const ModelServingPlatform: React.FC = () => {
             <Flex alignItems={{ default: 'alignItemsCenter' }} gap={{ default: 'gapLg' }}>
               <FlexItem
                 flex={{ default: 'flex_1' }}
-                style={{ borderRight: '1px solid var(--pf-v5-global--BorderColor--100)' }}
+                style={{ borderRight: '1px solid var(--pf-v6-global--BorderColor--100)' }}
               >
                 <EmptyDetailsView
                   iconImage={typedEmptyImage(ProjectObjectType.modelServer)}

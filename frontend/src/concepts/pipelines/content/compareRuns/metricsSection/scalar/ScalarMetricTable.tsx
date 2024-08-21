@@ -38,7 +38,7 @@ const ScalarMetricTable: React.FC<ScalarMetricTableProps> = ({
           hasRightBorder
           isStickyColumn
           modifier="fitContent"
-          className="pf-v5-u-background-color-200"
+          className="pf-v6-u-background-color-200"
         >
           <b>{key}</b>
         </Td>

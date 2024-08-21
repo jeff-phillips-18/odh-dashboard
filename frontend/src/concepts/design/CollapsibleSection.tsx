@@ -33,7 +33,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         style={
           (open ?? innerOpen) || showChildrenWhenClosed
             ? {
-                marginBottom: 'var(--pf-v5-global--spacer--md)',
+                marginBottom: 'var(--pf-v6-global--spacer--md)',
               }
             : undefined
         }
@@ -49,8 +49,8 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
               paddingRight: 0,
               fontSize:
                 titleVariant === ContentVariants.h2
-                  ? 'var(--pf-v5-global--FontSize--xl)'
-                  : 'var(--pf-v5-global--FontSize--2xl)',
+                  ? 'var(--pf-v6-global--FontSize--xl)'
+                  : 'var(--pf-v6-global--FontSize--2xl)',
             }}
             onClick={() => (setOpen ? setOpen(!open) : setInnerOpen((prev) => !prev))}
           />

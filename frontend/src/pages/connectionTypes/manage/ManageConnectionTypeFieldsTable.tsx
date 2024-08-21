@@ -120,7 +120,7 @@ const ManageConnectionTypeFieldsTable: React.FC<Props> = ({ fields, onFieldsChan
               ))}
             </Tbody>
           </Table>
-          <ActionList className="pf-v5-u-mt-md">
+          <ActionList className="pf-v6-u-mt-md">
             <ActionListItem>
               <Button
                 variant="secondary"

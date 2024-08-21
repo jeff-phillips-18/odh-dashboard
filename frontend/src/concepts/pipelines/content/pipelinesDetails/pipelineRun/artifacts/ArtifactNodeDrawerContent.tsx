@@ -47,7 +47,7 @@ export const ArtifactNodeDrawerContent: React.FC<ArtifactNodeDrawerContentProps>
           <DrawerCloseButton onClick={onClose} />
         </DrawerActions>
       </DrawerHead>
-      <DrawerPanelBody className="pipeline-run__drawer-panel-body pf-v5-u-pr-sm">
+      <DrawerPanelBody className="pipeline-run__drawer-panel-body pf-v6-u-pr-sm">
         {artifact ? (
           <Tabs
             aria-label="Artifact node detail tabs"

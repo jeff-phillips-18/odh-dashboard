@@ -47,7 +47,7 @@ const DeployedModelsCard: React.FC<DeployedModelsCardProps> = ({
           </FlexItem>
           <FlexItem>
             <ToggleGroup
-              style={{ marginLeft: 'var(--pf-v5-global--spacer--md)' }}
+              style={{ marginLeft: 'var(--pf-v6-global--spacer--md)' }}
               aria-label="Default with single selectable"
             >
               <ToggleGroupItem

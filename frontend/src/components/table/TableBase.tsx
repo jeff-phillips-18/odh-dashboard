@@ -273,7 +273,7 @@ const TableBase = <T,>({
       {(toolbarContent || showPagination) && (
         <Toolbar
           inset={{ default: 'insetNone' }}
-          className="pf-v5-u-w-100"
+          className="pf-v6-u-w-100"
           customLabelGroupContent={<></>}
         >
           <ToolbarContent>
@@ -282,7 +282,7 @@ const TableBase = <T,>({
               <ToolbarItem
                 variant="pagination"
                 align={{ default: 'alignEnd' }}
-                className="pf-v5-u-pr-lg"
+                className="pf-v6-u-pr-lg"
               >
                 {pagination('top')}
               </ToolbarItem>
@@ -300,7 +300,7 @@ const TableBase = <T,>({
       )}
 
       {(bottomToolbarContent || showPagination) && (
-        <Toolbar inset={{ default: 'insetNone' }} className="pf-v5-u-w-100">
+        <Toolbar inset={{ default: 'insetNone' }} className="pf-v6-u-w-100">
           <ToolbarContent alignItems="center">
             {bottomToolbarContent}
             {showPagination && (

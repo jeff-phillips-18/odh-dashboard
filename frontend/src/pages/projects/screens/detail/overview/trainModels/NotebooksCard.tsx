@@ -59,7 +59,7 @@ const NotebooksCard: React.FC = () => {
         icon={() => (
           <ExclamationCircleIcon
             style={{
-              color: 'var(--pf-v5-global--danger-color--100)',
+              color: 'var(--pf-v6-global--danger-color--100)',
               width: '32px',
               height: '32px',
             }}
