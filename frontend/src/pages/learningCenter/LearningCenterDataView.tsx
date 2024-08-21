@@ -124,7 +124,7 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
       <>
         <PageSection
           isFilled
-          variant={viewType === LIST_VIEW ? PageSectionVariants.light : PageSectionVariants.default}
+          variant={PageSectionVariants.secondary}
           className={
             viewType === LIST_VIEW
               ? 'odh-learning-paths__view-panel__list-view'
