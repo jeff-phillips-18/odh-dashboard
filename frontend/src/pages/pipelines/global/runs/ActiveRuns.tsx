@@ -30,7 +30,12 @@ export const ActiveRuns: React.FC = () => {
   if (isExperimentArchived) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={CubesIcon}  titleText="Experiment archived" data-testid="experiment-archived-empty-state">
+        <EmptyState
+          headingLevel="h2"
+          icon={CubesIcon}
+          titleText="Experiment archived"
+          data-testid="experiment-archived-empty-state"
+        >
           <EmptyStateBody>
             When an experiment is archived, its runs are moved to the {PipelineRunTabTitle.ARCHIVED}{' '}
             tab.
@@ -43,7 +48,11 @@ export const ActiveRuns: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading active runs">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading active runs"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -60,7 +69,12 @@ export const ActiveRuns: React.FC = () => {
 
   if (loaded && totalSize === 0 && !tableProps.filter) {
     return (
-      <EmptyState  headingLevel="h2" icon={PlusCircleIcon}  titleText="No runs" data-testid="active-runs-empty-state">
+      <EmptyState
+        headingLevel="h2"
+        icon={PlusCircleIcon}
+        titleText="No runs"
+        data-testid="active-runs-empty-state"
+      >
         <EmptyStateBody>
           To get started, create a run. Alternatively, go to the{' '}
           <b>{PipelineRunTabTitle.SCHEDULES}</b> tab and create a schedule to execute recurring

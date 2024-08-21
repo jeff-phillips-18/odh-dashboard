@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  CardBody,
-  CardFooter,
-  Flex,
-  FlexItem,
-  Content,
-  } from '@patternfly/react-core';
+import { Button, CardBody, CardFooter, Flex, FlexItem, Content } from '@patternfly/react-core';
 
 type MetricsCardProps = {
   title: string;

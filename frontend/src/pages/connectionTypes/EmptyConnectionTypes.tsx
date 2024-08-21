@@ -12,7 +12,13 @@ import { PlusCircleIcon } from '@patternfly/react-icons';
 
 const EmptyConnectionTypes: React.FC = () => (
   <PageSection hasBodyWrapper={false} isFilled>
-    <EmptyState  headingLevel="h1" icon={PlusCircleIcon}  titleText="No connection types found." variant={EmptyStateVariant.full} data-testid="connection-types-empty-state">
+    <EmptyState
+      headingLevel="h1"
+      icon={PlusCircleIcon}
+      titleText="No connection types found."
+      variant={EmptyStateVariant.full}
+      data-testid="connection-types-empty-state"
+    >
       <EmptyStateBody>To get started create a connection type.</EmptyStateBody>
       <EmptyStateFooter>
         <Button

@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Bullseye,
-  Button,
-  CardBody,
-  Flex,
-  FlexItem,
-  Content,
-  } from '@patternfly/react-core';
+import { Bullseye, Button, CardBody, Flex, FlexItem, Content } from '@patternfly/react-core';
 import { ProjectObjectType, SectionType, typedObjectImage } from '~/concepts/design/utils';
 import TypeBorderedCard from '~/concepts/design/TypeBorderedCard';
 

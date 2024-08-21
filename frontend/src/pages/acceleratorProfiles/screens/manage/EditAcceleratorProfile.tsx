@@ -23,9 +23,14 @@ const EditAcceleratorProfile: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState titleText={<Title headingLevel="h4" size="lg" data-testid="problem-loading-accelerator-profile">
-            Problem loading accelerator profile
-          </Title>} icon={ExclamationCircleIcon}>
+        <EmptyState
+          titleText={
+            <Title headingLevel="h4" size="lg" data-testid="problem-loading-accelerator-profile">
+              Problem loading accelerator profile
+            </Title>
+          }
+          icon={ExclamationCircleIcon}
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
           <Button
             data-testid="view-all-accelerator-profiles"

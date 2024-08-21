@@ -1,23 +1,21 @@
 import * as React from 'react';
 import {
-	Checkbox,
-	Form,
-	FormGroup,
-	FormHelperText,
-	HelperText,
-	HelperTextItem,
-	MenuToggle,
-	Popover,
-	Select,
-	SelectList,
-	SelectOption,
-	TextArea,
-	TextInput,
-	ValidatedOptions
+  Checkbox,
+  Form,
+  FormGroup,
+  FormHelperText,
+  HelperText,
+  HelperTextItem,
+  MenuToggle,
+  Popover,
+  Select,
+  SelectList,
+  SelectOption,
+  TextArea,
+  TextInput,
+  ValidatedOptions,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 import {

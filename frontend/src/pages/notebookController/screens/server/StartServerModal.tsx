@@ -1,20 +1,17 @@
 import * as React from 'react';
 import {
-	ActionList,
-	ActionListItem,
-	Alert,
-	AlertVariant,
-	Button,
-	ExpandableSection,
-	List,
-	ListItem,
-	Progress,
-	ProgressVariant
+  ActionList,
+  ActionListItem,
+  Alert,
+  AlertVariant,
+  Button,
+  ExpandableSection,
+  List,
+  ListItem,
+  Progress,
+  ProgressVariant,
 } from '@patternfly/react-core';
-import {
-	Modal,
-	ModalVariant
-} from '@patternfly/react-core/deprecated';
+import { Modal, ModalVariant } from '@patternfly/react-core/deprecated';
 import { useNavigate } from 'react-router';
 import { useDeepCompareMemoize } from '~/utilities/useDeepCompareMemoize';
 import {

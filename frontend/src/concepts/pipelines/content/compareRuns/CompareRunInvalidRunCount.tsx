@@ -42,7 +42,12 @@ export const CompareRunsInvalidRunCount: React.FC<CompareRunsInvalidRunCountProp
 
   return (
     <PageSection hasBodyWrapper={false} isFilled data-testid="compare-runs-invalid-number-runs">
-      <EmptyState  headingLevel="h1" icon={ExclamationCircleIcon}  titleText={title} variant={EmptyStateVariant.lg}>
+      <EmptyState
+        headingLevel="h1"
+        icon={ExclamationCircleIcon}
+        titleText={title}
+        variant={EmptyStateVariant.lg}
+      >
         <EmptyStateBody>{description}</EmptyStateBody>
         <EmptyStateFooter>
           <EmptyStateActions>

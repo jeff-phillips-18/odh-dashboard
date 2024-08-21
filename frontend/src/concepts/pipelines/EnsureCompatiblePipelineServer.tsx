@@ -8,7 +8,7 @@ import {
   EmptyStateFooter,
   EmptyStateBody,
   Button,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 import ExternalLink from '~/components/ExternalLink';
 import NoPipelineServer from '~/concepts/pipelines/NoPipelineServer';
@@ -44,7 +44,11 @@ const EnsureCompatiblePipelineServer: React.FC<EnsureCompatiblePipelineServerPro
     return (
       <>
         <Bullseye data-testid="incompatible-pipelines-server">
-          <EmptyState   icon={ExclamationTriangleIcon}  titleText="Pipeline version cannot be rendered" variant={EmptyStateVariant.lg}>
+          <EmptyState
+            icon={ExclamationTriangleIcon}
+            titleText="Pipeline version cannot be rendered"
+            variant={EmptyStateVariant.lg}
+          >
             <EmptyStateBody>
               <p>
                 Rendering of this pipeline version in the UI is no longer supported, but it can

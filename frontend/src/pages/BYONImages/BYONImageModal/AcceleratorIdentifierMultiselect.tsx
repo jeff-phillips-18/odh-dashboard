@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {
-	Label, LabelGroup, Button,
-	MenuToggle,
-	MenuToggleElement,
-	Select,
-	SelectList,
-	SelectOption,
-	SelectOptionProps,
-	TextInputGroup,
-	TextInputGroupMain,
-	TextInputGroupUtilities
+  Label,
+  LabelGroup,
+  Button,
+  MenuToggle,
+  MenuToggleElement,
+  Select,
+  SelectList,
+  SelectOption,
+  SelectOptionProps,
+  TextInputGroup,
+  TextInputGroupMain,
+  TextInputGroupUtilities,
 } from '@patternfly/react-core';
 
 import { TimesIcon } from '@patternfly/react-icons';
@@ -133,7 +135,8 @@ export const AcceleratorIdentifierMultiselect: React.FC<AcceleratorIdentifierMul
         >
           <LabelGroup aria-label="Current selections">
             {data.map((selection, index) => (
-              <Label variant="outline"
+              <Label
+                variant="outline"
                 key={index}
                 onClose={(ev) => {
                   ev.stopPropagation();
@@ -147,7 +150,8 @@ export const AcceleratorIdentifierMultiselect: React.FC<AcceleratorIdentifierMul
         </TextInputGroupMain>
         <TextInputGroupUtilities>
           {data.length > 0 && (
-            <Button icon={<TimesIcon aria-hidden />}
+            <Button
+              icon={<TimesIcon aria-hidden />}
               variant="plain"
               onClick={() => {
                 setInputValue('');
@@ -155,7 +159,7 @@ export const AcceleratorIdentifierMultiselect: React.FC<AcceleratorIdentifierMul
                 textInputRef.current?.focus();
               }}
               aria-label="Clear input value"
-            ></Button>
+            />
           )}
         </TextInputGroupUtilities>
       </TextInputGroup>

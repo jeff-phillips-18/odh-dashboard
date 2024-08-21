@@ -57,7 +57,12 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
     const renderContent = () => {
       if (filteredDocApps.length === 0) {
         return (
-          <EmptyState  headingLevel="h2" icon={SearchIcon}  titleText="No results match the filter criteria" variant={EmptyStateVariant.full}>
+          <EmptyState
+            headingLevel="h2"
+            icon={SearchIcon}
+            titleText="No results match the filter criteria"
+            variant={EmptyStateVariant.full}
+          >
             <EmptyStateBody>
               No resources are being shown due to the filters being applied.
             </EmptyStateBody>
@@ -114,7 +119,8 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
 
     return (
       <>
-        <PageSection hasBodyWrapper={false}
+        <PageSection
+          hasBodyWrapper={false}
           isFilled
           variant={PageSectionVariants.secondary}
           className={

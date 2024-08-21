@@ -15,7 +15,7 @@ const PipelineNotFound: React.FC = () => {
   const { namespace } = usePipelinesAPI();
   const navigate = useNavigate();
   return (
-    <EmptyState  headingLevel="h4" icon={CubesIcon}  titleText="Pipeline version not found">
+    <EmptyState headingLevel="h4" icon={CubesIcon} titleText="Pipeline version not found">
       <EmptyStateBody>To see more pipelines navigate to the pipelines page</EmptyStateBody>
       <EmptyStateFooter>
         <EmptyStateActions>

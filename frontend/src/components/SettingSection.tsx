@@ -16,7 +16,7 @@ const SettingSection: React.FC<SettingSectionProps> = ({
   testId,
   description,
 }) => (
-  <Card data-testid={testId} >
+  <Card data-testid={testId}>
     <CardTitle>{title}</CardTitle>
     <CardBody>
       <Stack hasGutter>

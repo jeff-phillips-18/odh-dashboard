@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Content,  } from '@patternfly/react-core';
+import { Content } from '@patternfly/react-core';
 import { useAccessReview } from '~/api';
 import { AccessReviewResourceAttributes } from '~/k8sTypes';
 import { SupportedArea, useIsAreaAvailable } from '~/concepts/areas';
@@ -96,7 +96,9 @@ const ConfigurationSection: React.FC = () => {
             imgSrc={typedObjectImage(ProjectObjectType.group)}
             description={
               <Content>
-                <Content component="small">Add users and groups to share access to your project.</Content>
+                <Content component="small">
+                  Add users and groups to share access to your project.
+                </Content>
               </Content>
             }
             isOpen={open}

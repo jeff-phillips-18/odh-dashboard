@@ -13,7 +13,7 @@ import {
   Label,
   Spinner,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { ProjectObjectType, SectionType } from '~/concepts/design/utils';
@@ -77,7 +77,11 @@ const DeployedModelsSection: React.FC<DeployedModelsSectionProps> = ({ isMultiPl
 
   const renderError = (message?: string): React.ReactElement => (
     <Bullseye>
-      <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="Problem loading deployed models">
+      <EmptyState
+        headingLevel="h2"
+        icon={ExclamationCircleIcon}
+        titleText="Problem loading deployed models"
+      >
         <EmptyStateBody>{message}</EmptyStateBody>
       </EmptyState>
     </Bullseye>

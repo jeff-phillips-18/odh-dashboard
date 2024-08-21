@@ -1,16 +1,14 @@
 import React from 'react';
 import {
-	Bullseye,
-	Button,
-	DescriptionList,
-	DescriptionListDescription,
-	DescriptionListGroup,
-	DescriptionListTerm,
-	Spinner
+  Bullseye,
+  Button,
+  DescriptionList,
+  DescriptionListDescription,
+  DescriptionListGroup,
+  DescriptionListTerm,
+  Spinner,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import spacing from '@patternfly/react-styles/css/utilities/Spacing/spacing';
 import { ModelRegistryKind } from '~/k8sTypes';
 import useFetchState, { NotReadyError } from '~/utilities/useFetchState';

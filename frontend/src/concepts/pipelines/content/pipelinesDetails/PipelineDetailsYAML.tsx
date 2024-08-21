@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Language } from '@patternfly/react-code-editor';
 import YAML from 'yaml';
-import {
-  EmptyState,
-  EmptyStateBody,
-  } from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon';
 import DashboardCodeEditor from '~/concepts/dashboard/codeEditor/DashboardCodeEditor';
 import PipelineVersionError from './PipelineVersionError';
@@ -32,7 +29,7 @@ const PipelineDetailsYAML: React.FC<PipelineDetailsYAMLProps> = ({
 
   if (!content) {
     return (
-      <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="Error with the run">
+      <EmptyState headingLevel="h2" icon={ExclamationCircleIcon} titleText="Error with the run">
         <EmptyStateBody>There was an issue trying to render the YAML information.</EmptyStateBody>
       </EmptyState>
     );

@@ -8,7 +8,7 @@ import {
   FlexItem,
   PageSection,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { TimesIcon } from '@patternfly/react-icons';
 import { useNavigate } from 'react-router-dom';
 import jupyterImg from '~/images/jupyter.svg';
@@ -42,13 +42,14 @@ const HomeHint: React.FC = () => {
               </Content>
             </FlexItem>
             <FlexItem>
-              <Button icon={<TimesIcon />}
+              <Button
+                icon={<TimesIcon />}
                 data-testid="home-page-hint-close"
                 aria-label="close landing page hint"
                 isInline
                 variant="plain"
                 onClick={() => setHintHidden(true)}
-              ></Button>
+              />
             </FlexItem>
           </Flex>
         </CardHeader>

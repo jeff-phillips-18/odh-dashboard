@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Content,  } from '@patternfly/react-core';
+import { Content } from '@patternfly/react-core';
 import { ProjectObjectType, SectionType, typedObjectImage } from '~/concepts/design/utils';
 import InfoGalleryItem from '~/concepts/design/InfoGalleryItem';
 import useServingPlatformStatuses from '~/pages/modelServing/useServingPlatformStatuses';

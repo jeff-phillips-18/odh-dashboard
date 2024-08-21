@@ -10,7 +10,7 @@ import {
   Stack,
   StackItem,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import useDimensions from 'react-cool-dimensions';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
@@ -77,7 +77,13 @@ const ProjectsSection: React.FC = () => {
         </StackItem>
         <StackItem>
           {loadError ? (
-            <EmptyState  headingLevel="h3" icon={ExclamationCircleIcon}  titleText="Error loading projects" variant={EmptyStateVariant.lg} data-id="error-empty-state">
+            <EmptyState
+              headingLevel="h3"
+              icon={ExclamationCircleIcon}
+              titleText="Error loading projects"
+              variant={EmptyStateVariant.lg}
+              data-id="error-empty-state"
+            >
               <EmptyStateBody>{loadError.message}</EmptyStateBody>
             </EmptyState>
           ) : !rbacLoaded || !loaded ? (

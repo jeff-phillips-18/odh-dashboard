@@ -11,7 +11,7 @@ import {
   Stack,
   StackItem,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';

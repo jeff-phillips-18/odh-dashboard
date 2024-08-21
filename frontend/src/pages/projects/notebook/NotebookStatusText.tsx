@@ -51,7 +51,8 @@ const NotebookStatusText: React.FC<NotebookStatusTextProps> = ({
           </Button>
         }
       >
-        <Content component="p"
+        <Content
+          component="p"
           data-testid="notebook-status-text"
           onClick={() => {
             if (isStarting) {

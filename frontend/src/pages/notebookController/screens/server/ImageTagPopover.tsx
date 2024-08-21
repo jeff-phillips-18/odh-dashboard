@@ -39,11 +39,12 @@ const ImageTagPopover: React.FC<ImageTagPopoverProps> = ({ tag, description }) =
         </>
       }
     >
-      <Button icon={<HelpIcon />}
+      <Button
+        icon={<HelpIcon />}
         aria-label="More info for notebook image"
         className="odh-notebook-controller__notebook-image-popover-icon"
         variant="plain"
-      ></Button>
+      />
     </Popover>
   );
 };

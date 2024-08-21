@@ -28,7 +28,7 @@ const RegistrationFormFooter: React.FC<RegistrationFormFooterProps> = ({
   onSubmit,
   onCancel,
 }) => (
-  <PageSection hasBodyWrapper={false} stickyOnBreakpoint={{ default: 'bottom' }} >
+  <PageSection hasBodyWrapper={false} stickyOnBreakpoint={{ default: 'bottom' }}>
     <Stack hasGutter>
       {submitError && (
         <StackItem>

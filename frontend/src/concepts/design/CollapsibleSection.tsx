@@ -39,7 +39,8 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         }
       >
         <FlexItem>
-          <Button icon={open ?? innerOpen ? <AngleDownIcon /> : <AngleRightIcon />}
+          <Button
+            icon={open ?? innerOpen ? <AngleDownIcon /> : <AngleRightIcon />}
             aria-labelledby={titleId}
             aria-expanded={open}
             variant="plain"
@@ -52,7 +53,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
                   : 'var(--pf-v5-global--FontSize--2xl)',
             }}
             onClick={() => (setOpen ? setOpen(!open) : setInnerOpen((prev) => !prev))}
-          ></Button>
+          />
         </FlexItem>
         <FlexItem>
           <Content>

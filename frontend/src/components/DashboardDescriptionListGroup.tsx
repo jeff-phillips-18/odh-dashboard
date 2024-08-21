@@ -72,13 +72,14 @@ const DashboardDescriptionListGroup: React.FC<DashboardDescriptionListGroupProps
                       </Button>
                     </ActionListItem>
                     <ActionListItem>
-                      <Button icon={<TimesIcon />}
+                      <Button
+                        icon={<TimesIcon />}
                         data-testid={`discard-edit-button-${title}`}
                         aria-label={`Discard edits to ${title} `}
                         variant="plain"
                         onClick={onDiscardEditsClick}
                         isDisabled={isSavingEdits}
-                      ></Button>
+                      />
                     </ActionListItem>
                   </ActionList>
                 ) : (

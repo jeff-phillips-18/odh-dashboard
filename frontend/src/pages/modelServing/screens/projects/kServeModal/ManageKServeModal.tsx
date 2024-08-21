@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
-	Alert,
-	AlertActionCloseButton,
-	Form,
-	FormSection,
-	Stack,
-	StackItem
+  Alert,
+  AlertActionCloseButton,
+  Form,
+  FormSection,
+  Stack,
+  StackItem,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { EitherOrNone } from '@openshift/dynamic-plugin-sdk';
 import {
   getCreateInferenceServiceLabels,

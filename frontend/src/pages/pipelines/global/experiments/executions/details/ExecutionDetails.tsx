@@ -49,7 +49,11 @@ const ExecutionDetails: PipelineCoreDetailsPageComponent = ({ breadcrumbPath, co
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading execution details">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading execution details"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>

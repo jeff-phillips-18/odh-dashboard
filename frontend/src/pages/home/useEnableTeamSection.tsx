@@ -135,7 +135,7 @@ export const useEnableTeamSection = (): React.ReactNode => {
   }
 
   return (
-    <PageSection hasBodyWrapper={false} data-testid="landing-page-admin" >
+    <PageSection hasBodyWrapper={false} data-testid="landing-page-admin">
       <CollapsibleSection
         title="Enable your team"
         titleVariant={ContentVariants.h1}

@@ -43,11 +43,11 @@ export const PipelineRunDetailsTabs: React.FC<PipelineRunDetailsTabsProps> = ({
   const isRecurringRun = run && isPipelineRecurringRun(run);
 
   return (
-    <PageSection hasBodyWrapper={false}
+    <PageSection
+      hasBodyWrapper={false}
       isFilled
       padding={{ default: 'noPadding' }}
       style={{ flexBasis: 0, overflowY: 'hidden' }}
-      
     >
       <Flex
         direction={{ default: 'column' }}

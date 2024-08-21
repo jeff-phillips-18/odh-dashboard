@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Spinner,
-  EmptyStateVariant,
-  EmptyState,
-  Truncate,
-} from '@patternfly/react-core';
+import { Spinner, EmptyStateVariant, EmptyState, Truncate } from '@patternfly/react-core';
 import { Link } from 'react-router-dom';
 import {
   PipelineRecurringRunKFv2,
@@ -42,9 +37,14 @@ const PipelineRunTabDetails: React.FC<PipelineRunTabDetailsProps> = ({ run, work
 
   if (!run || !workflowName) {
     return (
-      <EmptyState  headingLevel="h4"   titleText="Loading" variant={EmptyStateVariant.lg} data-id="loading-empty-state">
+      <EmptyState
+        headingLevel="h4"
+        titleText="Loading"
+        variant={EmptyStateVariant.lg}
+        data-id="loading-empty-state"
+      >
         <Spinner size="xl" />
-        </EmptyState>
+      </EmptyState>
     );
   }
 

@@ -8,7 +8,7 @@ import {
   Bullseye,
   Spinner,
   Truncate,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon';
 import ApplicationsPage from '~/pages/ApplicationsPage';
@@ -75,7 +75,13 @@ const PipelineRunDetails: React.FC<
 
   if (error) {
     return (
-      <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Error loading pipeline run details" variant={EmptyStateVariant.lg} data-id="error-empty-state">
+      <EmptyState
+        headingLevel="h4"
+        icon={ExclamationCircleIcon}
+        titleText="Error loading pipeline run details"
+        variant={EmptyStateVariant.lg}
+        data-id="error-empty-state"
+      >
         <EmptyStateBody>{error.message}</EmptyStateBody>
       </EmptyState>
     );

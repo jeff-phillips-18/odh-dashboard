@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-	Button
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Button } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 

@@ -1,19 +1,15 @@
 import React from 'react';
 import {
-	Button,
-	Checkbox,
-	Flex,
-	FlexItem,
-	Label,
-	Stack,
-	StackItem,
-	Tooltip
+  Button,
+  Checkbox,
+  Flex,
+  FlexItem,
+  Label,
+  Stack,
+  StackItem,
+  Tooltip,
 } from '@patternfly/react-core';
-import {
-	Modal,
-	ModalBoxBody,
-	ModalVariant
-} from '@patternfly/react-core/deprecated';
+import { Modal, ModalBoxBody, ModalVariant } from '@patternfly/react-core/deprecated';
 import { DragDropSort, DraggableObject } from '@patternfly/react-drag-drop';
 import { getMetricsColumnsLocalStorageKey } from './utils';
 import { MetricColumnSearchInput } from './MetricColumnSearchInput';

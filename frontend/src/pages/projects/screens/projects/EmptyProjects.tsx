@@ -21,7 +21,7 @@ const EmptyProjects: React.FC<EmptyProjectsProps> = ({ allowCreate }) => {
   const navigate = useNavigate();
   const isJupyterEnabled = useCheckJupyterEnabled();
   return (
-    <EmptyState  headingLevel="h2" icon={CubesIcon}  titleText="No data science projects yet.">
+    <EmptyState headingLevel="h2" icon={CubesIcon} titleText="No data science projects yet.">
       <EmptyStateBody>
         {allowCreate
           ? `To get started, create a data science project${

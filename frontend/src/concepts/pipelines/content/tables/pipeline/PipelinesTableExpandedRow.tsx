@@ -47,7 +47,12 @@ const PipelinesTableExpandedRow: React.FC<PipelinesTableExpandedRowProps> = ({ p
         <Td />
         <Td colSpan={6}>
           <ExpandableRowContent>
-            <EmptyState  headingLevel="h3"   titleText="No pipeline versions" variant={EmptyStateVariant.xs} data-testid="no-pipeline-versions">
+            <EmptyState
+              headingLevel="h3"
+              titleText="No pipeline versions"
+              variant={EmptyStateVariant.xs}
+              data-testid="no-pipeline-versions"
+            >
               <EmptyStateFooter>
                 <EmptyStateActions>
                   <ImportPipelineVersionButton selectedPipeline={pipeline} variant="link" />

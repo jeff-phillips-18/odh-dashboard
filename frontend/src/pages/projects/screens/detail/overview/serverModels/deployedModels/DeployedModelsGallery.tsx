@@ -8,7 +8,7 @@ import {
   FlexItem,
   Gallery,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import { SearchIcon } from '@patternfly/react-icons';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
@@ -103,7 +103,7 @@ const DeployedModelsGallery: React.FC<DeployedModelsGalleryProps> = ({
 
   if (filteredServices.length === 0 && deployedModels.length > 0) {
     return (
-      <EmptyState   icon={SearchIcon}  titleText="No results found" variant="sm">
+      <EmptyState icon={SearchIcon} titleText="No results found" variant="sm">
         <EmptyStateBody>Clear the filter or apply a different one.</EmptyStateBody>
         <EmptyStateFooter>
           <Button isInline variant="link" onClick={onClearFilters}>

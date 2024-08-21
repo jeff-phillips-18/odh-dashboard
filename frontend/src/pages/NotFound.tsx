@@ -10,8 +10,14 @@ import {
 import { HomeIcon, PathMissingIcon } from '@patternfly/react-icons';
 
 const NotFound: React.FC = () => (
-  <PageSection hasBodyWrapper={false} >
-    <EmptyState  headingLevel="h2" icon={PathMissingIcon}  titleText="We can‘t find that page" variant={EmptyStateVariant.full} data-testid="not-found-page">
+  <PageSection hasBodyWrapper={false}>
+    <EmptyState
+      headingLevel="h2"
+      icon={PathMissingIcon}
+      titleText="We can‘t find that page"
+      variant={EmptyStateVariant.full}
+      data-testid="not-found-page"
+    >
       <EmptyStateBody data-testid="not-found-page-description">
         Another page might have what you need. Return to the home page.
       </EmptyStateBody>

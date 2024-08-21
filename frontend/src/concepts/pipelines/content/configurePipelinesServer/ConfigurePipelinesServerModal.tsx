@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-	Alert,
-	Form,
-	Stack,
-	StackItem
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Alert, Form, Stack, StackItem } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import { createPipelinesCR, deleteSecret } from '~/api';
 import useDataConnections from '~/pages/projects/screens/detail/data-connections/useDataConnections';

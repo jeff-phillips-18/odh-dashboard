@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Bullseye,
-  EmptyState,
-  EmptyStateBody,
-  Spinner,
-} from '@patternfly/react-core';
+import { Bullseye, EmptyState, EmptyStateBody, Spinner } from '@patternfly/react-core';
 import { CubesIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import createUsePipelineTable from '~/concepts/pipelines/content/tables/usePipelineTable';
 import { useArchivedExperiments } from '~/concepts/pipelines/apiHooks/useExperiments';
@@ -18,7 +13,11 @@ const ArchivedExperimentsList: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading experiments">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading experiments"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -35,7 +34,12 @@ const ArchivedExperimentsList: React.FC = () => {
 
   if (loaded && totalSize === 0 && !tableProps.filter) {
     return (
-      <EmptyState  headingLevel="h4" icon={CubesIcon}  titleText="No archived experiments" data-testid="global-no-experiments">
+      <EmptyState
+        headingLevel="h4"
+        icon={CubesIcon}
+        titleText="No archived experiments"
+        data-testid="global-no-experiments"
+      >
         <EmptyStateBody>
           When you are finished with an experiment, you can archive it in the{' '}
           {ExperimentListTabTitle.ACTIVE} tab. You can view the archived experiment here.

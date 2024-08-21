@@ -32,7 +32,11 @@ const EditSpawnerPage: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Problem loading project details">
+        <EmptyState
+          headingLevel="h4"
+          icon={ExclamationCircleIcon}
+          titleText="Problem loading project details"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
           <EmptyStateFooter>
             <Button variant="primary" onClick={() => navigate('/projects')}>
@@ -55,7 +59,11 @@ const EditSpawnerPage: React.FC = () => {
   if (!ref.current) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Unable to edit workbench">
+        <EmptyState
+          headingLevel="h4"
+          icon={ExclamationCircleIcon}
+          titleText="Unable to edit workbench"
+        >
           <EmptyStateBody>
             We were unable to find a notebook by this name in your project{' '}
             {getDisplayNameFromK8sResource(currentProject)}.

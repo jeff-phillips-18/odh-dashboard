@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-	Button
-} from '@patternfly/react-core';
-import {
-	Modal,
-	ModalVariant
-} from '@patternfly/react-core/deprecated';
+import { Button } from '@patternfly/react-core';
+import { Modal, ModalVariant } from '@patternfly/react-core/deprecated';
 import { Notebook } from '~/types';
 import { stopNotebook } from '~/services/notebookService';
 import useNotification from '~/utilities/useNotification';

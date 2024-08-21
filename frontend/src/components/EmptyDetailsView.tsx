@@ -25,7 +25,7 @@ const EmptyDetailsView: React.FC<EmptyDetailsViewProps> = ({
   createButton,
   imageSize = '320px',
 }) => (
-  <EmptyState  headingLevel="h3"   titleText={title} variant="lg">
+  <EmptyState headingLevel="h3" titleText={title} variant="lg">
     <EmptyStateBody>{description}</EmptyStateBody>
     {allowCreate && createButton ? (
       <EmptyStateFooter>

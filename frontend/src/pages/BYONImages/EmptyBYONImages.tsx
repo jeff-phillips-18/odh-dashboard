@@ -15,7 +15,13 @@ type EmptyBYONImagesProps = {
 
 const EmptyBYONImages: React.FC<EmptyBYONImagesProps> = ({ refresh }) => (
   <PageSection hasBodyWrapper={false} isFilled>
-    <EmptyState  headingLevel="h1" icon={PlusCircleIcon}  titleText="No custom notebook images found." variant={EmptyStateVariant.full} data-id="empty-empty-state">
+    <EmptyState
+      headingLevel="h1"
+      icon={PlusCircleIcon}
+      titleText="No custom notebook images found."
+      variant={EmptyStateVariant.full}
+      data-id="empty-empty-state"
+    >
       <EmptyStateBody>To get started import a custom notebook image.</EmptyStateBody>
       <EmptyStateFooter>
         <ImportBYONImageButton refresh={refresh} />

@@ -113,7 +113,7 @@ const RunPage: React.FC<RunPageProps> = ({
 
   return (
     <div data-testid={testId}>
-      <PageSection hasBodyWrapper={false} isFilled >
+      <PageSection hasBodyWrapper={false} isFilled>
         <GenericSidebar
           sections={jumpToSections}
           titles={runPageSectionTitlesEdited}
@@ -122,7 +122,7 @@ const RunPage: React.FC<RunPageProps> = ({
           <RunForm isCloned={!!cloneRun} data={formData} onValueChange={onValueChange} />
         </GenericSidebar>
       </PageSection>
-      <PageSection hasBodyWrapper={false} stickyOnBreakpoint={{ default: 'bottom' }} >
+      <PageSection hasBodyWrapper={false} stickyOnBreakpoint={{ default: 'bottom' }}>
         <RunPageFooter data={formData} contextPath={contextPath} />
       </PageSection>
     </div>

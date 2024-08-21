@@ -48,7 +48,13 @@ export const useResourcesSection = (): React.ReactNode => {
       >
         <Stack hasGutter>
           {loadError ? (
-            <EmptyState  headingLevel="h3" icon={ExclamationCircleIcon}  titleText="Error loading resources" variant={EmptyStateVariant.lg} data-id="error-empty-state">
+            <EmptyState
+              headingLevel="h3"
+              icon={ExclamationCircleIcon}
+              titleText="Error loading resources"
+              variant={EmptyStateVariant.lg}
+              data-id="error-empty-state"
+            >
               <EmptyStateBody>{loadError.message}</EmptyStateBody>
             </EmptyState>
           ) : (

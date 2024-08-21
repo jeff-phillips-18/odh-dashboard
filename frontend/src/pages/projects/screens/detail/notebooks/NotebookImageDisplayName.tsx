@@ -119,7 +119,9 @@ export const NotebookImageDisplayName = ({
         <HelperText>
           <HelperTextItem>{notebookImage.imageDisplayName}</HelperTextItem>
         </HelperText>
-        {isExpanded && <Content component={ContentVariants.small}>{notebookImage.tagSoftware}</Content>}
+        {isExpanded && (
+          <Content component={ContentVariants.small}>{notebookImage.tagSoftware}</Content>
+        )}
       </>
     );
   }

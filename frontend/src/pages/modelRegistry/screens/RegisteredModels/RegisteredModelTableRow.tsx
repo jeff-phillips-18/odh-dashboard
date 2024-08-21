@@ -76,7 +76,9 @@ const RegisteredModelTableRow: React.FC<RegisteredModelTableRowProps> = ({
         <ModelTimestamp timeSinceEpoch={rm.lastUpdateTimeSinceEpoch} />
       </Td>
       <Td dataLabel="Owner">
-        <Content component="p" data-testid="registered-model-owner">{rm.owner || '-'}</Content>
+        <Content component="p" data-testid="registered-model-owner">
+          {rm.owner || '-'}
+        </Content>
       </Td>
       <Td isActionCell>
         <ActionsColumn items={actions} />

@@ -19,7 +19,11 @@ const ActiveExperimentsList: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading experiments">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading experiments"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -36,7 +40,12 @@ const ActiveExperimentsList: React.FC = () => {
 
   if (loaded && totalSize === 0 && !tableProps.filter) {
     return (
-      <EmptyState  headingLevel="h4" icon={PlusCircleIcon}  titleText="No active experiments" data-testid="global-no-experiments">
+      <EmptyState
+        headingLevel="h4"
+        icon={PlusCircleIcon}
+        titleText="No active experiments"
+        data-testid="global-no-experiments"
+      >
         <EmptyStateBody>Click the button below to create a new active experiment.</EmptyStateBody>
         <EmptyStateFooter>
           <CreateExperimentButton />

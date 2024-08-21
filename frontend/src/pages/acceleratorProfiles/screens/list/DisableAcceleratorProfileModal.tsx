@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-	Button
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Button } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 
 type DisableAcceleratorProfileModalType = {
   isOpen: boolean;

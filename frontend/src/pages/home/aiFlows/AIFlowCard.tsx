@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Bullseye, CardBody, CardProps, Stack, Content,  } from '@patternfly/react-core';
+import { Bullseye, CardBody, CardProps, Stack, Content } from '@patternfly/react-core';
 import TypeBorderedCard from '~/concepts/design/TypeBorderedCard';
 import { SectionType } from '~/concepts/design/utils';
 

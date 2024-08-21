@@ -30,7 +30,11 @@ const CustomServingRuntimeEditTemplate: React.FC = () => {
   if (!ref.current) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="Unable to edit serving runtime">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="Unable to edit serving runtime"
+        >
           <EmptyStateBody>We were unable to find a serving runtime by this name</EmptyStateBody>
           <EmptyStateFooter>
             <Button variant="primary" onClick={() => navigate(`/servingRuntimes`)}>

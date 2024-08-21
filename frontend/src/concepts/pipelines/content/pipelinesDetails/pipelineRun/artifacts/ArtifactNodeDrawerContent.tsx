@@ -70,8 +70,11 @@ export const ArtifactNodeDrawerContent: React.FC<ArtifactNodeDrawerContentProps>
             </Tab>
           </Tabs>
         ) : (
-          <EmptyState  headingLevel="h4"   titleText="Content is not available yet." variant={EmptyStateVariant.xs}>
-            </EmptyState>
+          <EmptyState
+            headingLevel="h4"
+            titleText="Content is not available yet."
+            variant={EmptyStateVariant.xs}
+          />
         )}
       </DrawerPanelBody>
     </>

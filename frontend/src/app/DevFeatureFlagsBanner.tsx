@@ -1,16 +1,14 @@
 import {
-	Banner,
-	Button,
-	Checkbox,
-	Grid,
-	GridItem,
-	Split,
-	SplitItem,
-	Tooltip
+  Banner,
+  Button,
+  Checkbox,
+  Grid,
+  GridItem,
+  Split,
+  SplitItem,
+  Tooltip,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { CloseIcon } from '@patternfly/react-icons';
 import * as React from 'react';
 import { allFeatureFlags } from '~/concepts/areas/const';

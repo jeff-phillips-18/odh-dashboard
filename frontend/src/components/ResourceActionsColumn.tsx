@@ -20,7 +20,12 @@ const ResourceActionsColumn: React.FC<Props> = ({ resource, ...props }) =>
         </>
       }
     >
-      <Button icon={<BanIcon />} variant="plain" isAriaDisabled aria-label="This resource is marked for deletion."></Button>
+      <Button
+        icon={<BanIcon />}
+        variant="plain"
+        isAriaDisabled
+        aria-label="This resource is marked for deletion."
+      />
     </Tooltip>
   );
 

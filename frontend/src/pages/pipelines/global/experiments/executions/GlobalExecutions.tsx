@@ -26,7 +26,7 @@ const GlobalExecutions: React.FC = () => {
       <EnsureAPIAvailability>
         <EnsureCompatiblePipelineServer>
           <MlmdListContextProvider>
-            <PageSection hasBodyWrapper={false} isFilled >
+            <PageSection hasBodyWrapper={false} isFilled>
               <ExecutionsList />
             </PageSection>
           </MlmdListContextProvider>

@@ -26,7 +26,13 @@ const ModelRegistrySettings: React.FC = () => {
         errorMessage="Unable to load model registries."
         empty={modelRegistries.length === 0}
         emptyStatePage={
-          <EmptyState  headingLevel="h5" icon={PlusCircleIcon}  titleText="No model registries" variant={EmptyStateVariant.lg} data-testid="mr-settings-empty-state">
+          <EmptyState
+            headingLevel="h5"
+            icon={PlusCircleIcon}
+            titleText="No model registries"
+            variant={EmptyStateVariant.lg}
+            data-testid="mr-settings-empty-state"
+          >
             <EmptyStateBody>
               To get started, create a model registry. You can manage permissions after creation.
             </EmptyStateBody>

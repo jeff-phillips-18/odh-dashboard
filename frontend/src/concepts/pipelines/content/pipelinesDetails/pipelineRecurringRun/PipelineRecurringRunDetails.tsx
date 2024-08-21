@@ -71,9 +71,16 @@ const PipelineRecurringRunDetails: PipelineCoreDetailsPageComponent = ({
 
   if (error) {
     return (
-      <EmptyState titleText={<Title headingLevel="h4" size="lg">
-          Error loading pipeline schedule details
-        </Title>} icon={ExclamationCircleIcon} variant={EmptyStateVariant.lg} data-id="error-empty-state">
+      <EmptyState
+        titleText={
+          <Title headingLevel="h4" size="lg">
+            Error loading pipeline schedule details
+          </Title>
+        }
+        icon={ExclamationCircleIcon}
+        variant={EmptyStateVariant.lg}
+        data-id="error-empty-state"
+      >
         <EmptyStateBody>{error.message}</EmptyStateBody>
       </EmptyState>
     );

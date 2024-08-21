@@ -50,8 +50,6 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
             Updates in the developer view are automatically in the user view.
           </Content>
           <Card
-            
-            
             style={{
               marginTop: 'var(--pf-v5-global--spacer--md)',
             }}

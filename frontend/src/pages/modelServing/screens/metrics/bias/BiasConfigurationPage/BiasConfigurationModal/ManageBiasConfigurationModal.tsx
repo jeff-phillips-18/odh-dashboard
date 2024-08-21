@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-	Form,
-	FormGroup,
-	TextInput
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Form, FormGroup, TextInput } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { BiasMetricConfig } from '~/concepts/trustyai/types';
 import { BiasMetricType } from '~/api';
 import { InferenceServiceKind } from '~/k8sTypes';

@@ -8,7 +8,7 @@ import {
   Stack,
   StackItem,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ArrowRightIcon } from '@patternfly/react-icons';
 import getStartedImage from '~/images/AI_ML-illustration-Blog-thumbnail.svg';
 

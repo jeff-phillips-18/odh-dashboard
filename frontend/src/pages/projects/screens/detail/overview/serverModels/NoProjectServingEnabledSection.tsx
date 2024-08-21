@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardBody, FlexItem, Content,  } from '@patternfly/react-core';
+import { CardBody, FlexItem, Content } from '@patternfly/react-core';
 import { ProjectObjectType, SectionType } from '~/concepts/design/utils';
 import OverviewCard from '~/pages/projects/screens/detail/overview/components/OverviewCard';
 import CollapsibleSection from '~/concepts/design/CollapsibleSection';

@@ -30,9 +30,16 @@ const AcceleratorProfiles: React.FC = () => {
 
   const noAcceleratorProfilePageSection = (
     <PageSection hasBodyWrapper={false} isFilled>
-      <EmptyState titleText={<Title data-testid="no-available-accelerator-profiles" headingLevel="h5" size="lg">
-          No available accelerator profiles yet
-        </Title>} icon={PlusCircleIcon} variant={EmptyStateVariant.full} data-id="empty-empty-state">
+      <EmptyState
+        titleText={
+          <Title data-testid="no-available-accelerator-profiles" headingLevel="h5" size="lg">
+            No available accelerator profiles yet
+          </Title>
+        }
+        icon={PlusCircleIcon}
+        variant={EmptyStateVariant.full}
+        data-id="empty-empty-state"
+      >
         <EmptyStateBody>
           You don&apos;t have any accelerator profiles yet. To get started, please ask your cluster
           administrator about the accelerator availability in your cluster and create corresponding

@@ -152,7 +152,11 @@ const ModelServingContextProvider = conditionalArea<ModelServingContextProviderP
       )
     ) : (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="Problem loading model serving page">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="Problem loading model serving page"
+        >
           <EmptyStateBody>
             {notInstalledError?.message ||
               servingRuntimes.error?.message ||

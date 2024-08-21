@@ -22,7 +22,12 @@ export const ArtifactsList: React.FC = () => {
   if (artifactsError) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading artifacts" variant={EmptyStateVariant.lg}>
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading artifacts"
+          variant={EmptyStateVariant.lg}
+        >
           <EmptyStateBody>{artifactsError.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -39,7 +44,13 @@ export const ArtifactsList: React.FC = () => {
 
   if (!artifacts?.length && !filterQuery && filterQueryRef.current === filterQuery) {
     return (
-      <EmptyState  headingLevel="h4" icon={PlusCircleIcon}  titleText="No artifacts" data-testid="artifacts-list-empty-state" variant={EmptyStateVariant.lg}>
+      <EmptyState
+        headingLevel="h4"
+        icon={PlusCircleIcon}
+        titleText="No artifacts"
+        data-testid="artifacts-list-empty-state"
+        variant={EmptyStateVariant.lg}
+      >
         <EmptyStateBody>
           No artifacts have been generated from experiments within this project. Select a different
           project, or execute an experiment from the <b>Experiments and runs</b> page.

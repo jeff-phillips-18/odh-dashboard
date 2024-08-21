@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-	Label, LabelGroup, Alert,
-	FormGroup,
-	Spinner,
-	Content
-} from '@patternfly/react-core';
+import { Label, LabelGroup, Alert, FormGroup, Spinner, Content } from '@patternfly/react-core';
 
 import { NotebookKind } from '~/k8sTypes';
 import { getDisplayNameFromK8sResource } from '~/concepts/k8s/utils';
@@ -40,7 +35,8 @@ const ExistingConnectedNotebooks: React.FC<ExistingConnectedNotebooksProps> = ({
         {notebooksToShow.map((notebook) => {
           const notebookDisplayName = getDisplayNameFromK8sResource(notebook);
           return (
-            <Label variant="outline"
+            <Label
+              variant="outline"
               key={notebookDisplayName}
               onClose={() => {
                 setNotebooksToShow(

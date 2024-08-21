@@ -380,7 +380,12 @@ const TypeaheadSelect: React.FunctionComponent<TypeaheadSelectProps> = ({
         <TextInputGroupUtilities
           {...(!(isFiltering && filterValue) ? { style: { display: 'none' } } : {})}
         >
-          <Button icon={<TimesIcon aria-hidden />} variant="plain" onClick={onClearButtonClick} aria-label="Clear input value"></Button>
+          <Button
+            icon={<TimesIcon aria-hidden />}
+            variant="plain"
+            onClick={onClearButtonClick}
+            aria-label="Clear input value"
+          />
         </TextInputGroupUtilities>
       </TextInputGroup>
     </MenuToggle>

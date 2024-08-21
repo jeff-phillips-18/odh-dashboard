@@ -17,7 +17,11 @@ const RegisteredModelAuthor: React.FC<RegisteredModelAuthorProps> = ({ registere
   // Currently, the author of the first model version is being used as the author.
   const registeredModelAuthor = modelVersions.items[0]?.author;
 
-  return <Content component="p" data-testid="registered-model-author">{registeredModelAuthor || '-'}</Content>;
+  return (
+    <Content component="p" data-testid="registered-model-author">
+      {registeredModelAuthor || '-'}
+    </Content>
+  );
 };
 
 export default RegisteredModelAuthor;

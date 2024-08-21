@@ -34,8 +34,13 @@ const BiasTab: React.FC = () => {
 
   if (loadError) {
     return (
-      <PageSection hasBodyWrapper={false} isFilled >
-        <EmptyState  headingLevel="h5" icon={ExclamationCircleIcon}  titleText="TrustyAI Error" variant={EmptyStateVariant.lg}>
+      <PageSection hasBodyWrapper={false} isFilled>
+        <EmptyState
+          headingLevel="h5"
+          icon={ExclamationCircleIcon}
+          titleText="TrustyAI Error"
+          variant={EmptyStateVariant.lg}
+        >
           <EmptyStateBody>
             <Stack hasGutter>
               <StackItem>We encountered an error accessing the TrustyAI service:</StackItem>

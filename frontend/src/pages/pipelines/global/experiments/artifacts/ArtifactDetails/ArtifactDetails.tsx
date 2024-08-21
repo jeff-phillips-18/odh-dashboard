@@ -30,7 +30,12 @@ export const ArtifactDetails: PipelineCoreDetailsPageComponent = ({ breadcrumbPa
 
   if (artifactError) {
     return (
-      <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Error loading artifact details" variant={EmptyStateVariant.lg}>
+      <EmptyState
+        headingLevel="h4"
+        icon={ExclamationCircleIcon}
+        titleText="Error loading artifact details"
+        variant={EmptyStateVariant.lg}
+      >
         <EmptyStateBody>{artifactError.message}</EmptyStateBody>
       </EmptyState>
     );

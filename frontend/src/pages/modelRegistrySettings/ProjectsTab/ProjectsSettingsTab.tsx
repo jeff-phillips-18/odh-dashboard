@@ -59,7 +59,10 @@ const ProjectsSettingsTab: React.FC<RoleBindingProjectPermissionsProps> = ({
 
   if (loadError) {
     return (
-      <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading projects"
+      <EmptyState
+        headingLevel="h2"
+        icon={ExclamationCircleIcon}
+        titleText="There was an issue loading projects"
         variant={EmptyStateVariant.lg}
         data-id="error-empty-state"
         id={ProjectSectionID.PERMISSIONS}
@@ -71,18 +74,20 @@ const ProjectsSettingsTab: React.FC<RoleBindingProjectPermissionsProps> = ({
 
   if (!loaded) {
     return (
-      <EmptyState  headingLevel="h2"   titleText="Loading"
+      <EmptyState
+        headingLevel="h2"
+        titleText="Loading"
         variant={EmptyStateVariant.lg}
         data-id="loading-empty-state"
         id={ProjectSectionID.PERMISSIONS}
       >
         <Spinner size="xl" />
-        </EmptyState>
+      </EmptyState>
     );
   }
 
   return (
-    <PageSection hasBodyWrapper={false} isFilled >
+    <PageSection hasBodyWrapper={false} isFilled>
       <Stack hasGutter>
         <StackItem>{description}</StackItem>
         <StackItem>

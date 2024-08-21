@@ -1,18 +1,20 @@
 import * as React from 'react';
 import {
-	Label, LabelGroup, Select,
-	SelectOption,
-	SelectList,
-	MenuToggle,
-	MenuToggleElement,
-	TextInputGroup,
-	TextInputGroupMain,
-	TextInputGroupUtilities,
-	Button,
-	HelperText,
-	HelperTextItem,
-	SelectGroup,
-	Divider
+  Label,
+  LabelGroup,
+  Select,
+  SelectOption,
+  SelectList,
+  MenuToggle,
+  MenuToggleElement,
+  TextInputGroup,
+  TextInputGroupMain,
+  TextInputGroupUtilities,
+  Button,
+  HelperText,
+  HelperTextItem,
+  SelectGroup,
+  Divider,
 } from '@patternfly/react-core';
 
 import { TimesIcon } from '@patternfly/react-icons/dist/esm/icons/times-icon';
@@ -222,7 +224,8 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
         >
           <LabelGroup aria-label="Current selections">
             {selected.map((selection, index) => (
-              <Label variant="outline"
+              <Label
+                variant="outline"
                 key={index}
                 onClose={(ev) => {
                   ev.stopPropagation();
@@ -236,7 +239,8 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
         </TextInputGroupMain>
         <TextInputGroupUtilities>
           {selected.length > 0 && (
-            <Button icon={<TimesIcon aria-hidden />}
+            <Button
+              icon={<TimesIcon aria-hidden />}
               variant="plain"
               onClick={() => {
                 setInputValue('');
@@ -244,7 +248,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
                 textInputRef.current?.focus();
               }}
               aria-label="Clear input value"
-            ></Button>
+            />
           )}
         </TextInputGroupUtilities>
       </TextInputGroup>
@@ -309,7 +313,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
       </Select>
       {noSelectedItems && selectionRequired && (
         <HelperText isLiveRegion>
-          <HelperTextItem variant="error"  data-testid="group-selection-error-text">
+          <HelperTextItem variant="error" data-testid="group-selection-error-text">
             {noSelectedOptionsMessage}
           </HelperTextItem>
         </HelperText>

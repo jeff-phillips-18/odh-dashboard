@@ -18,9 +18,16 @@ export const TolerationsTable: React.FC<TolerationTableProps> = ({ tolerations, 
 
   if (tolerations.length === 0) {
     return (
-      <EmptyState titleText={<Title headingLevel="h2" size="lg">
-          No tolerations
-        </Title>} icon={PlusCircleIcon} variant="xs" data-testid="tolerations-modal-empty-state">
+      <EmptyState
+        titleText={
+          <Title headingLevel="h2" size="lg">
+            No tolerations
+          </Title>
+        }
+        icon={PlusCircleIcon}
+        variant="xs"
+        data-testid="tolerations-modal-empty-state"
+      >
         <EmptyStateBody>
           Tolerations are applied to pods and allow the scheduler to schedule pods with matching
           taints.

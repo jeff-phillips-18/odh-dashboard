@@ -7,7 +7,7 @@ import {
   Spinner,
   Stack,
   StackItem,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { K8sResourceCommon } from '@openshift/dynamic-plugin-sdk-utils';
 import { GroupKind, RoleBindingKind, RoleBindingRoleRef } from '~/k8sTypes';
@@ -55,7 +55,10 @@ const RoleBindingPermissions: React.FC<RoleBindingPermissionsProps> = ({
   } = roleBindingPermissionsRB;
   if (loadError) {
     return (
-      <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading permissions."
+      <EmptyState
+        headingLevel="h2"
+        icon={ExclamationCircleIcon}
+        titleText="There was an issue loading permissions."
         variant={EmptyStateVariant.lg}
         data-id="error-empty-state"
         id={ProjectSectionID.PERMISSIONS}
@@ -67,13 +70,15 @@ const RoleBindingPermissions: React.FC<RoleBindingPermissionsProps> = ({
 
   if (!loaded) {
     return (
-      <EmptyState  headingLevel="h2"   titleText="Loading"
+      <EmptyState
+        headingLevel="h2"
+        titleText="Loading"
         variant={EmptyStateVariant.lg}
         data-id="loading-empty-state"
         id={ProjectSectionID.PERMISSIONS}
       >
         <Spinner size="xl" />
-        </EmptyState>
+      </EmptyState>
     );
   }
 
@@ -113,10 +118,10 @@ const RoleBindingPermissions: React.FC<RoleBindingPermissionsProps> = ({
   );
 
   return (
-    <PageSection hasBodyWrapper={false}
+    <PageSection
+      hasBodyWrapper={false}
       isFilled
       aria-label="project-sharing-page-section"
-      
       id={ProjectSectionID.PERMISSIONS}
     >
       <Stack hasGutter>

@@ -22,7 +22,12 @@ const ModelServingLoading: React.FC<ModelServingLoadingProps> = ({
   onCancel,
 }) => (
   <PageSection hasBodyWrapper={false} isFilled>
-    <EmptyState  headingLevel="h1"   titleText={title} variant={EmptyStateVariant.lg} data-testid="loading-empty-state">
+    <EmptyState
+      headingLevel="h1"
+      titleText={title}
+      variant={EmptyStateVariant.lg}
+      data-testid="loading-empty-state"
+    >
       <Spinner size="xl" />
       <EmptyStateBody>{description}</EmptyStateBody>
       <EmptyStateFooter>

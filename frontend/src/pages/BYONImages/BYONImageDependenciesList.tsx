@@ -4,7 +4,7 @@ import {
   DescriptionListGroup,
   DescriptionListTerm,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 
 type BYONImageDependenciesListProps = {
   dependencies: string[];

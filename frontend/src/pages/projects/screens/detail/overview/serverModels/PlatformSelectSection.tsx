@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Gallery, Stack, Content,  } from '@patternfly/react-core';
+import { Alert, Gallery, Stack, Content } from '@patternfly/react-core';
 import CollapsibleSection from '~/concepts/design/CollapsibleSection';
 import SelectSingleModelCard from './SelectSingleModelCard';
 import SelectMultiModelCard from './SelectMultiModelCard';

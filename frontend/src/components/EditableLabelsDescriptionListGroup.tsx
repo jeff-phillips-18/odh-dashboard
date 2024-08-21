@@ -1,18 +1,16 @@
 import * as React from 'react';
 import {
-	Button,
-	Form,
-	FormGroup,
-	FormHelperText,
-	HelperText,
-	HelperTextItem,
-	Label,
-	LabelGroup,
-	TextInput
+  Button,
+  Form,
+  FormGroup,
+  FormHelperText,
+  HelperText,
+  HelperTextItem,
+  Label,
+  LabelGroup,
+  TextInput,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import DashboardDescriptionListGroup, {
   DashboardDescriptionListGroupProps,
@@ -113,7 +111,6 @@ const EditableLabelsDescriptionListGroup: React.FC<EditableTextDescriptionListGr
                 <Label
                   textMaxWidth="40ch"
                   color="blue"
-                  
                   variant="overflow"
                   onClick={toggleAddLabelModal}
                 >

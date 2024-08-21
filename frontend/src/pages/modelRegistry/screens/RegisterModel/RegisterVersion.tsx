@@ -92,7 +92,7 @@ const RegisterVersion: React.FC = () => {
       loaded={loadedRegisteredModels}
       empty={false}
     >
-      <PageSection hasBodyWrapper={false}  isFilled>
+      <PageSection hasBodyWrapper={false} isFilled>
         <Form isWidthLimited>
           <Stack hasGutter>
             <StackItem>

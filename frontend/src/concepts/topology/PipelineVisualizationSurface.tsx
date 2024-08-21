@@ -14,10 +14,7 @@ import {
   DEFAULT_EDGE_TYPE,
   TopologySideBar,
 } from '@patternfly/react-topology';
-import {
-  EmptyState,
-  EmptyStateBody,
-  } from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { css } from '@patternfly/react-styles';
 import { NODE_HEIGHT, NODE_WIDTH } from './const';
@@ -146,7 +143,12 @@ const PipelineVisualizationSurface: React.FC<PipelineVisualizationSurfaceProps> 
 
   if (error) {
     return (
-      <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Incorrect pipeline definition" data-id="error-empty-state">
+      <EmptyState
+        headingLevel="h4"
+        icon={ExclamationCircleIcon}
+        titleText="Incorrect pipeline definition"
+        data-id="error-empty-state"
+      >
         <EmptyStateBody>{error.message}</EmptyStateBody>
       </EmptyState>
     );

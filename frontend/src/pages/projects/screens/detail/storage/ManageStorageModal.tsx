@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-	Form,
-	Stack,
-	StackItem
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Form, Stack, StackItem } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { attachNotebookPVC, createPvc, removeNotebookPVC, updatePvc } from '~/api';
 import { NotebookKind, PersistentVolumeClaimKind } from '~/k8sTypes';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';

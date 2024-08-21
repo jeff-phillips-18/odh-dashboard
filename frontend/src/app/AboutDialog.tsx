@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  AboutModal,
-  Alert,
-  Bullseye,
-  Spinner,
-  Content,
-  } from '@patternfly/react-core';
+import { AboutModal, Alert, Bullseye, Spinner, Content } from '@patternfly/react-core';
 import { ODH_LOGO, ODH_PRODUCT_NAME } from '~/utilities/const';
 import { useUser, useClusterInfo } from '~/redux/selectors';
 import { useAppContext } from '~/app/AppContext';

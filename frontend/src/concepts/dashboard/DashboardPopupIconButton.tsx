@@ -12,9 +12,17 @@ const DashboardPopupIconButton = ({
   icon,
   ...props
 }: DashboardPopupIconButtonProps): React.JSX.Element => (
-  <Button icon={<Icon isInline style={{ marginLeft: 'var(--pf-v5-global--spacer--xs)' }}>
-      {icon}
-    </Icon>} variant="plain" isInline style={{ padding: 0 }} {...props}></Button>
+  <Button
+    icon={
+      <Icon isInline style={{ marginLeft: 'var(--pf-v5-global--spacer--xs)' }}>
+        {icon}
+      </Icon>
+    }
+    variant="plain"
+    isInline
+    style={{ padding: 0 }}
+    {...props}
+  />
 );
 
 export default DashboardPopupIconButton;

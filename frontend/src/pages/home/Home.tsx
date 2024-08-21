@@ -26,10 +26,18 @@ const Home: React.FC = () => {
     <Page data-testid="home-page">
       <HomeHint />
       {!projectsAvailable && !aiFlows && !resourcesSection && !enableTeamSection ? (
-        <PageSection hasBodyWrapper={false} data-testid="home-page-empty" variant={PageSectionVariants.default}>
+        <PageSection
+          hasBodyWrapper={false}
+          data-testid="home-page-empty"
+          variant={PageSectionVariants.default}
+        >
           <Bullseye>
-            <EmptyState  headingLevel="h4" icon={HomeIcon}  titleText={`Welcome to ${ODH_PRODUCT_NAME}`} variant="full">
-              </EmptyState>
+            <EmptyState
+              headingLevel="h4"
+              icon={HomeIcon}
+              titleText={`Welcome to ${ODH_PRODUCT_NAME}`}
+              variant="full"
+            />
           </Bullseye>
         </PageSection>
       ) : (

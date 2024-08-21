@@ -72,7 +72,7 @@ const DetailsSection: React.FC<DetailsSectionProps> = ({
   };
 
   return (
-    <PageSection hasBodyWrapper={false} aria-label="details-section"  id={id}>
+    <PageSection hasBodyWrapper={false} aria-label="details-section" id={id}>
       <Stack
         data-testid={`section-${id}`}
         hasGutter
@@ -110,9 +110,7 @@ const DetailsSection: React.FC<DetailsSectionProps> = ({
                   </Flex>
                 </FlexItem>
                 <FlexItem>
-                  <Content>
-                    {description && <Content component="p">{description}</Content>}
-                  </Content>
+                  <Content>{description && <Content component="p">{description}</Content>}</Content>
                 </FlexItem>
               </Flex>
               <Flex direction={{ default: 'column', md: 'row' }}>

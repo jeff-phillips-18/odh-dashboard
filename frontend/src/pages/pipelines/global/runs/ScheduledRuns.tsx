@@ -24,7 +24,11 @@ const ScheduledRuns: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading schedules">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading schedules"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -41,7 +45,12 @@ const ScheduledRuns: React.FC = () => {
 
   if (loaded && totalSize === 0 && !tableProps.filter) {
     return (
-      <EmptyState  headingLevel="h2" icon={PlusCircleIcon}  titleText="No schedules" data-testid="schedules-empty-state">
+      <EmptyState
+        headingLevel="h2"
+        icon={PlusCircleIcon}
+        titleText="No schedules"
+        data-testid="schedules-empty-state"
+      >
         <EmptyStateBody>
           Schedules dictate when and how many times a run is executed.{' '}
           {!isExperimentArchived && 'To get started, create a schedule.'}

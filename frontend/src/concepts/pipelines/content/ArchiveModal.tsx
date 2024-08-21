@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-	Flex,
-	FlexItem,
-	Stack,
-	StackItem,
-	TextInput
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Flex, FlexItem, Stack, StackItem, TextInput } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 

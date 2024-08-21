@@ -70,14 +70,15 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
               </p>
             </SplitItem>
             <SplitItem>
-              <Button icon={<TimesIcon />}
+              <Button
+                icon={<TimesIcon />}
                 data-testid="close-error-button"
                 variant="plain"
                 aria-label="Close"
                 onClick={() => {
                   this.setState({ hasError: false });
                 }}
-              ></Button>
+              />
             </SplitItem>
           </Split>
           <ErrorDetails

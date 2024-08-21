@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-	Alert,
-	Button,
-	Form,
-	Stack,
-	StackItem
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Alert, Button, Form, Stack, StackItem } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { createProject, updateProject } from '~/api';
 import { useUser } from '~/redux/selectors';
 import { ProjectKind } from '~/k8sTypes';

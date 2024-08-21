@@ -56,7 +56,11 @@ export const ManageRunsPageInternal: React.FC<ManageRunsPageInternalProps> = ({ 
   if (error) {
     return (
       <Bullseye>
-        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading runs">
+        <EmptyState
+          headingLevel="h2"
+          icon={ExclamationCircleIcon}
+          titleText="There was an issue loading runs"
+        >
           <EmptyStateBody>{error.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -73,7 +77,12 @@ export const ManageRunsPageInternal: React.FC<ManageRunsPageInternalProps> = ({ 
 
   if (loaded && totalSize === 0 && !tableProps.filter) {
     return (
-      <EmptyState  headingLevel="h2" icon={PlusCircleIcon}  titleText="No runs" data-testid="runs-empty-state">
+      <EmptyState
+        headingLevel="h2"
+        icon={PlusCircleIcon}
+        titleText="No runs"
+        data-testid="runs-empty-state"
+      >
         <EmptyStateBody>
           To get started, create a run. Alternatively, go to the{' '}
           <b>{PipelineRunTabTitle.SCHEDULES}</b> tab and create a schedule to execute recurring

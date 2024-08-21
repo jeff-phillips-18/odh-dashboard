@@ -34,7 +34,12 @@ const EmptyModelRegistryState: React.FC<EmptyModelRegistryStateType> = ({
   headerIcon,
   customAction,
 }) => (
-  <EmptyState   icon={headerIcon ?? PlusCircleIcon}  titleText={title} variant={EmptyStateVariant.sm} data-testid={testid}>
+  <EmptyState
+    icon={headerIcon ?? PlusCircleIcon}
+    titleText={title}
+    variant={EmptyStateVariant.sm}
+    data-testid={testid}
+  >
     <EmptyStateBody>{description}</EmptyStateBody>
     <EmptyStateFooter>
       {primaryActionText && (

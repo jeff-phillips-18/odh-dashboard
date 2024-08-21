@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  Tabs,
-  Tab,
-  TabTitleIcon,
-  TabTitleText,
-  PageSection,
-  } from '@patternfly/react-core';
+import { Tabs, Tab, TabTitleIcon, TabTitleText, PageSection } from '@patternfly/react-core';
 import { SVGIconProps } from '@patternfly/react-icons/dist/esm/createIcon';
 
 type GenericHorizontalBarProps = {
@@ -33,8 +27,8 @@ const GenericHorizontalBar: React.FC<GenericHorizontalBarProps> = ({ activeKey, 
 
   return (
     <>
-      <PageSection hasBodyWrapper={false}
-        
+      <PageSection
+        hasBodyWrapper={false}
         type="tabs"
         isFilled
         padding={{ default: 'noPadding' }}

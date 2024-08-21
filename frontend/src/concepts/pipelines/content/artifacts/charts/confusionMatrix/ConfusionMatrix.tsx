@@ -75,7 +75,10 @@ const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({
                     width: cellSize,
                   }}
                 >
-                  <Content component="p" style={{ transform: `translateX(${size / 4}px) rotate(315deg)` }}>
+                  <Content
+                    component="p"
+                    style={{ transform: `translateX(${size / 4}px) rotate(315deg)` }}
+                  >
                     {label}
                   </Content>
                 </div>

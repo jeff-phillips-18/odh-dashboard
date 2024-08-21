@@ -8,7 +8,6 @@ import {
   EmptyStateVariant,
 } from '@patternfly/react-core';
 
-
 type DashboardEmptyTableViewProps = {
   hasIcon?: boolean;
   onClearFilters: (event: React.SyntheticEvent<HTMLButtonElement, Event>) => void;
@@ -21,7 +20,7 @@ const DashboardEmptyTableView: React.FC<DashboardEmptyTableViewProps> = ({
   variant,
 }) => (
   <Bullseye>
-    <EmptyState  headingLevel="h2"   titleText="No results found" variant={variant}>
+    <EmptyState headingLevel="h2" titleText="No results found" variant={variant}>
       <EmptyStateBody>Adjust your filters and try again.</EmptyStateBody>
       <EmptyStateFooter>
         <Button variant="link" onClick={onClearFilters}>

@@ -1,15 +1,5 @@
-import {
-	Button,
-	Label,
-	LabelGroup,
-	Popover,
-	SearchInput,
-	Content
-} from '@patternfly/react-core';
-import {
-	Modal,
-	ModalVariant
-} from '@patternfly/react-core/deprecated';
+import { Button, Label, LabelGroup, Popover, SearchInput, Content } from '@patternfly/react-core';
+import { Modal, ModalVariant } from '@patternfly/react-core/deprecated';
 import React from 'react';
 import { ModelVersion, RegisteredModel } from '~/concepts/modelRegistry/types';
 import useDebounceCallback from '~/utilities/useDebounceCallback';
@@ -66,7 +56,11 @@ const ModelLabels: React.FC<ModelLabelsProps> = ({ name, customProperties }) => 
   );
 
   const getLabelModal = (labelCount: number) => (
-    <Label data-testid="modal-label-text" variant="overflow" onClick={() => setIsLabelModalOpen(true)}>
+    <Label
+      data-testid="modal-label-text"
+      variant="overflow"
+      onClick={() => setIsLabelModalOpen(true)}
+    >
       {labelCount} more
     </Label>
   );
