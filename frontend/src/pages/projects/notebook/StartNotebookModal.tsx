@@ -138,7 +138,7 @@ const StartNotebookModal: React.FC<StartNotebookModalProps> = ({
       <Button
         data-id="close-spawn"
         key="cancel"
-        variant="primary"
+        variant={spawnFailed ? 'primary' : 'secondary'}
         onClick={() => onClose(true)}
         isDisabled={!open}
       >

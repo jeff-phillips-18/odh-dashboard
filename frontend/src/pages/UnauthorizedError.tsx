@@ -17,12 +17,7 @@ const UnauthorizedError: React.FC<UnauthorizedErrorProps> = ({
   variant = PageSectionVariants.default,
   accessDomain = ODH_PRODUCT_NAME,
 }) => (
-  <PageSection
-    hasBodyWrapper={false}
-    isFilled
-    variant={PageSectionVariants.default}
-    data-testid="unauthorized-error"
-  >
+  <PageSection hasBodyWrapper={false} isFilled variant={variant} data-testid="unauthorized-error">
     <EmptyState
       headingLevel="h5"
       icon={LockIcon}

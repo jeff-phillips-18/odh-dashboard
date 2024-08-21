@@ -20,12 +20,7 @@ const UnknownError: React.FC<UnauthorizedErrorProps> = ({
   error,
   testId,
 }) => (
-  <PageSection
-    hasBodyWrapper={false}
-    isFilled
-    variant={PageSectionVariants.default}
-    data-testid={testId}
-  >
+  <PageSection hasBodyWrapper={false} isFilled variant={variant} data-testid={testId}>
     <EmptyState
       headingLevel="h5"
       icon={ErrorCircleOIcon}

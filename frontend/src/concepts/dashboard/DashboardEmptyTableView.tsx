@@ -7,6 +7,7 @@ import {
   EmptyStateFooter,
   EmptyStateVariant,
 } from '@patternfly/react-core';
+import { SearchIcon } from '@patternfly/react-icons';
 
 type DashboardEmptyTableViewProps = {
   hasIcon?: boolean;
@@ -20,7 +21,12 @@ const DashboardEmptyTableView: React.FC<DashboardEmptyTableViewProps> = ({
   variant,
 }) => (
   <Bullseye>
-    <EmptyState headingLevel="h2" titleText="No results found" variant={variant}>
+    <EmptyState
+      headingLevel="h2"
+      titleText="No results found"
+      variant={variant}
+      icon={hasIcon ? SearchIcon : undefined}
+    >
       <EmptyStateBody>Adjust your filters and try again.</EmptyStateBody>
       <EmptyStateFooter>
         <Button variant="link" onClick={onClearFilters}>

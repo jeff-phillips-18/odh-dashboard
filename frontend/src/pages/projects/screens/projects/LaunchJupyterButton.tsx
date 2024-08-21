@@ -18,7 +18,7 @@ const LaunchJupyterButton: React.FC<LaunchJupyterButtonProps> = ({ variant }) =>
   return (
     <Button
       href="/notebookController"
-      variant={ButtonVariant.primary}
+      variant={variant}
       onClick={(e) => {
         e.preventDefault();
         navigate('/notebookController');

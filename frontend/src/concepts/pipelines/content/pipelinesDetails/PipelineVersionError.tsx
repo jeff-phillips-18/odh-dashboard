@@ -15,6 +15,7 @@ const PipelineVersionError: React.FC<PipelineVersionErrorProps> = ({
 }) => (
   <PageSection hasBodyWrapper={false} className="pf-v5-u-h-100">
     <EmptyState
+      data-testid={testId}
       headingLevel="h2"
       icon={ExclamationTriangleIcon}
       titleText={title}
