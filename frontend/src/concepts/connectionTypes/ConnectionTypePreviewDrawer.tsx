@@ -42,7 +42,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
       <DrawerPanelBody>
         <div
           style={{
-            paddingBottom: 'var(--pf-v6-global--spacer--lg)',
+            paddingBottom: 'var(--pf-t--global--spacer--lg)',
           }}
         >
           <Content component="small">
@@ -51,7 +51,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
           </Content>
           <Card
             style={{
-              marginTop: 'var(--pf-v6-global--spacer--md)',
+              marginTop: 'var(--pf-t--global--spacer--md)',
             }}
           >
             <CardBody>

@@ -2,10 +2,10 @@
   word-break: break-word;
 
   &--with-padding {
-    padding-bottom: var(--pf-v6-global--spacer--md);
+    padding-bottom: var(--pf-t--global--spacer--md);
 
     p {
-      margin-bottom: var(--pf-v6-global--spacer--sm);
+      margin-bottom: var(--pf-t--global--spacer--sm);
     }
   }
 
@@ -17,8 +17,8 @@
   h6 {
     font-family: var(--pf-v6-global--FontFamily--heading--sans-serif);
     font-weight: var(--pf-v6-global--FontWeight--normal);
-    margin-top: var(--pf-v6-global--spacer--md);
-    margin-bottom: var(--pf-v6-global--spacer--sm);
+    margin-top: var(--pf-t--global--spacer--md);
+    margin-bottom: var(--pf-t--global--spacer--sm);
   }
 
   h1 {
@@ -37,13 +37,13 @@
   h5,
   h6 {
     font-size: var(--pf-v6-global--FontSize--md);
-    margin-top: var(--pf-v6-global--spacer--sm);
+    margin-top: var(--pf-t--global--spacer--sm);
   }
 
   ul,
   ol {
     margin-top: 0;
-    margin-bottom: var(--pf-v6-global--spacer--sm);
+    margin-bottom: var(--pf-t--global--spacer--sm);
   }
 
   ul {
@@ -51,7 +51,7 @@
   }
 
   li {
-    margin-left: var(--pf-v6-global--spacer--lg);
+    margin-left: var(--pf-t--global--spacer--lg);
   }
 
   code,
@@ -69,8 +69,8 @@
 
   pre {
     display: block;
-    padding: var(--pf-v6-global--spacer--sm);
-    margin-bottom: var(--pf-v6-global--spacer--sm);
+    padding: var(--pf-t--global--spacer--sm);
+    margin-bottom: var(--pf-t--global--spacer--sm);
     font-size: var(--pf-v6-global--FontSize--sm);
     color: var(--pf-v6-global--Color--300);
     word-break: break-all;

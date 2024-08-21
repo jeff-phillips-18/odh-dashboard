@@ -18,7 +18,7 @@ const SupportedAppTitle: React.FC<SupportedAppTitleProps> = ({ odhApp, showProvi
           icon={
             <img
               data-testid="tooltip-img"
-              style={{ marginLeft: 'var(--pf-v6-global--spacer--xs)' }}
+              style={{ marginLeft: 'var(--pf-t--global--spacer--xs)' }}
               src="../images/CheckStar.svg"
               alt={`${ODH_PRODUCT_NAME} certified and supported`}
             />

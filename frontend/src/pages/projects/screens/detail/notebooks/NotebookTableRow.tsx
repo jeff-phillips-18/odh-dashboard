@@ -71,7 +71,7 @@ const NotebookTableRow: React.FC<NotebookTableRowProps> = ({
             <div
               style={{
                 display: 'flex',
-                gap: 'var(--pf-v6-global--spacer--xs)',
+                gap: 'var(--pf-t--global--spacer--xs)',
                 alignItems: 'baseline',
                 flexWrap: 'wrap',
               }}

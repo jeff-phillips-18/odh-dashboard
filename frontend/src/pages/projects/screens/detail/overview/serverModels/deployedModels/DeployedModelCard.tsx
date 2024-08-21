@@ -67,7 +67,7 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
         <CardBody>
           <Content>
             <Content component="dl" style={{ display: 'block' }}>
-              <Content component="dt" style={{ marginBottom: 'var(--pf-v6-global--spacer--xs)' }}>
+              <Content component="dt" style={{ marginBottom: 'var(--pf-t--global--spacer--xs)' }}>
                 Serving runtime
               </Content>
               <Content

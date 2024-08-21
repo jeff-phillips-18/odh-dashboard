@@ -41,7 +41,7 @@ const GenericHorizontalBar: React.FC<GenericHorizontalBarProps> = ({ activeKey, 
             setQueryParams(queryParams);
           }}
           aria-label="Horizontal bar"
-          style={{ paddingInlineStart: 'var(--pf-v6-global--spacer--lg' }}
+          style={{ paddingInlineStart: 'var(--pf-t--global--spacer--lg' }}
         >
           {sections.map((section) => (
             <Tab

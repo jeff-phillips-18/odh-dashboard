@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     .pf-v6-c-button.pf-m-link {
-      margin-left: var(--pf-v6-global--spacer--xs);
+      margin-left: var(--pf-t--global--spacer--xs);
     }
   }
   &__count {
@@ -20,14 +20,14 @@
 
   &__view-switcher {
     font-weight: var(--pf-v6-global--FontWeight--bold);
-    margin-left: var(--pf-v6-global--spacer--xs);
+    margin-left: var(--pf-t--global--spacer--xs);
   }
 
   &__filtered-types {
     display: flex;
     align-items: center;
     .odh-card__partner-badge {
-      margin-right: var(--pf-v6-global--spacer--xs);
+      margin-right: var(--pf-t--global--spacer--xs);
       margin-bottom: 0;
       &:last-of-type {
         margin-right: 0;
@@ -36,14 +36,14 @@
         color: var(--pf-v6-global--Color--100);
         font-size: var(--pf-v6-global--FontSize--xs);
         padding: 0;
-        margin-left: var(--pf-v6-global--spacer--xs);
+        margin-left: var(--pf-t--global--spacer--xs);
       }
     }
   }
 
   &__filter-check {
     font-size: var(--pf-v6-global--FontSize--md);
-    padding-right: var(--pf-v6-global--spacer--sm);
+    padding-right: var(--pf-t--global--spacer--sm);
     visibility: hidden;
     &.odh-m-filtered {
       visibility: visible;
@@ -52,7 +52,7 @@
 
   &__filter-count {
     font-size: var(--pf-v6-global--FontSize--md);
-    padding-left: var(--pf-v6-global--spacer--sm);
+    padding-left: var(--pf-t--global--spacer--sm);
   }
 
   .pf-v6-c-select__toggle-arrow {

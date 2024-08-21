@@ -67,7 +67,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                   {notebookState ? (
                     <Td
                       dataLabel="workbenchName"
-                      style={{ paddingLeft: 'var(--pf-v6-global--spacer--sm)' }}
+                      style={{ paddingLeft: 'var(--pf-t--global--spacer--sm)' }}
                     >
                       <NotebookRouteLink
                         label={getDisplayNameFromK8sResource(notebookState.notebook)}

@@ -9,7 +9,7 @@ const PlatformSelectSection: React.FC = () => (
     <Stack hasGutter>
       <Content
         data-testid="no-model-serving-platform-selected"
-        style={{ paddingLeft: 'var(--pf-v6-global--spacer--md)' }}
+        style={{ paddingLeft: 'var(--pf-t--global--spacer--md)' }}
       >
         <Content component="small">
           Select the type of model serving platform to be used when deploying models from this

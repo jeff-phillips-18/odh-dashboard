@@ -33,7 +33,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         style={
           (open ?? innerOpen) || showChildrenWhenClosed
             ? {
-                marginBottom: 'var(--pf-v6-global--spacer--md)',
+                marginBottom: 'var(--pf-t--global--spacer--md)',
               }
             : undefined
         }

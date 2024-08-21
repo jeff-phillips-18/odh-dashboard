@@ -119,7 +119,7 @@ const DeployedModelsGallery: React.FC<DeployedModelsGalleryProps> = ({
       <Gallery
         hasGutter
         minWidths={{ default: '285px' }}
-        style={{ marginBottom: 'var(--pf-v6-global--spacer--sm)' }}
+        style={{ marginBottom: 'var(--pf-t--global--spacer--sm)' }}
       >
         {shownServices.map((model) => (
           <DeployedModelCard
