@@ -25,7 +25,7 @@ const ServingRuntimeTokensTable: React.FC<ServingRuntimeTokensTableProps> = ({
   if (!isTokenEnabled) {
     return (
       <HelperText>
-        <HelperTextItem variant="warning" hasIcon>
+        <HelperTextItem variant="warning" >
           Tokens disabled
         </HelperTextItem>
       </HelperText>

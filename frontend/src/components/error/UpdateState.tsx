@@ -5,12 +5,9 @@ import {
   EmptyStateActions,
   EmptyStateBody,
   EmptyStateFooter,
-  EmptyStateHeader,
-  EmptyStateIcon,
   EmptyStateVariant,
   PageSection,
-  PageSectionVariants,
-} from '@patternfly/react-core';
+  } from '@patternfly/react-core';
 import { PathMissingIcon } from '@patternfly/react-icons';
 
 type Props = {
@@ -18,13 +15,8 @@ type Props = {
 };
 
 const UpdateState: React.FC<Props> = ({ onClose }) => (
-  <PageSection variant={PageSectionVariants.light} data-testid="error-update-state">
-    <EmptyState variant={EmptyStateVariant.full}>
-      <EmptyStateHeader
-        titleText="An error occurred"
-        icon={<EmptyStateIcon icon={PathMissingIcon} />}
-        headingLevel="h2"
-      />
+  <PageSection hasBodyWrapper={false}  data-testid="error-update-state">
+    <EmptyState  headingLevel="h2" icon={PathMissingIcon}  titleText="An error occurred" variant={EmptyStateVariant.full}>
       <EmptyStateBody>This is likely the result of a recent update.</EmptyStateBody>
       <EmptyStateFooter>
         <EmptyStateActions>

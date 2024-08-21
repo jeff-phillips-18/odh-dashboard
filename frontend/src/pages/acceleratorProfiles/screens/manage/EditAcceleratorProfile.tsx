@@ -5,7 +5,6 @@ import {
   Button,
   EmptyState,
   EmptyStateBody,
-  EmptyStateIcon,
   Spinner,
   Title,
 } from '@patternfly/react-core';
@@ -24,11 +23,9 @@ const EditAcceleratorProfile: React.FC = () => {
   if (error) {
     return (
       <Bullseye>
-        <EmptyState>
-          <EmptyStateIcon icon={ExclamationCircleIcon} />
-          <Title headingLevel="h4" size="lg" data-testid="problem-loading-accelerator-profile">
+        <EmptyState titleText={<Title headingLevel="h4" size="lg" data-testid="problem-loading-accelerator-profile">
             Problem loading accelerator profile
-          </Title>
+          </Title>} icon={ExclamationCircleIcon}>
           <EmptyStateBody>{error.message}</EmptyStateBody>
           <Button
             data-testid="view-all-accelerator-profiles"

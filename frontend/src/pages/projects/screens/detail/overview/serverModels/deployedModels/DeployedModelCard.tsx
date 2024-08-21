@@ -5,10 +5,8 @@ import {
   CardHeader,
   Flex,
   FlexItem,
-  TextContent,
+  Content,
   GalleryItem,
-  TextList,
-  TextListItem,
   TextListItemVariants,
   TextListVariants,
 } from '@patternfly/react-core';
@@ -69,15 +67,15 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
           </Flex>
         </CardHeader>
         <CardBody>
-          <TextContent>
-            <TextList component={TextListVariants.dl} style={{ display: 'block' }}>
-              <TextListItem
+          <Content>
+            <Content component={TextListVariants.dl} style={{ display: 'block' }}>
+              <Content
                 component={TextListItemVariants.dt}
                 style={{ marginBottom: 'var(--pf-v5-global--spacer--xs)' }}
               >
                 Serving runtime
-              </TextListItem>
-              <TextListItem
+              </Content>
+              <Content
                 component={TextListItemVariants.dd}
                 style={{
                   fontSize: 'var(--pf-v5-global--FontSize--sm)',
@@ -85,9 +83,9 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
                 }}
               >
                 <InferenceServiceServingRuntime servingRuntime={servingRuntime} />
-              </TextListItem>
-            </TextList>
-          </TextContent>
+              </Content>
+            </Content>
+          </Content>
         </CardBody>
         <CardFooter>
           <InferenceServiceEndpoint

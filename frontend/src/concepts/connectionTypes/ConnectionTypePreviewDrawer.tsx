@@ -10,7 +10,7 @@ import {
   DrawerPanelBody,
   Card,
   CardBody,
-  Text,
+  Content,
 } from '@patternfly/react-core';
 import ConnectionTypePreview from '~/concepts/connectionTypes/ConnectionTypePreview';
 import { ConnectionTypeConfigMapObj } from '~/concepts/connectionTypes/types';
@@ -45,13 +45,13 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
             paddingBottom: 'var(--pf-v5-global--spacer--lg)',
           }}
         >
-          <Text component="small">
+          <Content component="small">
             This preview shows the user view of the connection type form, and is for reference only.
             Updates in the developer view are automatically in the user view.
-          </Text>
+          </Content>
           <Card
-            isFlat
-            isRounded
+            
+            
             style={{
               marginTop: 'var(--pf-v5-global--spacer--md)',
             }}

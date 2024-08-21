@@ -97,7 +97,7 @@ const NameDescriptionField: React.FC<NameDescriptionFieldProps> = ({
         <StackItem>
           <FormGroup
             label={K8sLabelName}
-            labelIcon={
+            labelHelp={
               <Tooltip
                 position="right"
                 content={

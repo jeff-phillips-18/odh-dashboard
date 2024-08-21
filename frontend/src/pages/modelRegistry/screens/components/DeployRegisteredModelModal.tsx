@@ -1,5 +1,13 @@
 import React from 'react';
-import { Alert, Button, Form, Modal, Spinner } from '@patternfly/react-core';
+import {
+	Alert,
+	Button,
+	Form,
+	Spinner
+} from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 import { ModelVersion } from '~/concepts/modelRegistry/types';
 import { ProjectKind } from '~/k8sTypes';
 import useProjectErrorForRegisteredModel from '~/pages/modelRegistry/screens/RegisteredModels/useProjectErrorForRegisteredModel';

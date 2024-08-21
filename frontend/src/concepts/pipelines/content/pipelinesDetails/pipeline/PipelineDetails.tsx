@@ -167,11 +167,11 @@ const PipelineDetails: PipelineCoreDetailsPageComponent = ({ breadcrumbPath }) =
         {isInvalidPipelineVersion ? (
           <PipelineNotSupported />
         ) : (
-          <PageSection
+          <PageSection hasBodyWrapper={false}
             isFilled
             padding={{ default: 'noPadding' }}
             style={{ flexBasis: 0, overflowY: 'hidden' }}
-            variant="light"
+            
           >
             <Flex
               direction={{ default: 'column' }}

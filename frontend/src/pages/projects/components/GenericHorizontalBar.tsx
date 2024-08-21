@@ -6,8 +6,7 @@ import {
   TabTitleIcon,
   TabTitleText,
   PageSection,
-  PageSectionVariants,
-} from '@patternfly/react-core';
+  } from '@patternfly/react-core';
 import { SVGIconProps } from '@patternfly/react-icons/dist/esm/createIcon';
 
 type GenericHorizontalBarProps = {
@@ -34,8 +33,8 @@ const GenericHorizontalBar: React.FC<GenericHorizontalBarProps> = ({ activeKey, 
 
   return (
     <>
-      <PageSection
-        variant={PageSectionVariants.light}
+      <PageSection hasBodyWrapper={false}
+        
         type="tabs"
         isFilled
         padding={{ default: 'noPadding' }}

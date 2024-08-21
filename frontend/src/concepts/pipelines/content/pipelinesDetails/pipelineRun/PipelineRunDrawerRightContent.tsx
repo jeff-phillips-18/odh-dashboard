@@ -5,7 +5,7 @@ import {
   DrawerHead,
   DrawerPanelBody,
   DrawerPanelContent,
-  Text,
+  Content,
   Title,
 } from '@patternfly/react-core';
 import PipelineRunDrawerRightTabs from '~/concepts/pipelines/content/pipelinesDetails/pipelineRun/PipelineRunDrawerRightTabs';
@@ -48,7 +48,7 @@ const PipelineRunDrawerRightContent: React.FC<PipelineRunDrawerRightContentProps
             <Title headingLevel="h2" size="xl">
               {task.name}
             </Title>
-            {task.status?.podName && <Text component="small">{task.status.podName}</Text>}
+            {task.status?.podName && <Content component="small">{task.status.podName}</Content>}
             <DrawerActions>
               <DrawerCloseButton onClick={onClose} />
             </DrawerActions>

@@ -227,11 +227,11 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                 <Toolbar className={isFullScreen ? 'pf-v5-u-p-sm' : ''}>
                   <ToolbarContent>
                     <ToolbarGroup
-                      align={{ default: 'alignLeft' }}
-                      spacer={{ default: 'spacerNone' }}
+                      align={{ default: "alignStart" }}
+                      gap={{ default: "gapNone" }}
                     >
                       {!showSearchbar && (
-                        <ToolbarItem spacer={{ default: 'spacerSm' }} style={{ maxWidth: '200px' }}>
+                        <ToolbarItem gap={{ default: "gapSm" }} style={{ maxWidth: '200px' }}>
                           <Dropdown
                             isOpen={open}
                             onSelect={() => setOpen(false)}
@@ -295,7 +295,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                           </Dropdown>
                         </ToolbarItem>
                       )}
-                      <ToolbarItem spacer={{ default: 'spacerNone' }} style={{ maxWidth: '300px' }}>
+                      <ToolbarItem gap={{ default: "gapNone" }} style={{ maxWidth: '300px' }}>
                         <LogViewerSearch
                           onFocus={() => {
                             if (!podStatus?.completed && logsLoaded) {
@@ -312,7 +312,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                         />
                       </ToolbarItem>
                       {(!podStatus?.completed || isPaused) && (
-                        <ToolbarItem spacer={{ default: 'spacerNone' }}>
+                        <ToolbarItem gap={{ default: "gapNone" }}>
                           <Button
                             variant={!logsLoaded ? 'plain' : isPaused ? 'plain' : 'link'}
                             onClick={() => setIsPaused(!isPaused)}
@@ -336,7 +336,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                         </ToolbarItem>
                       )}
                     </ToolbarGroup>
-                    <ToolbarGroup align={{ default: 'alignRight' }}>
+                    <ToolbarGroup align={{ default: "alignEnd" }}>
                       <ToolbarItem alignSelf="center">
                         <Checkbox
                           label="Wrap text"
@@ -346,7 +346,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                           onChange={(_event, value) => setIsTextWrapped(value)}
                         />
                       </ToolbarItem>
-                      <ToolbarItem spacer={{ default: 'spacerNone' }}>
+                      <ToolbarItem gap={{ default: "gapNone" }}>
                         {downloading && <Spinner size="sm" className="pf-v5-u-my-sm" />}
                         {podContainers.length <= 1 ? (
                           <Tooltip position="top" content={<div>Download current step log</div>}>
@@ -368,7 +368,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task }) => {
                           </Tooltip>
                         )}
                       </ToolbarItem>
-                      <ToolbarItem spacer={{ default: 'spacerNone' }}>
+                      <ToolbarItem gap={{ default: "gapNone" }}>
                         <Dropdown
                           popperProps={{ position: 'right' }}
                           isOpen={isKebabOpen}

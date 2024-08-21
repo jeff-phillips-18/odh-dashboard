@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Button, Flex, FlexItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Button, Flex, FlexItem, Content, ContentVariants } from '@patternfly/react-core';
 import { AngleDownIcon, AngleRightIcon } from '@patternfly/react-icons';
 
 interface CollapsibleSectionProps {
   open?: boolean;
   setOpen?: (update: boolean) => void;
   title: string;
-  titleVariant?: TextVariants.h1 | TextVariants.h2;
+  titleVariant?: ContentVariants.h1 | ContentVariants.h2;
   children?: React.ReactNode;
   id?: string;
   showChildrenWhenClosed?: boolean;
@@ -16,7 +16,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   open,
   setOpen,
   title,
-  titleVariant = TextVariants.h2,
+  titleVariant = ContentVariants.h2,
   children,
   id,
   showChildrenWhenClosed,
@@ -39,7 +39,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         }
       >
         <FlexItem>
-          <Button
+          <Button icon={open ?? innerOpen ? <AngleDownIcon /> : <AngleRightIcon />}
             aria-labelledby={titleId}
             aria-expanded={open}
             variant="plain"
@@ -47,21 +47,19 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
               paddingLeft: 0,
               paddingRight: 0,
               fontSize:
-                titleVariant === TextVariants.h2
+                titleVariant === ContentVariants.h2
                   ? 'var(--pf-v5-global--FontSize--xl)'
                   : 'var(--pf-v5-global--FontSize--2xl)',
             }}
             onClick={() => (setOpen ? setOpen(!open) : setInnerOpen((prev) => !prev))}
-          >
-            {open ?? innerOpen ? <AngleDownIcon /> : <AngleRightIcon />}
-          </Button>
+          ></Button>
         </FlexItem>
         <FlexItem>
-          <TextContent>
-            <Text id={titleId} component={titleVariant}>
+          <Content>
+            <Content id={titleId} component={titleVariant}>
               {title}
-            </Text>
-          </TextContent>
+            </Content>
+          </Content>
         </FlexItem>
       </Flex>
       {(open ?? innerOpen) || showChildrenWhenClosed ? children : null}

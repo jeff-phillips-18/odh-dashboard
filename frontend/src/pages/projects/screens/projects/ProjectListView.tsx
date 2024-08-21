@@ -93,7 +93,7 @@ const ProjectListView: React.FC<ProjectListViewProps> = ({ allowCreate }) => {
                 />
               </ToolbarItem>
             </ToolbarGroup>
-            <ToolbarGroup align={{ default: 'alignRight' }}>
+            <ToolbarGroup align={{ default: "alignEnd" }}>
               {dashboardConfig.spec.notebookController?.enabled && (
                 <ToolbarItem>
                   <LaunchJupyterButton variant={ButtonVariant.link} />

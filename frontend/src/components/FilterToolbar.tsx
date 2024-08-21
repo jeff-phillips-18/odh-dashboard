@@ -3,7 +3,7 @@ import {
   ToolbarFilter,
   ToolbarGroup,
   ToolbarItem,
-  ToolbarChip,
+  ToolbarLabel,
   Tooltip,
   Dropdown,
   DropdownItem,
@@ -42,7 +42,7 @@ function FilterToolbar<T extends string>({
   const keys = Object.keys(filterOptions) as Array<T>;
   const [open, setOpen] = React.useState(false);
   const [currentFilterType, setCurrentFilterType] = React.useState<T>(keys[0]);
-  const isToolbarChip = (v: unknown): v is ToolbarChip & { key: T } =>
+  const isToolbarChip = (v: unknown): v is ToolbarLabel & { key: T } =>
     !!v && Object.keys(v).every((k) => ['key', 'node'].includes(k));
   const filterItem = filterData[currentFilterType];
 
@@ -89,8 +89,8 @@ function FilterToolbar<T extends string>({
           categoryName="Filters"
           data-testid={`${testId}-text-field`}
           variant="search-filter"
-          chips={keys
-            .map<ToolbarChip | null>((filterKey) => {
+          labels={keys
+            .map<ToolbarLabel | null>((filterKey) => {
               const optionValue = filterOptions[filterKey];
               const data = filterData[filterKey];
               if (data) {
@@ -111,12 +111,12 @@ function FilterToolbar<T extends string>({
               return null;
             })
             .filter(isToolbarChip)}
-          deleteChip={(_, chip) => {
+          deleteLabel={(_, chip) => {
             if (isToolbarChip(chip)) {
               onFilterUpdate(chip.key, '');
             }
           }}
-          deleteChipGroup={() => onClearFilters()}
+          deleteLabelGroup={() => onClearFilters()}
         >
           {filterOptionRenders[currentFilterType]({
             onChange: (value, label) =>

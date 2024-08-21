@@ -2,16 +2,18 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  Alert,
-  Button,
-  Form,
-  FormGroup,
-  Modal,
-  Stack,
-  StackItem,
-  TextArea,
-  TextInput,
+	Alert,
+	Button,
+	Form,
+	FormGroup,
+	Stack,
+	StackItem,
+	TextArea,
+	TextInput
 } from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import { usePipelineImportModalData } from '~/concepts/pipelines/content/import/useImportModalData';

@@ -5,7 +5,6 @@ import {
   EmptyStateVariant,
   Spinner,
   EmptyStateActions,
-  EmptyStateHeader,
   EmptyStateFooter,
   Bullseye,
 } from '@patternfly/react-core';
@@ -48,8 +47,7 @@ const PipelinesTableExpandedRow: React.FC<PipelinesTableExpandedRowProps> = ({ p
         <Td />
         <Td colSpan={6}>
           <ExpandableRowContent>
-            <EmptyState variant={EmptyStateVariant.xs} data-testid="no-pipeline-versions">
-              <EmptyStateHeader titleText="No pipeline versions" headingLevel="h3" />
+            <EmptyState  headingLevel="h3"   titleText="No pipeline versions" variant={EmptyStateVariant.xs} data-testid="no-pipeline-versions">
               <EmptyStateFooter>
                 <EmptyStateActions>
                   <ImportPipelineVersionButton selectedPipeline={pipeline} variant="link" />

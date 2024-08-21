@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {
-  Alert,
-  Button,
-  Form,
-  FormAlert,
-  Modal,
-  ModalVariant,
-  Spinner,
-  TextInputTypes,
+	Alert,
+	Button,
+	Form,
+	FormAlert,
+	Spinner,
+	TextInputTypes
 } from '@patternfly/react-core';
+import {
+	Modal,
+	ModalVariant
+} from '@patternfly/react-core/deprecated';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { OdhApplication } from '~/types';
 import { EnableApplicationStatus, useEnableApplication } from '~/utilities/useEnableApplication';

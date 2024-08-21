@@ -4,8 +4,7 @@ import {
   EmptyState,
   EmptyStateBody,
   Spinner,
-  EmptyStateHeader,
-} from '@patternfly/react-core';
+  } from '@patternfly/react-core';
 import { Route, Routes } from 'react-router-dom';
 import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
 
@@ -22,8 +21,7 @@ const ProjectsRoutes: React.FC<ProjectsRoutesProps> = ({ children }) => {
   if (loadError) {
     // This is unlikely to happen -- likely a development setup error and mounted outside of the provider
     render = (
-      <EmptyState>
-        <EmptyStateHeader titleText="There was an issue fetching projects." headingLevel="h2" />
+      <EmptyState  headingLevel="h2"   titleText="There was an issue fetching projects.">
         <EmptyStateBody>{loadError.message}</EmptyStateBody>
       </EmptyState>
     );

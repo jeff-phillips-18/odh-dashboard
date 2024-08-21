@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormGroup, FormSection, Stack, StackItem, Text } from '@patternfly/react-core';
+import { FormGroup, FormSection, Stack, StackItem, Content } from '@patternfly/react-core';
 import { PlusCircleIcon } from '@patternfly/react-icons';
 import { ExperimentKFv2 } from '~/concepts/pipelines/kfTypes';
 import {
@@ -38,7 +38,7 @@ const ProjectAndExperimentSection: React.FC<ProjectAndExperimentSectionProps> = 
       }
     >
       <FormGroup label="Project">
-        <Text>{projectName}</Text>
+        <Content component="p">{projectName}</Content>
       </FormGroup>
       {isExperimentsAvailable && (
         <FormGroup label="Experiment" aria-label="Experiment" isRequired>

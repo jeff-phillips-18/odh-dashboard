@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {
-  Alert,
-  Button,
-  Flex,
-  FlexItem,
-  Modal,
-  Stack,
-  StackItem,
-  TextInput,
+	Alert,
+	Button,
+	Flex,
+	FlexItem,
+	Stack,
+	StackItem,
+	TextInput
 } from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 
 type DeleteModalProps = {
   title: string;

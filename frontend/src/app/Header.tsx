@@ -2,10 +2,10 @@ import React from 'react';
 import {
   Brand,
   Masthead,
-  MastheadBrand,
+  MastheadLogo,
   MastheadContent,
   MastheadMain,
-  MastheadToggle,
+  MastheadToggle, MastheadBrand,
   PageToggleButton,
 } from '@patternfly/react-core';
 import { BarsIcon } from '@patternfly/react-icons';
@@ -34,13 +34,13 @@ const Header: React.FC<HeaderProps> = ({ onNotificationsClick }) => {
         </MastheadToggle>
       )}
       <MastheadMain>
-        <MastheadBrand component={MastheadBranchComponent}>
+        <MastheadBrand data-codemods><MastheadLogo data-codemods component={MastheadBranchComponent}>
           <Brand
             className="odh-dashboard__brand"
             src={`${window.location.origin}/images/${ODH_LOGO}`}
             alt={`${ODH_PRODUCT_NAME} Logo`}
           />
-        </MastheadBrand>
+        </MastheadLogo></MastheadBrand>
       </MastheadMain>
       <MastheadContent>
         <HeaderTools onNotificationsClick={onNotificationsClick} />

@@ -5,9 +5,8 @@ import {
   CardFooter,
   Flex,
   FlexItem,
-  Text,
-  TextContent,
-} from '@patternfly/react-core';
+  Content,
+  } from '@patternfly/react-core';
 
 type MetricsCardProps = {
   title: string;
@@ -49,9 +48,9 @@ const MetricsContents: React.FC<MetricsCardProps> = ({
                       {stats.count}
                     </Button>
                   ) : (
-                    <TextContent>
-                      <Text component="p">{stats.count}</Text>
-                    </TextContent>
+                    <Content>
+                      <Content component="p">{stats.count}</Content>
+                    </Content>
                   )}
                   <div>
                     <div id={`${baseId}-statText`}>{stats.text}</div>

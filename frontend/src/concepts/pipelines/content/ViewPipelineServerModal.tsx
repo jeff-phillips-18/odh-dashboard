@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {
-  DescriptionList,
-  DescriptionListDescription,
-  DescriptionListGroup,
-  DescriptionListTerm,
-  Modal,
-  Title,
+	DescriptionList,
+	DescriptionListDescription,
+	DescriptionListGroup,
+	DescriptionListTerm,
+	Title
 } from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import PasswordHiddenText from '~/components/PasswordHiddenText';
 import { dataEntryToRecord } from '~/utilities/dataEntryToRecord';

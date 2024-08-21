@@ -10,9 +10,8 @@ import {
   Popover,
   Stack,
   StackItem,
-  Text,
-  TextContent,
-} from '@patternfly/react-core';
+  Content,
+  } from '@patternfly/react-core';
 import { ProjectSectionID } from '~/pages/projects/screens/detail/types';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { ProjectSectionTitles } from '~/pages/projects/screens/detail/const';
@@ -183,11 +182,11 @@ const ModelServingPlatform: React.FC = () => {
               <FlexItem flex={{ default: 'flex_1' }}>
                 <Stack hasGutter>
                   <StackItem>
-                    <TextContent>
-                      <Text>
+                    <Content>
+                      <Content component="p">
                         Select the model serving type to be used when deploying from this project.
-                      </Text>
-                    </TextContent>
+                      </Content>
+                    </Content>
                   </StackItem>
                   <StackItem>
                     <Gallery hasGutter>

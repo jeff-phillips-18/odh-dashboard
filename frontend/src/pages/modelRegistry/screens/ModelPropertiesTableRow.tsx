@@ -158,15 +158,13 @@ const ModelPropertiesTableRow: React.FC<ModelPropertiesTableRowProps> = ({
               </Button>
             </ActionListItem>
             <ActionListItem>
-              <Button
+              <Button icon={<TimesIcon />}
                 data-testid={`discard-edit-button-property-${key}`}
                 aria-label={`Discard edits to property with key ${key}`}
                 variant="plain"
                 onClick={onDiscardEditsClick}
                 isDisabled={isSavingEdits}
-              >
-                <TimesIcon />
-              </Button>
+              ></Button>
             </ActionListItem>
           </ActionList>
         ) : (

@@ -1,21 +1,23 @@
 import * as React from 'react';
 import {
-  Checkbox,
-  Form,
-  FormGroup,
-  FormHelperText,
-  HelperText,
-  HelperTextItem,
-  MenuToggle,
-  Modal,
-  Popover,
-  Select,
-  SelectList,
-  SelectOption,
-  TextArea,
-  TextInput,
-  ValidatedOptions,
+	Checkbox,
+	Form,
+	FormGroup,
+	FormHelperText,
+	HelperText,
+	HelperTextItem,
+	MenuToggle,
+	Popover,
+	Select,
+	SelectList,
+	SelectOption,
+	TextArea,
+	TextInput,
+	ValidatedOptions
 } from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 import { ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 import {
@@ -135,7 +137,7 @@ export const ConnectionTypeDataFieldModal: React.FC<Props> = ({
         <FormGroup
           fieldId="description"
           label="Field description"
-          labelIcon={
+          labelHelp={
             <Popover
               aria-label="field description help"
               headerContent="Field description"
@@ -158,7 +160,7 @@ export const ConnectionTypeDataFieldModal: React.FC<Props> = ({
         <FormGroup
           fieldId="envVar"
           label="Environment variable"
-          labelIcon={
+          labelHelp={
             <Popover
               aria-label="environment variable help"
               headerContent="Environment variable"

@@ -11,7 +11,7 @@ const ProjectOverview: React.FC = () => {
   const modelServingEnabled = useModelServingEnabled();
 
   return (
-    <PageSection isFilled aria-label="project-details-page-section" id={ProjectSectionID.OVERVIEW}>
+    <PageSection hasBodyWrapper={false} isFilled aria-label="project-details-page-section" id={ProjectSectionID.OVERVIEW}>
       <Stack hasGutter data-testid={`section-${ProjectSectionID.OVERVIEW}`}>
         <PipelineAndVersionContextProvider>
           <TrainModelsSection />

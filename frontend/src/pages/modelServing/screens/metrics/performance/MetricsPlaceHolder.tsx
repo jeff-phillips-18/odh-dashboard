@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
   EmptyState,
-  EmptyStateIcon,
   Title,
 } from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
@@ -19,12 +18,10 @@ const MetricsPlaceHolder: React.FC<MetricsPlaceHolderProps> = ({ title }) => (
       <CardTitle>{title}</CardTitle>
     </CardHeader>
     <CardBody style={{ height: 200, padding: 0 }}>
-      <EmptyState>
-        <EmptyStateIcon icon={CubesIcon} />
-        <Title headingLevel="h4" size="lg" data-testid="metrics-chart-place-holder">
+      <EmptyState titleText={<Title headingLevel="h4" size="lg" data-testid="metrics-chart-place-holder">
           Metrics coming soon
-        </Title>
-      </EmptyState>
+        </Title>} icon={CubesIcon}>
+        </EmptyState>
     </CardBody>
   </Card>
 );

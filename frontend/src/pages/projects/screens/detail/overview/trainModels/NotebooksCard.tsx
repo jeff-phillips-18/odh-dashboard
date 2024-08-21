@@ -11,9 +11,8 @@ import {
   Flex,
   FlexItem,
   Spinner,
-  Text,
-  TextContent,
-} from '@patternfly/react-core';
+  Content,
+  } from '@patternfly/react-core';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { ProjectObjectType, SectionType, typedEmptyImage } from '~/concepts/design/utils';
@@ -103,13 +102,13 @@ const NotebooksCard: React.FC = () => {
             </FlexItem>
             <FlexItem flex={{ default: 'flex_1' }}>
               <Flex gap={{ default: 'gapMd' }}>
-                <TextContent>
-                  <Text component="small">
+                <Content>
+                  <Content component="small">
                     A workbench is an isolated area where you can work with models in your preferred
                     IDE, such as a Jupyter notebook. You can add accelerators and data connections,
                     create pipelines, and configure cluster storage in your workbench.
-                  </Text>
-                </TextContent>
+                  </Content>
+                </Content>
                 <Button
                   variant={ButtonVariant.primary}
                   onClick={() => navigate(`/projects/${currentProject.metadata.name}/spawner`)}

@@ -98,38 +98,32 @@ const DisplayedContentTableRow: React.FC<DisplayedContentTableRowProps> = ({
                   </Button>
                 </ActionListItem>
                 <ActionListItem>
-                  <Button
+                  <Button icon={<TimesIcon />}
                     data-testid={`discard-display-button-${dataLabel} `}
                     aria-label="Discard displayed content"
                     variant="plain"
                     onClick={resetAll}
-                  >
-                    <TimesIcon />
-                  </Button>
+                  ></Button>
                 </ActionListItem>
               </>
             ) : (
               <>
                 <ActionListItem>
-                  <Button
+                  <Button icon={<PencilAltIcon />}
                     aria-label="Edit displayed content"
                     isDisabled={isEditing}
                     variant="plain"
                     onClick={onEdit}
-                  >
-                    <PencilAltIcon />
-                  </Button>
+                  ></Button>
                 </ActionListItem>
                 <ActionListItem>
-                  <Button
+                  <Button icon={<MinusCircleIcon />}
                     data-testid="remove-displayed-content-button"
                     aria-label="Remove displayed content"
                     isDisabled={isEditing}
                     variant="plain"
                     onClick={onDelete}
-                  >
-                    <MinusCircleIcon />
-                  </Button>
+                  ></Button>
                 </ActionListItem>
               </>
             )}

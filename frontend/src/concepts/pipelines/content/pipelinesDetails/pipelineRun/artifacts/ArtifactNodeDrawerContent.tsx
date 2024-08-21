@@ -3,7 +3,7 @@ import React from 'react';
 import {
   DrawerHead,
   Title,
-  Text,
+  Content,
   DrawerActions,
   DrawerCloseButton,
   DrawerPanelBody,
@@ -11,7 +11,6 @@ import {
   Tab,
   TabTitleText,
   EmptyState,
-  EmptyStateHeader,
   EmptyStateVariant,
 } from '@patternfly/react-core';
 
@@ -43,7 +42,7 @@ export const ArtifactNodeDrawerContent: React.FC<ArtifactNodeDrawerContentProps>
         <Title headingLevel="h2" size="xl">
           {task.name}
         </Title>
-        {task.status?.podName && <Text component="small">{task.status.podName}</Text>}
+        {task.status?.podName && <Content component="small">{task.status.podName}</Content>}
         <DrawerActions>
           <DrawerCloseButton onClick={onClose} />
         </DrawerActions>
@@ -71,9 +70,8 @@ export const ArtifactNodeDrawerContent: React.FC<ArtifactNodeDrawerContentProps>
             </Tab>
           </Tabs>
         ) : (
-          <EmptyState variant={EmptyStateVariant.xs}>
-            <EmptyStateHeader titleText="Content is not available yet." headingLevel="h4" />
-          </EmptyState>
+          <EmptyState  headingLevel="h4"   titleText="Content is not available yet." variant={EmptyStateVariant.xs}>
+            </EmptyState>
         )}
       </DrawerPanelBody>
     </>

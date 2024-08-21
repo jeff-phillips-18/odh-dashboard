@@ -17,9 +17,7 @@ import {
 import {
   EmptyState,
   EmptyStateBody,
-  EmptyStateIcon,
-  EmptyStateHeader,
-} from '@patternfly/react-core';
+  } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { css } from '@patternfly/react-styles';
 import { NODE_HEIGHT, NODE_WIDTH } from './const';
@@ -148,12 +146,7 @@ const PipelineVisualizationSurface: React.FC<PipelineVisualizationSurfaceProps> 
 
   if (error) {
     return (
-      <EmptyState data-id="error-empty-state">
-        <EmptyStateHeader
-          titleText="Incorrect pipeline definition"
-          icon={<EmptyStateIcon icon={ExclamationCircleIcon} />}
-          headingLevel="h4"
-        />
+      <EmptyState  headingLevel="h4" icon={ExclamationCircleIcon}  titleText="Incorrect pipeline definition" data-id="error-empty-state">
         <EmptyStateBody>{error.message}</EmptyStateBody>
       </EmptyState>
     );

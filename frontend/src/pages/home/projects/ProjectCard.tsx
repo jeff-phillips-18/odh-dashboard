@@ -8,8 +8,7 @@ import {
   DescriptionListDescription,
   DescriptionListGroup,
   DescriptionListTerm,
-  Text,
-  TextContent,
+  Content,
   Timestamp,
   Truncate,
 } from '@patternfly/react-core';
@@ -49,11 +48,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </Button>
       </CardHeader>
       <CardBody>
-        <TextContent>
-          <Text component="small">
+        <Content>
+          <Content component="small">
             <TruncatedText maxLines={3} content={getDescriptionFromK8sResource(project)} />
-          </Text>
-        </TextContent>
+          </Content>
+        </Content>
       </CardBody>
       <CardFooter>
         <DescriptionList isCompact>

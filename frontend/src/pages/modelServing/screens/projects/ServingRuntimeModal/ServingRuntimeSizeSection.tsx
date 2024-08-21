@@ -74,7 +74,7 @@ const ServingRuntimeSizeSection: React.FC<ServingRuntimeSizeSectionProps> = ({
     <FormSection title="Compute resources per replica">
       <FormGroup
         label="Model server size"
-        labelIcon={
+        labelHelp={
           infoContent ? (
             <Popover bodyContent={<div>{infoContent}</div>}>
               <Icon aria-label="Model server size info" role="button">

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Gallery, Stack, Text, TextContent } from '@patternfly/react-core';
+import { Alert, Gallery, Stack, Content,  } from '@patternfly/react-core';
 import CollapsibleSection from '~/concepts/design/CollapsibleSection';
 import SelectSingleModelCard from './SelectSingleModelCard';
 import SelectMultiModelCard from './SelectMultiModelCard';
@@ -7,15 +7,15 @@ import SelectMultiModelCard from './SelectMultiModelCard';
 const PlatformSelectSection: React.FC = () => (
   <CollapsibleSection title="Serve models" data-testid="section-model-server">
     <Stack hasGutter>
-      <TextContent
+      <Content
         data-testid="no-model-serving-platform-selected"
         style={{ paddingLeft: 'var(--pf-v5-global--spacer--md)' }}
       >
-        <Text component="small">
+        <Content component="small">
           Select the type of model serving platform to be used when deploying models from this
           project.
-        </Text>
-      </TextContent>
+        </Content>
+      </Content>
       <Gallery
         hasGutter
         minWidths={{ default: '100%', lg: 'calc(50% - 1rem / 2)' }}

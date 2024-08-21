@@ -3,9 +3,7 @@ import {
   ButtonVariant,
   EmptyState,
   EmptyStateBody,
-  EmptyStateIcon,
   EmptyStateActions,
-  EmptyStateHeader,
   EmptyStateFooter,
 } from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
@@ -23,13 +21,7 @@ const EmptyProjects: React.FC<EmptyProjectsProps> = ({ allowCreate }) => {
   const navigate = useNavigate();
   const isJupyterEnabled = useCheckJupyterEnabled();
   return (
-    <EmptyState>
-      <EmptyStateHeader
-        data-testid="no-data-science-project"
-        titleText="No data science projects yet."
-        icon={<EmptyStateIcon icon={CubesIcon} />}
-        headingLevel="h2"
-      />
+    <EmptyState  headingLevel="h2" icon={CubesIcon}  titleText="No data science projects yet.">
       <EmptyStateBody>
         {allowCreate
           ? `To get started, create a data science project${

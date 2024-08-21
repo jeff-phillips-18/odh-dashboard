@@ -92,7 +92,7 @@ const RegisterVersion: React.FC = () => {
       loaded={loadedRegisteredModels}
       empty={false}
     >
-      <PageSection variant="light" isFilled>
+      <PageSection hasBodyWrapper={false}  isFilled>
         <Form isWidthLimited>
           <Stack hasGutter>
             <StackItem>
@@ -104,7 +104,7 @@ const RegisterVersion: React.FC = () => {
                 label="Model name"
                 isRequired
                 fieldId="model-name"
-                labelIcon={
+                labelHelp={
                   !loadedPrefillData ? <Spinner size="sm" className={spacing.mlMd} /> : undefined
                 }
               >

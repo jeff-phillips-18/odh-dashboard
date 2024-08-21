@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   Bullseye,
   EmptyState,
-  EmptyStateHeader,
-  EmptyStateIcon,
   Page,
   PageSection,
   PageSectionVariants,
@@ -28,15 +26,10 @@ const Home: React.FC = () => {
     <Page data-testid="home-page">
       <HomeHint />
       {!projectsAvailable && !aiFlows && !resourcesSection && !enableTeamSection ? (
-        <PageSection data-testid="home-page-empty" variant={PageSectionVariants.default}>
+        <PageSection hasBodyWrapper={false} data-testid="home-page-empty" variant={PageSectionVariants.default}>
           <Bullseye>
-            <EmptyState variant="full">
-              <EmptyStateHeader
-                titleText={`Welcome to ${ODH_PRODUCT_NAME}`}
-                headingLevel="h4"
-                icon={<EmptyStateIcon icon={HomeIcon} />}
-              />
-            </EmptyState>
+            <EmptyState  headingLevel="h4" icon={HomeIcon}  titleText={`Welcome to ${ODH_PRODUCT_NAME}`} variant="full">
+              </EmptyState>
           </Bullseye>
         </PageSection>
       ) : (

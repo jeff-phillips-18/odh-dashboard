@@ -3,7 +3,6 @@ import {
   Spinner,
   EmptyStateVariant,
   EmptyState,
-  EmptyStateHeader,
   Truncate,
 } from '@patternfly/react-core';
 import { Link } from 'react-router-dom';
@@ -43,10 +42,9 @@ const PipelineRunTabDetails: React.FC<PipelineRunTabDetailsProps> = ({ run, work
 
   if (!run || !workflowName) {
     return (
-      <EmptyState variant={EmptyStateVariant.lg} data-id="loading-empty-state">
+      <EmptyState  headingLevel="h4"   titleText="Loading" variant={EmptyStateVariant.lg} data-id="loading-empty-state">
         <Spinner size="xl" />
-        <EmptyStateHeader titleText="Loading" headingLevel="h4" />
-      </EmptyState>
+        </EmptyState>
     );
   }
 

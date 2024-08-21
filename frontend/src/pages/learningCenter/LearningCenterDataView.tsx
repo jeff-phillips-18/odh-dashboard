@@ -6,13 +6,11 @@ import {
   Button,
   EmptyState,
   EmptyStateBody,
-  EmptyStateIcon,
   EmptyStateVariant,
   Gallery,
   PageSection,
   PageSectionVariants,
   EmptyStateActions,
-  EmptyStateHeader,
   EmptyStateFooter,
 } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
@@ -59,13 +57,7 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
     const renderContent = () => {
       if (filteredDocApps.length === 0) {
         return (
-          <EmptyState variant={EmptyStateVariant.full}>
-            <EmptyStateHeader
-              data-testid="empty-state-title"
-              titleText="No results match the filter criteria"
-              icon={<EmptyStateIcon icon={SearchIcon} />}
-              headingLevel="h2"
-            />
+          <EmptyState  headingLevel="h2" icon={SearchIcon}  titleText="No results match the filter criteria" variant={EmptyStateVariant.full}>
             <EmptyStateBody>
               No resources are being shown due to the filters being applied.
             </EmptyStateBody>
@@ -122,7 +114,7 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
 
     return (
       <>
-        <PageSection
+        <PageSection hasBodyWrapper={false}
           isFilled
           variant={PageSectionVariants.secondary}
           className={

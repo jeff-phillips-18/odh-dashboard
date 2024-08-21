@@ -274,14 +274,14 @@ const TableBase = <T,>({
         <Toolbar
           inset={{ default: 'insetNone' }}
           className="pf-v5-u-w-100"
-          customChipGroupContent={<></>}
+          customLabelGroupContent={<></>}
         >
           <ToolbarContent>
             {toolbarContent}
             {showPagination && (
               <ToolbarItem
                 variant="pagination"
-                align={{ default: 'alignRight' }}
+                align={{ default: "alignEnd" }}
                 className="pf-v5-u-pr-lg"
               >
                 {pagination('top')}
@@ -304,7 +304,7 @@ const TableBase = <T,>({
           <ToolbarContent alignItems="center">
             {bottomToolbarContent}
             {showPagination && (
-              <ToolbarItem variant="pagination" align={{ default: 'alignRight' }}>
+              <ToolbarItem variant="pagination" align={{ default: "alignEnd" }}>
                 {pagination('bottom')}
               </ToolbarItem>
             )}

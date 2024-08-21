@@ -20,7 +20,7 @@ const ServingRuntimeTokenDisplay: React.FC<ServingRuntimeTokenDisplayProps> = ({
   if (error || token.data?.token === undefined) {
     return (
       <HelperText>
-        <HelperTextItem variant="warning" hasIcon>
+        <HelperTextItem variant="warning" >
           Failed to get token. {error?.message}
         </HelperTextItem>
       </HelperText>

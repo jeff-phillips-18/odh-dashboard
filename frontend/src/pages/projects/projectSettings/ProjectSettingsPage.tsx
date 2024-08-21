@@ -10,10 +10,10 @@ const ProjectSettingsPage = (): ReactElement => {
   const biasMetricsAreaAvailable = useIsAreaAvailable(SupportedArea.BIAS_METRICS).status;
 
   return (
-    <PageSection
+    <PageSection hasBodyWrapper={false}
       isFilled
       aria-label="project-settings-page-section"
-      variant="light"
+      
       id={ProjectSectionID.SETTINGS}
     >
       <Stack hasGutter>

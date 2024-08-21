@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Spinner, Text, TextVariants, Timestamp } from '@patternfly/react-core';
+import { Button, Spinner, Content, ContentVariants, Timestamp } from '@patternfly/react-core';
 import { ActionsColumn, Td, Tr } from '@patternfly/react-table';
 import { useNavigate } from 'react-router-dom';
 import { ProjectKind } from '~/k8sTypes';
@@ -50,7 +50,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                   <ResourceNameTooltip resource={project}>
                     <ProjectLink project={project} />
                   </ResourceNameTooltip>
-                  {owner && <Text component={TextVariants.small}>{owner}</Text>}
+                  {owner && <Content component={ContentVariants.small}>{owner}</Content>}
                 </Td>
               ) : null}
               {index === 0 ? (

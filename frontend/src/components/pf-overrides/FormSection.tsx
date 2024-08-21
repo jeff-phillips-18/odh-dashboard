@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormSection as PFFormSection, FormSectionProps, Text } from '@patternfly/react-core';
+import { FormSection as PFFormSection, FormSectionProps, Content } from '@patternfly/react-core';
 
 import './FormSection.scss';
 
@@ -21,9 +21,9 @@ const FormSection: React.FC<Props> = ({
       description ? (
         <>
           <TitleElement className="pf-v5-c-form__section-title">{title}</TitleElement>
-          <Text component="p" className="odh-form-section__desc">
+          <Content component="p" className="odh-form-section__desc">
             {description}
-          </Text>
+          </Content>
         </>
       ) : (
         title

@@ -7,7 +7,7 @@ import {
   Td,
   Tr,
 } from '@patternfly/react-table';
-import { Flex, FlexItem, Text } from '@patternfly/react-core';
+import { Flex, FlexItem, Content } from '@patternfly/react-core';
 import { HddIcon } from '@patternfly/react-icons';
 import { PersistentVolumeClaimKind } from '~/k8sTypes';
 import StorageSizeBar from '~/pages/projects/components/StorageSizeBars';
@@ -77,17 +77,17 @@ const StorageTableRow: React.FC<StorageTableRowProps> = ({
               <StorageWarningStatus obj={obj} onEditPVC={onEditPVC} onAddPVC={onAddPVC} />
             </FlexItem>
           </Flex>
-          <Text>{getDescriptionFromK8sResource(obj)}</Text>
+          <Content component="p">{getDescriptionFromK8sResource(obj)}</Content>
         </Td>
         <Td dataLabel="Type">
-          <Text>
+          <Content component="p">
             <Flex>
               <FlexItem spacer={{ default: 'spacerSm' }}>
                 <HddIcon />
               </FlexItem>
               <FlexItem>{` Persistent storage`}</FlexItem>
             </Flex>
-          </Text>
+          </Content>
         </Td>
         <Td dataLabel="Connected workbenches">
           <ConnectedNotebookNames

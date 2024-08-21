@@ -58,11 +58,11 @@ const ManageAcceleratorProfile: React.FC<ManageAcceleratorProfileProps> = ({
       loaded
       empty={false}
     >
-      <PageSection
+      <PageSection hasBodyWrapper={false}
         isFilled
         id={ScrollableSelectorID}
         aria-label="manage-accelerator-spawner-section"
-        variant="light"
+        
       >
         <GenericSidebar sections={sectionIDs} titles={ManageAcceleratorProfileSectionTitles}>
           <Form style={{ maxWidth: 600 }}>
@@ -74,7 +74,7 @@ const ManageAcceleratorProfile: React.FC<ManageAcceleratorProfileProps> = ({
           </Form>
         </GenericSidebar>
       </PageSection>
-      <PageSection stickyOnBreakpoint={{ default: 'bottom' }} variant="light">
+      <PageSection hasBodyWrapper={false} stickyOnBreakpoint={{ default: 'bottom' }} >
         <ManageAcceleratorProfileFooter
           state={state}
           existingAcceleratorProfile={existingAcceleratorProfile}

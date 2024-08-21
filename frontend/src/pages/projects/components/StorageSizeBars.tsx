@@ -6,7 +6,7 @@ import {
   Spinner,
   Split,
   SplitItem,
-  Text,
+  Content,
   Tooltip,
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
@@ -27,7 +27,7 @@ const StorageSizeBar: React.FC<StorageSizeBarProps> = ({ pvc }) => {
     return (
       <div>
         <Tooltip content="No active storage information at this time, check back later">
-          <Text component="small">Max {maxValue}</Text>
+          <Content component="small">Max {maxValue}</Content>
         </Tooltip>
       </div>
     );
@@ -67,7 +67,7 @@ const StorageSizeBar: React.FC<StorageSizeBarProps> = ({ pvc }) => {
     <Split hasGutter>
       <SplitItem>
         <Bullseye>
-          <Text component="small">{inUseRender}</Text>
+          <Content component="small">{inUseRender}</Content>
         </Bullseye>
       </SplitItem>
       <SplitItem isFilled style={{ maxWidth: 200 }}>
@@ -75,7 +75,7 @@ const StorageSizeBar: React.FC<StorageSizeBarProps> = ({ pvc }) => {
       </SplitItem>
       <SplitItem>
         <Bullseye>
-          <Text component="small">{maxValue}</Text>
+          <Content component="small">{maxValue}</Content>
         </Bullseye>
       </SplitItem>
     </Split>

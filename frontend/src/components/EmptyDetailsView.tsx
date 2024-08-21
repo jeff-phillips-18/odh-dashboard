@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   EmptyState,
   EmptyStateBody,
-  EmptyStateIcon,
-  EmptyStateHeader,
   EmptyStateActions,
   EmptyStateFooter,
 } from '@patternfly/react-core';
@@ -27,19 +25,7 @@ const EmptyDetailsView: React.FC<EmptyDetailsViewProps> = ({
   createButton,
   imageSize = '320px',
 }) => (
-  <EmptyState variant="lg">
-    <EmptyStateHeader
-      data-testid="empty-state-title"
-      titleText={title}
-      icon={
-        iconImage ? (
-          <EmptyStateIcon
-            icon={() => <img style={{ height: imageSize }} src={iconImage} alt={imageAlt} />}
-          />
-        ) : undefined
-      }
-      headingLevel="h3"
-    />
+  <EmptyState  headingLevel="h3"   titleText={title} variant="lg">
     <EmptyStateBody>{description}</EmptyStateBody>
     {allowCreate && createButton ? (
       <EmptyStateFooter>

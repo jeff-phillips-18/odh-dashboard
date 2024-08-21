@@ -63,9 +63,9 @@ const RegisteredModelListView: React.FC<RegisteredModelListViewProps> = ({
   const toggleGroupItems = (
     <ToolbarGroup variant="filter-group">
       <ToolbarFilter
-        chips={search === '' ? [] : [search]}
-        deleteChip={() => setSearch('')}
-        deleteChipGroup={() => setSearch('')}
+        labels={search === '' ? [] : [search]}
+        deleteLabel={() => setSearch('')}
+        deleteLabelGroup={() => setSearch('')}
         categoryName="Keyword"
       >
         <SimpleSelect

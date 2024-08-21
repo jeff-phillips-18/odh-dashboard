@@ -106,7 +106,7 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
         }
       >
         {isEdit ? (
-          <PageSection variant="light" className="pf-v5-u-pt-0">
+          <PageSection hasBodyWrapper={false}  className="pf-v5-u-pt-0">
             <Alert
               isInline
               variant="warning"
@@ -114,7 +114,7 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
             />
           </PageSection>
         ) : undefined}
-        <PageSection isFilled variant="light" className="pf-v5-u-pt-0">
+        <PageSection hasBodyWrapper={false} isFilled  className="pf-v5-u-pt-0">
           <Form>
             <FormSection title="Type details" style={{ maxWidth: 625 }}>
               <NameDescriptionField
@@ -149,9 +149,9 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
             </FormSection>
           </Form>
         </PageSection>
-        <PageSection
+        <PageSection hasBodyWrapper={false}
           stickyOnBreakpoint={{ default: 'bottom' }}
-          variant="light"
+          
           style={{ flexGrow: 0 }}
         >
           <CreateConnectionTypeFooter

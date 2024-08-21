@@ -1,20 +1,22 @@
 import * as React from 'react';
 import {
-  Alert,
-  AlertVariant,
-  Button,
-  ButtonVariant,
-  List,
-  ListItem,
-  Modal,
-  ModalVariant,
-  Panel,
-  PanelMain,
-  Progress,
-  ProgressVariant,
-  Stack,
-  StackItem,
+	Alert,
+	AlertVariant,
+	Button,
+	ButtonVariant,
+	List,
+	ListItem,
+	Panel,
+	PanelMain,
+	Progress,
+	ProgressVariant,
+	Stack,
+	StackItem
 } from '@patternfly/react-core';
+import {
+	Modal,
+	ModalVariant
+} from '@patternfly/react-core/deprecated';
 import { EventStatus, NotebookStatus } from '~/types';
 import { EventKind } from '~/k8sTypes';
 import NotebookRouteLink from './NotebookRouteLink';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon, Popover, Text, Tooltip } from '@patternfly/react-core';
+import { Button, Icon, Popover, Content, Tooltip } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { useDeepCompareMemoize } from '~/utilities/useDeepCompareMemoize';
 import { EventStatus } from '~/types';
@@ -51,7 +51,7 @@ const NotebookStatusText: React.FC<NotebookStatusTextProps> = ({
           </Button>
         }
       >
-        <Text
+        <Content component="p"
           data-testid="notebook-status-text"
           onClick={() => {
             if (isStarting) {
@@ -68,7 +68,7 @@ const NotebookStatusText: React.FC<NotebookStatusTextProps> = ({
               </Icon>
             </Tooltip>
           )}
-        </Text>
+        </Content>
       </Popover>
       <StartNotebookModal
         isOpen={isStartModalOpen}

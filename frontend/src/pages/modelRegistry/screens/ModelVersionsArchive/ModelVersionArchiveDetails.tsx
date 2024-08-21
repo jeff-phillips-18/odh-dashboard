@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Button, Flex, FlexItem, Label, Text } from '@patternfly/react-core';
+import { Button, Flex, FlexItem, Label, Content } from '@patternfly/react-core';
 import ApplicationsPage from '~/pages/ApplicationsPage';
 import useModelVersionById from '~/concepts/modelRegistry/apiHooks/useModelVersionById';
 import { ModelRegistrySelectorContext } from '~/concepts/modelRegistry/context/ModelRegistrySelectorContext';
@@ -57,7 +57,7 @@ const ModelVersionsArchiveDetails: React.FC<ModelVersionsArchiveDetailsProps> = 
           mv && (
             <Flex>
               <FlexItem>
-                <Text>{mv.name}</Text>
+                <Content component="p">{mv.name}</Content>
               </FlexItem>
               <FlexItem>
                 <Label>Archived</Label>

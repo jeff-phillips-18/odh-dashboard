@@ -1,7 +1,6 @@
 import {
   EmptyState,
   EmptyStateVariant,
-  EmptyStateHeader,
   EmptyStateBody,
 } from '@patternfly/react-core';
 import React from 'react';
@@ -14,8 +13,7 @@ export const CompareRunsNoMetrics: React.FC<CompareRunsNoMetricsProps> = ({
   title = 'No metrics to compare',
   ...props
 }) => (
-  <EmptyState variant={EmptyStateVariant.xs} {...props}>
-    <EmptyStateHeader titleText={title} headingLevel="h4" />
+  <EmptyState  headingLevel="h4"   titleText={title} variant={EmptyStateVariant.xs} {...props}>
     <EmptyStateBody>
       The selected runs do not contain relevant metrics. Select different runs to compare.
     </EmptyStateBody>

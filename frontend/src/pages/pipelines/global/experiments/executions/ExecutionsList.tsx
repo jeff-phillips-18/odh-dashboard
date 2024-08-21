@@ -3,8 +3,6 @@ import {
   Bullseye,
   EmptyState,
   EmptyStateBody,
-  EmptyStateHeader,
-  EmptyStateIcon,
   Spinner,
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon, PlusCircleIcon } from '@patternfly/react-icons';
@@ -21,12 +19,7 @@ const ExecutionsList: React.FC = () => {
   if (executionsError) {
     return (
       <Bullseye>
-        <EmptyState>
-          <EmptyStateHeader
-            titleText="There was an issue loading executions"
-            icon={<EmptyStateIcon icon={ExclamationCircleIcon} />}
-            headingLevel="h2"
-          />
+        <EmptyState  headingLevel="h2" icon={ExclamationCircleIcon}  titleText="There was an issue loading executions">
           <EmptyStateBody>{executionsError.message}</EmptyStateBody>
         </EmptyState>
       </Bullseye>
@@ -43,12 +36,7 @@ const ExecutionsList: React.FC = () => {
 
   if (!executions.length && !filterQuery && filterQueryRef.current === filterQuery) {
     return (
-      <EmptyState data-testid="global-no-executions">
-        <EmptyStateHeader
-          titleText="No executions"
-          icon={<EmptyStateIcon icon={PlusCircleIcon} />}
-          headingLevel="h4"
-        />
+      <EmptyState  headingLevel="h4" icon={PlusCircleIcon}  titleText="No executions" data-testid="global-no-executions">
         <EmptyStateBody>
           No experiments have been executed within this project. Select a different project, or
           execute an experiment from the <b>Experiments and runs</b> page.

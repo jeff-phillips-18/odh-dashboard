@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Button, Flex, FlexItem, Label, Text } from '@patternfly/react-core';
+import { Button, Flex, FlexItem, Label, Content } from '@patternfly/react-core';
 import ApplicationsPage from '~/pages/ApplicationsPage';
 import { ModelRegistrySelectorContext } from '~/concepts/modelRegistry/context/ModelRegistrySelectorContext';
 import { registeredModelUrl } from '~/pages/modelRegistry/screens/routeUtils';
@@ -49,7 +49,7 @@ const RegisteredModelsArchiveDetails: React.FC<RegisteredModelsArchiveDetailsPro
           rm && (
             <Flex>
               <FlexItem>
-                <Text>{rm.name}</Text>
+                <Content component="p">{rm.name}</Content>
               </FlexItem>
               <FlexItem>
                 <Label>Archived</Label>
