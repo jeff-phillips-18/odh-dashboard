@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Bullseye,
   EmptyState,
-  Page,
   PageSection,
   PageSectionVariants,
 } from '@patternfly/react-core';
@@ -23,7 +22,7 @@ const Home: React.FC = () => {
   const enableTeamSection = useEnableTeamSection();
 
   return (
-    <Page data-testid="home-page">
+    <div data-testid="home-page">
       <HomeHint />
       {!projectsAvailable && !aiFlows && !resourcesSection && !enableTeamSection ? (
         <PageSection
@@ -48,7 +47,7 @@ const Home: React.FC = () => {
           {enableTeamSection}
         </>
       )}
-    </Page>
+    </div>
   );
 };
 
