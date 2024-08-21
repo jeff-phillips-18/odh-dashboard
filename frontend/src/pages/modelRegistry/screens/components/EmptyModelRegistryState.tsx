@@ -6,7 +6,6 @@ import {
   EmptyStateActions,
   EmptyStateBody,
   EmptyStateFooter,
-  EmptyStateIconProps,
   EmptyStateVariant,
 } from '@patternfly/react-core';
 import { PlusCircleIcon } from '@patternfly/react-icons';
@@ -19,7 +18,7 @@ type EmptyModelRegistryStateType = {
   primaryActionOnClick?: () => void;
   secondaryActionText?: string;
   secondaryActionOnClick?: () => void;
-  headerIcon?: EmptyStateIconProps['icon'];
+  headerIcon?: React.ComponentType;
   customAction?: React.ReactNode;
 };
 

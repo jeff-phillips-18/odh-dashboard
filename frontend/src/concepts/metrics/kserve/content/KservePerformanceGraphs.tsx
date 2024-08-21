@@ -1,4 +1,4 @@
-import { Stack, StackItem } from '@patternfly/react-core/dist/esm';
+import { Stack, StackItem } from '@patternfly/react-core';
 import React from 'react';
 import { KserveMetricGraphDefinition } from '~/concepts/metrics/kserve/types';
 import { KserveMetricsGraphTypes } from '~/concepts/metrics/kserve/const';

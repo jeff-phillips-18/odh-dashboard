@@ -7,8 +7,6 @@ import {
   FlexItem,
   Content,
   GalleryItem,
-  TextListItemVariants,
-  TextListVariants,
 } from '@patternfly/react-core';
 import { Link } from 'react-router-dom';
 import { ProjectObjectType } from '~/concepts/design/utils';
@@ -68,15 +66,12 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
         </CardHeader>
         <CardBody>
           <Content>
-            <Content component={TextListVariants.dl} style={{ display: 'block' }}>
-              <Content
-                component={TextListItemVariants.dt}
-                style={{ marginBottom: 'var(--pf-v6-global--spacer--xs)' }}
-              >
+            <Content component="dl" style={{ display: 'block' }}>
+              <Content component="dt" style={{ marginBottom: 'var(--pf-v6-global--spacer--xs)' }}>
                 Serving runtime
               </Content>
               <Content
-                component={TextListItemVariants.dd}
+                component="dd"
                 style={{
                   fontSize: 'var(--pf-v6-global--FontSize--sm)',
                   color: !servingRuntime ? 'var(--pf-v6-global--Color--200)' : undefined,

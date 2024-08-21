@@ -2,13 +2,13 @@ import * as React from 'react';
 import {
   Truncate,
   MenuToggle,
+  MenuToggleProps,
   Select,
   SelectList,
   SelectOption,
   SelectGroup,
   Divider,
 } from '@patternfly/react-core';
-import { MenuToggleProps } from '@patternfly/react-core/src/components/MenuToggle/MenuToggle';
 
 import './SimpleSelect.scss';
 

@@ -1,7 +1,10 @@
 import { EmptyState, EmptyStateVariant, EmptyStateBody } from '@patternfly/react-core';
 import React from 'react';
 
-type CompareRunsEmptyStateProps = Omit<React.ComponentProps<typeof EmptyState>, 'children'> & {
+type CompareRunsEmptyStateProps = Omit<
+  React.ComponentProps<typeof EmptyState>,
+  'children' | 'titleText'
+> & {
   title?: string;
 };
 

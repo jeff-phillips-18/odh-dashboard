@@ -92,7 +92,7 @@ export const ModelRegistryTableRowStatus: React.FC<ModelRegistryTableRowStatusPr
     ) {
       statusLabel = ModelRegistryStatusLabel.Degrading;
       icon = <DegradedIcon />;
-      color = 'gold';
+      color = 'orangered';
       popoverTitle = 'Service is degrading';
     }
     // Unavailable

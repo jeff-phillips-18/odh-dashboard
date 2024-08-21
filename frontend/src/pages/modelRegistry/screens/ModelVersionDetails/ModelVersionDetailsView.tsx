@@ -109,7 +109,7 @@ const ModelVersionDetailsView: React.FC<ModelVersionDetailsViewProps> = ({
               clickTip="Copied"
               variant="inline-compact"
             >
-              {modelArtifact.items[0]?.uri}
+              {modelArtifact.items[0]?.uri || ''}
             </ClipboardCopy>
           </DashboardDescriptionListGroup>
           <DashboardDescriptionListGroup
