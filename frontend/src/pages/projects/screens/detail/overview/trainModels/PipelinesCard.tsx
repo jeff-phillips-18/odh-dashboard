@@ -6,12 +6,10 @@ import {
   CardFooter,
   EmptyState,
   EmptyStateBody,
-  EmptyStateHeader,
-  EmptyStateIcon,
   Spinner,
   Stack,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { CreatePipelineServerButton, usePipelinesAPI } from '~/concepts/pipelines/context';
 import { useSafePipelines } from '~/concepts/pipelines/apiHooks/usePipelines';
@@ -33,11 +31,7 @@ const PipelinesCard: React.FC = () => {
   const renderContent = () => {
     if (pipelinesServer.initializing) {
       return (
-        <EmptyState variant="xs">
-          <EmptyStateHeader
-            icon={<EmptyStateIcon icon={() => <Spinner size="lg" />} />}
-            headingLevel="h3"
-          />
+        <EmptyState titleText="" variant="xs" icon={() => <Spinner size="lg" />} headingLevel="h3">
           <EmptyStateBody>Loading...</EmptyStateBody>
         </EmptyState>
       );

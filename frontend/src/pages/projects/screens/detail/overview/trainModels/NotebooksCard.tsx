@@ -6,13 +6,11 @@ import {
   CardBody,
   EmptyState,
   EmptyStateBody,
-  EmptyStateHeader,
-  EmptyStateIcon,
   Flex,
   FlexItem,
   Spinner,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import { ProjectObjectType, SectionType, typedEmptyImage } from '~/concepts/design/utils';
@@ -47,11 +45,7 @@ const NotebooksCard: React.FC = () => {
 
   if (!loaded) {
     return (
-      <EmptyState variant="xs">
-        <EmptyStateHeader
-          icon={<EmptyStateIcon icon={() => <Spinner size="lg" />} />}
-          headingLevel="h3"
-        />
+      <EmptyState titleText="" variant="xs" icon={() => <Spinner size="lg" />} headingLevel="h3">
         <EmptyStateBody>Loading...</EmptyStateBody>
       </EmptyState>
     );
@@ -59,23 +53,20 @@ const NotebooksCard: React.FC = () => {
 
   if (error) {
     return (
-      <EmptyState variant="xs">
-        <EmptyStateHeader
-          icon={
-            <EmptyStateIcon
-              icon={() => (
-                <ExclamationCircleIcon
-                  style={{
-                    color: 'var(--pf-v5-global--danger-color--100)',
-                    width: '32px',
-                    height: '32px',
-                  }}
-                />
-              )}
-            />
-          }
-          headingLevel="h3"
-        />
+      <EmptyState
+        titleText=""
+        variant="xs"
+        icon={() => (
+          <ExclamationCircleIcon
+            style={{
+              color: 'var(--pf-v5-global--danger-color--100)',
+              width: '32px',
+              height: '32px',
+            }}
+          />
+        )}
+        headingLevel="h3"
+      >
         <EmptyStateBody>{error.message}</EmptyStateBody>
       </EmptyState>
     );

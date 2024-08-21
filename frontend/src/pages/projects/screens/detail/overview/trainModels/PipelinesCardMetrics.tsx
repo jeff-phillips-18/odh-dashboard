@@ -4,11 +4,9 @@ import {
   CardFooter,
   EmptyState,
   EmptyStateBody,
-  EmptyStateHeader,
-  EmptyStateIcon,
   Spinner,
   Content,
-  } from '@patternfly/react-core';
+} from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import {
@@ -87,23 +85,20 @@ const PipelinesCardMetrics: React.FC = () => {
 
   if (loadError) {
     return (
-      <EmptyState variant="xs">
-        <EmptyStateHeader
-          icon={
-            <EmptyStateIcon
-              icon={() => (
-                <ExclamationCircleIcon
-                  style={{
-                    color: 'var(--pf-v5-global--danger-color--100)',
-                    width: '32px',
-                    height: '32px',
-                  }}
-                />
-              )}
-            />
-          }
-          headingLevel="h3"
-        />
+      <EmptyState
+        variant="xs"
+        titleText=""
+        icon={() => (
+          <ExclamationCircleIcon
+            style={{
+              color: 'var(--pf-v5-global--danger-color--100)',
+              width: '32px',
+              height: '32px',
+            }}
+          />
+        )}
+        headingLevel="h3"
+      >
         <EmptyStateBody>{loadError.message}</EmptyStateBody>
       </EmptyState>
     );
@@ -111,11 +106,7 @@ const PipelinesCardMetrics: React.FC = () => {
 
   if (!loaded) {
     return (
-      <EmptyState variant="xs">
-        <EmptyStateHeader
-          icon={<EmptyStateIcon icon={() => <Spinner size="lg" />} />}
-          headingLevel="h3"
-        />
+      <EmptyState variant="xs" titleText="" icon={() => <Spinner size="lg" />} headingLevel="h3">
         <EmptyStateBody>Loading...</EmptyStateBody>
       </EmptyState>
     );
