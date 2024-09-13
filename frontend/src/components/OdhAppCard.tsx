@@ -127,7 +127,8 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
   );
 
   const cardClasses = classNames('odh-card', {
-    'm-disabled': disabled,
+    // Using PF native class to prevent needing custom styling
+    'pf-m-disabled': disabled,
   });
 
   const popoverBodyContent = (hide: () => void) => (

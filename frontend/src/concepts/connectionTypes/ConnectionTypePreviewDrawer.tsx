@@ -27,7 +27,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
     <DrawerPanelContent
       isResizable
       style={{
-        backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)',
+        backgroundColor: 'var(--pf-t--global--background--color--secondary--default)',
       }}
     >
       <DrawerHead>

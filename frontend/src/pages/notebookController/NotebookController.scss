@@ -3,17 +3,17 @@
     &-content {
       max-width: 1000px;
     }
-    .pf-v6-c-select {
+    .pf-v6-c-menu-toggle {
       width: 70%;
     }
     .pf-v6-c-form__section:not(:first-child) {
       margin-top: var(--pf-t--global--spacer--sm);
       padding-top: var(--pf-t--global--spacer--sm);
-      border-top: 1px solid var(--pf-v6-global--BorderColor--100);
+      border-top: 1px solid var(--pf-t--global--border--color--default);
     }
   }
   &__env-var {
-    gap: var(--pf-v6-global--gutter);
+    gap: var(--pf-t--global--spacer--gutter--default);
     .pf-v6-c-form__section-title {
       margin-bottom: var(--pf-t--global--spacer--sm);
     }
@@ -22,12 +22,12 @@
     }
     &-row {
       width: 85%;
-      .pf-v6-c-select {
+      .pf-v6-c-menu-toggle {
         width: 70%;
       }
       & ~ & {
         padding-top: var(--pf-t--global--spacer--md);
-        border-top: 1px solid var(--pf-v6-global--BorderColor--100);
+        border-top: 1px solid var(--pf-t--global--border--color--default);
       }
     }
     &-field {
@@ -37,13 +37,13 @@
         width: calc(70%);
       }
       &__value .pf-v6-c-form-control {
-        width: 100%
+        width: 100%;
       }
     }
   }
   &__server-details {
     &-title {
-      font-size: var(--pf-v6-global--FontSize--lg);
+      font-size: var(--pf-t--global--font--size--lg);
       padding-bottom: var(--pf-t--global--spacer--md);
     }
     &-image-name {
@@ -81,11 +81,11 @@
     }
     &-popover {
       &-title {
-        font-weight: var(--pf-v6-global--FontWeight--bold);
+        font-weight: var(--pf-t--global--font--weight--heading--bold);
         margin-bottom: var(--pf-t--global--spacer--sm);
       }
       &-package-title {
-        font-weight: var(--pf-v6-global--FontWeight--bold);
+        font-weight: var(--pf-t--global--font--weight--heading--bold);
       }
       &-icon {
         padding-left: 0px;
@@ -94,7 +94,7 @@
   }
   &__start-server-modal {
     .pf-v6-c-list {
-      font-size: var(--pf-v6-global--FontSize--sm);
+      font-size: var(--pf-t--global--font--size--sm);
     }
     .pf-v6-c-expandable-section {
       width: 100%;

@@ -75,7 +75,7 @@ const HomeHint: React.FC = () => {
                     variant="link"
                     isInline
                     component="a"
-                    style={{ fontSize: 'var(--pf-v6-global--FontSize--md)' }}
+                    style={{ fontSize: 'var(--pf-t--global--font--size--md)' }}
                     onClick={() => navigate('/enabled')}
                   >
                     Enabled applications

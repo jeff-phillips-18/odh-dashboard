@@ -76,7 +76,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                       />
                     </Td>
                   ) : (
-                    <Td colSpan={2} style={{ fontSize: 'var(--pf-v6-global--FontSize--sm' }}>
+                    <Td colSpan={2} style={{ fontSize: 'var(--pf-t--global--font--size--sm' }}>
                       <Button
                         variant="link"
                         isInline

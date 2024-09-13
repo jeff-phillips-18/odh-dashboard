@@ -49,6 +49,7 @@ export const generateTableStructure = (scalarMetricsArtifacts: RunArtifact[]): S
       field: 'run-name',
       isStickyColumn: true,
       hasRightBorder: true,
+      // Utility class does not exist in v6, would need to be replaced with inline style (possibly using token --pf-t--global--background--color--secondary--default) + updating interface
       className: 'pf-v6-u-background-color-200',
       sortable: false,
     },
@@ -70,6 +71,7 @@ export const generateTableStructure = (scalarMetricsArtifacts: RunArtifact[]): S
       field: 'execution-name-artifact-name',
       isStickyColumn: true,
       hasRightBorder: true,
+      // Utility class does not exist in v6, would need to be replaced with inline style (possibly using token --pf-t--global--background--color--secondary--default) + updating interface
       className: 'pf-v6-u-background-color-200',
       sortable: false,
     },

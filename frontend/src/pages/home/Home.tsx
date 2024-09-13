@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Bullseye,
-  EmptyState,
-  PageSection,
-  PageSectionVariants,
-} from '@patternfly/react-core';
+import { Bullseye, EmptyState, PageSection, PageSectionVariants } from '@patternfly/react-core';
 import { HomeIcon } from '@patternfly/react-icons';
 import { ODH_PRODUCT_NAME } from '~/utilities/const';
 import useIsAreaAvailable from '~/concepts/areas/useIsAreaAvailable';

@@ -29,7 +29,7 @@ const TableRowTitleDescription: React.FC<TableRowTitleDescriptionProps> = ({
       <Content
         component="p"
         data-testid="table-row-title-description"
-        style={{ color: 'var(--pf-v6-global--Color--200)' }}
+        style={{ color: 'var(--pf-t--global--text--color--subtle)' }}
       >
         {description}
       </Content>

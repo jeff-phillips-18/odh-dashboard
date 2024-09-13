@@ -49,8 +49,8 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
               paddingRight: 0,
               fontSize:
                 titleVariant === ContentVariants.h2
-                  ? 'var(--pf-v6-global--FontSize--xl)'
-                  : 'var(--pf-v6-global--FontSize--2xl)',
+                  ? 'var(--pf-t--global--icon--size--font--heading--h2)'
+                  : 'var(--pf-t--global--icon--size--font--heading--h1)', // Could use icon--size--font--[md|lg|xl] for a smaller icon
             }}
             onClick={() => (setOpen ? setOpen(!open) : setInnerOpen((prev) => !prev))}
           />

@@ -50,7 +50,7 @@ const EmptyMultiModelServingCard: React.FC = () => {
       <Card
         style={{
           height: '100%',
-          border: '1px solid var(--pf-v6-global--BorderColor--100)',
+          border: '1px solid var(--pf-t--global--border--color--default)',
           borderRadius: 16,
         }}
         data-testid="multi-serving-platform-card"

@@ -91,7 +91,7 @@ const PipelinesCardMetrics: React.FC = () => {
         icon={() => (
           <ExclamationCircleIcon
             style={{
-              color: 'var(--pf-v6-global--danger-color--100)',
+              color: 'var(--pf-t--global--icon--color--status--danger--default)',
               width: '32px',
               height: '32px',
             }}

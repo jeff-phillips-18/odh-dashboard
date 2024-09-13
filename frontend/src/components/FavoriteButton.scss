@@ -3,14 +3,18 @@
 .odh-favorite-button {
   padding: 0;
   &__star-icon {
-    fill: var(--pf-v6-global--palette--black-400);
+    fill: var(
+      --pf-t--global--icon--color--subtle
+    ); // May not need this or hover color styling, the button should cover any hover styling
     &:hover {
-      fill: var(--pf-v6-global--palette--black-500);
+      fill: var(
+        --pf-t--global--icon--color--regular
+      ); // Need insight from PF design if this should be removed (see Resources page in UI)
     }
     &--is-selected {
-      fill: var(--pf-v6-global--palette--gold-300);
+      fill: var(--pf-t--global--icon--color--favorite--clicked);
       &:hover {
-        fill: var(--pf-v6-global--palette--gold-400);
+        fill: var(--pf-t--global--icon--color--favorite--hover);
       }
     }
   }

@@ -73,8 +73,8 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
               <Content
                 component="dd"
                 style={{
-                  fontSize: 'var(--pf-v6-global--FontSize--sm)',
-                  color: !servingRuntime ? 'var(--pf-v6-global--Color--200)' : undefined,
+                  fontSize: 'var(--pf-t--global--font--size--sm)',
+                  color: !servingRuntime ? 'var(--pf-t--global--text--color--subtle)' : undefined,
                 }}
               >
                 <InferenceServiceServingRuntime servingRuntime={servingRuntime} />

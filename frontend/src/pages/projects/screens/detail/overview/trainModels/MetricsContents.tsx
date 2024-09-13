@@ -36,7 +36,7 @@ const MetricsContents: React.FC<MetricsCardProps> = ({
                       variant="link"
                       isInline
                       onClick={stats.onClick}
-                      style={{ fontSize: 'var(--pf-v6-global--FontSize--md)' }}
+                      style={{ fontSize: 'var(--pf-t--global--font--size--md)' }}
                     >
                       {stats.count}
                     </Button>

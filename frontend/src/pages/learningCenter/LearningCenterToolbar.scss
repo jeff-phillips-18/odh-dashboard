@@ -15,11 +15,11 @@
     }
   }
   &__count {
-    font-weight: var(--pf-v6-global--FontWeight--bold);
+    font-weight: var(--pf-t--global--font--weight--body--bold);
   }
 
   &__view-switcher {
-    font-weight: var(--pf-v6-global--FontWeight--bold);
+    font-weight: var(--pf-t--global--font--weight--body--bold);
     margin-left: var(--pf-t--global--spacer--xs);
   }
 
@@ -33,8 +33,10 @@
         margin-right: 0;
       }
       &__close {
-        color: var(--pf-v6-global--Color--100);
-        font-size: var(--pf-v6-global--FontSize--xs);
+        color: var(
+          --pf-t--global--text--color--regular
+        ); // Possibly needs --pf-t--global--icon--color--regular instead
+        font-size: var(--pf-t--global--font--size--xs);
         padding: 0;
         margin-left: var(--pf-t--global--spacer--xs);
       }
@@ -42,7 +44,7 @@
   }
 
   &__filter-check {
-    font-size: var(--pf-v6-global--FontSize--md);
+    font-size: var(--pf-t--global--font--size--md);
     padding-right: var(--pf-t--global--spacer--sm);
     visibility: hidden;
     &.odh-m-filtered {
@@ -51,11 +53,11 @@
   }
 
   &__filter-count {
-    font-size: var(--pf-v6-global--FontSize--md);
+    font-size: var(--pf-t--global--font--size--md);
     padding-left: var(--pf-t--global--spacer--sm);
   }
 
-  .pf-v6-c-select__toggle-arrow {
-    margin-left: var(--pf-v6-c-select__toggle-arrow--MarginRight);
+  .pf-v6-c-menu-toggle__toggle-icon {
+    margin-left: var(--pf-t--global--spacer--sm);
   }
 }

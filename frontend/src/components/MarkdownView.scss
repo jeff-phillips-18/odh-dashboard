@@ -15,29 +15,44 @@
   h4,
   h5,
   h6 {
-    font-family: var(--pf-v6-global--FontFamily--heading--sans-serif);
-    font-weight: var(--pf-v6-global--FontWeight--normal);
+    font-family: var(
+      --pf-v6-global--FontFamily--heading--sans-serif
+    ); // Need further input from PF Core
+    font-weight: var(
+      --pf-t--global--font--weight--body--default
+    ); // Should use heading--default token, but if the intent is for "normal" fontweight then this may be applicable
     margin-top: var(--pf-t--global--spacer--md);
     margin-bottom: var(--pf-t--global--spacer--sm);
   }
 
   h1 {
-    font-size: var(--pf-v6-global--FontSize--2xl);
+    font-size: var(--pf-t--global--font--size--heading--h1);
   }
 
   h2 {
-    font-size: var(--pf-v6-global--FontSize--xl);
+    font-size: var(--pf-t--global--font--size--heading--h2);
   }
 
   h3 {
-    font-size: var(--pf-v6-global--FontSize--lg);
+    font-size: var(--pf-t--global--font--size--heading--h3);
   }
 
   h4,
   h5,
   h6 {
-    font-size: var(--pf-v6-global--FontSize--md);
     margin-top: var(--pf-t--global--spacer--sm);
+  }
+
+  h4 {
+    font-size: var(--pf-t--global--font--size--heading--h4);
+  }
+
+  h5 {
+    font-size: var(--pf-t--global--font--size--heading--h5);
+  }
+
+  h6 {
+    font-size: var(--pf-t--global--font--size--heading--h6);
   }
 
   ul,
@@ -57,27 +72,32 @@
   code,
   pre {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    background-color: var(--pf-v6-global--BackgroundColor--200);
-    border-radius: var(--pf-v6-global--BorderRadius--sm);
+    background-color: var(--pf-t--global--background--color--secondary--default);
+    border-radius: var(--pf-t--global--border--radius--small);
   }
 
   code {
     padding: 2px 4px;
     font-size: 85%;
-    color: var(--pf-v6-global--danger-color--100);
+    color: var(--pf-t--global--text--color--status--danger--default);
   }
 
   pre {
     display: block;
     padding: var(--pf-t--global--spacer--sm);
     margin-bottom: var(--pf-t--global--spacer--sm);
-    font-size: var(--pf-v6-global--FontSize--sm);
-    color: var(--pf-v6-global--Color--300);
+    font-size: var(--pf-t--global--font--size--sm);
+    color: var(
+      --pf-t--global--text--color--regular
+    ); // Could use --pf-t--global--text--color--subtle for a slightly lighter gray
     word-break: break-all;
     word-wrap: break-word;
-    background-color: var(--pf-v6-global--BackgroundColor--200);
-    border: var(--pf-v6-global--BorderWidth--sm) solid var(--pf-v6-global--Color--light-300);
-    border-radius: var(--pf-v6-global--BorderRadius--sm);
+    background-color: var(
+      --pf-t--global--background--color--secondary--default
+    ); // Old token had a value labeled as a secondary background color
+    border: var(--pf-t--global--border--width--regular) solid
+      var(--pf-t--global--border--color--default);
+    border-radius: var(--pf-t--global--border--radius--small);
     code {
       padding: 0;
       font-size: inherit;

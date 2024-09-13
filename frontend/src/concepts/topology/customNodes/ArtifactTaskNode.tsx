@@ -80,9 +80,10 @@ const IconTaskNode: React.FC<IconTaskNodeProps> = observer(({ element, selected,
         }
         transform={`translate(${(bounds.width - iconSize) / 2}, ${ICON_PADDING})`}
         color={
+          // Need insight from product dev as to how to view this component to test the colors
           selected
-            ? 'var(--pf-v6-global--icon--Color--dark--light)'
-            : 'var(--pf-v6-global--icon--Color--light)'
+            ? 'var(--pf-t--global--icon--color--inverse)'
+            : 'var(--pf-t--global--icon--color--subtle)'
         }
       >
         {data?.artifactType === 'system.Metrics' ? (
@@ -146,9 +147,10 @@ const ArtifactTaskNodeInner: React.FC<ArtifactTaskNodeInnerProps> = observer(
               <g transform={`translate(${translateX}, ${translateY}) scale(${upScale})`}>
                 <g
                   color={
+                    // Need insight from product dev as to how to view this component to test the colors
                     selected
-                      ? 'var(--pf-v6-global--icon--Color--dark--light)'
-                      : 'var(--pf-v6-global--icon--Color--light)'
+                      ? 'var(--pf-t--global--icon--color--inverse)'
+                      : 'var(--pf-t--global--icon--color--subtle)'
                   }
                 >
                   {data?.artifactType === 'system.Metrics' ? <MonitoringIcon /> : <ListIcon />}
