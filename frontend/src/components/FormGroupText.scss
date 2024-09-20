@@ -1,9 +1,8 @@
 .odh-form-group-text {
   // applies the same form element font size as overriden by App.scss
-  font-size: var(--pf-t--global--font--size--sm);
+  font-size: var(--pf-t--global--font--size--body--sm);
 
   @at-root pre#{&} {
-    // Previous var had RedHatText as the first font-family, the following v6 token is the only that matches
     font-family: var(--pf-t--global--font--family--body);
   }
 }

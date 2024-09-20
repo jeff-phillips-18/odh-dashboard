@@ -38,7 +38,7 @@ const ScalarMetricTable: React.FC<ScalarMetricTableProps> = ({
           hasRightBorder
           isStickyColumn
           modifier="fitContent"
-          // Utility class pf-v6-u-background-color-200 does not exist in v6, replacing with secondary background color token
+          // Utility class pf-v6-u-background-color-200 does not exist in v6 currently but a replacement may be added, replacing with secondary background color token for now
           style={{ backgroundColor: 'var(--pf-t--global--background--color--secondary--default)' }}
         >
           <b>{key}</b>

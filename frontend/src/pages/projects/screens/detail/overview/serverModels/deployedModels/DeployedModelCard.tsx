@@ -73,7 +73,7 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
               <Content
                 component="dd"
                 style={{
-                  fontSize: 'var(--pf-t--global--font--size--sm)',
+                  fontSize: 'var(--pf-t--global--font--size--body--sm)',
                   color: !servingRuntime ? 'var(--pf-t--global--text--color--subtle)' : undefined,
                 }}
               >

@@ -23,7 +23,7 @@ export const CompareRunParamsSection: React.FunctionComponent = () => {
           isStickyColumn: true,
           hasRightBorder: true,
           // https://github.com/patternfly/patternfly-react/discussions/10269
-          // pf-v6-u-background-color-200 does not exist in v6, replacing with inline style
+          // Utility class pf-v6-u-background-color-200 does not exist in v6 currently but a replacement may be added, replacing with secondary background color token for now
           style: { backgroundColor: 'var(--pf-t--global--background--color--secondary--default)' },
           sortable: false,
         },

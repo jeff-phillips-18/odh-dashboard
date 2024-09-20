@@ -17,7 +17,7 @@ body,
     margin: var(--pf-t--global--spacer--md);
   }
 
-  // Application Launcher does not exist in v6, would need product insight as to what this is meant to target now
+  // Needs RHOAI dev input: Application Launcher does not exist in v6
   .pf-v6-c-app-launcher__group-title {
     font-size: 13px;
   }
@@ -61,7 +61,7 @@ body,
   .pf-v5-c-select__toggle,
   .pf-v6-c-text-input-group,
   .pf-v6-c-form-control {
-    font-size: var(--pf-t--global--font--size--sm);
+    font-size: var(--pf-t--global--font--size--body--sm);
     height: auto;
   }
 }

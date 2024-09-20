@@ -18,11 +18,13 @@
     font-weight: var(--pf-t--global--font--weight--body--bold);
   }
 
+  // Needs input from RHOAI dev: the below class isn't applied in codebase
   &__view-switcher {
     font-weight: var(--pf-t--global--font--weight--body--bold);
     margin-left: var(--pf-t--global--spacer--xs);
   }
 
+  // Needs input from RHOAI dev: the below class isn't applied in codebase
   &__filtered-types {
     display: flex;
     align-items: center;
@@ -32,11 +34,10 @@
       &:last-of-type {
         margin-right: 0;
       }
+      // Needs input from RHOAI dev: the below class isn't applied in codebase
       &__close {
-        color: var(
-          --pf-t--global--text--color--regular
-        ); // Possibly needs --pf-t--global--icon--color--regular instead
-        font-size: var(--pf-t--global--font--size--xs);
+        color: var(--pf-t--global--text--color--regular);
+        font-size: var(--pf-t--global--font--size--body--sm);
         padding: 0;
         margin-left: var(--pf-t--global--spacer--xs);
       }
@@ -44,7 +45,7 @@
   }
 
   &__filter-check {
-    font-size: var(--pf-t--global--font--size--md);
+    font-size: var(--pf-t--global--font--size--body--default);
     padding-right: var(--pf-t--global--spacer--sm);
     visibility: hidden;
     &.odh-m-filtered {
@@ -53,7 +54,7 @@
   }
 
   &__filter-count {
-    font-size: var(--pf-t--global--font--size--md);
+    font-size: var(--pf-t--global--font--size--body--default);
     padding-left: var(--pf-t--global--spacer--sm);
   }
 

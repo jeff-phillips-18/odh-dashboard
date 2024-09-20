@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               type: 'project',
             });
           }}
-          style={{ fontSize: 'var(--pf-t--global--font--size--md)' }}
+          style={{ fontSize: 'var(--pf-t--global--font--size--body--default)' }}
         >
           <Truncate content={getDisplayNameFromK8sResource(project)} />
         </Button>

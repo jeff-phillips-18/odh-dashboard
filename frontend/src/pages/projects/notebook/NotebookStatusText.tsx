@@ -51,6 +51,10 @@ const NotebookStatusText: React.FC<NotebookStatusTextProps> = ({
           </Button>
         }
       >
+        {/* Note from PatternFly: the following implementation is not accessible, as the Content component cannot be navigated/interacted via keyboard
+        
+        The error Icon rendering would have to be moved out of the Content component/separate from the onClick handler, though.
+        */}
         <Content
           component="p"
           data-testid="notebook-status-text"

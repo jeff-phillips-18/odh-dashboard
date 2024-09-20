@@ -15,12 +15,8 @@
   h4,
   h5,
   h6 {
-    font-family: var(
-      --pf-v6-global--FontFamily--heading--sans-serif
-    ); // Need further input from PF Core
-    font-weight: var(
-      --pf-t--global--font--weight--body--default
-    ); // Should use heading--default token, but if the intent is for "normal" fontweight then this may be applicable
+    font-family: var(--pf-t--global--font--family--heading);
+    font-weight: var(--pf-t--global--font--weight--heading--default);
     margin-top: var(--pf-t--global--spacer--md);
     margin-bottom: var(--pf-t--global--spacer--sm);
   }
@@ -71,7 +67,9 @@
 
   code,
   pre {
-    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: var(
+      --pf-t--global--font--family--mono
+    ); // V5 didn't have a mono font-family token, v6 does; seek input from RHOAI design
     background-color: var(--pf-t--global--background--color--secondary--default);
     border-radius: var(--pf-t--global--border--radius--small);
   }
@@ -79,22 +77,22 @@
   code {
     padding: 2px 4px;
     font-size: 85%;
-    color: var(--pf-t--global--text--color--status--danger--default);
+    color: var(
+      --pf-t--global--text--color--status--danger--default
+    ); // Needs context from RHOAI design; unless this code element is always intended to contain error/danger text, a danger token should not be used
   }
 
   pre {
     display: block;
     padding: var(--pf-t--global--spacer--sm);
     margin-bottom: var(--pf-t--global--spacer--sm);
-    font-size: var(--pf-t--global--font--size--sm);
+    font-size: var(--pf-t--global--font--size--body--sm);
     color: var(
       --pf-t--global--text--color--regular
     ); // Could use --pf-t--global--text--color--subtle for a slightly lighter gray
     word-break: break-all;
     word-wrap: break-word;
-    background-color: var(
-      --pf-t--global--background--color--secondary--default
-    ); // Old token had a value labeled as a secondary background color
+    background-color: var(--pf-t--global--background--color--secondary--default);
     border: var(--pf-t--global--border--width--regular) solid
       var(--pf-t--global--border--color--default);
     border-radius: var(--pf-t--global--border--radius--small);

@@ -48,8 +48,8 @@ const NotebookRouteLink: React.FC<NotebookRouteLinkProps> = ({
           style={{
             whiteSpace: 'nowrap',
             fontSize: isLarge
-              ? 'var(--pf-t--global--font--size--md)'
-              : 'var(--pf-t--global--font--size--sm)',
+              ? 'var(--pf-t--global--font--size--body--default)'
+              : 'var(--pf-t--global--font--size--body--sm)',
           }}
           onClick={() => {
             fireMiscTrackingEvent('Workbench Opened', {
