@@ -20,7 +20,6 @@ const DeleteExperimentModal: React.FC<DeleteExperimentModalProps> = ({ experimen
   return (
     <DeleteModal
       title="Delete experiment?"
-      isOpen={!!experiment}
       onClose={onCancel}
       deleting={isDeleting}
       error={error}

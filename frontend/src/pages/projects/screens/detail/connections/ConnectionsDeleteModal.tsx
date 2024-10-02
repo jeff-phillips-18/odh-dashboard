@@ -53,7 +53,6 @@ export const ConnectionsDeleteModal: React.FC<Props> = ({
   return (
     <DeleteModal
       title="Delete connection?"
-      isOpen
       onClose={onClose}
       submitButtonLabel="Delete"
       onDelete={() => {
