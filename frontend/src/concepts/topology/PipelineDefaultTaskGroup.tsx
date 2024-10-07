@@ -87,7 +87,8 @@ const DefaultTaskGroupInner: React.FunctionComponent<PipelinesDefaultGroupInnerP
         labelPosition={LabelPosition.top}
         showStatusState
         scaleNode={hover && detailsLevel !== ScaleDetailsLevel.high}
-        customStatusIcon={status === RunStatus.Cancelled ? <BanIcon /> : undefined}
+        // TODO: Uncomment when v6 topology supports customStatusIcon for groups
+        // customStatusIcon={status === RunStatus.Cancelled ? <BanIcon /> : undefined}
         showLabelOnHover
         status={status}
         hiddenDetailsShownStatuses={[

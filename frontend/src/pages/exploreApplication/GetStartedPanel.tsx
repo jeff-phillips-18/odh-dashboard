@@ -11,9 +11,8 @@ import {
   DrawerHead,
   DrawerPanelBody,
   DrawerPanelContent,
-  Text,
-  TextContent,
   Tooltip,
+  Content,
 } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { OdhApplication } from '~/types';
@@ -75,14 +74,14 @@ const GetStartedPanel: React.FC<GetStartedPanelProps> = ({ selectedApp, onClose,
       minSize="350px"
     >
       <DrawerHead>
-        <TextContent>
-          <Text component="h2" style={{ marginBottom: 0 }}>
+        <Content>
+          <Content component="h2" style={{ marginBottom: 0 }}>
             {selectedApp.spec.displayName}
-          </Text>
+          </Content>
           {selectedApp.spec.provider ? (
-            <Text component="small">by {selectedApp.spec.provider}</Text>
+            <Content component="small">by {selectedApp.spec.provider}</Content>
           ) : null}
-        </TextContent>
+        </Content>
         <DrawerActions>
           <DrawerCloseButton onClick={onClose} />
         </DrawerActions>
