@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Badge, Checkbox, ExpandableSection, List, ListItem, Modal } from '@patternfly/react-core';
+import {
+	Badge,
+	Checkbox,
+	ExpandableSection,
+	List,
+	ListItem
+} from '@patternfly/react-core';
+import {
+	Modal
+} from '@patternfly/react-core/deprecated';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 import { ConnectionTypeField, SectionField } from '~/concepts/connectionTypes/types';
 
