@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {
+  Label,
+  LabelGroup,
   /**
    * The Select component is used to build another generic component here
    */
@@ -12,8 +14,6 @@ import {
   TextInputGroup,
   TextInputGroupMain,
   TextInputGroupUtilities,
-  ChipGroup,
-  Chip,
   Button,
   HelperText,
   HelperTextItem,
@@ -21,6 +21,7 @@ import {
   Divider,
   SelectOptionProps,
 } from '@patternfly/react-core';
+
 import { TimesIcon } from '@patternfly/react-icons/dist/esm/icons/times-icon';
 
 export type SelectionOptions = Omit<SelectOptionProps, 'id'> & {
@@ -278,23 +279,25 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
           aria-controls="select-multi-typeahead-listbox"
           placeholder={placeholder}
         >
-          <ChipGroup aria-label="Current selections">
+          <LabelGroup aria-label="Current selections">
             {selected.map((selection, index) => (
-              <Chip
+              <Label
+                variant="outline"
                 key={index}
-                onClick={(ev) => {
+                onClose={(ev) => {
                   ev.stopPropagation();
                   onSelect(selection);
                 }}
               >
                 {selection.name}
-              </Chip>
+              </Label>
             ))}
-          </ChipGroup>
+          </LabelGroup>
         </TextInputGroupMain>
         <TextInputGroupUtilities>
           {selected.length > 0 && (
             <Button
+              icon={<TimesIcon aria-hidden />}
               variant="plain"
               onClick={() => {
                 setInputValue('');
@@ -302,9 +305,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
                 textInputRef.current?.focus();
               }}
               aria-label="Clear input value"
-            >
-              <TimesIcon aria-hidden />
-            </Button>
+            />
           )}
         </TextInputGroupUtilities>
       </TextInputGroup>
@@ -391,7 +392,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
       </Select>
       {noSelectedItems && selectionRequired && (
         <HelperText isLiveRegion>
-          <HelperTextItem variant="error" hasIcon data-testid="group-selection-error-text">
+          <HelperTextItem variant="error" data-testid="group-selection-error-text">
             {noSelectedOptionsMessage}
           </HelperTextItem>
         </HelperText>

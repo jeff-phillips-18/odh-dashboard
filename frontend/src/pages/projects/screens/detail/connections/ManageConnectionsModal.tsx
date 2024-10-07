@@ -1,5 +1,6 @@
 import React from 'react';
-import { Alert, Modal, Form } from '@patternfly/react-core';
+import { Alert, Form } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';
 import ConnectionTypeForm from '~/concepts/connectionTypes/ConnectionTypeForm';
 import {
