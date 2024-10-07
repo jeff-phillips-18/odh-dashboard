@@ -61,7 +61,7 @@ const RegisterModel: React.FC = () => {
       loaded
       empty={false}
     >
-      <PageSection variant="light" isFilled>
+      <PageSection hasBodyWrapper={false} isFilled>
         <Form isWidthLimited>
           <Stack hasGutter>
             <StackItem className={spacing.mbLg}>

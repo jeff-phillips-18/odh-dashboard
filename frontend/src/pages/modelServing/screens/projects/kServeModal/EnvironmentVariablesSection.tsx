@@ -56,7 +56,7 @@ const EnvironmentVariablesSection: React.FC<EnvironmentVariablesSectionType> = (
   return (
     <FormGroup
       label="Additional environment variables"
-      labelIcon={
+      labelHelp={
         <Popover
           bodyContent={
             <div>

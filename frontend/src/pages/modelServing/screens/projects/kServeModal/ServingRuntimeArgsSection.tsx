@@ -76,7 +76,7 @@ const ServingRuntimeArgsSection: React.FC<ServingRuntimeArgsSectionType> = ({
     <FormGroup
       label="Additional serving runtime arguments"
       labelInfo={servingRuntimeArgsLabelInfo()}
-      labelIcon={
+      labelHelp={
         <Popover
           bodyContent={
             <div>
