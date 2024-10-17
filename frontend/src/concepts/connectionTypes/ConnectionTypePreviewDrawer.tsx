@@ -48,8 +48,7 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
       <Divider />
       <DrawerContentBody
         style={{
-          backgroundColor:
-            'var(--pf-t--temp--dev--tbd)' /* CODEMODS: original v5 color was --pf-v5-global--BackgroundColor--200 */,
+          backgroundColor: 'var(--pf-t--global--background--color--secondary--default)',
           overflow: 'auto',
         }}
       >
