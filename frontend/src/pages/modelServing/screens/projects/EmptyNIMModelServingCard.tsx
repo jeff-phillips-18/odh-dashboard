@@ -51,8 +51,7 @@ const EmptyNIMModelServingCard: React.FC = () => {
       <Card
         style={{
           height: '100%',
-          border:
-            'var(--pf-t--temp--dev--tbd)' /* CODEMODS: original v5 color was --pf-v5-global--BorderColor--100 */,
+          border: 'var(--pf-t--global--border--color--default)',
           borderRadius: 16,
         }}
         data-testid="nvidia-nim-model-serving-platform-card"
