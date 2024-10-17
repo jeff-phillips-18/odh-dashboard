@@ -138,8 +138,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
             style={{
               borderTopWidth: 1,
               borderTopStyle: 'solid',
-              borderTopColor:
-                'var(--pf-t--temp--dev--tbd)' /* CODEMODS: original v5 color was --pf-v5-global--BorderColor--100 */,
+              borderTopColor: 'var(--pf-t--global--border--color--default)',
             }}
           >
             <ProjectTableRowNotebookTable
