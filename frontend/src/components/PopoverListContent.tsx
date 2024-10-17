@@ -8,7 +8,7 @@ type PopoverListContentProps = ContentProps & {
 };
 
 const ContentText: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <Content component="small" style={{ color: 'var(--Text---pf-v5-global--Color--100)' }}>
+  <Content component="small" style={{ color: 'var(--pf-t--global--text--color--regular)' }}>
     {children}
   </Content>
 );

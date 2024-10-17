@@ -10,7 +10,7 @@
       margin-top: -1px;
       position: absolute;
       transition: left 0.5s;
-      z-index: var(--pf-v5-global--ZIndex--md);
+      z-index: var(--pf-t--global--z-index--md);
     }
     &.m-is-collapsed {
       padding: 0;
