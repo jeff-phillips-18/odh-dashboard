@@ -157,7 +157,7 @@ const ModelVersionDetailsView: React.FC<ModelVersionDetailsViewProps> = ({
             </>
           )}
         </DescriptionList>
-        <Title style={{ marginTop: '1em' }} headingLevel={TextVariants.h3}>
+        <Title style={{ marginTop: '1em' }} headingLevel="h3">
           Source model format
         </Title>
         <DescriptionList isFillColumns>

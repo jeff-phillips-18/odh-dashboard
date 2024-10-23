@@ -58,7 +58,7 @@ const InternalServicePopoverContent: React.FC<InternalServicePopoverContentProps
             <DescriptionListTerm>
               <ListItem>{route}</ListItem>
             </DescriptionListTerm>
-            <DescriptionListDescription style={{ paddingLeft: "var(--pf-t--global--spacer--md)" }}>
+            <DescriptionListDescription style={{ paddingLeft: 'var(--pf-t--global--spacer--md)' }}>
               <ClipboardCopy
                 hoverTip="Copy"
                 clickTip="Copied"
