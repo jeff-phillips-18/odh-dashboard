@@ -49,16 +49,16 @@ body,
 // All classes reverted to pf-v5 prefix don't exist in v6 and could probably be removed since menu-toggle and menu__item are being targeted
 .pf-v6-c-page,
 .pf-v6-c-modal-box {
-  .pf-v5-c-app-launcher,
+  .pf-v6-c-app-launcher,
   .pf-v6-c-button,
-  .pf-v5-c-dropdown,
-  .pf-v5-c-dropdown__menu-item,
-  .pf-v5-c-dropdown__toggle,
+  .pf-v6-c-dropdown,
+  .pf-v6-c-dropdown__menu-item,
+  .pf-v6-c-dropdown__toggle,
   .pf-v6-c-menu-toggle,
   .pf-v6-c-menu__item,
-  .pf-v5-c-select,
-  .pf-v5-c-select__menu-item,
-  .pf-v5-c-select__toggle,
+  .pf-v6-c-select,
+  .pf-v6-c-select__menu-item,
+  .pf-v6-c-select__toggle,
   .pf-v6-c-text-input-group,
   .pf-v6-c-form-control {
     font-size: var(--pf-t--global--font--size--body--sm);

@@ -108,7 +108,8 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                 ? {
                     isExpanded: expandColumn === ExpandableColumns.WORKBENCHES,
                     columnIndex: ExpandableColumns.WORKBENCHES,
-                    expandId: `expand-table-row-${project.metadata.name}-workbenches`,
+                    rowIndex: 1,
+                    expandId: `expand-table-row`,
                     onToggle: (_, __, column) => toggleExpandColumn(column),
                   }
                 : undefined
@@ -119,9 +120,9 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
               <Spinner size="sm" />
             ) : (
               <div data-testid="notebook-column-count">
-                <PlayIcon className="pf-v5-u-mr-xs" />
+                <PlayIcon className="pf-v6-u-mr-xs" />
                 {runningCount}
-                <OffIcon className="pf-v5-u-ml-sm pf-v5-u-mr-xs" />
+                <OffIcon className="pf-v6-u-ml-sm pf-v6-u-mr-xs" />
                 {stoppedCount}
               </div>
             )}
@@ -133,7 +134,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
           onMouseEnter={runAccessCheck}
           onClick={runAccessCheck}
         >
-          <ActionsColumn items={item} />
+          <ActionsColumn id="project-actions" items={item} />
         </Td>
       </Tr>
       {expandColumn ? (
