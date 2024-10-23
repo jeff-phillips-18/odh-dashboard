@@ -108,7 +108,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task, isCached }) => {
 
   React.useEffect(() => {
     const logWindowElement = document.querySelector(
-      '#dashboard-logviewer .pf-v5-c-log-viewer__main',
+      '#dashboard-logviewer .pf-v6-c-log-viewer__main',
     );
     if (logWindowElement) {
       logWindowElement.addEventListener('mousedown', () => setIsPaused(true));

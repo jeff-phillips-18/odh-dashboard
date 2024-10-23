@@ -115,9 +115,9 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
             <Spinner size="sm" />
           ) : (
             <div data-testid="notebook-column-count">
-              <PlayIcon className="pf-v5-u-mr-xs" />
+              <PlayIcon className="pf-v6-u-mr-xs" />
               {runningCount}
-              <OffIcon className="pf-v5-u-ml-sm pf-v5-u-mr-xs" />
+              <OffIcon className="pf-v6-u-ml-sm pf-v6-u-mr-xs" />
               {stoppedCount}
             </div>
           )}
