@@ -121,12 +121,14 @@ const App: React.FC = () => {
             isNotificationDrawerExpanded={notificationsOpen}
             mainContainerId={DASHBOARD_MAIN_CONTAINER_ID}
             data-testid={DASHBOARD_MAIN_CONTAINER_ID}
-          >
-            <ErrorBoundary>
+            banner={
               <DevFeatureFlagsBanner
                 dashboardConfig={dashboardConfig.spec.dashboardConfig}
                 {...devFeatureFlagsProps}
               />
+            }
+          >
+            <ErrorBoundary>
               <ProjectsContextProvider>
                 <ModelRegistrySelectorContextProvider>
                   <QuickStarts>

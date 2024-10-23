@@ -11,6 +11,7 @@ import {
   StackItem,
   Stack,
   Flex,
+  FlexItem,
 } from '@patternfly/react-core';
 
 type ApplicationsPageProps = {
@@ -143,11 +144,22 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
   };
 
   return (
-    <>
-      {breadcrumb && <PageBreadcrumb hasBodyWrapper={false}>{breadcrumb}</PageBreadcrumb>}
-      {!noHeader && renderHeader()}
-      {renderContents()}
-    </>
+    // TODO: PageBreadcrumb and the PageSection items here are children of the DrawerBody not the PageMain. DrawerBody is not flex which the Page items expect the parent to be.
+    <Flex
+      direction={{ default: 'column' }}
+      flexWrap={{ default: 'nowrap' }}
+      style={{ height: '100%' }}
+    >
+      <FlexItem>
+        {breadcrumb && <PageBreadcrumb hasBodyWrapper={false}>{breadcrumb}</PageBreadcrumb>}
+      </FlexItem>
+      <FlexItem>{!noHeader && renderHeader()}</FlexItem>
+      <FlexItem flex={{ default: 'flex_1' }}>
+        <Flex direction={{ default: 'column' }} style={{ height: '100%' }}>
+          {renderContents()}
+        </Flex>
+      </FlexItem>
+    </Flex>
   );
 };
 
