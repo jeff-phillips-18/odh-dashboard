@@ -1,17 +1,15 @@
 import * as React from 'react';
 import {
-	Alert,
-	Button,
-	Form,
-	FormGroup,
-	Stack,
-	StackItem,
-	TextArea,
-	TextInput
+  Alert,
+  Button,
+  Form,
+  FormGroup,
+  Stack,
+  StackItem,
+  TextArea,
+  TextInput,
 } from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { usePipelinesAPI } from '~/concepts/pipelines/context';
 import { PipelineKF, PipelineVersionKF } from '~/concepts/pipelines/kfTypes';
 import { getDisplayNameFromK8sResource } from '~/concepts/k8s/utils';

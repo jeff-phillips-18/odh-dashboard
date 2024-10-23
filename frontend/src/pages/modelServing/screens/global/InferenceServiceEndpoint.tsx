@@ -90,7 +90,7 @@ const InferenceServiceEndpoint: React.FC<InferenceServiceEndpointProps> = ({
             <DescriptionListTerm>
               External (can be accessed from inside or outside the cluster)
             </DescriptionListTerm>
-            <DescriptionListDescription style={{ paddingLeft: "var(--pf-t--global--spacer--md)" }}>
+            <DescriptionListDescription style={{ paddingLeft: 'var(--pf-t--global--spacer--md)' }}>
               <ClipboardCopy
                 hoverTip="Copy"
                 clickTip="Copied"
