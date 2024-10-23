@@ -181,12 +181,11 @@ const RoleBindingPermissionsTableRow: React.FC<RoleBindingPermissionsTableRowPro
           ) : isDefaultGroup ? (
             <Tooltip content="The default group always has access to model registry.">
               <Button
+                icon={<EllipsisVIcon />}
                 variant="plain"
                 isAriaDisabled
                 aria-label="The default group always has access to model registry."
-              >
-                <EllipsisVIcon />
-              </Button>
+              />
             </Tooltip>
           ) : (
             <ActionsColumn
