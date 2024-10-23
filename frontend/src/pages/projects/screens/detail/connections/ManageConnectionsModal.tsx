@@ -174,7 +174,7 @@ export const ManageConnectionModal: React.FC<Props> = ({
     >
       {isEdit && (
         <Alert
-          className="pf-v5-u-mb-lg"
+          className="pf-v6-u-mb-lg"
           variant="warning"
           isInline
           title="Dependent resources require further action"
