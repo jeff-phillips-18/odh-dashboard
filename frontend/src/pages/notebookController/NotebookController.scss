@@ -50,7 +50,6 @@
       padding-bottom: var(--pf-t--global--spacer--md);
     }
     .pf-v6-c-description-list {
-      font-size: small;
       padding-bottom: var(--pf-t--global--spacer--xl);
     }
   }
@@ -93,9 +92,6 @@
     }
   }
   &__start-server-modal {
-    .pf-v6-c-list {
-      font-size: var(--pf-t--global--font--size--body--sm);
-    }
     .pf-v6-c-expandable-section {
       width: 100%;
       padding-right: var(--pf-t--global--spacer--lg);

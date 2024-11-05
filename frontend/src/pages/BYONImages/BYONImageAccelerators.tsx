@@ -86,13 +86,7 @@ export const BYONImageAccelerators: React.FC<BYONImageAcceleratorsProps> = ({
             </Tooltip>
           ) : (
             <Tooltip content="To create an accelerator profile for this image, edit it to include an accelerator identifier.">
-              <Button
-                isAriaDisabled
-                variant="link"
-                className="pf-v6-u-font-size-xs"
-                isInline
-                icon={<PlusIcon />}
-              >
+              <Button isAriaDisabled variant="link" isInline icon={<PlusIcon />}>
                 Create profile
               </Button>
             </Tooltip>

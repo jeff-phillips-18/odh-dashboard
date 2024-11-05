@@ -37,7 +37,6 @@ const ConnectionTypePreviewDrawer: React.FC<Props> = ({ children, isExpanded, on
         </DrawerHead>
         <div
           style={{
-            fontSize: 'var(--pf-t--global--font--size--sm)',
             paddingTop: 'var(--pf-t--global--spacer--sm)',
           }}
         >
