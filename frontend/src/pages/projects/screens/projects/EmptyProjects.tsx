@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  EmptyState,
-  EmptyStateBody,
-  EmptyStateFooter,
-} from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody, EmptyStateFooter } from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import projectsEmptyStateImg from '~/images/empty-state-projects-color.svg';
 import WhosMyAdministrator from '~/components/WhosMyAdministrator';
