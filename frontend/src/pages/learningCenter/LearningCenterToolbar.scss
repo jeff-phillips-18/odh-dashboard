@@ -37,7 +37,6 @@
       // Needs input from RHOAI dev: the below class isn't applied in codebase
       &__close {
         color: var(--pf-t--global--text--color--regular);
-        font-size: var(--pf-t--global--font--size--body--sm);
         padding: 0;
         margin-left: var(--pf-t--global--spacer--xs);
       }
@@ -45,7 +44,6 @@
   }
 
   &__filter-check {
-    font-size: var(--pf-t--global--font--size--body--default);
     padding-right: var(--pf-t--global--spacer--sm);
     visibility: hidden;
     &.odh-m-filtered {
@@ -53,8 +51,8 @@
     }
   }
 
+  // Needs input from RHOAI dev: the below class isn't applied in codebase
   &__filter-count {
-    font-size: var(--pf-t--global--font--size--body--default);
     padding-left: var(--pf-t--global--spacer--sm);
   }
 

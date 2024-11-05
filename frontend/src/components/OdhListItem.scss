@@ -15,14 +15,12 @@
     }
   }
   &__doc-text {
-    color: var(--pf-t--global--text--color--regular);
     font-size: var(--pf-t--global--font--size--body--sm);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   &__doc-title {
-    color: var(--pf-t--global--text--color--regular);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -32,12 +30,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  &__link {
-    font-size: var(--pf-t--global--font--size--body--sm) !important;
-    svg {
-      font-size: var(--pf-t--global--icon--size--font--xs) !important;
-    }
   }
 
   &__header-fallback-img {

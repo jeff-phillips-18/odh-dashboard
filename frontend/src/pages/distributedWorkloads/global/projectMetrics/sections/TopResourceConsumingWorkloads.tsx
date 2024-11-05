@@ -91,7 +91,7 @@ const TopResourceConsumingWorkloadsChart: React.FC<TopResourceConsumingWorkloads
               ...(otherUsage ? [{ name: 'Other' }] : []),
             ]}
             gutter={15}
-            labelComponent={<ChartLabel style={{ fontSize: 14 }} />}
+            labelComponent={<ChartLabel />}
             itemsPerRow={Math.ceil(topWorkloads.length / 2)}
           />
         }
