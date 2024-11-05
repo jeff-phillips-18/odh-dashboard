@@ -67,9 +67,7 @@
 
   code,
   pre {
-    font-family: var(
-      --pf-t--global--font--family--mono
-    ); // V5 didn't have a mono font-family token, v6 does; seek input from RHOAI design
+    font-family: var(--pf-t--global--font--family--mono);
     background-color: var(--pf-t--global--background--color--secondary--default);
     border-radius: var(--pf-t--global--border--radius--small);
   }
