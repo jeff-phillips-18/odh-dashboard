@@ -153,14 +153,10 @@ export const StorageClassesTableRow: React.FC<StorageClassesTableRowProps> = ({ 
               (!storageClassConfig.description ||
                 isValidConfigValue('description', storageClassConfig.description)) && (
                 <TableRowTitleDescription
-                  title={
-                    <TableText wrapModifier="truncate">{storageClassConfig.displayName}</TableText>
-                  }
+                  title={<TableText>{storageClassConfig.displayName}</TableText>}
                   description={
                     storageClassConfig.description && (
-                      <TableText wrapModifier="truncate">
-                        {storageClassConfig.description}
-                      </TableText>
+                      <TableText>{storageClassConfig.description}</TableText>
                     )
                   }
                 />
