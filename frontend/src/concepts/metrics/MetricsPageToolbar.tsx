@@ -19,7 +19,7 @@ const MetricsPageToolbar: React.FC<MetricsPageToolbarProps> = ({
   leftToolbarItem,
   hasTimeRangeSelect = true,
 }) => (
-  <Toolbar isSticky>
+  <Toolbar isSticky inset={{ default: 'insetLg' }}>
     <ToolbarContent>
       {leftToolbarItem}
       <ToolbarGroup align={{ default: 'alignEnd' }}>

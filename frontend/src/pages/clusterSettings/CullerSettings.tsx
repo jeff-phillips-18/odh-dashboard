@@ -136,7 +136,7 @@ const CullerSettings: React.FC<CullerSettingsProps> = ({
                     <InputGroupItem>
                       <TextInput
                         id="minute-input"
-                        style={{ maxWidth: '40px' }}
+                        style={{ maxWidth: '60px' }}
                         name="minute"
                         data-testid="minute-input"
                         type="text"
