@@ -15,7 +15,7 @@ type Props = {
 // TODO: Test this
 const InlineTruncatedClipboardCopy: React.FC<Props> = ({ textToCopy, testId, maxWidth }) => (
   <ClipboardCopy
-    variant={ClipboardCopyVariant.expansion}
+    variant={ClipboardCopyVariant.inlineCompact}
     style={{ display: 'inline-flex', maxWidth }}
     hoverTip="Copy"
     clickTip="Copied"

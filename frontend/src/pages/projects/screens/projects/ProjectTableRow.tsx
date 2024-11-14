@@ -73,7 +73,6 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
                 <ProjectLink
                   project={project}
                   style={{
-                    fontSize: 'var(--pf-t--global--font--size--md)',
                     fontWeight: 'var(--pf-t--global--font--weight--body--default)',
                   }}
                 />

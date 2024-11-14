@@ -86,6 +86,7 @@ const PipelineRunTableToolbarBase: React.FC<PipelineRunTableToolbarBaseProps> = 
             }))}
             onChange={(v) => onChange(v)}
             dataTestId="runtime-status-dropdown"
+            popperProps={{ maxWidth: undefined }}
           />
         ),
       }}
