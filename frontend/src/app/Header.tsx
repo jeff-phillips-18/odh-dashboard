@@ -39,12 +39,12 @@ const Header: React.FC<HeaderProps> = ({ onNotificationsClick }) => {
             </PageToggleButton>
           </MastheadToggle>
         )}
-        <MastheadBrand data-codemods>
-          <MastheadLogo data-codemods component={MastheadBranchComponent}>
+        <MastheadBrand>
+          <MastheadLogo component={MastheadBranchComponent}>
             <Brand
               className="odh-dashboard__brand"
               src={`${window.location.origin}/images/${ODH_LOGO}`}
-              alt={`${ODH_PRODUCT_NAME} Logo`}
+              alt={`${ODH_PRODUCT_NAME}`}
             />
           </MastheadLogo>
         </MastheadBrand>

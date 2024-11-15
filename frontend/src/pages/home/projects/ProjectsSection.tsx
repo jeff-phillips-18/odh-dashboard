@@ -66,7 +66,7 @@ const ProjectsSection: React.FC = () => {
   const onCreateProject = () => setCreateProjectOpen(true);
 
   return (
-    <PageSection hasBodyWrapper={false} data-testid="landing-page-projects">
+    <PageSection variant="secondary" hasBodyWrapper={false} data-testid="landing-page-projects">
       <Stack hasGutter>
         <StackItem>
           <ProjectsSectionHeader
