@@ -30,7 +30,7 @@ const ConnectionTypeSectionRemoveModal: React.FC<Props> = ({ field, fields, onCl
         The <b>{field.name}</b> section heading will be removed.
       </div>
       {fields.length > 0 ? (
-        <div className="pf-v5-u-mt-md">
+        <div className="pf-v6-u-mt-md">
           <Checkbox
             id="remove-fields-checkbox"
             data-testid="remove-fields-checkbox"
@@ -39,7 +39,7 @@ const ConnectionTypeSectionRemoveModal: React.FC<Props> = ({ field, fields, onCl
             onChange={(_, checked) => setRemovedFields(checked)}
           />
           <ExpandableSection
-            className="pf-v5-u-mt-md"
+            className="pf-v6-u-mt-md"
             isIndented
             toggleContent={
               <>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Spinner, Content, ContentVariants, Timestamp } from '@patternfly/react-core';
-import { ActionsColumn, Tbody, Td, Tr } from '@patternfly/react-table';
+import { ActionsColumn, Tbody, Td, Tr, ExpandableRowContent } from '@patternfly/react-table';
 import { OffIcon, PlayIcon } from '@patternfly/react-icons';
 import { ProjectKind } from '~/k8sTypes';
 import useProjectTableRowItems from '~/pages/projects/screens/projects/useProjectTableRowItems';
@@ -65,17 +65,13 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
 
   return (
     <Tbody isExpanded={!!expandColumn}>
-      <Tr>
+      <Tr isControlRow>
         <Td dataLabel="Name">
           <TableRowTitleDescription
+            boldTitle={false}
             title={
               <ResourceNameTooltip resource={project}>
-                <ProjectLink
-                  project={project}
-                  style={{
-                    fontWeight: 'var(--pf-t--global--font--weight--body--default)',
-                  }}
-                />
+                <ProjectLink project={project} />
               </ResourceNameTooltip>
             }
             description={getDescriptionFromK8sResource(project)}
@@ -140,11 +136,13 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
               borderTopColor: 'var(--pf-t--global--border--color--default)',
             }}
           >
-            <ProjectTableRowNotebookTable
-              obj={project}
-              notebookStates={notebookStates}
-              refresh={refresh}
-            />
+            <ExpandableRowContent>
+              <ProjectTableRowNotebookTable
+                obj={project}
+                notebookStates={notebookStates}
+                refresh={refresh}
+              />
+            </ExpandableRowContent>
           </Td>
         </Tr>
       ) : null}
