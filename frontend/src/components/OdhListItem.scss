@@ -77,30 +77,8 @@
       &.m-hidden {
         display: none;
       }
-      &.odh-m-documentation {
-        background-color: var(--pf-t--global--color--nonstatus--yellow--default);
-        border-color: var(--pf-t--global--border--color--nonstatus--orange--default);
-        color: var(--pf-t--global--text--color--nonstatus--on-yellow--default);
-      }
 
-      &.odh-m-how-to {
-        background-color: var(--pf-t--global--background--color--primary--default);
-        border-color: var(--pf-t--global--border--color--nonstatus--gray--default);
-        color: var(--pf-t--global--text--color--regular);
-      }
-
-      &.odh-m-tutorial {
-        background-color: var(--pf-t--global--color--nonstatus--teal--default);
-        border-color: var(--pf-t--global--border--color--nonstatus--teal--default);
-        color: var(--pf-t--global--text--color--nonstatus--on-teal--default); // Update for on teal
-      }
-
-      &.odh-m-quick-start {
-        background-color: var(--pf-t--global--color--nonstatus--green--default);
-        border-color: var(--pf-t--global--border--color--nonstatus--green--default);
-        color: var(--pf-t--global--text--color--nonstatus--on-green--default);
-      }
-
+      // Note for RHOAI: This class isn't applied to anything in the codebase
       &.odh-m-in-progress {
         background-color: var(--pf-t--global--color--nonstatus--purple--default);
         border-color: var(--pf-t--global--border--color--nonstatus--purple--default);
@@ -110,12 +88,14 @@
         }
       }
 
+      // Note for RHOAI: This class isn't applied to anything in the codebase
       &.odh-m-complete {
         background-color: var(--pf-t--global--background--color--primary--default);
         border-color: var(--pf-t--global--border--color--nonstatus--purple--default);
         color: var(--pf-t--global--text--color--status--success--default);
       }
 
+      // Note for RHOAI: This class isn't applied to anything in the codebase
       &.odh-m-duration {
         background-color: var(--pf-t--global--background--color--primary--default);
         border-color: var(--pf-t--global--border--color--nonstatus--gray--default);

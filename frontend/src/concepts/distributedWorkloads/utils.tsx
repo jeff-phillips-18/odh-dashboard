@@ -17,7 +17,7 @@ import {
   chart_color_blue_300 as chartColorBlue,
   chart_color_black_300 as chartColorBlack,
   chart_color_green_300 as chartColorGreen,
-  chart_global_danger_Color_100 as chartColorRed,
+  t_chart_global_danger_color_100 as chartColorRed,
 } from '@patternfly/react-tokens';
 import {
   ClusterQueueKind,

@@ -39,7 +39,7 @@ export const useResourcesSection = (): React.ReactNode => {
   }
 
   return (
-    <PageSection hasBodyWrapper={false} data-testid="landing-page-resources">
+    <PageSection variant="secondary" hasBodyWrapper={false} data-testid="landing-page-resources">
       <CollapsibleSection
         title="Get oriented with learning resources"
         titleVariant={ContentVariants.h1}

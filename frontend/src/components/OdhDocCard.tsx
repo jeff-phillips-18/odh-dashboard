@@ -87,6 +87,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
       return (
         <Button
           icon={<ExternalLinkAltIcon />}
+          iconPosition="end"
           variant="link"
           component="a"
           className="odh-card__footer__link"
@@ -104,6 +105,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
       return (
         <Button
           icon={<ExternalLinkAltIcon />}
+          iconPosition="end"
           variant="link"
           component="a"
           className="odh-card__footer__link"
@@ -132,6 +134,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
       return (
         <Button
           icon={<ExternalLinkAltIcon />}
+          iconPosition="end"
           variant="link"
           component="a"
           className="odh-card__footer__link"

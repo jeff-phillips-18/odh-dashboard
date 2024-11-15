@@ -29,6 +29,9 @@
     .vertical-tabs-pf-tab:first-of-type {
       margin-bottom: var(--pf-t--global--spacer--lg);
     }
+    .filter-panel-pf {
+      padding-inline: 0;
+    }
     .filter-panel-pf-category {
       padding-left: var(--pf-t--global--spacer--md);
       .filter-panel-pf-category-title {
