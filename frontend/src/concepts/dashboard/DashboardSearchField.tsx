@@ -2,6 +2,7 @@ import * as React from 'react';
 import { InputGroup, SearchInput, InputGroupItem } from '@patternfly/react-core';
 import SimpleSelect from '~/components/SimpleSelect';
 import { asEnumMember } from '~/utilities/utils';
+import { FilterIcon } from '@patternfly/react-icons';
 
 // List all the possible search fields here
 export enum SearchType {
@@ -37,7 +38,7 @@ const DashboardSearchField: React.FC<DashboardSearchFieldProps> = ({
   searchType,
   onSearchValueChange,
   onSearchTypeChange,
-  icon,
+  icon = <FilterIcon />,
 }) => (
   <InputGroup data-testid="dashboard-table-toolbar">
     <InputGroupItem>

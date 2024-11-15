@@ -259,7 +259,7 @@ class CreateSpawnerPage {
     cy.findByTestId('persistent-storage-group')
       .findByRole('button', { name: 'Typeahead menu toggle' })
       .click();
-    cy.get('[id="dashboard-page-main"]').contains('button.pf-v5-c-menu__item', name).click();
+    cy.get('[id="dashboard-page-main"]').contains('button.pf-v6-c-menu__item', name).click();
   }
 
   selectPVSize(name: string) {

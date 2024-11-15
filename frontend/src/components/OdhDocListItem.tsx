@@ -1,11 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Button, Tooltip } from '@patternfly/react-core';
+import { Button, Tooltip, Label } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { OdhDocument, OdhDocumentType } from '~/types';
 import { getQuickStartLabel, launchQuickStart } from '~/utilities/quickStartUtils';
 import { DOC_TYPE_TOOLTIPS } from '~/utilities/const';
-import { asEnumMember, getDuration } from '~/utilities/utils';
+import { getLabelColorForDocType, asEnumMember, getDuration } from '~/utilities/utils';
 import { useQuickStartCardSelected } from './useQuickStartCardSelected';
 import FavoriteButton from './FavoriteButton';
 
@@ -16,6 +15,18 @@ type OdhDocCardProps = {
   favorite: boolean;
   updateFavorite: (isFavorite: boolean) => void;
 };
+
+type PatternFlyLabelColors =
+  | 'blue'
+  | 'teal'
+  | 'green'
+  | 'orange'
+  | 'purple'
+  | 'red'
+  | 'orangered'
+  | 'grey'
+  | 'yellow'
+  | undefined;
 
 const OdhDocListItem: React.FC<OdhDocCardProps> = ({ odhDoc, favorite, updateFavorite }) => {
   const [qsContext] = useQuickStartCardSelected(odhDoc.metadata.name, odhDoc.metadata.name);
@@ -28,15 +39,9 @@ const OdhDocListItem: React.FC<OdhDocCardProps> = ({ odhDoc, favorite, updateFav
   const renderTypeBadge = () => {
     const docType =
       asEnumMember(odhDoc.spec.type, OdhDocumentType) ?? OdhDocumentType.Documentation;
-    const typeBadgeClasses = classNames('odh-list-item__partner-badge odh-m-doc', {
-      'odh-m-documentation': docType === OdhDocumentType.Documentation,
-      'odh-m-tutorial': docType === OdhDocumentType.Tutorial,
-      'odh-m-quick-start': docType === OdhDocumentType.QuickStart,
-      'odh-m-how-to': docType === OdhDocumentType.HowTo,
-    });
     return (
       <Tooltip content={DOC_TYPE_TOOLTIPS[docType]}>
-        <div className={typeBadgeClasses}>{odhDoc.spec.type}</div>
+        <Label color={getLabelColorForDocType(docType)}>{odhDoc.spec.type}</Label>
       </Tooltip>
     );
   };

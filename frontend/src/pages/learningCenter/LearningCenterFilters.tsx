@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Button, ButtonVariant } from '@patternfly/react-core';
+import { FilterSidePanel } from '@patternfly/react-catalog-view-extension';
 import { TimesIcon } from '@patternfly/react-icons';
 import { OdhDocument } from '~/types';
 import { useQueryParams } from '~/utilities/useQueryParams';
@@ -46,10 +47,12 @@ const LearningCenterFilters: React.FC<LearningCenterFilterProps> = ({
         />
       ) : null}
       <CategoryFilters docApps={docApps} favorites={favorites} />
-      <EnabledFilters categoryApps={categoryApps} />
-      <DocTypeFilters categoryApps={categoryApps} />
-      <ApplicationFilters docApps={docApps} categoryApps={categoryApps} />
-      <ProviderTypeFilters docApps={docApps} categoryApps={categoryApps} />
+      <FilterSidePanel>
+        <EnabledFilters categoryApps={categoryApps} />
+        <DocTypeFilters categoryApps={categoryApps} />
+        <ApplicationFilters docApps={docApps} categoryApps={categoryApps} />
+        <ProviderTypeFilters docApps={docApps} categoryApps={categoryApps} />
+      </FilterSidePanel>
     </div>
   );
 };

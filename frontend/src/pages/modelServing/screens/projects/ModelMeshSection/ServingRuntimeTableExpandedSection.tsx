@@ -36,8 +36,7 @@ const ServingRuntimeTableExpandedSection: React.FC<ServingRuntimeTableExpandedSe
   if (activeColumn === ServingRuntimeTableTabs.TYPE) {
     return (
       <>
-        <EmptyTableCellForAlignment />
-        <Td dataLabel="Type expansion" colSpan={6}>
+        <Td dataLabel="Type expansion" colSpan={7}>
           <ExpandableRowContent>
             <ServingRuntimeDetails obj={obj} />
           </ExpandableRowContent>
@@ -47,7 +46,7 @@ const ServingRuntimeTableExpandedSection: React.FC<ServingRuntimeTableExpandedSe
   }
   if (activeColumn === ServingRuntimeTableTabs.DEPLOYED_MODELS) {
     return (
-      <Td dataLabel="Deployed models expansion" colSpan={6}>
+      <Td dataLabel="Deployed models expansion" colSpan={7}>
         <ExpandableRowContent>
           {modelInferenceServices.length > 0 ? (
             <InferenceServiceTable
