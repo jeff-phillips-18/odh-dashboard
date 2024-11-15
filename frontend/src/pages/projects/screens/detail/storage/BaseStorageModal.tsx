@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-	Form,
-	Stack,
-	StackItem
-} from '@patternfly/react-core';
-import {
-	Modal
-} from '@patternfly/react-core/deprecated';
+import { Form, Stack, StackItem } from '@patternfly/react-core';
+import { Modal } from '@patternfly/react-core/deprecated';
 import { PersistentVolumeClaimKind } from '~/k8sTypes';
 import CreateNewStorageSection from '~/pages/projects/screens/spawner/storage/CreateNewStorageSection';
 import DashboardModalFooter from '~/concepts/dashboard/DashboardModalFooter';

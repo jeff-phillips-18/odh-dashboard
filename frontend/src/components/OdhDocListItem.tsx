@@ -16,18 +16,6 @@ type OdhDocCardProps = {
   updateFavorite: (isFavorite: boolean) => void;
 };
 
-type PatternFlyLabelColors =
-  | 'blue'
-  | 'teal'
-  | 'green'
-  | 'orange'
-  | 'purple'
-  | 'red'
-  | 'orangered'
-  | 'grey'
-  | 'yellow'
-  | undefined;
-
 const OdhDocListItem: React.FC<OdhDocCardProps> = ({ odhDoc, favorite, updateFavorite }) => {
   const [qsContext] = useQuickStartCardSelected(odhDoc.metadata.name, odhDoc.metadata.name);
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ExpandableRowContent, Td } from '@patternfly/react-table';
 import { ServingRuntimeKind } from '~/k8sTypes';
-import EmptyTableCellForAlignment from '~/pages/projects/components/EmptyTableCellForAlignment';
 import { ProjectDetailsContext } from '~/pages/projects/ProjectDetailsContext';
 import InferenceServiceTable from '~/pages/modelServing/screens/global/InferenceServiceTable';
 import { ServingRuntimeTableTabs } from '~/pages/modelServing/screens/types';
