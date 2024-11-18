@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Form,
-  FormGroup,
-  Tabs,
-  Tab,
-  TabTitleText,
-  Popover,
-} from '@patternfly/react-core';
+import { Form, FormGroup, Tabs, Tab, TabTitleText, Popover } from '@patternfly/react-core';
 import { Modal, ModalVariant } from '@patternfly/react-core/deprecated';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { importBYONImage, updateBYONImage } from '~/services/imagesService';

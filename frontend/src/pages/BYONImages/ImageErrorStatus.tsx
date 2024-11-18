@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Content, Icon, Tooltip } from '@patternfly/react-core';
+import { Icon, Tooltip } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import { BYONImage } from '~/types';
 
