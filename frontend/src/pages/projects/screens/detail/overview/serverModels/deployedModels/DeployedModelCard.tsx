@@ -69,7 +69,7 @@ const DeployedModelCard: React.FC<DeployedModelCardProps> = ({
                         `/projects/${inferenceService.metadata.namespace}/metrics/model/${inferenceService.metadata.name}`,
                       );
                     }}
-                    style={{ fontSize: 'var(--pf-v5-global--FontSize--md)' }}
+                    style={{ fontSize: 'var(--pf-t--global--font--size--md)' }}
                   >
                     <Truncate content={inferenceServiceDisplayName} />
                   </Button>

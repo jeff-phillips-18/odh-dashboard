@@ -73,7 +73,7 @@ const SpawnerMountPathField: React.FC<SpawnerMountPathFieldProps> = ({
       label="Mount path"
       fieldId="mount-path"
       isRequired
-      labelIcon={
+      labelHelp={
         <FieldGroupHelpLabelIcon
           content={
             <>
@@ -144,7 +144,7 @@ const SpawnerMountPathField: React.FC<SpawnerMountPathFieldProps> = ({
                 )}
 
                 {format === MountPathFormat.CUSTOM && (
-                  <HelperTextItem variant="warning" hasIcon>
+                  <HelperTextItem variant="warning">
                     Depending on the workbench type, this location may not be visible or accessible.
                     For example, the JupyterLab file browser only displays folders and files under
                     /opt/app-root/src
