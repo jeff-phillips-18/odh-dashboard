@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonVariant, Tooltip, FlexItem } from '@patternfly/react-core';
+import { Button, ButtonVariant, Tooltip } from '@patternfly/react-core';
 import { useNavigate } from 'react-router-dom';
 import { useCheckJupyterEnabled } from '~/utilities/notebookControllerUtils';
 

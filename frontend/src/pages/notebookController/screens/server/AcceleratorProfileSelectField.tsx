@@ -197,12 +197,17 @@ const AcceleratorProfileSelectField: React.FC<AcceleratorProfileSelectFieldProps
           />
         </FormGroup>
       </StackItem>
-      {true && (
+      {acceleratorAlertMessage && (
         <StackItem>
-          <Alert isInline isPlain variant={'danger'} title={'acceleratorAlertMessage.title'} />
+          <Alert
+            isInline
+            isPlain
+            variant={acceleratorAlertMessage.variant}
+            title={acceleratorAlertMessage.title}
+          />
         </StackItem>
       )}
-      {true && (
+      {formData.profile && (
         <StackItem>
           <FormGroup label="Number of accelerators" fieldId="number-of-accelerators">
             <InputGroup>
@@ -227,7 +232,7 @@ const AcceleratorProfileSelectField: React.FC<AcceleratorProfileSelectFieldProps
           </FormGroup>
         </StackItem>
       )}
-      {true && (
+      {acceleratorCountWarning && (
         <StackItem>
           <Alert isInline isPlain variant="warning" title={acceleratorCountWarning} />
         </StackItem>

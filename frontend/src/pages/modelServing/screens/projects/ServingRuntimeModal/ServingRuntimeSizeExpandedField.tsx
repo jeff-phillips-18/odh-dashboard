@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FormGroup, Grid } from '@patternfly/react-core';
-import IndentSection from '~/pages/projects/components/IndentSection';
 import { UpdateObjectAtPropAndValue } from '~/pages/projects/types';
 import { CreatingModelServingObjectCommon } from '~/pages/modelServing/screens/types';
 import { ContainerResourceAttributes, ContainerResources } from '~/types';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon, Label, LabelGroup, Popover, Flex, FlexItem } from '@patternfly/react-core';
+import { Button, Icon, Label, LabelGroup, Popover, Flex } from '@patternfly/react-core';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Link } from 'react-router-dom';
 import DashboardPopupIconButton from '~/concepts/dashboard/DashboardPopupIconButton';
