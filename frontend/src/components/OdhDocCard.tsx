@@ -174,7 +174,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
           className: undefined,
         }}
       >
-        <BrandImage src={odhDoc.spec.img || odhDoc.spec.icon || ''} alt={odhDoc.spec.displayName} />
+        <BrandImage src={odhDoc.spec.img || odhDoc.spec.icon || ''} alt="" />
       </CardHeader>
       <CardTitle>
         <Content>

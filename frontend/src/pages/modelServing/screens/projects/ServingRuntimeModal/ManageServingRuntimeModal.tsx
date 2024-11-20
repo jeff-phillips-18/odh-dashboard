@@ -228,18 +228,16 @@ const ManageServingRuntimeModal: React.FC<ManageServingRuntimeModalProps> = ({
                 server replicas."
             />
           </StackItem>
-          <StackItem>
-            <ServingRuntimeSizeSection
-              data={createData}
-              setData={setCreateData}
-              sizes={sizes}
-              servingRuntimeSelected={servingRuntimeSelected}
-              acceleratorProfileState={initialAcceleratorProfile}
-              selectedAcceleratorProfile={selectedAcceleratorProfile}
-              setSelectedAcceleratorProfile={setSelectedAcceleratorProfile}
-              infoContent="Select a server size that will accommodate your largest model. See the product documentation for more information."
-            />
-          </StackItem>
+          <ServingRuntimeSizeSection
+            data={createData}
+            setData={setCreateData}
+            sizes={sizes}
+            servingRuntimeSelected={servingRuntimeSelected}
+            acceleratorProfileState={initialAcceleratorProfile}
+            selectedAcceleratorProfile={selectedAcceleratorProfile}
+            setSelectedAcceleratorProfile={setSelectedAcceleratorProfile}
+            infoContent="Select a server size that will accommodate your largest model. See the product documentation for more information."
+          />
           <AuthServingRuntimeSection
             data={createData}
             setData={setCreateData}

@@ -3,6 +3,11 @@
   // Updating the custom overrides would have involved adding more overrides for font colors
   // Removed the custom odh-card.pf-m-current styling as PF cards with the pf-m-current have styling
   // RHOAI feel free to delete above comments
+  & .odh-brand > img {
+    background-color: var(--pf-t--color--white);
+    padding: var(--pf-t--global--spacer--xs);
+    border-radius: var(--pf-t--global--border--radius--small);
+  }
 
   &__partner-badge-container {
     margin-top: calc(var(--pf-t--global--spacer--sm) * -1);
@@ -10,15 +15,6 @@
   }
 
   &__partner-badge {
-    // Need product design input as to whether badge on disabled card looks oaky
-    background-color: var(--pf-t--global--background--color--secondary--default);
-    border-color: var(--pf-t--global--border--color--on-secondary);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: var(--pf-t--global--spacer--md);
-    font-size: var(--pf-t--global--font--size--body--sm);
-    font-weight: var(--pf-t--global--font--weight--body--default);
-    margin-bottom: var(--pf-t--global--spacer--sm);
     padding: 0 var(--pf-t--global--spacer--sm);
 
     &.m-hidden {
@@ -39,9 +35,6 @@
       }
     }
     &.odh-m-beta {
-      color: var(--pf-t--global--text--color--nonstatus--on-yellow--default);
-      background-color: var(--pf-t--global--color--nonstatus--yellow--default);
-      border-color: var(--pf-t--global--border--color--nonstatus--yellow--default);
       padding: 0 var(--pf-t--global--spacer--md);
     }
   }

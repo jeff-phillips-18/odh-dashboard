@@ -122,10 +122,7 @@ const SearchSelector: React.FC<SearchSelectorProps> = ({
             </MenuSearchInput>
             {searchHelpText && (
               <HelperText>
-                <HelperTextItem
-                  variant="indeterminate"
-                  data-testid={`${dataTestId}-searchHelpText`}
-                >
+                <HelperTextItem data-testid={`${dataTestId}-searchHelpText`}>
                   {searchHelpText}
                 </HelperTextItem>
               </HelperText>
