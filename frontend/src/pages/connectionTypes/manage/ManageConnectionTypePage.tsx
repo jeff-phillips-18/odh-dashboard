@@ -145,6 +145,11 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
   };
 
   const pageName = isEdit ? 'Edit connection type' : 'Create connection type';
+  const hasValidationIssue = validation.hasValidationIssue(
+    ['fields'],
+    ValidationErrorCodes.FIELDS_ENV_VAR_CONFLICT,
+  );
+
   return (
     <ValidationContext.Provider value={validation}>
       <ConnectionTypePreviewDrawer
@@ -294,36 +299,35 @@ const ManageConnectionTypePage: React.FC<Props> = ({ prefill, isEdit, onSave }) 
                 }
               >
                 <FormGroup>
-                  <Stack hasGutter>
-                    {modelServingCompatibleTypes.length > 0 ? (
-                      <StackItem>
-                        <Alert
-                          data-testid="compatible-model-serving-types-alert"
-                          isInline
-                          variant="info"
-                          title={`This connection type is compatible with ${joinWithCommaAnd(
-                            modelServingCompatibleTypes,
-                            {
-                              singlePrefix: 'the ',
-                              singleSuffix: ' model serving type.',
-                              multiSuffix: ' model serving types.',
-                            },
-                          )}`}
-                        />
-                      </StackItem>
-                    ) : undefined}
-                    {validation.hasValidationIssue(
-                      ['fields'],
-                      ValidationErrorCodes.FIELDS_ENV_VAR_CONFLICT,
-                    ) ? (
-                      <StackItem>
-                        <Alert isInline variant="danger" title="Environment variables conflict">
-                          Two or more fields are using the same environment variable. Ensure that
-                          each field uses a unique environment variable to proceed.
-                        </Alert>
-                      </StackItem>
-                    ) : undefined}
-                  </Stack>
+                  {modelServingCompatibleTypes.length > 0 || hasValidationIssue ? (
+                    <Stack hasGutter>
+                      {modelServingCompatibleTypes.length > 0 ? (
+                        <StackItem>
+                          <Alert
+                            data-testid="compatible-model-serving-types-alert"
+                            isInline
+                            variant="info"
+                            title={`This connection type is compatible with ${joinWithCommaAnd(
+                              modelServingCompatibleTypes,
+                              {
+                                singlePrefix: 'the ',
+                                singleSuffix: ' model serving type.',
+                                multiSuffix: ' model serving types.',
+                              },
+                            )}`}
+                          />
+                        </StackItem>
+                      ) : undefined}
+                      {hasValidationIssue ? (
+                        <StackItem>
+                          <Alert isInline variant="danger" title="Environment variables conflict">
+                            Two or more fields are using the same environment variable. Ensure that
+                            each field uses a unique environment variable to proceed.
+                          </Alert>
+                        </StackItem>
+                      ) : undefined}
+                    </Stack>
+                  ) : null}
                   <ManageConnectionTypeFieldsTable
                     fields={fields}
                     onFieldsChange={(value) => setData('fields', value)}
