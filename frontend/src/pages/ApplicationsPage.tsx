@@ -57,10 +57,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
     <PageSection hasBodyWrapper={false}>
       <Stack hasGutter>
         <StackItem>
-          <Flex
-            justifyContent={{ default: 'justifyContentSpaceBetween' }}
-            flexWrap={{ default: 'nowrap' }}
-          >
+          <Flex justifyContent={{ default: 'justifyContentSpaceBetween' }}>
             <Content>
               <Content component="h1" data-testid="app-page-title">
                 {title}
@@ -130,11 +127,7 @@ const ApplicationsPage: React.FC<ApplicationsPageProps> = ({
 
     if (provideChildrenPadding) {
       return (
-        <PageSection
-          hasBodyWrapper={false}
-          isFilled
-          style={removeChildrenTopPadding ? { paddingTop: 0 } : undefined}
-        >
+        <PageSection isFilled style={removeChildrenTopPadding ? { paddingTop: 0 } : undefined}>
           {children}
         </PageSection>
       );

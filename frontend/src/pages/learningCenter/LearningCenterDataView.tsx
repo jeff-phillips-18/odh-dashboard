@@ -121,11 +121,9 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
     return (
       <>
         <PageSection
+          padding={{ default: 'noPadding' }}
           hasBodyWrapper={false}
           isFilled
-          variant={
-            viewType === LIST_VIEW ? PageSectionVariants.secondary : PageSectionVariants.default
-          }
           className={
             viewType === LIST_VIEW
               ? 'odh-learning-paths__view-panel__list-view'

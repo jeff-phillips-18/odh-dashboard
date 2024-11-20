@@ -29,6 +29,7 @@ export const useAIFlows = (): React.ReactNode => {
           title="Organize your work with projects"
           image={
             <ProjectImage
+              aria-hidden="true"
               style={{ color: sectionTypeBorderColor(SectionType.organize), width: 42, height: 42 }}
             />
           }
@@ -46,6 +47,7 @@ export const useAIFlows = (): React.ReactNode => {
           title="Create and train models"
           image={
             <BranchImage
+              aria-hidden="true"
               style={{ color: sectionTypeBorderColor(SectionType.training), width: 42, height: 42 }}
             />
           }
@@ -63,6 +65,7 @@ export const useAIFlows = (): React.ReactNode => {
           title="Deploy and monitor models"
           image={
             <ChartImage
+              aria-hidden="true"
               style={{ color: sectionTypeBorderColor(SectionType.serving), width: 42, height: 42 }}
             />
           }

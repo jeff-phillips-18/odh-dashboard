@@ -100,7 +100,6 @@ const DashboardDescriptionListGroup: React.FC<DashboardDescriptionListGroupProps
                   <Button
                     data-testid={editButtonTestId}
                     aria-label={`Edit ${title}`}
-                    isInline
                     variant="link"
                     icon={<PencilAltIcon />}
                     iconPosition="start"

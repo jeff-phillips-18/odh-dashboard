@@ -56,7 +56,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
         >
           {submitButtonLabel}
         </Button>,
-        <Button key="cancel-button" variant="secondary" onClick={() => onBeforeClose(false)}>
+        <Button key="cancel-button" variant="link" onClick={() => onBeforeClose(false)}>
           Cancel
         </Button>,
       ]}

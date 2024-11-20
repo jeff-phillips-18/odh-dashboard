@@ -124,17 +124,17 @@ const RegisterVersion: React.FC = () => {
               />
             </StackItem>
           </Stack>
+          <RegistrationFormFooter
+            submitLabel="Register new version"
+            submitError={submitError}
+            setSubmitError={setSubmitError}
+            isSubmitDisabled={isSubmitDisabled}
+            isSubmitting={isSubmitting}
+            onSubmit={onSubmit}
+            onCancel={onCancel}
+          />
         </Form>
       </PageSection>
-      <RegistrationFormFooter
-        submitLabel="Register new version"
-        submitError={submitError}
-        setSubmitError={setSubmitError}
-        isSubmitDisabled={isSubmitDisabled}
-        isSubmitting={isSubmitting}
-        onSubmit={onSubmit}
-        onCancel={onCancel}
-      />
     </ApplicationsPage>
   );
 };

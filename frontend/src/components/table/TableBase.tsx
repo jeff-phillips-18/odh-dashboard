@@ -270,7 +270,10 @@ const TableBase = <T,>({
     <Table {...props} {...(hasStickyColumns && { gridBreakPoint: '' })} ref={tableRef}>
       {caption && <Caption>{caption}</Caption>}
       <Thead noWrap hasNestedHeader={hasNestedHeader}>
-        <Tr>{columns.map((col, i) => renderColumnHeader(col, i))}</Tr>
+        {/* Note from PF: following custom style can be removed when we can resolve misalignment issue natively */}
+        <Tr style={{ verticalAlign: 'middle' }}>
+          {columns.map((col, i) => renderColumnHeader(col, i))}
+        </Tr>
         {subColumns?.length ? (
           <Tr>{subColumns.map((col, i) => renderColumnHeader(col, columns.length + i, true))}</Tr>
         ) : null}
@@ -312,18 +315,12 @@ const TableBase = <T,>({
         </div>
       )}
 
-      {(bottomToolbarContent || showPagination) && (
+      {bottomToolbarContent && (
         <Toolbar inset={{ default: 'insetNone' }} className="pf-v6-u-w-100">
-          <ToolbarContent alignItems="center">
-            {bottomToolbarContent}
-            {showPagination && (
-              <ToolbarItem variant="pagination" align={{ default: 'alignEnd' }}>
-                {pagination('bottom')}
-              </ToolbarItem>
-            )}
-          </ToolbarContent>
+          <ToolbarContent alignItems="center">{bottomToolbarContent}</ToolbarContent>
         </Toolbar>
       )}
+      {showPagination && <>{pagination('bottom')}</>}
     </>
   );
 };

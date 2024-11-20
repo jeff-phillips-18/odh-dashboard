@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Card, CardHeader, CardBody, Flex, FlexItem } from '@patternfly/react-core';
+import { Card, CardHeader, CardBody, Flex, FlexItem, Label } from '@patternfly/react-core';
 import { OdhApplication } from '~/types';
 import { makeCardVisible } from '~/utilities/utils';
 import EnableModal from '~/pages/exploreApplication/EnableModal';
@@ -66,11 +66,18 @@ const OdhExploreCard: React.FC<OdhExploreCardProps> = ({
                 )}
                 {!odhApp.spec.comingSoon && odhApp.spec.category && (
                   <FlexItem className={badgeClasses} onClick={disabled ? undefined : onSelect}>
-                    <OdhExploreCardTypeBadge category={odhApp.spec.category} />
+                    <OdhExploreCardTypeBadge
+                      isDisabled={disabled}
+                      category={odhApp.spec.category}
+                    />
                   </FlexItem>
                 )}
                 {odhApp.spec.beta && (
-                  <FlexItem className="odh-card__partner-badge odh-m-beta">Beta</FlexItem>
+                  <FlexItem className="odh-card__partner-badge odh-m-beta">
+                    <Label className={disabled ? 'pf-m-disabled' : undefined} color="yellow">
+                      Beta
+                    </Label>
+                  </FlexItem>
                 )}
               </Flex>
             ),
@@ -87,7 +94,7 @@ const OdhExploreCard: React.FC<OdhExploreCardProps> = ({
           },
         })}
       >
-        <BrandImage src={odhApp.spec.img} alt={odhApp.spec.displayName} data-testid="brand-image" />
+        <BrandImage src={odhApp.spec.img} alt="" data-testid="brand-image" />
       </CardHeader>
       <SupportedAppTitle odhApp={odhApp} showProvider />
       <CardBody data-testid="cardbody">{odhApp.spec.description}</CardBody>
