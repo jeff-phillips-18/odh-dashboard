@@ -34,7 +34,7 @@ export const NotebookImageDisplayName = ({
   if (loadError) {
     return (
       <HelperText>
-        <HelperTextItem variant="indeterminate">Unknown</HelperTextItem>
+        <HelperTextItem variant="error">Unknown</HelperTextItem>
       </HelperText>
     );
   }

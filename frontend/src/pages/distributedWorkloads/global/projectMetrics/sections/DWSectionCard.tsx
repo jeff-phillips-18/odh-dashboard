@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, CardTitle, CardHeader, Divider } from '@patternfly/react-core';
+import { Card, CardTitle, CardHeader, Divider, Flex } from '@patternfly/react-core';
 import DashboardHelpTooltip from '~/concepts/dashboard/DashboardHelpTooltip';
 
 export const DWSectionCard: React.FC<{
@@ -11,7 +11,9 @@ export const DWSectionCard: React.FC<{
   <Card isFullHeight>
     <CardHeader>
       <CardTitle>
-        {title} {helpTooltip ? <DashboardHelpTooltip content={helpTooltip} /> : null}
+        <Flex gap={{ default: 'gapMd' }}>
+          {title} {helpTooltip ? <DashboardHelpTooltip content={helpTooltip} /> : null}
+        </Flex>
       </CardTitle>
     </CardHeader>
     {hasDivider && <Divider />}

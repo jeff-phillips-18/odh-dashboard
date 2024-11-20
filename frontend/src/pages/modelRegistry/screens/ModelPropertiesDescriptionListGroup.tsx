@@ -55,7 +55,6 @@ const ModelPropertiesDescriptionListGroup: React.FC<ModelPropertiesDescriptionLi
       action={
         !isArchive && (
           <Button
-            isInline
             variant="link"
             data-testid="add-property-button"
             icon={<PlusCircleIcon />}

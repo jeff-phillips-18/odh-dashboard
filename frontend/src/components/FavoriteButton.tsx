@@ -20,7 +20,6 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ isFavorite, onClick }) 
       />
     }
     variant="plain"
-    hasNoPadding
     aria-label={isFavorite ? 'starred' : 'not starred'}
     className="odh-favorite-button"
     onClick={onClick}

@@ -135,10 +135,7 @@ const SpawnerMountPathField: React.FC<SpawnerMountPathFieldProps> = ({
               </InputGroup>
               <HelperText>
                 {mountPath.error && (
-                  <HelperTextItem
-                    variant={mountPath.error ? 'error' : 'indeterminate'}
-                    data-testid="mount-path-folder-helper-text"
-                  >
+                  <HelperTextItem variant="error" data-testid="mount-path-folder-helper-text">
                     {mountPath.error}
                   </HelperTextItem>
                 )}

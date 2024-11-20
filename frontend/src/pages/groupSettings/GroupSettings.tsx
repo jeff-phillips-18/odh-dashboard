@@ -117,7 +117,7 @@ const GroupSettings: React.FC = () => {
               </Alert>
             ) : (
               <HelperText>
-                <HelperTextItem variant="indeterminate">
+                <HelperTextItem>
                   View, edit, or create groups in OpenShift under User Management
                 </HelperTextItem>
               </HelperText>
@@ -157,7 +157,7 @@ const GroupSettings: React.FC = () => {
               </Alert>
             ) : (
               <HelperText>
-                <HelperTextItem variant="indeterminate">
+                <HelperTextItem>
                   View, edit, or create groups in OpenShift under User Management
                 </HelperTextItem>
               </HelperText>

@@ -72,7 +72,7 @@ const CustomPipelineVersionSelect: React.FC<CustomPipelineVersionSelectProps> = 
             />
           </MenuSearchInput>
           <HelperText>
-            <HelperTextItem variant="indeterminate">{`Type a name to search your ${versions.length} versions.`}</HelperTextItem>
+            <HelperTextItem>{`Type a name to search your ${versions.length} versions.`}</HelperTextItem>
           </HelperText>
         </MenuSearch>
         <MenuList>

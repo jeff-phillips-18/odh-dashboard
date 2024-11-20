@@ -154,35 +154,6 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
       <ToolbarContent>
         <ToolbarGroup variant="action-group-plain" align={{ default: 'alignEnd' }}>
           <ToolbarItem>
-            <ToggleGroup aria-label="Dark theme toggle group">
-              <ToggleGroupItem
-                aria-label="light theme toggle"
-                icon={
-                  <Icon size="md">
-                    <SunIcon />
-                  </Icon>
-                }
-                isSelected={!isDarkTheme}
-                onChange={() => setIsDarkTheme(false)}
-              />
-              <ToggleGroupItem
-                aria-label="dark theme toggle"
-                icon={
-                  <Icon size="md">
-                    <MoonIcon />
-                  </Icon>
-                }
-                isSelected={isDarkTheme}
-                onChange={() => setIsDarkTheme(true)}
-              />
-            </ToggleGroup>
-          </ToolbarItem>
-          {!dashboardConfig.spec.dashboardConfig.disableAppLauncher ? (
-            <ToolbarItem data-testid="application-launcher">
-              <AppLauncher />
-            </ToolbarItem>
-          ) : null}
-          <ToolbarItem>
             <NotificationBadge
               aria-label="Notification drawer"
               variant="read"
@@ -190,6 +161,11 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
               onClick={onNotificationsClick}
             />
           </ToolbarItem>
+          {!dashboardConfig.spec.dashboardConfig.disableAppLauncher ? (
+            <ToolbarItem data-testid="application-launcher">
+              <AppLauncher />
+            </ToolbarItem>
+          ) : null}
           <ToolbarItem>
             <Dropdown
               popperProps={{ position: 'right' }}
@@ -210,6 +186,30 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
             >
               <DropdownList>{helpMenuItems}</DropdownList>
             </Dropdown>
+          </ToolbarItem>
+          <ToolbarItem>
+            <ToggleGroup aria-label="Theme toggle group">
+              <ToggleGroupItem
+                aria-label="light theme"
+                icon={
+                  <Icon size="md">
+                    <SunIcon />
+                  </Icon>
+                }
+                isSelected={!isDarkTheme}
+                onChange={() => setIsDarkTheme(false)}
+              />
+              <ToggleGroupItem
+                aria-label="dark theme"
+                icon={
+                  <Icon size="md">
+                    <MoonIcon />
+                  </Icon>
+                }
+                isSelected={isDarkTheme}
+                onChange={() => setIsDarkTheme(true)}
+              />
+            </ToggleGroup>
           </ToolbarItem>
         </ToolbarGroup>
         {DEV_MODE && isImpersonating && (
@@ -236,7 +236,6 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
             onOpenChange={(isOpen) => setUserMenuOpen(isOpen)}
             toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
               <MenuToggle
-                variant="plainText"
                 aria-label="User menu"
                 id="user-menu-toggle"
                 ref={toggleRef}

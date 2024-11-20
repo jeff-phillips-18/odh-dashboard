@@ -30,7 +30,6 @@ const DividedGallery: React.FC<DividedGalleryProps> = ({
       minWidths={{ default: minSize, md: minSize }}
       maxWidths={{ default: '100%', md: `${100 / itemCount}%` }}
     >
-      <div className="odh-divided-gallery__border" />
       {children}
       {showClose ? (
         <div className="odh-divided-gallery__close">
