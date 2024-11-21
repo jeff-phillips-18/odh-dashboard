@@ -124,26 +124,29 @@ describe('Manage Accelerator Profile', () => {
 
     // test edit toleration
     let tableRow = createAcceleratorProfile.getRow('test-key');
-    tableRow.findKebabAction('Edit').click();
+    tableRow.findKebabActionByMenuId('Edit', 'toleration-actions').click();
     editTolerationModal.findTolerationKeyInput().fill('test-update');
     editTolerationModal.findCancelButton().click();
     createAcceleratorProfile.getRow('test-key');
-    tableRow.findKebabAction('Edit').click();
+    tableRow.findKebabActionByMenuId('Edit', 'toleration-actions').click();
     editTolerationModal.findTolerationKeyInput().fill('updated-test');
     editTolerationModal.findTolerationSubmitButton().click();
     tableRow = createAcceleratorProfile.getRow('updated-test');
     tableRow.shouldHaveOperator('Equal');
 
     // test cancel clears fields
-    tableRow.findKebabAction('Edit').click();
+    tableRow.findKebabActionByMenuId('Edit', 'toleration-actions').click();
     editTolerationModal.findCancelButton().click();
     createAcceleratorProfile.findTolerationsButton().click();
     createTolerationModal.findTolerationSubmitButton().should('be.disabled');
     createTolerationModal.findCancelButton().click();
 
     // test delete
-    tableRow.findKebabAction('Delete').click();
-    createAcceleratorProfile.getRow('toleration-key').findKebabAction('Delete').click();
+    tableRow.findKebabActionByMenuId('Delete', 'toleration-actions').click();
+    createAcceleratorProfile
+      .getRow('toleration-key')
+      .findKebabActionByMenuId('Delete', 'toleration-actions')
+      .click();
     createAcceleratorProfile.shouldHaveModalEmptyState();
     cy.interceptOdh('POST /api/accelerator-profiles', { success: true }).as('createAccelerator');
     createAcceleratorProfile.findSubmitButton().click();

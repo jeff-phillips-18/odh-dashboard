@@ -20,6 +20,7 @@ import {
   SelectGroup,
   Divider,
   SelectOptionProps,
+  SelectPopperProps,
 } from '@patternfly/react-core';
 
 import { TimesIcon } from '@patternfly/react-icons/dist/esm/icons/times-icon';
@@ -56,6 +57,7 @@ type MultiSelectionProps = {
   /** Message to display to create a new option */
   createOptionMessage?: string | ((newValue: string) => string);
   filterFunction?: (filterText: string, options: SelectionOptions[]) => SelectionOptions[];
+  popperProps?: SelectPopperProps;
 };
 
 const defaultCreateOptionMessage = (newValue: string) => `Create "${newValue}"`;
@@ -79,6 +81,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
   isCreateOptionOnTop = false,
   createOptionMessage = defaultCreateOptionMessage,
   filterFunction = defaultFilterFunction,
+  popperProps,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState<string>('');
@@ -324,6 +327,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
         }}
         onOpenChange={() => setOpen(false)}
         toggle={toggle}
+        popperProps={popperProps}
       >
         {createOption && isCreateOptionOnTop && groupOptions.length > 0 ? (
           <SelectList isAriaMultiselectable>

@@ -104,6 +104,7 @@ const PipelineRecurringRunTableRow: React.FC<PipelineRecurringRunTableRowProps> 
       </Td>
       <Td isActionCell dataLabel="Kebab">
         <ActionsColumn
+          id="pipeline-recurring-run-actions"
           items={[
             ...(!version
               ? []

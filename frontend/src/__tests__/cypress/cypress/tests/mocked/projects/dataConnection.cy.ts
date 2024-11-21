@@ -157,7 +157,9 @@ describe('Data connections', () => {
     projectDetails.shouldBeEmptyState('Data connections', 'data-connections', false);
     const dataConnectionRow = projectDetails.getDataConnectionRow('Test Secret');
     dataConnectionRow.findWorkbenchConnection().contains('No connections');
-    dataConnectionRow.findKebabAction('Edit data connection').click();
+    dataConnectionRow
+      .findKebabActionByMenuId('Edit data connection', 'data-connection-actions')
+      .click();
 
     editDataConnectionModal.findNameInput().should('have.value', 'Test Secret');
     editDataConnectionModal.findAwsKeyInput().should('have.value', 'sdsd');
@@ -211,7 +213,9 @@ describe('Data connections', () => {
     initIntercepts({});
     projectDetails.visitSection('test-project', 'data-connections');
     const dataConnectionRow = projectDetails.getDataConnectionRow('Test Secret');
-    dataConnectionRow.findKebabAction('Delete data connection').click();
+    dataConnectionRow
+      .findKebabActionByMenuId('Delete data connection', 'data-connection-actions')
+      .click();
     deleteModal.findInput().type('Test Secret');
     cy.interceptK8s(
       'DELETE',

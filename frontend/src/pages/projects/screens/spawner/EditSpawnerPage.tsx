@@ -60,6 +60,7 @@ const EditSpawnerPage: React.FC = () => {
     return (
       <Bullseye>
         <EmptyState
+          data-testid="error-message-title"
           headingLevel="h4"
           icon={ExclamationCircleIcon}
           titleText="Unable to edit workbench"

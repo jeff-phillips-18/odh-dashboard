@@ -124,7 +124,10 @@ describe('Test deleting runs', () => {
 
   it('Test delete a single schedule', () => {
     pipelineRunsGlobal.findSchedulesTab().click();
-    pipelineRecurringRunTable.getRowByName('test-pipeline').findKebabAction('Delete').click();
+    pipelineRecurringRunTable
+      .getRowByName('test-pipeline')
+      .findKebabActionByMenuId('Delete', 'pipeline-recurring-run-actions')
+      .click();
 
     schedulesDeleteModal.shouldBeOpen();
     schedulesDeleteModal.findSubmitButton().should('be.disabled');

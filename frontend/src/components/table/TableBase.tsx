@@ -138,6 +138,7 @@ const TableBase = <T,>({
       variant={variant}
       widgetId="table-pagination"
       perPageOptions={perPageOptions}
+      menuAppendTo="inline"
       titles={{
         paginationAriaLabel: `${variant} pagination`,
       }}

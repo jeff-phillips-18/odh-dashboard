@@ -58,6 +58,7 @@ const LearningCenterDataView: React.FC<LearningCenterDataViewProps> = React.memo
       if (filteredDocApps.length === 0) {
         return (
           <EmptyState
+            data-testid="empty-state-title"
             headingLevel="h2"
             icon={SearchIcon}
             titleText="No results match the filter criteria"

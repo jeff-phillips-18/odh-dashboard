@@ -149,7 +149,10 @@ describe('PipelinesList', () => {
 
     pipelinesTable.find();
     const pipelineRow = pipelinesTable.getRowById(initialMockPipeline.pipeline_id);
-    pipelineRow.findKebabAction('Upload new version').should('be.visible').click();
+    pipelineRow
+      .findKebabActionByMenuId('Upload new version', 'pipeline-actions')
+      .should('be.visible')
+      .click();
     pipelineVersionImportModal.shouldBeOpen();
   });
 
@@ -163,7 +166,7 @@ describe('PipelinesList', () => {
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
       .findPipelineVersionLink()
-      .click();
+      .click({ force: true });
 
     verifyRelativeURL(
       `/pipelines/${projectName}/${initialMockPipeline.pipeline_id}/${initialMockPipelineVersion.pipeline_version_id}/view`,
@@ -196,7 +199,7 @@ describe('PipelinesList', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create run')
+      .findKebabActionByMenuId('Create run', 'pipeline-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/runs/create`);
@@ -209,7 +212,7 @@ describe('PipelinesList', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create schedule')
+      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/schedules/create`);

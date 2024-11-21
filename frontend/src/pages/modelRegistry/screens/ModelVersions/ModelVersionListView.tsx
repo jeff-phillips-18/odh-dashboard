@@ -202,6 +202,7 @@ const ModelVersionListView: React.FC<ModelVersionListViewProps> = ({
                       </MenuToggle>
                     )}
                     shouldFocusToggleOnSelect
+                    popperProps={{ appendTo: 'inline' }}
                   >
                     <DropdownList>
                       <DropdownItem

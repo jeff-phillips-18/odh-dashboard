@@ -863,7 +863,7 @@ describe('Pipelines', () => {
     // Check pipeline
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Delete pipeline')
+      .findKebabActionByMenuId('Delete pipeline', 'pipeline-actions')
       .click();
     pipelineDeleteModal.shouldBeOpen();
     pipelineDeleteModal.findInput().type(initialMockPipeline.display_name);
@@ -899,7 +899,7 @@ describe('Pipelines', () => {
     pipelineRow.findExpandButton().click();
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
-      .findKebabAction('Delete pipeline version')
+      .findKebabActionByMenuId('Delete pipeline version', 'pipeline-version-actions')
       .click();
     pipelineDeleteModal.shouldBeOpen();
     pipelineDeleteModal.findInput().type(initialMockPipelineVersion.display_name);
@@ -941,7 +941,7 @@ describe('Pipelines', () => {
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
       .findPipelineVersionLink()
-      .click();
+      .click({ force: true });
 
     verifyRelativeURL(
       `/pipelines/${projectName}/${initialMockPipeline.pipeline_id}/${initialMockPipelineVersion.pipeline_version_id}/view`,
@@ -1044,7 +1044,7 @@ describe('Pipelines', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create run')
+      .findKebabActionByMenuId('Create run', 'pipeline-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/runs/create`);
@@ -1088,14 +1088,22 @@ describe('Pipelines', () => {
     // Wait for the pipelines table to load
     pipelinesTable.find();
     const pipelineRow = pipelinesTable.getRowById('argo-workflow');
-    pipelineRow.findKebabAction('Create run').should('have.attr', 'aria-disabled');
-    pipelineRow.findKebabAction('Create schedule').should('have.attr', 'aria-disabled');
+    pipelineRow
+      .findKebabActionByMenuId('Create run', 'pipeline-actions')
+      .should('have.attr', 'aria-disabled');
+    pipelineRow
+      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
+      .should('have.attr', 'aria-disabled');
 
     pipelineRow.findExpandButton().click();
 
     const pipelineVersionRow = pipelineRow.getPipelineVersionRowById('test-pipeline-version');
-    pipelineVersionRow.findKebabAction('Create run').should('have.attr', 'aria-disabled');
-    pipelineVersionRow.findKebabAction('Create schedule').should('have.attr', 'aria-disabled');
+    pipelineVersionRow
+      .findKebabActionByMenuId('Create run', 'pipeline-version-actions')
+      .should('have.attr', 'aria-disabled');
+    pipelineVersionRow
+      .findKebabActionByMenuId('Create schedule', 'pipeline-version-actions')
+      .should('have.attr', 'aria-disabled');
   });
 
   it('run and schedule dropdown action should be disabeld when pipeline has no versions', () => {
@@ -1104,11 +1112,11 @@ describe('Pipelines', () => {
 
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create schedule')
+      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
       .should('have.attr', 'aria-disabled');
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create run')
+      .findKebabActionByMenuId('Create run', 'pipeline-actions')
       .should('have.attr', 'aria-disabled');
   });
 
@@ -1119,7 +1127,7 @@ describe('Pipelines', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabAction('Create schedule')
+      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/schedules/create`);
@@ -1135,7 +1143,7 @@ describe('Pipelines', () => {
     pipelineRow.findExpandButton().click();
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
-      .findKebabAction('Create run')
+      .findKebabActionByMenuId('Create run', 'pipeline-version-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/runs/create`);
@@ -1150,7 +1158,7 @@ describe('Pipelines', () => {
     pipelineRow.findExpandButton().click();
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
-      .findKebabAction('Create schedule')
+      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/schedules/create`);
@@ -1183,7 +1191,7 @@ describe('Pipelines', () => {
     pipelineRow.findExpandButton().click();
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
-      .findKebabAction('View schedules')
+      .findKebabActionByMenuId('View schedules', 'pipeline-version-actions')
       .click();
 
     verifyRelativeURL(

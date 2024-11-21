@@ -137,7 +137,7 @@ describe('Administration Tab', () => {
     userRow.shouldHavePrivilege('User');
     userRow.shouldHaveLastActivity('Just now');
     userRow.findServerStatusButton().should('have.text', 'View server');
-    userRow.findKebabAction('Stop server').click();
+    userRow.findKebabActionByMenuId('Stop server', 'notebook-actions').click();
 
     stopNotebookModal.findStopNotebookServerButton().should('be.enabled');
     stopNotebookModal.findStopNotebookServerButton().click();

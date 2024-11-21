@@ -63,6 +63,7 @@ const ImportPipelineSplitButton: React.FC<ImportPipelineSplitButtonProps> = ({
             data-testid="import-pipeline-split-button"
           />
         )}
+        popperProps={{ appendTo: 'inline' }}
       >
         <DropdownList>
           {disableUploadVersion && (

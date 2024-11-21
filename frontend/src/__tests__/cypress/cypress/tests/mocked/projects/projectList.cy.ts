@@ -107,13 +107,16 @@ describe('Data science projects details', () => {
     ).as('selfSubjectAccessReviewsCall');
     const deleteProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabAction('Delete project');
+      .findKebabActionByMenuId('Delete project', 'project-actions');
     cy.wait('@selfSubjectAccessReviewsCall');
     deleteProject.click();
     deleteModal.shouldBeOpen();
     deleteModal.findSubmitButton().should('be.disabled');
     deleteModal.findCancelButton().should('be.enabled').click();
-    projectListPage.getProjectRow('Test Project').findKebabAction('Delete project').click();
+    projectListPage
+      .getProjectRow('Test Project')
+      .findKebabActionByMenuId('Delete project', 'project-actions')
+      .click();
     deleteModal.findInput().type('Test Project');
 
     cy.interceptK8s(
@@ -196,13 +199,13 @@ describe('Data science projects details', () => {
 
     const editProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabAction('Edit project');
+      .findKebabActionByMenuId('Edit project', 'project-actions');
     const editPermission = projectListPage
       .getProjectRow('Test Project')
-      .findKebabAction('Edit permissions');
+      .findKebabActionByMenuId('Edit permissions', 'project-actions');
     const deleteProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabAction('Delete project');
+      .findKebabActionByMenuId('Delete project', 'project-actions');
     cy.wait('@selfSubjectAccessReviewsCall');
 
     editProject.should('have.attr', 'aria-disabled', 'true');

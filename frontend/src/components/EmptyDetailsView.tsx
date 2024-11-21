@@ -28,6 +28,7 @@ const EmptyDetailsView: React.FC<EmptyDetailsViewProps> = ({
   imageSize = '320px',
 }) => (
   <EmptyState
+    data-testid="empty-state-title"
     headingLevel="h3"
     titleText={title}
     variant="lg"

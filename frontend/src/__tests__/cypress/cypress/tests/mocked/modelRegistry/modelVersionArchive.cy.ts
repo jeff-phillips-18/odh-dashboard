@@ -239,7 +239,9 @@ describe('Restoring archive version', () => {
     modelVersionArchive.visit();
 
     const archiveVersionRow = modelVersionArchive.getRow('model version 2');
-    archiveVersionRow.findKebabAction('Restore model version').click();
+    archiveVersionRow
+      .findKebabActionByMenuId('Restore model version', 'model-version-actions')
+      .click();
 
     restoreVersionModal.findRestoreButton().click();
 
@@ -295,7 +297,9 @@ describe('Archiving version', () => {
     modelVersionArchive.visitModelVersionList();
 
     const modelVersionRow = modelRegistry.getModelVersionRow('model version 3');
-    modelVersionRow.findKebabAction('Archive model version').click();
+    modelVersionRow
+      .findKebabActionByMenuId('Archive model version', 'model-version-actions')
+      .click();
     archiveVersionModal.findArchiveButton().should('be.disabled');
     archiveVersionModal.findModalTextInput().fill('model version 3');
     archiveVersionModal.findArchiveButton().should('be.enabled').click();
@@ -338,7 +342,9 @@ describe('Archiving version', () => {
     modelVersionArchive.visitModelVersionList();
 
     const modelVersionRow = modelRegistry.getModelVersionRow('model version 3');
-    modelVersionRow.findKebabAction('Archive model version').should('have.attr', 'aria-disabled');
+    modelVersionRow
+      .findKebabActionByMenuId('Archive model version', 'model-version-actions')
+      .should('have.attr', 'aria-disabled');
   });
 
   it('Cannot archive model that has versions with a deployment', () => {

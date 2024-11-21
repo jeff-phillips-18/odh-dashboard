@@ -63,6 +63,7 @@ function FilterToolbar<T extends string>({
                 </MenuToggle>
               )}
               isOpen={open}
+              popperProps={{ appendTo: 'inline' }}
             >
               <DropdownList>
                 {keys.map((filterKey) => (

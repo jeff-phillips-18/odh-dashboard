@@ -61,6 +61,10 @@ class ClusterStorageModal extends Modal {
       .findByRole('button', { name: 'Typeahead menu toggle', hidden: true });
   }
 
+  findWorkbenchConnectionOption(name: string) {
+    return cy.get('#connected-notebook-select').findByText(name);
+  }
+
   findMountField() {
     return this.find().findByTestId('mount-path-folder-value');
   }
@@ -125,6 +129,10 @@ class ClusterStorageModal extends Modal {
 
   findStorageClassSelect() {
     return this.find().findByTestId('storage-classes-selector');
+  }
+
+  findStorageClassOption(name: string) {
+    return cy.get('#storage-classes-selector').findByText(name);
   }
 
   findStorageClassDeprecatedWarning() {

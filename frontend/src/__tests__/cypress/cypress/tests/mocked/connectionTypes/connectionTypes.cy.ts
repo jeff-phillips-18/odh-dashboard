@@ -95,7 +95,7 @@ describe('Connection types', () => {
     row2.shouldBeDisabled();
     row2.findConnectionTypeCompatibility().should('have.text', 'S3 compatible object storage');
 
-    row2.findKebabAction('Preview').click();
+    row2.findKebabActionByMenuId('Preview', 'connection-type-actions').click();
     connectionTypePreviewModal.shouldBeOpen();
     connectionTypePreviewModal.findCloseButton().click();
     connectionTypePreviewModal.shouldBeOpen(false);
@@ -124,7 +124,10 @@ describe('Connection types', () => {
       }),
     ]);
 
-    connectionTypesPage.getConnectionTypeRow('Test display name').findKebabAction('Delete').click();
+    connectionTypesPage
+      .getConnectionTypeRow('Test display name')
+      .findKebabActionByMenuId('Delete', 'connection-type-actions')
+      .click();
     deleteModal.findSubmitButton().should('be.disabled');
     deleteModal.findInput().fill('Test display name');
     deleteModal.findSubmitButton().should('be.enabled').click();

@@ -528,7 +528,10 @@ describe('Serving Runtime List', () => {
         .getModelMeshRow('OVMS Model Serving')
         .findDeployedModelExpansionButton()
         .click();
-      modelServingSection.getInferenceServiceRow('OVMS ONNX').findKebabAction('Edit').click();
+      modelServingSection
+        .getInferenceServiceRow('OVMS ONNX')
+        .findKebabActionByMenuId('Edit', 'inference-table-actions')
+        .click();
       inferenceServiceModalEdit.shouldBeOpen();
       inferenceServiceModalEdit
         .findServingRuntimeSelect()
@@ -1033,7 +1036,11 @@ describe('Serving Runtime List', () => {
       projectDetails.visitSection('test-project', 'model-server');
 
       // click on the toggle button and open edit model server
-      modelServingSection.getKServeRow('Llama Service').find().findKebabAction('Edit').click();
+      modelServingSection
+        .getKServeRow('Llama Service')
+        .find()
+        .findKebabActionByMenuId('Edit', 'inference-table-actions')
+        .click();
 
       kserveModalEdit.shouldBeOpen();
 
@@ -1215,7 +1222,10 @@ describe('Serving Runtime List', () => {
         mock200Status({}),
       ).as('deleteRoleBindings');
       projectDetails.visitSection('test-project', 'model-server');
-      modelServingSection.getModelMeshRow('ovms').findKebabAction('Delete model server').click();
+      modelServingSection
+        .getModelMeshRow('ovms')
+        .findKebabActionByMenuId('Delete model server', 'serving-runtime-actions')
+        .click();
       deleteModal.shouldBeOpen();
       deleteModal.findSubmitButton().should('be.disabled');
 
@@ -1453,7 +1463,7 @@ describe('Serving Runtime List', () => {
       modelServingSection
         .getModelMeshRow('ovms')
         .find()
-        .findKebabAction('Edit model server')
+        .findKebabActionByMenuId('Edit model server', 'serving-runtime-actions')
         .click();
 
       editServingRuntimeModal.shouldBeOpen();
@@ -2149,7 +2159,7 @@ describe('Serving Runtime List', () => {
         .should('contain.text', 'Small');
 
       // click on the toggle button and open edit model server
-      kserveRow.find().findKebabAction('Edit').click();
+      kserveRow.find().findKebabActionByMenuId('Edit', 'inference-table-actions').click();
 
       kserveModalEdit.shouldBeOpen();
 
@@ -2199,7 +2209,7 @@ describe('Serving Runtime List', () => {
         .should('contain.text', 'Small');
 
       // click on the toggle button and open edit model server
-      kserveRow.find().findKebabAction('Edit').click();
+      kserveRow.find().findKebabActionByMenuId('Edit', 'inference-table-actions').click();
 
       kserveModalEdit.shouldBeOpen();
 
@@ -2250,7 +2260,11 @@ describe('Serving Runtime List', () => {
         .should('contain.text', 'Custom');
 
       // click on the toggle button and open edit model server
-      modelServingSection.getKServeRow('Llama Service').find().findKebabAction('Edit').click();
+      modelServingSection
+        .getKServeRow('Llama Service')
+        .find()
+        .findKebabActionByMenuId('Edit', 'inference-table-actions')
+        .click();
 
       kserveModalEdit.shouldBeOpen();
 

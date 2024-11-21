@@ -101,6 +101,7 @@ const GroupSettings: React.FC = () => {
               setValue={(newState) => handleMenuItemSelection(newState, GroupsConfigField.ADMIN)}
               selectionRequired
               noSelectedOptionsMessage="One or more group must be selected"
+              popperProps={{ appendTo: 'inline' }}
             />
             {groupSettings.errorAdmin ? (
               <Alert
@@ -141,6 +142,7 @@ const GroupSettings: React.FC = () => {
               setValue={(newState) => handleMenuItemSelection(newState, GroupsConfigField.USER)}
               selectionRequired
               noSelectedOptionsMessage="One or more group must be selected"
+              popperProps={{ appendTo: 'inline' }}
             />
             {groupSettings.errorUser ? (
               <Alert

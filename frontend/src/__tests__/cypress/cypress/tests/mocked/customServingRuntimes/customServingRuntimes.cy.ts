@@ -209,7 +209,11 @@ describe('Custom serving runtimes', () => {
       'duplicateTemplate',
     );
 
-    servingRuntimes.getRowById('template-1').find().findKebabAction('Duplicate').click();
+    servingRuntimes
+      .getRowById('template-1')
+      .find()
+      .findKebabActionByMenuId('Duplicate', 'custom-serving-runtime-actions')
+      .click();
     servingRuntimes.findAppTitle().should('have.text', 'Duplicate serving runtime');
     cy.url().should('include', '/addServingRuntime');
 
@@ -276,7 +280,11 @@ describe('Custom serving runtimes', () => {
       mockServingRuntimeTemplateK8sResource({}),
     ).as('editTemplate');
 
-    servingRuntimes.getRowById('template-1').find().findKebabAction('Edit').click();
+    servingRuntimes
+      .getRowById('template-1')
+      .find()
+      .findKebabActionByMenuId('Edit', 'custom-serving-runtime-actions')
+      .click();
     servingRuntimes.findAppTitle().should('contain', 'Edit Multi Platform');
     cy.url().should('include', '/editServingRuntime/template-1');
     servingRuntimes.findSubmitButton().should('be.disabled');
@@ -323,7 +331,11 @@ describe('Custom serving runtimes', () => {
       mockServingRuntimeTemplateK8sResource({}),
     ).as('deleteServingRuntime');
 
-    servingRuntimes.getRowById('template-1').find().findKebabAction('Delete').click();
+    servingRuntimes
+      .getRowById('template-1')
+      .find()
+      .findKebabActionByMenuId('Delete', 'custom-serving-runtime-actions')
+      .click();
     deleteModal.findSubmitButton().should('be.disabled');
 
     // test delete form is enabled after filling out required fields

@@ -20,6 +20,10 @@ export class TableRow extends Contextual<HTMLTableRowElement> {
     return this.find().findKebabAction(name);
   }
 
+  findKebabActionByMenuId(name: string, menuId: string): Cypress.Chainable<JQuery<HTMLElement>> {
+    return this.find().findKebabActionByMenuId(name, menuId);
+  }
+
   findKebab(): Cypress.Chainable<JQuery<HTMLElement>> {
     return this.find().findKebab();
   }

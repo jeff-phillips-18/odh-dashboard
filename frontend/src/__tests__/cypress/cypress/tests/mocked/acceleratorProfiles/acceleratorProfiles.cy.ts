@@ -122,7 +122,10 @@ describe('Accelerator Profile', () => {
       { success: true },
     ).as('delete');
     acceleratorProfile.visit();
-    acceleratorProfile.getRow('TensorRT').findKebabAction('Delete').click();
+    acceleratorProfile
+      .getRow('TensorRT')
+      .findKebabActionByMenuId('Delete', 'accelerator-profile-actions')
+      .click();
     deleteModal.findSubmitButton().should('be.disabled');
     deleteModal.findInput().fill('TensorRT');
     deleteModal.findSubmitButton().should('be.enabled').click();

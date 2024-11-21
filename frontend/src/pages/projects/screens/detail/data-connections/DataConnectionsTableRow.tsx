@@ -43,6 +43,7 @@ const DataConnectionsTableRow: React.FC<DataConnectionsTableRowProps> = ({
     </Td>
     <Td isActionCell>
       <ActionsColumn
+        id="data-connection-actions"
         items={[
           {
             title: 'Edit data connection',

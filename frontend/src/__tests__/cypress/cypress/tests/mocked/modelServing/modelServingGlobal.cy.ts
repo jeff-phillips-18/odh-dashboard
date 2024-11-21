@@ -236,7 +236,7 @@ describe('Model Serving Global', () => {
     // user flow for deleting a project
     modelServingGlobal
       .getModelRow('Test Inference Service')
-      .findKebabAction(/^Delete/)
+      .findKebabActionByMenuId(/^Delete/, 'inference-table-actions')
       .click();
 
     // Test that can submit on valid form
@@ -270,7 +270,10 @@ describe('Model Serving Global', () => {
     modelServingGlobal.visit('test-project');
 
     // user flow for editing a project
-    modelServingGlobal.getModelRow('Test Inference Service').findKebabAction('Edit').click();
+    modelServingGlobal
+      .getModelRow('Test Inference Service')
+      .findKebabActionByMenuId('Edit', 'inference-table-actions')
+      .click();
 
     // test that you can not submit on empty
     inferenceServiceModalEdit.shouldBeOpen();

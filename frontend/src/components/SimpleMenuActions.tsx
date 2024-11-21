@@ -61,7 +61,9 @@ const SimpleMenuActions: React.FC<SimpleDropdownProps> = ({
           {toggleLabel ?? <EllipsisVIcon />}
         </MenuToggle>
       )}
-      popperProps={!toggleLabel ? { position: 'right' } : undefined}
+      popperProps={
+        !toggleLabel ? { position: 'right', appendTo: 'inline' } : { appendTo: 'inline' }
+      }
     >
       <DropdownList>
         {dropdownItems.map((itemOrSpacer, i) =>

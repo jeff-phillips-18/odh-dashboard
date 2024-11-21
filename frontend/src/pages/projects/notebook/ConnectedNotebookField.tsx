@@ -56,6 +56,7 @@ const ConnectedNotebookField: React.FC<SelectNotebookFieldProps> = ({
     >
       {isMultiSelect ? (
         <MultiSelection
+          id="connected-notebook-select"
           isDisabled={disabled}
           ariaLabel="Notebook select"
           value={notebooks.map((notebook) => ({
@@ -69,6 +70,7 @@ const ConnectedNotebookField: React.FC<SelectNotebookFieldProps> = ({
         />
       ) : (
         <TypeaheadSelect
+          id="connected-notebook-select"
           isDisabled={disabled}
           selectOptions={options}
           selected={selections[0]}
