@@ -68,6 +68,7 @@ const InferenceServiceServingRuntimeSection: React.FC<
             });
           }
         }}
+        popperProps={{ appendTo: 'inline' }}
       />
     </FormGroup>
   );

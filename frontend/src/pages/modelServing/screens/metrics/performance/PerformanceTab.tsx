@@ -20,6 +20,7 @@ const PerformanceTab: React.FC<PerformanceTabsProps> = ({ model }) => {
       <Stack data-testid="performance-metrics-loaded">
         <StackItem>
           <EmptyState
+            data-testid="kserve-metrics-disabled"
             headingLevel="h4"
             icon={WarningTriangleIcon}
             titleText="Single-model serving platform model metrics are not enabled."

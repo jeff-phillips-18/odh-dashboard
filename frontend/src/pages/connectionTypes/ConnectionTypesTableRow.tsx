@@ -142,6 +142,7 @@ const ConnectionTypesTableRow: React.FC<ConnectionTypesTableRowProps> = ({
       </Td>
       <Td className="odh-project-table__action-column" isActionCell>
         <ActionsColumn
+          id="connection-type-actions"
           items={[
             {
               title: 'Preview',

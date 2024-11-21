@@ -905,7 +905,7 @@ describe('Workbench page', () => {
     const notebookRow = workbenchPage.getNotebookRow('Test Notebook');
     notebookRow.shouldHaveNotebookImageName('Test Image');
     notebookRow.shouldHaveContainerSize('Custom');
-    notebookRow.findKebabAction('Edit workbench').click();
+    notebookRow.findKebabActionByMenuId('Edit workbench', 'notebook-actions').click();
     editSpawnerPage.shouldHaveContainerSizeInput('Keep custom size');
     cy.go('back');
     workbenchPage.findCreateButton().click();
@@ -972,7 +972,7 @@ describe('Workbench page', () => {
     );
     workbenchPage.visit('test-project');
     const notebookRow = workbenchPage.getNotebookRow('Test Notebook');
-    notebookRow.findKebabAction('Delete workbench').click();
+    notebookRow.findKebabActionByMenuId('Delete workbench', 'notebook-actions').click();
     deleteModal.findInput().fill('Test Notebook');
     cy.interceptK8s(
       'DELETE',

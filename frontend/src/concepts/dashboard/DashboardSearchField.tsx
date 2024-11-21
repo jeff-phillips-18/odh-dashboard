@@ -57,6 +57,7 @@ const DashboardSearchField: React.FC<DashboardSearchFieldProps> = ({
           }
         }}
         icon={icon}
+        popperProps={{ appendTo: 'inline' }}
       />
     </InputGroupItem>
     <InputGroupItem>

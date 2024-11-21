@@ -184,7 +184,7 @@ describe('Deploy model version', () => {
     initIntercepts({ kServeInstalled: false, modelMeshInstalled: false });
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     modelVersionDeployModal.selectProjectByName('Model mesh project');
     cy.findByText('Multi-model platform is not installed').should('exist');
     modelVersionDeployModal.selectProjectByName('KServe project');
@@ -195,7 +195,7 @@ describe('Deploy model version', () => {
     initIntercepts({});
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     modelVersionDeployModal.selectProjectByName('Test project');
     cy.findByText('Cannot deploy the model until you select a model serving platform').should(
       'exist',
@@ -206,7 +206,7 @@ describe('Deploy model version', () => {
     initIntercepts({});
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     cy.interceptK8sList(ServingRuntimeModel, mockK8sResourceList([]));
     modelVersionDeployModal.selectProjectByName('Model mesh project');
     cy.findByText('Cannot deploy the model until you configure a model server').should('exist');
@@ -229,7 +229,7 @@ describe('Deploy model version', () => {
     );
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     modelVersionDeployModal.selectProjectByName('KServe project');
 
     // Validate name input field
@@ -282,7 +282,7 @@ describe('Deploy model version', () => {
 
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     modelVersionDeployModal.selectProjectByName('KServe project');
 
     // Validate data connection section
@@ -323,7 +323,7 @@ describe('Deploy model version', () => {
 
     cy.visit(`/modelRegistry/modelregistry-sample/registeredModels/1/versions`);
     const modelVersionRow = modelRegistry.getModelVersionRow('test model version');
-    modelVersionRow.findKebabAction('Deploy').click();
+    modelVersionRow.findKebabActionByMenuId('Deploy', 'model-version-actions').click();
     modelVersionDeployModal.selectProjectByName('KServe project');
 
     // Validate data connection section

@@ -139,7 +139,7 @@ describe('Experiments', () => {
       activeExperimentsTable.mockArchiveExperiment(experimentToArchive.experiment_id, projectName);
       activeExperimentsTable
         .getRowByName(experimentToArchive.display_name)
-        .findKebabAction('Archive')
+        .findKebabActionByMenuId('Archive', 'experiment-actions')
         .click();
 
       experimentsTabs.mockGetExperiments(projectName, [
@@ -202,7 +202,7 @@ describe('Experiments', () => {
       );
       archivedExperimentsTable
         .getRowByName(experimentToRestore.display_name)
-        .findKebabAction('Restore')
+        .findKebabActionByMenuId('Restore', 'experiment-actions')
         .click();
 
       experimentsTabs.mockGetExperiments(projectName, [
@@ -285,7 +285,7 @@ describe('Experiments', () => {
       activeRunsTable.getRowByName('Test active run 4').findColumnName('Test active run 4').click();
       pipelineRunDetails
         .findErrorState('run-graph-error-state')
-        .should('have.text', 'Pipeline run graph unavailable');
+        .should('contain.text', 'Pipeline run graph unavailable');
 
       pipelineRunDetails.findDetailsTab().click();
       pipelineRunDetails.findDetailItem('Name').findValue().contains(mockActiveRuns.display_name);
@@ -302,7 +302,7 @@ describe('Experiments', () => {
       pipelineRunDetails.findPipelineSpecTab().click();
       pipelineRunDetails
         .findErrorState('pipeline-spec-error-state')
-        .should('have.text', 'Pipeline spec unavailable');
+        .should('contain.text', 'Pipeline spec unavailable');
     });
 
     it('navigates back to experiments from "Create run" page breadcrumb', () => {

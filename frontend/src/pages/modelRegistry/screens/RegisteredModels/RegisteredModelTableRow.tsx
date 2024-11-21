@@ -105,7 +105,7 @@ const RegisteredModelTableRow: React.FC<RegisteredModelTableRowProps> = ({
         </Content>
       </Td>
       <Td isActionCell>
-        <ActionsColumn items={actions} />
+        <ActionsColumn id="registered-modal-actions" items={actions} />
         {isArchiveModalOpen ? (
           <ArchiveRegisteredModelModal
             onCancel={() => setIsArchiveModalOpen(false)}

@@ -266,6 +266,7 @@ const LogsTab: React.FC<LogsTabProps> = ({ task, isCached }) => {
                               </MenuToggle>
                             )}
                             shouldFocusToggleOnSelect
+                            popperProps={{ appendTo: 'inline' }}
                           >
                             {defaultContainerName && (
                               <>

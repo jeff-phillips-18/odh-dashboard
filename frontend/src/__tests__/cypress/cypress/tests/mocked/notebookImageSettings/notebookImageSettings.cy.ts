@@ -242,7 +242,11 @@ describe('Notebook image settings', () => {
     notebookImageSettings.visit();
 
     // open edit form
-    notebookImageSettings.getRow('Testing Custom Image').find().findKebabAction('Edit').click();
+    notebookImageSettings
+      .getRow('Testing Custom Image')
+      .find()
+      .findKebabActionByMenuId('Edit', 'byon-image-actions')
+      .click();
 
     // test inputs have correct values
     updateNotebookImageModal.findImageLocationInput().should('have.value', 'test-image:latest');
@@ -289,7 +293,11 @@ describe('Notebook image settings', () => {
     notebookImageSettings.visit();
 
     // test delete form is disabled initially
-    notebookImageSettings.getRow('Testing Custom Image').find().findKebabAction('Delete').click();
+    notebookImageSettings
+      .getRow('Testing Custom Image')
+      .find()
+      .findKebabActionByMenuId('Delete', 'byon-image-actions')
+      .click();
 
     deleteModal.findSubmitButton().should('be.disabled');
 
@@ -347,7 +355,11 @@ describe('Notebook image settings', () => {
     importNotebookImageModal.findCloseButton().click();
 
     // edit error
-    notebookImageSettings.getRow('Testing Custom Image').find().findKebabAction('Edit').click();
+    notebookImageSettings
+      .getRow('Testing Custom Image')
+      .find()
+      .findKebabActionByMenuId('Edit', 'byon-image-actions')
+      .click();
     updateNotebookImageModal.findSubmitButton().click();
 
     cy.wait('@editError');
@@ -356,7 +368,11 @@ describe('Notebook image settings', () => {
     updateNotebookImageModal.findCloseButton().click();
 
     // delete error
-    notebookImageSettings.getRow('Testing Custom Image').find().findKebabAction('Delete').click();
+    notebookImageSettings
+      .getRow('Testing Custom Image')
+      .find()
+      .findKebabActionByMenuId('Delete', 'byon-image-actions')
+      .click();
     notebookImageDeleteModal.findInput().type('Testing Custom Image');
     notebookImageDeleteModal.findSubmitButton().click();
 

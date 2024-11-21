@@ -79,6 +79,7 @@ export const KserveMetricsContextProvider = conditionalArea<KserveMetricsContext
   if (error) {
     return (
       <EmptyState
+        data-testid="kserve-unknown-error"
         headingLevel="h5"
         icon={ErrorCircleOIcon}
         titleText="Unknown error"
@@ -99,7 +100,12 @@ export const KserveMetricsContextProvider = conditionalArea<KserveMetricsContext
 
   if (!supported) {
     return (
-      <EmptyState headingLevel="h4" icon={CubesIcon} titleText="Metrics not supported">
+      <EmptyState
+        data-testid="kserve-metrics-runtime-unsupported"
+        headingLevel="h4"
+        icon={CubesIcon}
+        titleText="Metrics not supported"
+      >
         <EmptyStateBody>
           {modelName} is using a custom serving runtime. Metrics are only supported for models
           served via a pre-installed runtime when the single-model serving platform is enabled for a

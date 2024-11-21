@@ -22,6 +22,7 @@ const TolerationRow: React.FC<TolerationRowProps> = ({ toleration, onEdit, onDel
       <Td dataLabel="Toleration Seconds">{formatSeconds(toleration.tolerationSeconds)}</Td>
       <Td isActionCell>
         <ActionsColumn
+          id="toleration-actions"
           items={[
             {
               title: 'Edit',

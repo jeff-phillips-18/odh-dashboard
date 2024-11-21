@@ -182,7 +182,7 @@ describe('ViewDatabaseConfigModal', () => {
     modelRegistrySettings.visit(true);
     modelRegistrySettings
       .findModelRegistryRow('test-registry-1')
-      .findKebabAction('View database configuration')
+      .findKebabActionByMenuId('View database configuration', 'model-registry-actions')
       .click();
     modelRegistrySettings
       .findDatabaseDetail(DatabaseDetailsTestId.HOST)
@@ -207,7 +207,7 @@ describe('ViewDatabaseConfigModal', () => {
     modelRegistrySettings.visit(true);
     modelRegistrySettings
       .findModelRegistryRow('test-registry-2')
-      .findKebabAction('View database configuration')
+      .findKebabActionByMenuId('View database configuration', 'model-registry-actions')
       .click();
     cy.findByText('Error loading password').should('exist');
   });
@@ -241,7 +241,7 @@ describe('DeleteModelRegistryModal', () => {
     modelRegistrySettings.visit(true);
     modelRegistrySettings
       .findModelRegistryRow('test-registry-1')
-      .findKebabAction('Delete model registry')
+      .findKebabActionByMenuId('Delete model registry', 'model-registry-actions')
       .click();
   });
 

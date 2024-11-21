@@ -215,7 +215,10 @@ describe('MR Permissions', () => {
 
       modelRegistryPermissions.visit('example-mr');
 
-      userTable.getTableRow('example-mr-user').findKebabAction('Edit').click();
+      userTable
+        .getTableRow('example-mr-user')
+        .findKebabActionByMenuId('Edit', 'role-bindings-permissions-actions')
+        .click();
       userTable.findEditInput('example-mr-user').clear().type('edited-user');
       userTable.findEditSaveButton('edited-user').click();
 
@@ -253,7 +256,10 @@ describe('MR Permissions', () => {
 
       modelRegistryPermissions.visit('example-mr');
 
-      userTable.getTableRow('example-mr-user').findKebabAction('Delete').click();
+      userTable
+        .getTableRow('example-mr-user')
+        .findKebabActionByMenuId('Delete', 'role-bindings-permissions-actions')
+        .click();
 
       cy.wait('@deleteUser');
     });
@@ -344,7 +350,10 @@ describe('MR Permissions', () => {
 
       modelRegistryPermissions.visit('example-mr');
 
-      groupTable.getTableRow('example-mr-users-2').findKebabAction('Edit').click();
+      groupTable
+        .getTableRow('example-mr-users-2')
+        .findKebabActionByMenuId('Edit', 'role-bindings-permissions-actions')
+        .click();
       groupTable.findNameSelect().clear().type('example-mr-group-opti');
       cy.findByText('example-mr-group-option').click();
       groupTable.findEditSaveButton('example-mr-group-option').click();
@@ -388,7 +397,10 @@ describe('MR Permissions', () => {
       ).as('deleteGroup');
 
       modelRegistryPermissions.visit('example-mr');
-      groupTable.getTableRow('example-mr-users-2').findKebabAction('Delete').click();
+      groupTable
+        .getTableRow('example-mr-users-2')
+        .findKebabActionByMenuId('Delete', 'role-bindings-permissions-actions')
+        .click();
 
       cy.wait('@deleteGroup');
     });
@@ -492,7 +504,10 @@ describe('MR Permissions', () => {
         mock200Status({}),
       ).as('deleteProject');
 
-      projectTable.getTableRow('Test Project').findKebabAction('Edit').click();
+      projectTable
+        .getTableRow('Test Project')
+        .findKebabActionByMenuId('Edit', 'role-bindings-permissions-actions')
+        .click();
       projectTable.findNameSelect().findSelectOption('Project').click();
       projectTable.findEditSaveButton('Project').click();
 
@@ -521,7 +536,10 @@ describe('MR Permissions', () => {
         { path: { name: 'test-name-view' } },
         mock200Status({}),
       ).as('deleteProject');
-      projectTable.getTableRow('Test Project').findKebabAction('Delete').click();
+      projectTable
+        .getTableRow('Test Project')
+        .findKebabActionByMenuId('Delete', 'role-bindings-permissions-actions')
+        .click();
       cy.wait('@deleteProject');
     });
   });

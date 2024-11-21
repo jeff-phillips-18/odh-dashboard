@@ -39,6 +39,18 @@ declare global {
       ) => Cypress.Chainable<JQuery>;
 
       /**
+       * Finds a patternfly kebab toggle button, opens the menu, and finds the action.
+       *
+       * @param name the name of the action in the kebeb menu
+       * @param isDropdownToggle - True to indicate that it is a dropdown toggle instead of table kebab actions
+       */
+      findKebabActionByMenuId: (
+        name: string | RegExp,
+        menuId: string,
+        isDropdownToggle?: boolean,
+      ) => Cypress.Chainable<JQuery>;
+
+      /**
        * Finds a patternfly dropdown item by first opening the dropdown if not already opened.
        *
        * @param name the name of the item
@@ -198,6 +210,23 @@ Cypress.Commands.add(
           cy.wrap($el).click();
         }
         return cy.wrap($el.parent()).findByRole('menuitem', { name });
+      });
+  },
+);
+
+Cypress.Commands.add(
+  'findKebabActionByMenuId',
+  { prevSubject: 'element' },
+  (subject, name, menuId, isDropdownToggle) => {
+    Cypress.log({ displayName: 'findKebabByMenuId', message: name });
+    return cy
+      .wrap(subject)
+      .findKebab(isDropdownToggle)
+      .then(($el) => {
+        if ($el.attr('aria-expanded') === 'false') {
+          cy.wrap($el).click();
+        }
+        return cy.get(`#${menuId}`).findByRole('menuitem', { name });
       });
   },
 );

@@ -180,6 +180,7 @@ const PipelineRunTableRow: React.FC<PipelineRunTableRowProps> = ({
       {hasRowActions && (
         <Td isActionCell dataLabel="Kebab">
           <ActionsColumn
+            id="pipeline-run-table-row-actions"
             data-testid="pipeline-run-table-row-actions"
             items={actions}
             popperProps={{ appendTo: getDashboardMainContainer, position: 'right' }}

@@ -23,7 +23,7 @@ const NotebookActions: React.FC<ServerStatusProps> = ({ data }) => {
     },
   ];
 
-  return <ActionsColumn items={rowActions} />;
+  return <ActionsColumn id="notebook-actions" items={rowActions} />;
 };
 
 export default NotebookActions;

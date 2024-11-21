@@ -136,6 +136,7 @@ const ExistingConnectionField: React.FC<ExistingConnectionFieldProps> = ({
             }
           }}
           isDisabled={projectConnections.length === 0}
+          popperProps={{ appendTo: 'inline' }}
         />
         {selectedConnection && (
           <ConnectionDetailsHelperText

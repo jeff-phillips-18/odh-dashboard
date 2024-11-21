@@ -121,6 +121,7 @@ const PipelinesTableRow: React.FC<PipelinesTableRowProps> = ({
           <Td>{loading ? <Skeleton /> : <PipelinesTableRowTime date={updatedDate} />}</Td>
           <Td isActionCell>
             <ActionsColumn
+              id="pipeline-actions"
               items={[
                 {
                   title: 'Upload new version',

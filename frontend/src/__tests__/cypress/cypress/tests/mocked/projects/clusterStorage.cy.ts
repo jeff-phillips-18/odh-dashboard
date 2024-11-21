@@ -164,7 +164,7 @@ describe('ClusterStorage', () => {
 
     // select storage class
     addClusterStorageModal.findStorageClassSelect().click();
-    addClusterStorageModal.find().findByText('Test SC 1').click();
+    addClusterStorageModal.findStorageClassOption('Test SC 1').click();
     addClusterStorageModal.findSubmitButton().should('be.enabled');
     addClusterStorageModal.findDescriptionInput().fill('description');
     addClusterStorageModal.findPVSizeMinusButton().click();
@@ -175,34 +175,34 @@ describe('ClusterStorage', () => {
 
     //connect workbench
     addClusterStorageModal.findWorkbenchConnectionSelect().click();
-    addClusterStorageModal.find().findByText('Test Notebook').click();
+    addClusterStorageModal.findWorkbenchConnectionOption('Test Notebook').click();
 
     // don't allow duplicate path
     addClusterStorageModal.findMountField().clear();
     addClusterStorageModal.findMountField().fill('test-dupe');
     addClusterStorageModal
       .findMountFieldHelperText()
-      .should('have.text', 'Mount folder is already in use for this workbench.');
+      .should('contain.text', 'Mount folder is already in use for this workbench.');
 
     // don't allow number in the path
     addClusterStorageModal.findMountField().clear();
     addClusterStorageModal.findMountField().fill('test2');
     addClusterStorageModal
       .findMountFieldHelperText()
-      .should('have.text', 'Must only consist of lowercase letters and dashes.');
+      .should('contain.text', 'Must only consist of lowercase letters and dashes.');
 
     // Allow trailing slash
     addClusterStorageModal.findMountField().clear();
     addClusterStorageModal.findMountField().fill('test/');
     addClusterStorageModal
       .findMountFieldHelperText()
-      .should('have.text', 'Must consist of lowercase letters and dashes.');
+      .should('contain.text', 'Must consist of lowercase letters and dashes.');
 
     addClusterStorageModal.findMountField().clear();
     addClusterStorageModal
       .findMountFieldHelperText()
       .should(
-        'have.text',
+        'contain.text',
         'Enter a path to a model or folder. This path cannot point to a root folder.',
       );
     addClusterStorageModal.findMountField().fill('data');
@@ -275,11 +275,11 @@ describe('ClusterStorage', () => {
 
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Existing PVC');
-    clusterStorageRow.findKebabAction('Edit storage').click();
+    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
 
     // Connect to 'Another Notebook'
     updateClusterStorageModal.findWorkbenchConnectionSelect().click();
-    updateClusterStorageModal.find().findByText('Another Notebook').click();
+    updateClusterStorageModal.findWorkbenchConnectionOption('Another Notebook').click();
 
     updateClusterStorageModal.findMountField().fill('new-data');
 
@@ -338,7 +338,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Test Storage');
-    clusterStorageRow.findKebabAction('Edit storage').click();
+    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
     updateClusterStorageModal.findNameInput().should('have.value', 'Test Storage');
     updateClusterStorageModal.findPVSizeInput().should('have.value', '5');
     updateClusterStorageModal.shouldHavePVSizeSelectValue('GiB');
@@ -380,7 +380,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Unbound storage');
-    clusterStorageRow.findKebabAction('Edit storage').click();
+    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
     updateClusterStorageModal.findNameInput().should('have.value', 'Unbound storage');
     updateClusterStorageModal.findPVSizeInput().should('have.value', '5').should('be.disabled');
     updateClusterStorageModal.shouldHavePVSizeSelectValue('GiB').should('be.disabled');
@@ -391,7 +391,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Test Storage');
-    clusterStorageRow.findKebabAction('Delete storage').click();
+    clusterStorageRow.findKebabActionByMenuId('Delete storage', 'cluster-storage-actions').click();
     deleteModal.findInput().fill('Test Storage');
 
     cy.interceptK8s(

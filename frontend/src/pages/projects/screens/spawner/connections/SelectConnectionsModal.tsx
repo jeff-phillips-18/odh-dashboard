@@ -94,6 +94,7 @@ export const SelectConnectionsModal: React.FC<Props> = ({
         {envVarConflicts.length > 0 && <DuplicateEnvVarWarning envVarConflicts={envVarConflicts} />}
         <FormGroup label="Connections" isRequired>
           <MultiSelection
+            id="select-connection"
             ariaLabel="Connections"
             placeholder="Select a connection, or search by keyword or type"
             isDisabled={connectionsToList.length === 1}

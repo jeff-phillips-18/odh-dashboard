@@ -116,7 +116,10 @@ describe('Pipeline runs', () => {
       pipelineRunsGlobal.isApiAvailable();
 
       pipelineRunsGlobal.findSchedulesTab().click();
-      pipelineRecurringRunTable.getRowByName('test-pipeline').findKebabAction('Delete').click();
+      pipelineRecurringRunTable
+        .getRowByName('test-pipeline')
+        .findKebabActionByMenuId('Delete', 'pipeline-recurring-run-actions')
+        .click();
 
       schedulesDeleteModal.shouldBeOpen();
       schedulesDeleteModal.findSubmitButton().should('be.disabled');

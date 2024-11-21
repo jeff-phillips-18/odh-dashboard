@@ -193,7 +193,7 @@ class AttachConnectionModal extends Modal {
 
   selectConnectionOption(name: string) {
     this.find().findByRole('button', { name: 'Connections' }).click();
-    this.find().findByRole('option', { name }).click();
+    cy.get('#select-connection').findByRole('option', { name }).click();
     this.find().findByRole('button', { name: 'Connections' }).click();
   }
 
@@ -332,7 +332,7 @@ class CreateSpawnerPage {
     cy.findByTestId('data-connection-group')
       .findByRole('button', { name: 'Typeahead menu toggle' })
       .click();
-    cy.get('[id="dashboard-page-main"]').findByRole('option', { name }).click();
+    cy.get('#select-connection').findByRole('option', { name }).click();
   }
 
   findAwsNameInput() {
@@ -423,7 +423,7 @@ class NotFoundSpawnerPage {
   }
 
   shouldHaveErrorMessageTitle(name: string) {
-    cy.findByTestId('error-message-title').should('have.text', name);
+    cy.findByTestId('error-message-title').should('contain.text', name);
     return this;
   }
 

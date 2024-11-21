@@ -233,6 +233,7 @@ const LearningCenterToolbar: React.FC<LearningCenterToolbarProps> = ({
                   )
                 }
                 onChange={onSortOrderSelect}
+                popperProps={{ appendTo: 'inline' }}
               />
             </ToolbarItem>
           </>

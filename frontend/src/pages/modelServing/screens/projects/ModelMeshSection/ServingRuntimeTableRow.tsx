@@ -190,6 +190,7 @@ const ServingRuntimeTableRow: React.FC<ServingRuntimeTableRowProps> = ({
         </Td>
         <Td isActionCell>
           <ActionsColumn
+            id="serving-runtime-actions"
             items={[
               {
                 title: 'Edit model server',

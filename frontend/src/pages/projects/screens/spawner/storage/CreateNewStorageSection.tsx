@@ -13,7 +13,7 @@ type CreateNewStorageSectionProps<D extends StorageData> = {
   setData: UpdateObjectAtPropAndValue<D>;
   currentStatus?: PersistentVolumeClaimKind['status'];
   autoFocusName?: boolean;
-  menuAppendTo?: HTMLElement;
+  menuAppendTo?: HTMLElement | 'inline';
   disableStorageClassSelect?: boolean;
   onNameChange?: (value: string) => void;
   hasDuplicateName?: boolean;
@@ -62,7 +62,6 @@ const CreateNewStorageSection = <D extends StorageData>({
       </StackItem>
       <StackItem>
         <PVSizeField
-          menuAppendTo={menuAppendTo}
           fieldID="create-new-storage-size"
           currentStatus={currentStatus}
           size={String(data.size)}

@@ -63,6 +63,7 @@ const ModelRegistriesTableRow: React.FC<ModelRegistriesTableRowProps> = ({
         </Td>
         <Td isActionCell>
           <ActionsColumn
+            id="model-registry-actions"
             items={[
               {
                 title: 'View database configuration',
