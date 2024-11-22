@@ -29,7 +29,7 @@ const HomeHint: React.FC = () => {
   }
 
   return (
-    <PageSection hasBodyWrapper={false}>
+    <PageSection variant="secondary" hasBodyWrapper={false}>
       <Card data-testid="home-page-hint" style={{ borderRadius: 16 }}>
         <CardHeader>
           <Flex

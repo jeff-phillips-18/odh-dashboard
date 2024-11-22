@@ -7,6 +7,7 @@ import {
   EmptyStateVariant,
   PageSection,
   Stack,
+  StackItem,
   ContentVariants,
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
@@ -65,25 +66,22 @@ export const useResourcesSection = (): React.ReactNode => {
                   key={`${doc.metadata.name}`}
                   odhDoc={doc}
                   showFavorite={false}
-                  style={{
-                    border: '1px solid var(--pf-t--global--border--color--default)',
-                    borderRadius: 16,
-                  }}
                 />
               ))}
             </ScrolledGallery>
           )}
-          <Button variant="link" isInline onClick={() => navigate('/resources')}>
+
+          <StackItem>
             <Button
               data-testid="goto-resources-link"
-              component="a"
+              // Should not use component="a" due to no href
               isInline
               variant="link"
               onClick={() => navigate('/resources')}
             >
               Go to <b>Resources</b>
             </Button>
-          </Button>
+          </StackItem>
         </Stack>
       </CollapsibleSection>
     </PageSection>

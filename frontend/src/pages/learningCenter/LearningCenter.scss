@@ -1,6 +1,12 @@
+.odh-dashboard {
+  &__page-content {
+    border-radius: var(--pf-t--global--border--radius--medium);
+  }
+}
+
 .odh-learning-paths {
   &__filter-panel {
-    padding-top: var(--pf-t-global--spacer--md);
+    padding-top: var(--pf-t--global--spacer--md);
     width: 240px;
     &.m-is-collapsible {
       background: var(--pf-t--global--background--color--floating--default);
