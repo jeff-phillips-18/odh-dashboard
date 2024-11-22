@@ -121,6 +121,7 @@ const ProjectsSection: React.FC = () => {
                 data-testid="goto-projects-link"
                 // Should not use component="a" due to no href
                 variant="link"
+                isInline
                 onClick={() => navigate('/projects')}
               >
                 Go to <b>Data Science Projects</b>
