@@ -84,7 +84,7 @@ const InnerCustomPipelineRunToolbarSelect = <T extends PipelineVersionKF | Exper
             />
           </MenuSearchInput>
           <HelperText>
-            <HelperTextItem>{`Type a name to search your ${versions.length} versions.`}</HelperTextItem>
+            <HelperTextItem>{`Type a name to search your ${resources.length} ${resourceName}.`}</HelperTextItem>
           </HelperText>
         </MenuSearch>
         <MenuList>
