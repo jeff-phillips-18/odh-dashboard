@@ -9,7 +9,6 @@ import {
   EmptyStateVariant,
   Gallery,
   PageSection,
-  PageSectionVariants,
   EmptyStateActions,
   EmptyStateFooter,
 } from '@patternfly/react-core';

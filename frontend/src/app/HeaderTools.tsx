@@ -16,12 +16,7 @@ import {
   ToggleGroupItem,
   Icon,
 } from '@patternfly/react-core';
-import {
-  ExternalLinkAltIcon,
-  QuestionCircleIcon,
-  MoonIcon,
-  SunIcon,
-} from '@patternfly/react-icons';
+import { QuestionCircleIcon, MoonIcon, SunIcon } from '@patternfly/react-icons';
 import { COMMUNITY_LINK, DOC_LINK, SUPPORT_LINK, DEV_MODE, EXT_CLUSTER } from '~/utilities/const';
 import useNotification from '~/utilities/useNotification';
 import { updateImpersonateSettings } from '~/services/impersonateService';
