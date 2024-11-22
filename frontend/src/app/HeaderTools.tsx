@@ -104,8 +104,9 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
         to={DOC_LINK}
         target="_blank"
         rel="noopener noreferrer"
+        isExternalLink
       >
-        Documentation <ExternalLinkAltIcon />
+        Documentation
       </DropdownItem>,
     );
   }
@@ -117,8 +118,9 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
         to={SUPPORT_LINK}
         target="_blank"
         rel="noopener noreferrer"
+        isExternalLink
       >
-        Support <ExternalLinkAltIcon />
+        Support
       </DropdownItem>,
     );
   }
@@ -130,8 +132,9 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
         to={COMMUNITY_LINK}
         target="_blank"
         rel="noopener noreferrer"
+        isExternalLink
       >
-        Community <ExternalLinkAltIcon />
+        Community
       </DropdownItem>,
     );
   }

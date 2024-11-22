@@ -5,6 +5,8 @@
   // RHOAI feel free to delete above comments
   & .odh-brand > img {
     background-color: var(--pf-t--color--white);
+    padding: var(--pf-t--global--spacer--xs);
+    border-radius: var(--pf-t--global--border--radius--small);
   }
 
   &__partner-badge-container {

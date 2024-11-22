@@ -99,7 +99,7 @@ const GetStartedPanel: React.FC<GetStartedPanelProps> = ({ selectedApp, onClose,
                       name: selectedApp.metadata.name,
                     })
                   }
-                  iconPosition="right"
+                  iconPosition="end"
                   href={selectedApp.spec.getStartedLink}
                   target="_blank"
                   rel="noopener noreferrer"

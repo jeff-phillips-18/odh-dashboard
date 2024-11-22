@@ -75,6 +75,7 @@ export const useResourcesSection = (): React.ReactNode => {
             <Button
               data-testid="goto-resources-link"
               // Should not use component="a" due to no href
+              isInline
               variant="link"
               onClick={() => navigate('/resources')}
             >
