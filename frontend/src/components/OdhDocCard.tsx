@@ -157,9 +157,6 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
       data-testid={`card ${odhDoc.metadata.name}`}
       id={odhDoc.metadata.name}
       className="odh-card odh-tourable-card"
-      isSelected={selected}
-      isSelectable
-      isClickable
       {...rest}
     >
       <CardHeader
