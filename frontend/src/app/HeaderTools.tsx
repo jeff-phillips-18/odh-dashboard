@@ -25,6 +25,7 @@ import { useAppSelector } from '~/redux/hooks';
 import AboutDialog from '~/app/AboutDialog';
 import AppLauncher from './AppLauncher';
 import { useAppContext } from './AppContext';
+import { useThemeContext } from './ThemeContext';
 import { logout } from './appUtils';
 
 interface HeaderToolsProps {
@@ -32,7 +33,6 @@ interface HeaderToolsProps {
 }
 
 const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
   const [userMenuOpen, setUserMenuOpen] = React.useState(false);
   const [helpMenuOpen, setHelpMenuOpen] = React.useState(false);
   const [aboutShown, setAboutShown] = React.useState(false);
@@ -40,16 +40,17 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
   const userName: string = useAppSelector((state) => state.user || '');
   const isImpersonating: boolean = useAppSelector((state) => state.isImpersonating || false);
   const { dashboardConfig } = useAppContext();
+  const { theme, setTheme } = useThemeContext();
   const notification = useNotification();
 
   React.useEffect(() => {
     const htmlElement = document.getElementsByTagName('html')[0];
-    if (isDarkTheme) {
+    if (theme === 'dark') {
       htmlElement.classList.add('pf-v6-theme-dark');
     } else {
       htmlElement.classList.remove('pf-v6-theme-dark');
     }
-  }, [isDarkTheme]);
+  }, [theme]);
 
   const newNotifications = React.useMemo(
     () => notifications.filter((currentNotification) => !currentNotification.read).length,
@@ -194,8 +195,10 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
                     <SunIcon />
                   </Icon>
                 }
-                isSelected={!isDarkTheme}
-                onChange={() => setIsDarkTheme(false)}
+                isSelected={theme === 'light'}
+                onChange={() => {
+                  setTheme('light');
+                }}
               />
               <ToggleGroupItem
                 aria-label="dark theme"
@@ -204,8 +207,10 @@ const HeaderTools: React.FC<HeaderToolsProps> = ({ onNotificationsClick }) => {
                     <MoonIcon />
                   </Icon>
                 }
-                isSelected={isDarkTheme}
-                onChange={() => setIsDarkTheme(true)}
+                isSelected={theme === 'dark'}
+                onChange={() => {
+                  setTheme('dark');
+                }}
               />
             </ToggleGroup>
           </ToolbarItem>
