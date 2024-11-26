@@ -3,9 +3,9 @@ import { AboutModal, Alert, Bullseye, Spinner, Content } from '@patternfly/react
 import { ODH_LOGO, ODH_LOGO_DARK, ODH_PRODUCT_NAME } from '~/utilities/const';
 import { useUser, useClusterInfo } from '~/redux/selectors';
 import { useAppContext } from '~/app/AppContext';
-import { useThemeContext } from './ThemeContext';
 import useFetchDsciStatus from '~/concepts/areas/useFetchDsciStatus';
 import { useWatchOperatorSubscriptionStatus } from '~/utilities/useWatchOperatorSubscriptionStatus';
+import { useThemeContext } from './ThemeContext';
 
 import './AboutDialog.scss';
 

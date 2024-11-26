@@ -61,10 +61,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
   updateFavorite,
   ...rest
 }) => {
-  const [qsContext, selected] = useQuickStartCardSelected(
-    odhDoc.metadata.name,
-    odhDoc.metadata.name,
-  );
+  const [qsContext] = useQuickStartCardSelected(odhDoc.metadata.name, odhDoc.metadata.name);
   const footerClassName = React.useMemo(() => {
     if (odhDoc.spec.type !== OdhDocumentType.QuickStart) {
       return 'odh-card__footer';

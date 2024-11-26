@@ -11,18 +11,12 @@ export const ThemeContext = React.createContext({} as ThemeContextProps);
 export const useThemeContext = (): ThemeContextProps => React.useContext(ThemeContext);
 
 type ThemeProviderProps = {
-  children: any;
+  children: React.ReactNode;
 };
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [currentTheme, setCurrentTheme] = React.useState('light');
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [theme, setTheme] = React.useState('light');
 
-  const setTheme = (themeName: string) => {
-    setCurrentTheme(themeName);
-  };
+  const contextValue = React.useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme: currentTheme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };
