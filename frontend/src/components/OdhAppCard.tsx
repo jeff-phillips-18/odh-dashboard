@@ -136,6 +136,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
   const cardClasses = classNames('odh-card', {
     // Using PF native class to prevent needing custom styling; RHOAI feel free to delete this comment
     'pf-m-disabled': disabled,
+    'pf-m-current': selected,
   });
 
   const popoverBodyContent = (hide: () => void) => (
@@ -184,9 +185,6 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
       id={odhApp.metadata.name}
       role="listitem"
       className={cardClasses}
-      isSelected={selected}
-      isSelectable={!disabled}
-      isClickable
     >
       <CardHeader
         actions={{

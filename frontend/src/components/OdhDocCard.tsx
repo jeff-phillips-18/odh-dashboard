@@ -61,7 +61,14 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
   updateFavorite,
   ...rest
 }) => {
-  const [qsContext] = useQuickStartCardSelected(odhDoc.metadata.name, odhDoc.metadata.name);
+  const [qsContext, selected] = useQuickStartCardSelected(
+    odhDoc.metadata.name,
+    odhDoc.metadata.name,
+  );
+
+  const cardClasses = classNames('odh-card odh-tourable-card', {
+    'pf-m-current': selected,
+  });
   const footerClassName = React.useMemo(() => {
     if (odhDoc.spec.type !== OdhDocumentType.QuickStart) {
       return 'odh-card__footer';
@@ -153,7 +160,7 @@ const OdhDocCard: React.FC<OdhDocCardProps> = ({
       data-id={odhDoc.metadata.name}
       data-testid={`card ${odhDoc.metadata.name}`}
       id={odhDoc.metadata.name}
-      className="odh-card odh-tourable-card"
+      className={cardClasses}
       {...rest}
     >
       <CardHeader
