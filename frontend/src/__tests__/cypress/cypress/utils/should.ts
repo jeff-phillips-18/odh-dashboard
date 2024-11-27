@@ -1,8 +1,8 @@
 const status = {
   default: ($subject: JQuery<HTMLElement>) => {
     const classes = $subject.attr('class');
-    expect($subject.hasClass('pf-v6-c-helper-text__item')).to.eq(true) &&
-      classes?.split(' ').length === 1;
+    expect($subject.hasClass('pf-v6-c-helper-text__item')).to.eq(true);
+    expect(classes?.split(' ').length).to.eq(1);
   },
   warning: ($subject: JQuery<HTMLElement>) => {
     expect($subject.hasClass('pf-m-warning')).to.eq(true);
