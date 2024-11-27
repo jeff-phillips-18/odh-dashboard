@@ -1,10 +1,11 @@
 import React from 'react';
 import { AboutModal, Alert, Bullseye, Spinner, Content } from '@patternfly/react-core';
-import { ODH_LOGO, ODH_PRODUCT_NAME } from '~/utilities/const';
+import { ODH_LOGO, ODH_LOGO_DARK, ODH_PRODUCT_NAME } from '~/utilities/const';
 import { useUser, useClusterInfo } from '~/redux/selectors';
 import { useAppContext } from '~/app/AppContext';
 import useFetchDsciStatus from '~/concepts/areas/useFetchDsciStatus';
 import { useWatchOperatorSubscriptionStatus } from '~/utilities/useWatchOperatorSubscriptionStatus';
+import { useThemeContext } from './ThemeContext';
 
 import './AboutDialog.scss';
 
@@ -21,6 +22,7 @@ interface AboutDialogProps {
 const AboutDialog: React.FC<AboutDialogProps> = ({ onClose }) => {
   const { isAdmin } = useUser();
   const { isRHOAI } = useAppContext();
+  const { theme } = useThemeContext();
   const { serverURL } = useClusterInfo();
   const [dsciStatus, loadedDsci, errorDsci] = useFetchDsciStatus();
   const [subStatus, loadedSubStatus, errorSubStatus] = useWatchOperatorSubscriptionStatus();
@@ -32,7 +34,9 @@ const AboutDialog: React.FC<AboutDialogProps> = ({ onClose }) => {
       className="odh-about-dialog"
       isOpen
       onClose={onClose}
-      brandImageSrc={`${window.location.origin}/images/${ODH_LOGO}`}
+      brandImageSrc={`${window.location.origin}/images/${
+        theme !== 'dark' ? ODH_LOGO : ODH_LOGO_DARK
+      }`}
       brandImageAlt={`${ODH_PRODUCT_NAME} logo`}
       productName={ODH_PRODUCT_NAME}
       aria-label={ODH_PRODUCT_NAME}
