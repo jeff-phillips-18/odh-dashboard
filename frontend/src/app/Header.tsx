@@ -11,8 +11,9 @@ import {
 } from '@patternfly/react-core';
 import { BarsIcon } from '@patternfly/react-icons';
 import { Link } from 'react-router-dom';
-import { ODH_LOGO, ODH_PRODUCT_NAME } from '~/utilities/const';
+import { ODH_LOGO, ODH_LOGO_DARK, ODH_PRODUCT_NAME } from '~/utilities/const';
 import { useUser } from '~/redux/selectors';
+import { useThemeContext } from './ThemeContext';
 import HeaderTools from './HeaderTools';
 
 type HeaderProps = {
@@ -25,6 +26,7 @@ const MastheadBranchComponent: React.FC<React.ComponentProps<typeof Link>> = (pr
 
 const Header: React.FC<HeaderProps> = ({ onNotificationsClick }) => {
   const { isAllowed } = useUser();
+  const { theme } = useThemeContext();
   return (
     <Masthead role="banner" aria-label="page masthead">
       <MastheadMain>
@@ -43,7 +45,9 @@ const Header: React.FC<HeaderProps> = ({ onNotificationsClick }) => {
           <MastheadLogo component={MastheadBranchComponent}>
             <Brand
               className="odh-dashboard__brand"
-              src={`${window.location.origin}/images/${ODH_LOGO}`}
+              src={`${window.location.origin}/images/${
+                theme !== 'dark' ? ODH_LOGO : ODH_LOGO_DARK
+              }`}
               alt={`${ODH_PRODUCT_NAME}`}
             />
           </MastheadLogo>
