@@ -7,8 +7,6 @@ import useFetchDsciStatus from '~/concepts/areas/useFetchDsciStatus';
 import { useWatchOperatorSubscriptionStatus } from '~/utilities/useWatchOperatorSubscriptionStatus';
 import { useThemeContext } from './ThemeContext';
 
-import './AboutDialog.scss';
-
 const RhoaiAboutText = `Red Hat® OpenShift® AI (formerly Red Hat OpenShift Data Science) is a flexible, scalable MLOps platform for data scientists and developers of artificial intelligence and machine learning (AI/ML) applications. Built using open source technologies, OpenShift AI supports the full lifecycle of AI/ML experiments and models, on premise and in the public cloud.`;
 const RhoaiDefaultReleaseName = `OpenShift AI`;
 
