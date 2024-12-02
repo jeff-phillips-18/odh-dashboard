@@ -1158,7 +1158,7 @@ describe('Pipelines', () => {
     pipelineRow.findExpandButton().click();
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
-      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
+      .findKebabAction('Create schedule')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/schedules/create`);

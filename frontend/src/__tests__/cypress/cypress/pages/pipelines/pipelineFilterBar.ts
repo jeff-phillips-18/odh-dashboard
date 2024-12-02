@@ -68,7 +68,7 @@ class PipelineRunFilterBar extends PipelineFilterBar {
   selectExperimentByName(name: string): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
     return this.findExperimentSelect()
       .click()
-      .parents()
+      .document() // This will need to be updated if the appendTo for PatternFly menus is changed
       .findByTestId('experiment-selector-table-list')
       .find('td')
       .contains(name)
