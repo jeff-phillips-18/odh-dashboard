@@ -91,7 +91,6 @@ const BYONImagesTableRow: React.FC<BYONImagesTableRowProps> = ({
         </Td>
         <Td isActionCell>
           <ActionsColumn
-            id="byon-image-actions"
             items={[
               {
                 title: 'Edit',

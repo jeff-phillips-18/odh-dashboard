@@ -138,10 +138,7 @@ describe('Permissions tab', () => {
 
       permissions.visit('test-project');
 
-      userTable
-        .getTableRow('user-1')
-        .findKebabActionByMenuId('Edit', 'role-bindings-permissions-actions')
-        .click();
+      userTable.getTableRow('user-1').findKebabAction('Edit').click();
       userTable.findEditInput('user-1').clear().type('user-3');
       userTable.selectPermission('user-3', 'Admin Edit the project and manage user access');
       userTable.findEditSaveButton('user-3').click();
@@ -171,10 +168,7 @@ describe('Permissions tab', () => {
       ).as('deleteUser');
       permissions.visit('test-project');
 
-      userTable
-        .getTableRow('user-1')
-        .findKebabActionByMenuId('Delete', 'role-bindings-permissions-actions')
-        .click();
+      userTable.getTableRow('user-1').findKebabAction('Delete').click();
 
       cy.wait('@deleteUser');
     });
@@ -238,10 +232,7 @@ describe('Permissions tab', () => {
 
       permissions.visit('test-project');
 
-      groupTable
-        .getTableRow('group-1')
-        .findKebabActionByMenuId('Edit', 'role-bindings-permissions-actions')
-        .click();
+      groupTable.getTableRow('group-1').findKebabAction('Edit').click();
       groupTable.findEditInput('group-1').clear().type('group-3');
       groupTable.selectPermission('group-3', 'Admin Edit the project and manage user access');
       groupTable.findEditSaveButton('group-3').click();
@@ -271,10 +262,7 @@ describe('Permissions tab', () => {
       ).as('deleteGroup');
 
       permissions.visit('test-project');
-      groupTable
-        .getTableRow('group-1')
-        .findKebabActionByMenuId('Delete', 'role-bindings-permissions-actions')
-        .click();
+      groupTable.getTableRow('group-1').findKebabAction('Delete').click();
 
       cy.wait('@deleteGroup');
     });

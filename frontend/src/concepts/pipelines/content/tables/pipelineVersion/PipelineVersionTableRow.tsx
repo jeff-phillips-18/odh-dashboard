@@ -86,7 +86,6 @@ const PipelineVersionTableRow: React.FC<PipelineVersionTableRowProps> = ({
       </Td>
       <Td isActionCell>
         <ActionsColumn
-          id="pipeline-version-actions"
           items={[
             {
               title: 'Create run',

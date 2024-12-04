@@ -175,7 +175,7 @@ const StorageTableRow: React.FC<StorageTableRowProps> = ({
           </Td>
         )}
         <Td isActionCell>
-          <ActionsColumn id="cluster-storage-actions" items={actions} />
+          <ActionsColumn items={actions} />
         </Td>
       </Tr>
       <Tr isExpanded={isExpanded}>

@@ -269,7 +269,7 @@ it('Opens the detail page when we select "View Details" from action menu', () =>
   initIntercepts({});
   registeredModelArchive.visit();
   const archiveModelRow = registeredModelArchive.getRow('model 2');
-  archiveModelRow.findKebabActionByMenuId('View details', 'registered-modal-actions').click();
+  archiveModelRow.findKebabAction('View details').click();
   cy.location('pathname').should(
     'be.equals',
     '/modelRegistry/modelregistry-sample/registeredModels/archive/2/details',
@@ -294,7 +294,7 @@ describe('Restoring archive model', () => {
     registeredModelArchive.visit();
 
     const archiveModelRow = registeredModelArchive.getRow('model 2');
-    archiveModelRow.findKebabActionByMenuId('Restore model', 'registered-modal-actions').click();
+    archiveModelRow.findKebabAction('Restore model').click();
 
     restoreModelModal.findRestoreButton().click();
 
@@ -350,7 +350,7 @@ describe('Archiving model', () => {
     registeredModelArchive.visitModelList();
 
     const modelRow = modelRegistry.getRow('model 3');
-    modelRow.findKebabActionByMenuId('Archive model', 'registered-modal-actions').click();
+    modelRow.findKebabAction('Archive model').click();
     archiveModelModal.findArchiveButton().should('be.disabled');
     archiveModelModal.findModalTextInput().fill('model 3');
     archiveModelModal.findArchiveButton().should('be.enabled').click();

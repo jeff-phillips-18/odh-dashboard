@@ -107,16 +107,13 @@ describe('Data science projects details', () => {
     ).as('selfSubjectAccessReviewsCall');
     const deleteProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabActionByMenuId('Delete project', 'project-actions');
+      .findKebabAction('Delete project');
     cy.wait('@selfSubjectAccessReviewsCall');
     deleteProject.click();
     deleteModal.shouldBeOpen();
     deleteModal.findSubmitButton().should('be.disabled');
     deleteModal.findCancelButton().should('be.enabled').click();
-    projectListPage
-      .getProjectRow('Test Project')
-      .findKebabActionByMenuId('Delete project', 'project-actions')
-      .click();
+    projectListPage.getProjectRow('Test Project').findKebabAction('Delete project').click();
     deleteModal.findInput().type('Test Project');
 
     cy.interceptK8s(
@@ -199,13 +196,13 @@ describe('Data science projects details', () => {
 
     const editProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabActionByMenuId('Edit project', 'project-actions');
+      .findKebabAction('Edit project');
     const editPermission = projectListPage
       .getProjectRow('Test Project')
-      .findKebabActionByMenuId('Edit permissions', 'project-actions');
+      .findKebabAction('Edit permissions');
     const deleteProject = projectListPage
       .getProjectRow('Test Project')
-      .findKebabActionByMenuId('Delete project', 'project-actions');
+      .findKebabAction('Delete project');
     cy.wait('@selfSubjectAccessReviewsCall');
 
     editProject.should('have.attr', 'aria-disabled', 'true');
@@ -387,15 +384,7 @@ describe('Data science projects details', () => {
 
       // Verify workbench status indicators are not shown
       const projectTableRow = projectListPage.getProjectRow('Test Project');
-      projectTableRow.findNotebookColumnExpander().should('not.exist');
-    });
-
-    it('should not show workbench count or details', () => {
-      projectListPage.visit();
-
-      // Verify no workbench info is shown
-      cy.get('[data-label="Workbenches"]').should('not.exist');
-      cy.get('.pf-v5-c-table__expandable-row-content').should('not.exist');
+      projectTableRow.findNotebookColumn().should('not.exist');
     });
   });
 });

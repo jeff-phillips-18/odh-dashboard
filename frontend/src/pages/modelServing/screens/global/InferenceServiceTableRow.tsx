@@ -106,7 +106,6 @@ const InferenceServiceTableRow: React.FC<InferenceServiceTableRowProps> = ({
         <Td dataLabel="Kebab" isActionCell>
           <ResourceActionsColumn
             resource={inferenceService}
-            id="inference-table-actions"
             items={[
               {
                 title: 'Edit',

@@ -61,10 +61,6 @@ class ClusterStorageModal extends Modal {
       .findByRole('button', { name: 'Typeahead menu toggle', hidden: true });
   }
 
-  findWorkbenchConnectionOption(name: string) {
-    return cy.get('#connected-notebook-select').findByText(name);
-  }
-
   findMountField() {
     return this.find().findByTestId('mount-path-folder-value');
   }
@@ -90,12 +86,12 @@ class ClusterStorageModal extends Modal {
   }
 
   private findPVSizeSelectButton() {
-    return cy.findByTestId('value-unit-select');
+    return this.find().findByTestId('value-unit-select');
   }
 
   selectPVSize(name: string) {
-    this.findPVSizeSelectButton().click();
-    cy.findByRole('menuitem', { name, hidden: true }).click();
+    this.findPVSizeSelectButton().findDropdownItem(name).click();
+    return this;
   }
 
   shouldHavePVSizeSelectValue(name: string) {

@@ -199,7 +199,7 @@ class AttachExistingStorageModal extends Modal {
     cy.findByTestId('persistent-storage-group')
       .findByPlaceholderText('Select a persistent storage')
       .click();
-    cy.findByTestId('persistent-storage-group').contains('button.pf-v5-c-menu__item', name).click();
+    cy.findByTestId('persistent-storage-group').contains('button.pf-v6-c-menu__item', name).click();
   }
 
   findStandardPathInput() {
@@ -288,13 +288,6 @@ class CreateSpawnerPage {
     return cy.findByTestId('existing-storage-button');
   }
 
-  selectExistingPersistentStorage(name: string) {
-    cy.findByTestId('persistent-storage-group')
-      .findByRole('button', { name: 'Typeahead menu toggle' })
-      .click();
-    cy.get('[id="dashboard-page-main"]').contains('button.pf-v6-c-menu__item', name).click();
-  }
-
   selectPVSize(name: string) {
     this.findPVSizeSelectButton().click();
     cy.findByRole('menuitem', { name }).click();
@@ -364,8 +357,8 @@ class CreateSpawnerPage {
   selectExistingDataConnection(name: string) {
     cy.findByTestId('data-connection-group')
       .findByRole('button', { name: 'Typeahead menu toggle' })
+      .findSelectOption(name)
       .click();
-    cy.get('#select-connection').findByRole('option', { name }).click();
   }
 
   findAwsNameInput() {

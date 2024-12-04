@@ -174,8 +174,10 @@ describe('ClusterStorage', () => {
     addClusterStorageModal.selectPVSize('MiB');
 
     //connect workbench
-    addClusterStorageModal.findWorkbenchConnectionSelect().click();
-    addClusterStorageModal.findWorkbenchConnectionOption('Test Notebook').click();
+    addClusterStorageModal
+      .findWorkbenchConnectionSelect()
+      .findSelectOption('Test Notebook')
+      .click();
 
     // don't allow duplicate path
     addClusterStorageModal.findMountField().clear();
@@ -275,11 +277,13 @@ describe('ClusterStorage', () => {
 
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Existing PVC');
-    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
+    clusterStorageRow.findKebabAction('Edit storage').click();
 
     // Connect to 'Another Notebook'
-    updateClusterStorageModal.findWorkbenchConnectionSelect().click();
-    updateClusterStorageModal.findWorkbenchConnectionOption('Another Notebook').click();
+    updateClusterStorageModal
+      .findWorkbenchConnectionSelect()
+      .findSelectOption('Another Notebook')
+      .click();
 
     updateClusterStorageModal.findMountField().fill('new-data');
 
@@ -338,7 +342,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Test Storage');
-    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
+    clusterStorageRow.findKebabAction('Edit storage').click();
     updateClusterStorageModal.findNameInput().should('have.value', 'Test Storage');
     updateClusterStorageModal.findPVSizeInput().should('have.value', '5');
     updateClusterStorageModal.shouldHavePVSizeSelectValue('GiB');
@@ -380,7 +384,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Unbound storage');
-    clusterStorageRow.findKebabActionByMenuId('Edit storage', 'cluster-storage-actions').click();
+    clusterStorageRow.findKebabAction('Edit storage').click();
     updateClusterStorageModal.findNameInput().should('have.value', 'Unbound storage');
     updateClusterStorageModal.findPVSizeInput().should('have.value', '5').should('be.disabled');
     updateClusterStorageModal.shouldHavePVSizeSelectValue('GiB').should('be.disabled');
@@ -391,7 +395,7 @@ describe('ClusterStorage', () => {
     initInterceptors({});
     clusterStorage.visit('test-project');
     const clusterStorageRow = clusterStorage.getClusterStorageRow('Test Storage');
-    clusterStorageRow.findKebabActionByMenuId('Delete storage', 'cluster-storage-actions').click();
+    clusterStorageRow.findKebabAction('Delete storage').click();
     deleteModal.findInput().fill('Test Storage');
 
     cy.interceptK8s(

@@ -175,7 +175,6 @@ const ModelPropertiesTableRow: React.FC<ModelPropertiesTableRowProps> = ({
             </ActionList>
           ) : (
             <ActionsColumn
-              id="model-properties-actions"
               isDisabled={isSavingEdits}
               popperProps={{ direction: 'up' }}
               items={[

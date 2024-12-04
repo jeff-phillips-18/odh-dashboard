@@ -52,15 +52,11 @@ describe('hook test utils', () => {
       who: string;
       showCount?: boolean;
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const renderResult = renderHook<any, Props>(
-      ({ who, showCount }: Props) => useSayHello(who, showCount),
-      {
-        initialProps: {
-          who: 'world',
-        },
-      },
-    );
+    const renderResult = renderHook(({ who, showCount }: Props) => useSayHello(who, showCount), {
+      initialProps: {
+        who: 'world',
+      } as Props,
+    });
 
     expect(renderResult).hookToHaveUpdateCount(1);
     expect(renderResult).hookToBe('Hello world!');

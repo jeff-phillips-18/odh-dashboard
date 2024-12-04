@@ -222,10 +222,7 @@ describe('Pipeline create runs', () => {
       // Navigate to duplicate run page for a given active run
       cy.visitWithLogin(`/experiments/${projectName}/experiment-1/runs`);
       pipelineRunsGlobal.findActiveRunsTab().click();
-      activeRunsTable
-        .getRowByName(mockRun.display_name)
-        .findKebabActionByMenuId('Duplicate', 'pipeline-run-table-row-actions')
-        .click();
+      activeRunsTable.getRowByName(mockRun.display_name).findKebabAction('Duplicate').click();
       verifyRelativeURL(
         `/experiments/${projectName}/experiment-1/runs/duplicate/${mockRun.run_id}`,
       );
@@ -668,7 +665,7 @@ describe('Pipeline create runs', () => {
       pipelineRunsGlobal.findSchedulesTab().click();
       pipelineRecurringRunTable
         .getRowByName(mockRecurringRun.display_name)
-        .findKebabActionByMenuId('Duplicate', 'pipeline-recurring-run-actions')
+        .findKebabAction('Duplicate')
         .click();
       verifyRelativeURL(
         `/experiments/${projectName}/experiment-1/schedules/duplicate/${mockRecurringRun.recurring_run_id}`,
@@ -746,7 +743,7 @@ describe('Pipeline create runs', () => {
       pipelineRunsGlobal.findSchedulesTab().click();
       pipelineRecurringRunTable
         .getRowByName(mockRecurringRun.display_name)
-        .findKebabActionByMenuId('Duplicate', 'pipeline-recurring-run-actions')
+        .findKebabAction('Duplicate')
         .click();
       verifyRelativeURL(
         `/experiments/${projectName}/experiment-1/schedules/duplicate/${mockRecurringRun.recurring_run_id}`,

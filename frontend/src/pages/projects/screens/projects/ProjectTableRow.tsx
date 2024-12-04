@@ -129,7 +129,7 @@ const ProjectTableRow: React.FC<ProjectTableRowProps> = ({
           onMouseEnter={runAccessCheck}
           onClick={runAccessCheck}
         >
-          <ActionsColumn id="project-actions" items={item} />
+          <ActionsColumn items={item} />
         </Td>
       </Tr>
       {expandColumn ? (

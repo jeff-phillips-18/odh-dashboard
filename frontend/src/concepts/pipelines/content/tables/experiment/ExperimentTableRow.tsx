@@ -58,7 +58,7 @@ const ExperimentTableRow: React.FC<ExperimentTableRowProps> = ({
         <LastExperimentRuns experiment={experiment} />
       </Td>
       <Td isActionCell dataLabel="Kebab">
-        <ActionsColumn id="experiment-actions" items={actionColumnItems} />
+        <ActionsColumn items={actionColumnItems} />
       </Td>
     </Tr>
   );

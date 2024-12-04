@@ -291,7 +291,7 @@ describe('edit', () => {
 
     createConnectionTypePage
       .getFieldsTableRow(4)
-      .findKebabActionByMenuId('Move to section heading', 'connection-type-field-actions')
+      .findKebabAction('Move to section heading')
       .click();
     // move to default which is the first section
     cy.findByTestId('section-heading-select').should('be.disabled');
@@ -306,7 +306,7 @@ describe('edit', () => {
 
     createConnectionTypePage
       .getFieldsTableRow(0)
-      .findKebabActionByMenuId('Move to section heading', 'connection-type-field-actions')
+      .findKebabAction('Move to section heading')
       .click();
     cy.findByTestId('section-heading-select').click();
     cy.findByTestId('section-heading-select').findSelectOption('header2').click();

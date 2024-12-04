@@ -261,12 +261,12 @@ describe('Model version details', () => {
       modelVersionDetails.findExpandControlButton().should('have.text', 'Show 2 more properties');
       modelVersionDetails.findExpandControlButton().click();
       const propertyRow = modelVersionDetails.getRow('a6');
-      propertyRow.find().findKebabActionByMenuId('Edit', 'model-properties-actions').click();
+      propertyRow.find().findKebabAction('Edit').click();
       modelVersionDetails.findKeyEditInput('a6').clear().type('edit_key');
       modelVersionDetails.findValueEditInput('v1').clear().type('edit_value');
 
       modelVersionDetails.findCancelButton().click();
-      propertyRow.find().findKebabActionByMenuId('Edit', 'model-properties-actions').click();
+      propertyRow.find().findKebabAction('Edit').click();
       modelVersionDetails.findKeyEditInput('a6').clear().type('edit_key');
       modelVersionDetails.findValueEditInput('v1').clear().type('edit_value');
       modelVersionDetails.findSaveButton().click();
@@ -300,7 +300,7 @@ describe('Model version details', () => {
       modelVersionDetails.findExpandControlButton().click();
       const propertyRow = modelVersionDetails.getRow('a6');
       modelVersionDetails.findPropertiesTableRows().should('have.length', 7);
-      propertyRow.find().findKebabActionByMenuId('Delete', 'model-properties-actions').click();
+      propertyRow.find().findKebabAction('Delete').click();
       cy.wait('@UpdatePropertyRow').then((interception) => {
         expect(interception.request.body).to.eql({
           customProperties: {

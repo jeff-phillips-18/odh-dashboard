@@ -139,7 +139,7 @@ describe('Experiments', () => {
       activeExperimentsTable.mockArchiveExperiment(experimentToArchive.experiment_id, projectName);
       activeExperimentsTable
         .getRowByName(experimentToArchive.display_name)
-        .findKebabActionByMenuId('Archive', 'experiment-actions')
+        .findKebabAction('Archive')
         .click();
 
       experimentsTabs.mockGetExperiments(projectName, [
@@ -202,7 +202,7 @@ describe('Experiments', () => {
       );
       archivedExperimentsTable
         .getRowByName(experimentToRestore.display_name)
-        .findKebabActionByMenuId('Restore', 'experiment-actions')
+        .findKebabAction('Restore')
         .click();
 
       experimentsTabs.mockGetExperiments(projectName, [

@@ -296,7 +296,6 @@ export const StorageClassesTableRow: React.FC<StorageClassesTableRowProps> = ({ 
           )}
 
           <ActionsColumn
-            id="storage-class-actions"
             items={[
               {
                 title: 'Edit',

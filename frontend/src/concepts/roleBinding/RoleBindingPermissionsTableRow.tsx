@@ -191,7 +191,6 @@ const RoleBindingPermissionsTableRow: React.FC<RoleBindingPermissionsTableRowPro
             </Tooltip>
           ) : (
             <ActionsColumn
-              id="role-bindings-permissions-actions"
               items={[
                 {
                   title: 'Edit',

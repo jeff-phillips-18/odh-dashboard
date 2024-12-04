@@ -59,7 +59,6 @@ const CustomServingRuntimeTableRow: React.FC<CustomServingRuntimeTableRowProps> 
       </Td>
       <Td isActionCell>
         <ActionsColumn
-          id="custom-serving-runtime-actions"
           items={
             templateOOTB
               ? [

@@ -114,15 +114,12 @@ describe('Storage classes', () => {
 
       storageClassesTable
         .getRowByConfigName('openshift-default-sc')
-        .findKebabActionByMenuId('Edit', 'storage-class-actions')
+        .findKebabAction('Edit')
         .click();
       storageClassEditModal.findOpenshiftDefaultLabel().should('be.visible');
       storageClassEditModal.findCloseButton().click();
 
-      storageClassesTable
-        .getRowByConfigName('Test SC 1')
-        .findKebabActionByMenuId('Edit', 'storage-class-actions')
-        .click();
+      storageClassesTable.getRowByConfigName('Test SC 1').findKebabAction('Edit').click();
       storageClassEditModal.findOpenshiftScName().should('have.text', 'test-storage-class-1');
       storageClassEditModal.findProvisioner().should('have.text', 'manila.csi.openstack.org');
       storageClassEditModal.findOpenshiftDefaultLabel().should('not.exist');
@@ -165,7 +162,7 @@ describe('Storage classes', () => {
       storageClassTableRow.findLastModifiedValue().should('have.text', '-');
       storageClassTableRow.findEnableValue().should('have.text', '-');
       storageClassTableRow.find().findByTestId('corrupted-metadata-alert').should('be.visible');
-      storageClassTableRow.findKebabActionByMenuId('Edit', 'storage-class-actions').click();
+      storageClassTableRow.findKebabAction('Edit').click();
       storageClassEditModal.findInfoAlert().should('contain.text', 'Reset the metadata');
       storageClassEditModal.fillDisplayNameInput('Readable config');
 

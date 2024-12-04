@@ -979,7 +979,7 @@ describe('Pipeline runs', () => {
           pipelineRunsGlobal.findSchedulesTab().click();
           pipelineRecurringRunTable
             .getRowByName(mockRecurringRuns[0].display_name)
-            .findKebabActionByMenuId('Duplicate', 'pipeline-recurring-run-actions')
+            .findKebabAction('Duplicate')
             .click();
 
           verifyRelativeURL(

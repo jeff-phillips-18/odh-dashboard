@@ -179,7 +179,6 @@ const ManageConnectionTypeFieldsTableRow: React.FC<Props> = ({
       </Td>
       <Td isActionCell>
         <ActionsColumn
-          id="connection-type-field-actions"
           items={[
             {
               title: 'Edit',

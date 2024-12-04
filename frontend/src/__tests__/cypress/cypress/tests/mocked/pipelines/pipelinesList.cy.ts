@@ -149,10 +149,7 @@ describe('PipelinesList', () => {
 
     pipelinesTable.find();
     const pipelineRow = pipelinesTable.getRowById(initialMockPipeline.pipeline_id);
-    pipelineRow
-      .findKebabActionByMenuId('Upload new version', 'pipeline-actions')
-      .should('be.visible')
-      .click();
+    pipelineRow.findKebabAction('Upload new version').should('be.visible').click();
     pipelineVersionImportModal.shouldBeOpen();
   });
 
@@ -166,6 +163,7 @@ describe('PipelinesList', () => {
     pipelineRow
       .getPipelineVersionRowById(initialMockPipelineVersion.pipeline_version_id)
       .findPipelineVersionLink()
+      // TODO - remove force one https://github.com/patternfly/patternfly-react/issues/11314 is fixed
       .click({ force: true });
 
     verifyRelativeURL(
@@ -199,7 +197,7 @@ describe('PipelinesList', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabActionByMenuId('Create run', 'pipeline-actions')
+      .findKebabAction('Create run')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/runs/create`);
@@ -212,7 +210,7 @@ describe('PipelinesList', () => {
     pipelinesTable.find();
     pipelinesTable
       .getRowById(initialMockPipeline.pipeline_id)
-      .findKebabActionByMenuId('Create schedule', 'pipeline-actions')
+      .findKebabAction('Create schedule')
       .click();
 
     verifyRelativeURL(`/pipelineRuns/${projectName}/schedules/create`);

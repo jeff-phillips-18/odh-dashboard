@@ -61,7 +61,6 @@ const AcceleratorProfilesTableRow: React.FC<AcceleratorProfilesTableRowType> = (
       </Td>
       <Td isActionCell>
         <ActionsColumn
-          id="accelerator-profile-actions"
           items={[
             {
               title: 'Edit',

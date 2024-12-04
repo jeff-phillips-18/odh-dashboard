@@ -66,7 +66,7 @@ class ProjectRow extends TableRow {
   }
 
   findNotebookColumnExpander() {
-    return this.find().get('#expand-table-row-1-1');
+    return this.find().findByTestId('notebook-column-expand').find('button');
   }
 
   findNotebookTable() {
