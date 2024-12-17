@@ -1,8 +1,12 @@
 .odh-card {
-  // Removed the custom disabled styling and replaced the existing disabled class in component code with pf-m-disabled
-  // Updating the custom overrides would have involved adding more overrides for font colors
-  // Removed the custom odh-card.pf-m-current styling as PF cards with the pf-m-current have styling
-  // RHOAI feel free to delete above comments
+  &.pf-m-disabled {
+    // Override PF background for disabled card, we use actions which do not show up well on the default darker card background
+    background: var( --pf-t--color--gray--20);
+    .pf-v6-c-card__actions .pf-v6-c-menu-toggle {
+      color: var(--pf-t--color--black);
+    }
+  }
+
   & .odh-brand > img {
     background-color: var(--pf-t--color--white);
     padding: var(--pf-t--global--spacer--xs);
@@ -40,7 +44,7 @@
   }
 
   &__disabled-text {
-    color: var(--pf-t--global--text--color--disabled);
+    color: var(--pf-t--color--black);
     font-size: var(--pf-t--global--font--size--body--sm);
   }
 

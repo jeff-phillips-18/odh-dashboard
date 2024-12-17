@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import {
   AlertVariant,
@@ -15,6 +14,7 @@ import {
   DropdownList,
   Label,
 } from '@patternfly/react-core';
+import { css } from '@patternfly/react-styles';
 import { EllipsisVIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { OdhApplication } from '~/types';
 import { getLaunchStatus, launchQuickStart } from '~/utilities/quickStartUtils';
@@ -33,9 +33,10 @@ import './OdhCard.scss';
 
 type OdhAppCardProps = {
   odhApp: OdhApplication;
+  isDisabled?: boolean;
 };
 
-const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
+const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp, isDisabled }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [enableOpen, setEnableOpen] = React.useState(false);
   const [qsContext, selected] = useQuickStartCardSelected(
@@ -43,7 +44,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
     odhApp.metadata.name,
   );
   const workbenchEnabled = useIsAreaAvailable(SupportedArea.WORKBENCHES).status;
-  const disabled = !odhApp.spec.isEnabled;
+  const disabled = !odhApp.spec.isEnabled || isDisabled;
   const { dashboardConfig } = useAppContext();
   const dispatch = useAppDispatch();
 
@@ -104,10 +105,11 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
     );
   }
 
-  const launchClasses = classNames('odh-card__footer__link', {
-    'm-hidden': !odhApp.spec.link,
-    'm-disabled': disabled || !workbenchEnabled,
-  });
+  const launchClasses = css(
+    'odh-card__footer__link',
+    !odhApp.spec.link && 'm-hidden',
+    (disabled || !workbenchEnabled) && 'm-disabled',
+  );
 
   const cardFooter = (
     <CardFooter className="odh-card__footer">
@@ -116,9 +118,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
           <Link
             data-testid="jupyter-app-link"
             to="/notebookController"
-            className={classNames('odh-card__footer__link', {
-              'm-disabled': !workbenchEnabled,
-            })}
+            className={css('odh-card__footer__link', !workbenchEnabled && 'm-disabled')}
           >
             Launch application
           </Link>
@@ -137,11 +137,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
     </CardFooter>
   );
 
-  const cardClasses = classNames('odh-card', {
-    // Using PF native class to prevent needing custom styling; RHOAI feel free to delete this comment
-    'pf-m-disabled': disabled,
-    'pf-m-current': selected,
-  });
+  const cardClasses = css('odh-card', selected && 'pf-m-current');
 
   const popoverBodyContent = (hide: () => void) => (
     <div>
@@ -189,6 +185,7 @@ const OdhAppCard: React.FC<OdhAppCardProps> = ({ odhApp }) => {
       id={odhApp.metadata.name}
       role="listitem"
       className={cardClasses}
+      isDisabled={disabled || !workbenchEnabled}
     >
       <CardHeader
         actions={{

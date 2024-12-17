@@ -44,6 +44,9 @@ export const EnabledApplicationsInner: React.FC<EnabledApplicationsInnerProps> =
         >
           <Gallery maxWidths={{ default: '330px' }} role="list" hasGutter>
             {checkedComponents.map((c) => (
+              <OdhAppCard key={c.metadata.name} odhApp={c} isDisabled />
+            ))}
+            {checkedComponents.map((c) => (
               <OdhAppCard key={c.metadata.name} odhApp={c} />
             ))}
           </Gallery>
