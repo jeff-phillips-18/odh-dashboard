@@ -9,6 +9,7 @@ const ModelCatalogCoreLoader: React.FC = conditionalArea(
   SupportedArea.MODEL_CATALOG,
   true,
 )(() => {
+  console.log(`========== ModelCatalogCoreLoader ==========`);
   const renderStateProps = {
     empty: true,
     emptyStatePage: (
