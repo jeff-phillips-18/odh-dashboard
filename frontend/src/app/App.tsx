@@ -42,17 +42,20 @@ import './App.scss';
 
 type PocConfigType = {
   altNav?: boolean;
+  altPreferredProject?: boolean;
 };
 
 const FAVORITE_PROJECTS_KEY = 'odh-favorite-projects';
 const POC_SESSION_KEY = 'odh-poc-flags';
 const ALT_NAV_PARAM = 'altNav';
+const ALT_PROJECTS_PARAM = 'altProjects';
 
 const App: React.FC = () => {
   const [notificationsOpen, setNotificationsOpen] = React.useState(false);
   const { username, userError, isAllowed } = useUser();
   const [searchParams, setSearchParams] = useSearchParams();
   const [altNav, setAltNav] = React.useState<boolean>(false);
+  const [altPreferredProject, setAltPreferredProject] = React.useState<boolean>(false);
   const firstLoad = React.useRef(true);
   const [pocConfig, setPocConfig] = useBrowserStorage<PocConfigType | null>(
     POC_SESSION_KEY,
@@ -96,6 +99,15 @@ const App: React.FC = () => {
       searchParams.delete(ALT_NAV_PARAM);
       setSearchParams(searchParams, { replace: true });
     }
+    if (searchParams.has(ALT_PROJECTS_PARAM)) {
+      const updated = searchParams.get(ALT_PROJECTS_PARAM) === 'true';
+      setAltPreferredProject(updated);
+      setPocConfig({ altNav: updated });
+
+      // clean up query string
+      searchParams.delete(ALT_NAV_PARAM);
+      setSearchParams(searchParams, { replace: true });
+    }
     // do not react to changes to setters
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
@@ -109,11 +121,20 @@ const App: React.FC = () => {
             storageClasses,
             isRHOAI: dashboardConfig.metadata?.namespace === 'redhat-ods-applications',
             altNav,
+            altPreferredProject,
             favoriteProjects,
             setFavoriteProjects,
           }
         : null,
-    [dashboardConfig, buildStatuses, storageClasses, altNav, favoriteProjects, setFavoriteProjects],
+    [
+      dashboardConfig,
+      buildStatuses,
+      storageClasses,
+      altNav,
+      altPreferredProject,
+      favoriteProjects,
+      setFavoriteProjects,
+    ],
   );
 
   const isUnauthorized = fetchConfigError?.request?.status === 403;

@@ -6,7 +6,8 @@ import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
 import ConnectionsList from '~/pages/projects/screens/detail/connections/ConnectionsList';
 
 const GlobalConnectionsPage: React.FC = () => {
-  const { projects, preferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const { getPreferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const preferredProject = getPreferredProject('connections');
   const navigate = useNavigate();
   return (
     <PageSection hasBodyWrapper={false}>
@@ -17,8 +18,7 @@ const GlobalConnectionsPage: React.FC = () => {
             selectAllProjects
             invalidDropdownPlaceholder="All projects"
             onSelection={(projectName) => {
-              const project = projects.find((p) => p.metadata.name === projectName);
-              updatePreferredProject(project || null);
+              updatePreferredProject('connections', projectName);
               navigate('/connections');
             }}
             namespace={preferredProject?.metadata.name ?? 'all-projects'}

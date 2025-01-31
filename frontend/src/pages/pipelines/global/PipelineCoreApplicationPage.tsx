@@ -13,6 +13,7 @@ import ProjectLink from '~/concepts/projects/ProjectLink';
 
 export type PipelineCoreApplicationPageProps = {
   children: React.ReactNode;
+  page: string;
   getRedirectPath: (namespace: string) => string;
   showProjectSelector?: boolean;
   overrideChildPadding?: boolean;
@@ -23,6 +24,7 @@ export type PipelineCoreApplicationPageProps = {
 
 const PipelineCoreApplicationPage: React.FC<PipelineCoreApplicationPageProps> = ({
   children,
+  page,
   getRedirectPath,
   overrideChildPadding,
   showProjectSelector = true,
@@ -54,7 +56,7 @@ const PipelineCoreApplicationPage: React.FC<PipelineCoreApplicationPageProps> = 
       emptyStatePage={<NoPipelineServer variant={ButtonVariant.primary} />}
       headerContent={
         showProjectSelector ? (
-          <PipelineCoreProjectSelector getRedirectPath={getRedirectPath} />
+          <PipelineCoreProjectSelector page={page} getRedirectPath={getRedirectPath} />
         ) : null
       }
       provideChildrenPadding={!overrideChildPadding}

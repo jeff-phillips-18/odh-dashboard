@@ -6,7 +6,8 @@ import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
 import NotebookList from '~/pages/projects/screens/detail/notebooks/NotebookList';
 
 const GlobalNotebooksPage: React.FC = () => {
-  const { projects, preferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const { getPreferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const preferredProject = getPreferredProject('notebooks');
   const navigate = useNavigate();
   return (
     <PageSection hasBodyWrapper={false}>
@@ -18,8 +19,7 @@ const GlobalNotebooksPage: React.FC = () => {
             selectAllProjects
             invalidDropdownPlaceholder="All projects"
             onSelection={(projectName) => {
-              const project = projects.find((p) => p.metadata.name === projectName);
-              updatePreferredProject(project || null);
+              updatePreferredProject('notebooks', projectName);
               navigate('/workbenches');
             }}
             namespace={preferredProject?.metadata.name ?? 'all-projects'}

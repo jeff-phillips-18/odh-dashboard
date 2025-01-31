@@ -80,9 +80,10 @@ const ProjectDetailsContextProvider: React.FC<ProjectDetailsContextProviderProps
 }) => {
   const { dashboardNamespace } = useDashboardNamespace();
   const { namespace } = useParams();
-  const { projects, loaded, preferredProject } = React.useContext(ProjectsContext);
+  const { projects, loaded, getPreferredProject } = React.useContext(ProjectsContext);
+  const preferredProject = getPreferredProject('project-details');
   const project = projects.find(byName(namespace)) ?? null;
-  useSyncPreferredProject(project);
+  useSyncPreferredProject('project-details', project);
   const notebooks = useContextResourceData<NotebookState>(
     useProjectNotebookStates(namespace, true),
   );
@@ -174,6 +175,7 @@ const ProjectDetailsContextProvider: React.FC<ProjectDetailsContextProviderProps
     if (!allowAllProjects) {
       return (
         <InvalidProject
+          page="project-details"
           namespace={namespace}
           title="Problem loading project details"
           getRedirectPath={(ns) => `/projects/${ns}`}

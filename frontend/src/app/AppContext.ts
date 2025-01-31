@@ -8,6 +8,7 @@ type AppContextProps = {
   storageClasses: StorageClassKind[];
   isRHOAI: boolean;
   altNav?: boolean;
+  altPreferredProject?: boolean;
   favoriteProjects: string[];
   setFavoriteProjects: (projects: string[]) => void;
 };

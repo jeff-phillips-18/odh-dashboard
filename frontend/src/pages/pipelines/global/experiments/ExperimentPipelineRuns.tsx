@@ -14,7 +14,7 @@ import {
   ExperimentContext,
   useContextExperimentArchivedOrDeleted,
 } from '~/pages/pipelines/global/experiments/ExperimentContext';
-import { experimentsBaseRoute } from '~/routes';
+import { experimentsBaseRoute, experimentsRootPath } from '~/routes';
 
 const ExperimentPipelineRuns: PipelineCoreDetailsPageComponent = ({ breadcrumbPath }) => {
   const { experiment } = React.useContext(ExperimentContext);
@@ -22,6 +22,7 @@ const ExperimentPipelineRuns: PipelineCoreDetailsPageComponent = ({ breadcrumbPa
 
   return (
     <PipelineCoreApplicationPage
+      page={experimentsRootPath}
       title={
         <TitleWithIcon title={pipelineRunsPageTitle} objectType={ProjectObjectType.pipelineRun} />
       }

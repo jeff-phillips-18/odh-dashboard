@@ -6,7 +6,8 @@ import { ProjectsContext } from '~/concepts/projects/ProjectsContext';
 import StorageList from '~/pages/projects/screens/detail/storage/StorageList';
 
 const GlobalClusterStoragePage: React.FC = () => {
-  const { projects, preferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const { getPreferredProject, updatePreferredProject } = React.useContext(ProjectsContext);
+  const preferredProject = getPreferredProject('cluster-storage');
   const navigate = useNavigate();
   return (
     <PageSection hasBodyWrapper={false}>
@@ -17,8 +18,7 @@ const GlobalClusterStoragePage: React.FC = () => {
             selectAllProjects
             invalidDropdownPlaceholder="All projects"
             onSelection={(projectName) => {
-              const project = projects.find((p) => p.metadata.name === projectName);
-              updatePreferredProject(project || null);
+              updatePreferredProject('cluster-storage', projectName);
               navigate('/clusterStorage');
             }}
             namespace={preferredProject?.metadata.name ?? 'all-projects'}
