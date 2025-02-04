@@ -121,6 +121,12 @@ const AppRoutes: React.FC = () => {
         )}
         <Route path="/explore" element={<ExploreApplications />} />
         <Route path="/resources" element={<LearningCenterPage />} />
+        <Route
+          path="/modelCustomization"
+          element={
+            <ComingSoonPage title="Model customization" objectType={ProjectObjectType.modelSetup} />
+          }
+        />
 
         <Route path="/projects/*" element={<ProjectViewRoutes />} />
 

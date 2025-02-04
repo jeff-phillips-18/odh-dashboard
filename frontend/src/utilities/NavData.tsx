@@ -13,6 +13,7 @@ import {
   artifactsRootPath,
   executionsRootPath,
   experimentsRootPath,
+  pipelineRunsRootPath,
   pipelinesRootPath,
 } from '~/routes';
 import { useUser } from '~/redux/selectors';
@@ -61,13 +62,12 @@ const useDistributedWorkloadsNav = (): NavDataHref[] =>
 const useDevelopAndTrainNav = (): NavDataItem[] => [
   {
     id: 'developAndTrain',
-    group: { id: 'developAndTrain', label: 'Develop and Train', icon: <ProcessAutomationIcon /> },
+    group: { id: 'developAndTrain', label: 'Develop and train', icon: <ProcessAutomationIcon /> },
     children: [
       { id: 'notebooks', label: 'Workbenches', href: '/workbenches' },
-      { id: 'experimentsAndRuns', label: 'Experiments and runs', href: experimentsRootPath },
-      { id: 'executions', label: 'Executions', href: executionsRootPath },
+      { id: 'model-customization', label: 'Model customization', href: '/modelCustomization' },
+      { id: 'experiments', label: 'Experiments', href: experimentsRootPath },
       { id: 'artifacts', label: 'Artifacts', href: artifactsRootPath },
-      ...useDistributedWorkloadsNav(),
     ],
   },
 ];
@@ -79,7 +79,7 @@ const useManageModelsNav = (): NavDataItem[] =>
           id: 'manageModels',
           group: { id: 'manageModels', label: 'Models', icon: <ModelIcon /> },
           children: [
-            { id: 'modelCatalog', label: 'Model Catalog', href: '/modelCatalog' },
+            { id: 'modelCatalog', label: 'Model catalog', href: '/modelCatalog' },
             { id: 'modelRegistry', label: 'Model registry', href: '/modelRegistry' },
             { id: 'modelDeployments', label: 'Model deployments', href: '/modelServing' },
           ],
@@ -90,7 +90,7 @@ const useManageModelsNav = (): NavDataItem[] =>
           id: 'manageModels',
           group: { id: 'manageModels', label: 'Models', icon: <ModelIcon /> },
           children: [
-            { id: 'modelOverview', label: 'Model overview', href: '/modelOverview' },
+            { id: 'modelOverview', label: 'Model catalog', href: '/modelCatalog' },
             { id: 'modelDeployments', label: 'Model deployments', href: '/modelServing' },
           ],
         },
@@ -100,7 +100,15 @@ const useAutomateNav = (): NavDataItem[] => [
   {
     id: 'automate',
     group: { id: 'automate', label: 'Automate', icon: <AutomationIcon /> },
-    children: [{ id: 'pipelines', label: 'Pipelines', href: pipelinesRootPath }],
+    children: [
+      { id: 'pipelines', label: 'Pipelines', href: pipelinesRootPath },
+      {
+        id: 'runs',
+        label: 'Runs',
+        href: pipelineRunsRootPath,
+      },
+      { id: 'executions', label: 'Executions', href: executionsRootPath },
+    ],
   },
 ];
 
@@ -111,6 +119,7 @@ const useConfigureNav = (): NavDataItem[] => [
     children: [
       { id: 'connections', label: 'Connections', href: '/connections' },
       { id: 'clusterStorage', label: 'Cluster storage', href: '/clusterStorage' },
+      ...useDistributedWorkloadsNav(),
       { id: 'applications', label: 'Applications', href: '/applications' },
     ],
   },

@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { conditionalArea, SupportedArea } from '~/concepts/areas';
 import ApplicationsPage from '~/pages/ApplicationsPage';
 import TitleWithIcon from '~/concepts/design/TitleWithIcon';
 import { ProjectObjectType, typedEmptyImage } from '~/concepts/design/utils';
 import EmptyModelCatalogState from './EmptyModelCatalogState';
 
-const ModelCatalogCoreLoader: React.FC = conditionalArea(
-  SupportedArea.MODEL_CATALOG,
-  true,
-)(() => {
-  console.log(`========== ModelCatalogCoreLoader ==========`);
+const ModelCatalogCoreLoader: React.FC = () => {
   const renderStateProps = {
     empty: true,
     emptyStatePage: (
@@ -34,6 +29,6 @@ const ModelCatalogCoreLoader: React.FC = conditionalArea(
       provideChildrenPadding
     />
   );
-});
+};
 
 export default ModelCatalogCoreLoader;
